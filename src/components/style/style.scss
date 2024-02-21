@@ -68,10 +68,15 @@ section div:nth-child(2) {
 h4:nth-child(1) {
     font-weight: 700;
     letter-spacing: .5px;
+    font-size: 1.15em;
 }
 h4:nth-child(2) {
     font-weight: 500;
     color: rgb(136, 165, 185);
+}
+h5 {
+    color: rgba(135, 228, 225, 0.448);
+    font-weight: 400;
 }
 
 // ------------------------------------------
