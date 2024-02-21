@@ -1,4 +1,10 @@
+import { useEffect } from "react"
+
 export default function DiaDaSemana({diaDaSemana, infoDia}) {
+
+    useEffect(() => {
+        
+    })
 
     return (
         <main>
@@ -16,7 +22,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         {infoDia[0][0] ? infoDia[0].map((e) => (
                             <div className="blocos">
                                 <h4 className="titulo-aula">
-                                    {e.nome} - {e.professor}
+                                    {e.nome} <span>{e.turma ? e.turma : ''}</span> - {e.professor}
                                 </h4>
                                 <h4 className="lugar-aula">
                                     {e.lugar}
@@ -28,7 +34,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         )) : 
                         <div className="blocos">
                             <h4 className="titulo-aula">
-                                {infoDia[0].nome} - {infoDia[0].professor}
+                                {infoDia[0].nome} <span>{infoDia[0].turma ? infoDia[0].turma : ''}</span> - {infoDia[0].professor}
                             </h4>
                             <h4 className="lugar-aula">
                                 {infoDia[0].lugar}
@@ -50,7 +56,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         {infoDia[1][0] ? infoDia[1].map((e) => (
                             <div className="blocos">
                                 <h4 className="titulo-aula">
-                                    {e.nome} - {e.professor}
+                                    {e.nome} <span>{e.turma ? e.turma : ''}</span> - {e.professor}
                                 </h4>
                                 <h4 className="lugar-aula">
                                     {e.lugar}
@@ -62,7 +68,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         )) : 
                         <div className="blocos">
                             <h4 className="titulo-aula">
-                                {infoDia[1].nome} - {infoDia[1].professor}
+                                {infoDia[1].nome} <span>{infoDia[1].turma ? infoDia[1].turma : ''}</span> - {infoDia[1].professor}
                             </h4>
                             <h4 className="lugar-aula">
                                 {infoDia[1].lugar}
@@ -84,7 +90,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         {infoDia[2][0] ? infoDia[2].map((e) => (
                             <div className="blocos">
                                 <h4 className="titulo-aula">
-                                    {e.nome} - {e.professor}
+                                    {e.nome} <span>{e.turma ? e.turma : ''}</span> - {e.professor}
                                 </h4>
                                 <h4 className="lugar-aula">
                                     {e.lugar}
@@ -96,7 +102,7 @@ export default function DiaDaSemana({diaDaSemana, infoDia}) {
                         )) : 
                         <div className="blocos">
                             <h4 className="titulo-aula">
-                                {infoDia[2].nome} - {infoDia[2].professor}
+                                {infoDia[2].nome} <span>{infoDia[2].turma ? infoDia[2].turma : ''}</span> - {infoDia[2].professor}
                             </h4>
                             <h4 className="lugar-aula">
                                 {infoDia[2].lugar}

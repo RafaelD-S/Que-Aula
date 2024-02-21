@@ -34,14 +34,16 @@ function App() {
     [
       {
         id: 3.0,
-        nome: 'LET102 T01',
+        nome: 'LET102',
+        turma: 'T01',
         professor: 'Luzia Helena',
         lugar: 'Bloco L - Cen. de Idiomas',
         descricao: 'Inglês',
       },
       {
         id: 3.1,
-        nome: 'LET102 T02',
+        nome: 'LET102',
+        turma: 'T02',
         professor: 'Luzia Helena',
         lugar: 'Bloco L - Cen. de Idiomas',
         descricao: 'Inglês',
@@ -50,14 +52,16 @@ function App() {
     [
       {
         id: 4.0,
-        nome: 'INF027 T01',
+        nome: 'INF027',
+        turma: 'T01',
         professor: 'Fred',
         lugar: 'BLOCO E - Lab. 3',
         descricao: 'Introdução a Lógica de Programação',
       },
       {
         id: 4.1,
-        nome: 'INF027 T02',
+        nome: 'INF027',
+        turma: 'T02',
         professor: 'Romilson',
         lugar: 'BLOCO E - Lab. 4',
         descricao: 'Introdução a Lógica de Programação',
@@ -152,7 +156,7 @@ function App() {
   return (
     <>
     <Header
-      
+
     />
     <DiaDaSemana 
       diaDaSemana={aulas[diaDaSemanaValor].dia}
