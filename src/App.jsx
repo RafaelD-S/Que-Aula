@@ -1,170 +1,149 @@
-import DiaDaSemana from "./components/diaDaSemana"
-import Header from "./components/header"
-import Footer from "./components/footer"
+import WeekDay from "./components/contents/WeekDay";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-import "./components/style/style.scss"
-import { useEffect, useState } from "react";
+import "./components/style/style.scss";
+
+/*
+  References:
+   - subjects: same as 'disciplinas'
+   - class: same as 'turma'
+   - lectures: same as 'aulas'
+*/
 
 function App() {
-  
-  const diaDaSemanaValor = new Date().getDay();
+  const currentWeekday = new Date().getDay();
 
-  const [disciplinas, setDisciplinas] = useState([
+  // there is no need for this being a state since it's not going to change
+  const subjects = [
     {
       id: 0,
-      nome: '------',
-      professor: '------',
-      lugar: '------',
-      descricao: '------'
+      name: "------",
+      teacher: "------",
+      classroom: "------",
+      // could be also named as displayName or something like that, it is not actually a description
+      description: "------",
     },
     {
       id: 1,
-      nome: 'MAT222',
-      professor: 'Antonio Magno',
-      lugar: 'BLOCO O - Sala 7',
-      descricao: 'Matemática I',
+      name: "MAT222",
+      teacher: "Antonio Magno",
+      classroom: "BLOCO O - Sala 7",
+      description: "Matemática I",
     },
     {
       id: 2,
-      nome: 'LET100',
-      professor: 'Wesley Correia',
-      lugar: 'BLOCO B - Sala 6',
-      descricao: 'Língua Portuguesa',
+      name: "LET100",
+      teacher: "Wesley Correia",
+      classroom: "BLOCO B - Sala 6",
+      description: "Língua Portuguesa",
     },
     [
       {
         id: 3.0,
-        nome: 'LET102',
-        turma: 'T01',
-        professor: 'Luzia Helena',
-        lugar: 'Bloco L - Cen. de Idiomas',
-        descricao: 'Inglês',
+        name: "LET102",
+        class: "T01",
+        teacher: "Luzia Helena",
+        classroom: "Bloco L - Cen. de Idiomas",
+        description: "Inglês Instrumental",
       },
       {
         id: 3.1,
-        nome: 'LET102',
-        turma: 'T02',
-        professor: 'Luzia Helena',
-        lugar: 'Bloco L - Cen. de Idiomas',
-        descricao: 'Inglês',
+        name: "LET102",
+        class: "T02",
+        teacher: "Luzia Helena",
+        classroom: "Bloco L - Cen. de Idiomas",
+        description: "Inglês Instrumental",
       },
     ],
     [
       {
         id: 4.0,
-        nome: 'INF027',
-        turma: 'T01',
-        professor: 'Fred',
-        lugar: 'BLOCO E - Lab. 3',
-        descricao: 'Introdução a Lógica de Programação',
+        name: "INF027",
+        class: "T01",
+        teacher: "Fred",
+        classroom: "BLOCO E - Lab. 3",
+        description: "Introdução a Lógica de Programação",
       },
       {
         id: 4.1,
-        nome: 'INF027',
-        turma: 'T02',
-        professor: 'Romilson',
-        lugar: 'BLOCO E - Lab. 4',
-        descricao: 'Introdução a Lógica de Programação',
+        name: "INF027",
+        class: "T02",
+        teacher: "Romilson",
+        classroom: "BLOCO E - Lab. 4",
+        description: "Introdução a Lógica de Programação",
       },
     ],
     [
       {
         id: 5.0,
-        nome: 'INF026',
-        professor: 'Antônio Carlos (AC)',
-        lugar: 'BLOCO L - Sala 1',
-        descricao: 'Introdução a Computação',
+        name: "INF026",
+        teacher: "Antônio Carlos (AC)",
+        classroom: "BLOCO L - Sala 1",
+        description: "Introdução a Computação",
       },
       {
         id: 5.1,
-        nome: 'INF026',
-        professor: 'Antônio Carlos (AC)',
-        lugar: 'BLOCO E - Lab. 3',
-        descricao: 'Introdução a Computação',
-      }
+        name: "INF026",
+        teacher: "Antônio Carlos (AC)",
+        classroom: "BLOCO E - Lab. 3",
+        description: "Introdução a Computação",
+      },
     ],
-  ])
+  ];
 
-  const [aulas, setAulas] = useState([
+  // same as above, a state that is not going to change
+  const schedule = [
     {
       id: 0,
-      dia: 'Domingo',
-      aulas: [
-        disciplinas[0],
-        disciplinas[0],
-        disciplinas[0]
-      ]
+      day: "Domingo",
+      lectures: [subjects[0], subjects[0], subjects[0]],
     },
     {
       id: 1,
-      dia: 'Segunda-Feira',
-      aulas: [
-        disciplinas[0],
-        disciplinas[1],
-        disciplinas[2]
-      ]
+      day: "Segunda-Feira",
+      lectures: [subjects[0], subjects[1], subjects[2]],
     },
     {
       id: 2,
-      dia: 'Terça-Feira',
-      aulas: [
-        disciplinas[3][1],
-        [
-          disciplinas[4][0],
-          disciplinas[4][1]
-        ],
-        disciplinas[5][0]
-      ]
+      day: "Terça-Feira",
+      lectures: [
+        subjects[3][1],
+        [subjects[4][0], subjects[4][1]],
+        subjects[5][0],
+      ],
     },
     {
       id: 3,
-      dia: 'Quarta-Feira',
-      aulas: [
-        disciplinas[3][0],
-        disciplinas[1],
-        disciplinas[4][1]
-      ]
+      day: "Quarta-Feira",
+      lectures: [subjects[3][0], subjects[1], subjects[4][1]],
     },
     {
       id: 4,
-      dia: 'Quinta-Feira',
-      aulas: [
-        disciplinas[2],
-        disciplinas[5][1],
-        disciplinas[4][0]
-      ]
+      day: "Quinta-Feira",
+      lectures: [subjects[2], subjects[5][1], subjects[4][0]],
     },
     {
       id: 5,
-      dia: 'Sexta-Feira',
-      aulas: [
-        disciplinas[3][0],
-        disciplinas[1],
-        disciplinas[3][1]
-      ]
+      day: "Sexta-Feira",
+      lectures: [subjects[3][0], subjects[1], subjects[3][1]],
     },
     {
       id: 6,
-      dia: 'Sábado',
-      aulas: [
-        disciplinas[0],
-        disciplinas[0],
-        disciplinas[0]
-      ]
+      day: "Sábado",
+      lectures: [subjects[0], subjects[0], subjects[0]],
     },
-  ])
+  ];
   return (
     <>
-    <Header
-
-    />
-    <DiaDaSemana 
-      diaDaSemana={aulas[diaDaSemanaValor].dia}
-      infoDia={aulas[diaDaSemanaValor].aulas}
-    />
-    <Footer/>
+      <Header />
+      <WeekDay
+        day={schedule[currentWeekday].day}
+        data={schedule[currentWeekday].lectures}
+      />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
