@@ -51,7 +51,7 @@ section {
     border-bottom:1px solid rgba(162, 191, 226, 0.264);
     align-items: center;
 }
-section div:nth-child(1) {
+.horarios {
     max-width: 70px;
     text-align: center;
     display: flex;
@@ -60,21 +60,26 @@ section div:nth-child(1) {
     width: 100%;
     color: rgb(213, 225, 240);
 }
-section div:nth-child(2) {
+.blocos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.blocos {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-h4:nth-child(1) {
+.titulo-aula {
     font-weight: 700;
     letter-spacing: .5px;
     font-size: 1.15em;
 }
-h4:nth-child(2) {
+.lugar-aula {
     font-weight: 500;
     color: rgb(136, 165, 185);
 }
-h5 {
+.info-aula {
     color: rgba(135, 228, 225, 0.448);
     font-weight: 400;
 }
@@ -89,7 +94,7 @@ footer {
     display: flex;
     justify-content: center;
     gap: 5px;
-    padding: 1rem;
+    padding: .6rem;
     font-size: .7em;
     opacity: .5;
 }
