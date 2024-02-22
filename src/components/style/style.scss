@@ -97,7 +97,7 @@ main section {
     border-bottom:1px solid rgba(162, 191, 226, 0.264);
     align-items: center;
 }
-.horarios {
+.schedule {
     max-width: 70px;
     text-align: center;
     display: flex;
@@ -106,26 +106,26 @@ main section {
     width: 100%;
     color: rgb(213, 225, 240);
 }
-.blocos-container {
+.block-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
-.blocos {
+.blocks {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-.titulo-aula {
+.lecture-title {
     font-weight: 700;
     letter-spacing: .5px;
     font-size: 1.15em;
 }
-.lugar-aula {
+.lecture-classroom {
     font-weight: 500;
     color: rgb(136, 165, 185);
 }
-.info-aula {
+.lecture-description {
     color: rgba(135, 228, 225, 0.448);
     font-weight: 400;
 }
