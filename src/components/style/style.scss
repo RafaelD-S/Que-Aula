@@ -7,13 +7,6 @@ body {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     background-color: rgb(8, 14, 19);
 }
-header {
-    background-color: rgb(13, 72, 82);
-    color: rgb(198, 243, 245);
-    text-align: center;
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-}
 p {
     font-size: .9rem;
 }
@@ -21,6 +14,59 @@ a {
     color: currentColor;
     text-decoration: none;
     font-weight: 500;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+// ------------------------------------------------
+
+header section {
+    background-color: rgb(13, 72, 82);
+    color: rgb(198, 243, 245);
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgb(2, 33, 38);
+    
+}
+header nav {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: .25rem 0;
+    background-color: rgb(4, 44, 61);
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        font-weight: 500;
+        font-size: .9rem;
+
+        li {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        img {
+            width: 24px;
+        }
+    }
+    figure {
+        display: flex;
+        gap: 10px;
+        padding: 3px;
+    }
+}
+.reset {
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    cursor: pointer;
+}
+header {
+    margin-bottom: 2rem;
 }
 
 // ------------------------------------------------
@@ -42,7 +88,7 @@ article {
     flex-direction: column;
     align-items: center;
 }
-section {
+main section {
     font-size: .8em;
     gap: .875rem;
     width: 100%;
@@ -100,4 +146,9 @@ footer {
     padding: .6rem;
     font-size: .7em;
     opacity: .5;
+}
+@media (min-width: 800px) {
+    .reset {
+        display: none;
+    }
 }
