@@ -21,8 +21,8 @@ export default function Header({switchWeekday}) {
 
 function DropDown({setNavSwitch, switchWeekday}) {
     return (
-        <nav className='dropDown'>
-            <button  onClick={() => setNavSwitch(true)}>
+        <nav className='dropDown' onClick={() => setNavSwitch(true)}>
+            <button>
                 <h4>
                     Dias da Semana
                 </h4>
