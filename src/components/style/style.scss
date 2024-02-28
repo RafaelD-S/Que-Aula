@@ -53,13 +53,14 @@ header nav {
     button {
         font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         display: flex;
-        align-items: center;
         color: rgb(198, 243, 245);
         padding: .3rem 0;
         background-color: transparent;
         border: none;
         cursor: pointer;
         padding: .5rem 0;
+        width: 100%;
+        justify-content: center;
     }
     h4 {
         padding: .2rem;
