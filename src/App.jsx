@@ -1,8 +1,10 @@
 import WeekDay from "./components/contents/WeekDay";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
+import Footer from "./components/footer.jsx"
+import Header from "./components/header.jsx"
 
 import "./components/style/style.scss";
+import { useState } from "react";
 
 /*
   References:
@@ -12,16 +14,14 @@ import "./components/style/style.scss";
 */
 
 function App() {
-  const currentWeekday = new Date().getDay();
+  const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());
 
-  // there is no need for this being a state since it's not going to change
   const subjects = [
     {
       id: 0,
       name: "------",
       teacher: "------",
       classroom: "------",
-      // could be also named as displayName or something like that, it is not actually a description
       description: "------",
     },
     {
@@ -92,7 +92,6 @@ function App() {
     ],
   ];
 
-  // same as above, a state that is not going to change
   const schedule = [
     {
       id: 0,
@@ -136,7 +135,7 @@ function App() {
   ];
   return (
     <>
-      <Header />
+      <Header switchWeekday={setCurrentWeekday}/>
       <WeekDay
         day={schedule[currentWeekday].day}
         data={schedule[currentWeekday].lectures}
