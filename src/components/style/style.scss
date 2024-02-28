@@ -21,13 +21,12 @@ a:hover {
 
 // ------------------------------------------------
 
-header section {
+header  {
     background-color: rgb(13, 72, 82);
     color: rgb(198, 243, 245);
     text-align: center;
     padding: 1rem 0;
     border-bottom: 1px solid rgb(2, 33, 38);
-    
 }
 header nav {
     display: flex;
@@ -61,8 +60,8 @@ header nav {
 }
 .reset {
     position: absolute;
-    right: 1.25rem;
-    top: 1.25rem;
+    right: 1.3rem;
+    top: 1.5rem;
     cursor: pointer;
 }
 header {
@@ -82,6 +81,23 @@ h2 {
 h3 {
     line-height: 1.7rem;
     background: linear-gradient(180deg, rgba(244,244,244,0) 48%, rgba(117, 117, 201, 0.422) 49%, rgba(14,14,18,0) 51%);
+}
+.switch {
+    background-color: red;
+    width: 40px;
+    height: 1.2rem;
+    border-radius: 15px;
+    padding: 0.35rem;
+    display: flex;
+    align-items: center;
+    
+    &::after {
+        content: '';
+        width: .9rem;
+        height: .9rem;
+        background-color: blue;
+        border-radius: 50%;
+    }
 }
 article {
     display: flex;
