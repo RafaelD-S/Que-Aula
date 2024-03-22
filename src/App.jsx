@@ -24,13 +24,22 @@ function App() {
       classroom: "------",
       description: "------",
     },
-    {
-      id: 1,
-      name: "MAT222",
-      teacher: "Antonio Magno",
-      classroom: "BLOCO O - Sala 7",
-      description: "Matemática I",
-    },
+    [
+      {
+        id: 1.0,
+        name: "MAT222",
+        teacher: "Antonio Magno",
+        classroom: "BLOCO O - Sala 7",
+        description: "Matemática I",
+      },
+      {
+        id: 1.1,
+        name: "MAT222",
+        teacher: "Antonio Magno",
+        classroom: "BLOCO D - Sala 4",
+        description: "Matemática I",
+      },
+    ],
     {
       id: 2,
       name: "LET100",
@@ -101,7 +110,7 @@ function App() {
     {
       id: 1,
       day: "Segunda-Feira",
-      lectures: [subjects[0], subjects[1], subjects[2]],
+      lectures: [subjects[0], subjects[1][0], subjects[2]],
     },
     {
       id: 2,
@@ -115,7 +124,7 @@ function App() {
     {
       id: 3,
       day: "Quarta-Feira",
-      lectures: [subjects[3][0], subjects[1], subjects[4][1]],
+      lectures: [subjects[3][0], subjects[1][0], subjects[4][1]],
     },
     {
       id: 4,
@@ -125,7 +134,7 @@ function App() {
     {
       id: 5,
       day: "Sexta-Feira",
-      lectures: [subjects[3][0], subjects[1], subjects[3][1]],
+      lectures: [subjects[3][0], subjects[1][1], subjects[3][1]],
     },
     {
       id: 6,
