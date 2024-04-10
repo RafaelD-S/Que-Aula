@@ -88,7 +88,7 @@ function App() {
         id: 5.0,
         name: "INF026",
         teacher: "Antônio Carlos (AC)",
-        classroom: "BLOCO L - Sala 1",
+        classroom: "BLOCO O - Sala 6",
         description: "Introdução a Computação",
       },
       {
