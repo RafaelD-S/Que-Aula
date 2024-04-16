@@ -46,6 +46,7 @@ function App() {
       teacher: "Wesley Correia",
       classroom: "BLOCO B - Sala 6",
       description: "Língua Portuguesa",
+      greve: "greve",
     },
     [
       {
