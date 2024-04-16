@@ -6,16 +6,19 @@ class WeekDay extends React.Component {
     const blocks = [
       {
         index: 0,
+        greve: this.props.data[0].greve,
         style: "primeiro",
         time: "17h 18h40",
       },
       {
         index: 1,
+        greve: this.props.data[1].greve,
         style: "segundo",
         time: "18h40 20h20",
       },
       {
         index: 2,
+        greve: this.props.data[2].greve,
         style: "terceiro",
         time: "20h20 22h",
       },
@@ -27,7 +30,7 @@ class WeekDay extends React.Component {
         <article>
           {blocks.map((block) => (
             <section key={block.index} className={block.style}>
-              <div>
+              <div id={block.greve}>
                 <h3 className="schedule">{block.time}</h3>
               </div>
               <div className="block-container">
