@@ -107,6 +107,25 @@ header nav {
 body {
     color: rgb(177, 200, 228);
 }
+#greve {
+    position: relative;
+    &::after {
+        content: 'GREVE';
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        height: fit-content;
+        transform: rotate(-15deg);
+        clip-path: polygon(50% 0%, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%, 0 0);
+        display: flex;
+        padding: .15rem .55rem;
+        background-color: rgb(224, 59, 30);
+        color: rgb(255, 200, 200);
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+}
 main h2 {
     text-align: center;
     color: rgb(232, 248, 246);
@@ -114,23 +133,6 @@ main h2 {
 main h3 {
     line-height: 1.7rem;
     background: linear-gradient(180deg, rgba(244,244,244,0) 48%, rgba(117, 117, 201, 0.422) 49%, rgba(14,14,18,0) 51%);
-}
-.switch {
-    background-color: red;
-    width: 40px;
-    height: 1.2rem;
-    border-radius: 15px;
-    padding: 0.35rem;
-    display: flex;
-    align-items: center;
-    
-    &::after {
-        content: '';
-        width: .9rem;
-        height: .9rem;
-        background-color: blue;
-        border-radius: 50%;
-    }
 }
 main article {
     display: flex;
