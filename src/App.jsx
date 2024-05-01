@@ -31,6 +31,7 @@ function App() {
         teacher: "Antonio Magno",
         classroom: "BLOCO O - Sala 7",
         description: "Matemática I",
+        greve: "greve",
       },
       {
         id: 1.1,
@@ -38,6 +39,7 @@ function App() {
         teacher: "Antonio Magno",
         classroom: "BLOCO D - Sala 4",
         description: "Matemática I",
+        greve: "greve",
       },
     ],
     {
@@ -56,6 +58,7 @@ function App() {
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
         description: "Inglês Instrumental",
+        greve: "greve",
       },
       {
         id: 3.1,
@@ -64,6 +67,7 @@ function App() {
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
         description: "Inglês Instrumental",
+        greve: "greve",
       },
     ],
     [
@@ -74,6 +78,7 @@ function App() {
         teacher: "Fred",
         classroom: "BLOCO E - Lab. 3",
         description: "Introdução a Lógica de Programação",
+        greve: "greve",
       },
       {
         id: 4.1,
@@ -82,6 +87,7 @@ function App() {
         teacher: "Romilson",
         classroom: "BLOCO E - Lab. 4",
         description: "Introdução a Lógica de Programação",
+        greve: "greve",
       },
     ],
     [
@@ -91,6 +97,7 @@ function App() {
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO O - Sala 6",
         description: "Introdução a Computação",
+        greve: "greve",
       },
       {
         id: 5.1,
@@ -98,6 +105,7 @@ function App() {
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO E - Lab. 3",
         description: "Introdução a Computação",
+        greve: "greve",
       },
     ],
   ];
