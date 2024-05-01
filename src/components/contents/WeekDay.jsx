@@ -30,7 +30,7 @@ class WeekDay extends React.Component {
         <article>
           {blocks.map((block) => (
             <section key={block.index} className={block.style}>
-              <div id={block.greve}>
+              <div id="greve">
                 <h3 className="schedule">{block.time}</h3>
               </div>
               <div className="block-container">
