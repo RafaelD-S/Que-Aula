@@ -30,16 +30,14 @@ function App() {
         name: "MAT222",
         teacher: "Antonio Magno",
         classroom: "BLOCO O - Sala 7",
-        description: "Matemática I",
-        greve: "greve",
+        description: "Matemática I"
       },
       {
         id: 1.1,
         name: "MAT222",
         teacher: "Antonio Magno",
         classroom: "BLOCO D - Sala 4",
-        description: "Matemática I",
-        greve: "greve",
+        description: "Matemática I"
       },
     ],
     {
@@ -47,8 +45,7 @@ function App() {
       name: "LET100",
       teacher: "Wesley Correia",
       classroom: "BLOCO B - Sala 6",
-      description: "Língua Portuguesa",
-      greve: "greve",
+      description: "Língua Portuguesa"
     },
     [
       {
@@ -57,8 +54,7 @@ function App() {
         class: "T01",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
-        description: "Inglês Instrumental",
-        greve: "greve",
+        description: "Inglês Instrumental"
       },
       {
         id: 3.1,
@@ -66,8 +62,7 @@ function App() {
         class: "T02",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
-        description: "Inglês Instrumental",
-        greve: "greve",
+        description: "Inglês Instrumental"
       },
     ],
     [
@@ -77,8 +72,7 @@ function App() {
         class: "T01",
         teacher: "Fred",
         classroom: "BLOCO E - Lab. 3",
-        description: "Introdução a Lógica de Programação",
-        greve: "greve",
+        description: "Introdução a Lógica de Programação"
       },
       {
         id: 4.1,
@@ -86,8 +80,7 @@ function App() {
         class: "T02",
         teacher: "Romilson",
         classroom: "BLOCO E - Lab. 4",
-        description: "Introdução a Lógica de Programação",
-        greve: "greve",
+        description: "Introdução a Lógica de Programação"
       },
     ],
     [
@@ -96,16 +89,14 @@ function App() {
         name: "INF026",
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO O - Sala 6",
-        description: "Introdução a Computação",
-        greve: "greve",
+        description: "Introdução a Computação"
       },
       {
         id: 5.1,
         name: "INF026",
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO E - Lab. 3",
-        description: "Introdução a Computação",
-        greve: "greve",
+        description: "Introdução a Computação"
       },
     ],
   ];
