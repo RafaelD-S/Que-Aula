@@ -6,12 +6,6 @@ import Header from "./components/header.jsx"
 import "./components/style/style.scss";
 import { useState } from "react";
 
-/*
-  References:
-   - subjects: same as 'disciplinas'
-   - class: same as 'turma'
-   - lectures: same as 'aulas'
-*/
 
 function App() {
   const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());
@@ -20,6 +14,7 @@ function App() {
     {
       id: 0,
       name: "------",
+      greve: false,
       teacher: "------",
       classroom: "------",
       description: "------",
@@ -28,6 +23,7 @@ function App() {
       {
         id: 1.0,
         name: "MAT222",
+        greve: false,
         teacher: "Antonio Magno",
         classroom: "BLOCO O - Sala 7",
         description: "Matemática I"
@@ -35,6 +31,7 @@ function App() {
       {
         id: 1.1,
         name: "MAT222",
+        greve: false,
         teacher: "Antonio Magno",
         classroom: "BLOCO D - Sala 4",
         description: "Matemática I"
@@ -43,6 +40,7 @@ function App() {
     {
       id: 2,
       name: "LET100",
+      greve: false,
       teacher: "Wesley Correia",
       classroom: "BLOCO B - Sala 6",
       description: "Língua Portuguesa"
@@ -51,6 +49,7 @@ function App() {
       {
         id: 3.0,
         name: "LET102",
+        greve: false,
         class: "T01",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
@@ -59,6 +58,7 @@ function App() {
       {
         id: 3.1,
         name: "LET102",
+        greve: false,
         class: "T02",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
@@ -69,6 +69,7 @@ function App() {
       {
         id: 4.0,
         name: "INF027",
+        greve: false,
         class: "T01",
         teacher: "Fred",
         classroom: "BLOCO E - Lab. 3",
@@ -77,6 +78,7 @@ function App() {
       {
         id: 4.1,
         name: "INF027",
+        greve: false,
         class: "T02",
         teacher: "Romilson",
         classroom: "BLOCO E - Lab. 4",
@@ -87,6 +89,7 @@ function App() {
       {
         id: 5.0,
         name: "INF026",
+        greve: false,
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO O - Sala 6",
         description: "Introdução a Computação"
@@ -94,6 +97,7 @@ function App() {
       {
         id: 5.1,
         name: "INF026",
+        greve: false,
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO E - Lab. 3",
         description: "Introdução a Computação"
