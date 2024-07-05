@@ -24,7 +24,7 @@ function App() {
         id: 1.0,
         name: "MAT222",
         greve: false,
-        teacher: "Antonio Magno",
+        teacher: "Jair Messias Matemática",
         classroom: "BLOCO O - Sala 7",
         description: "Matemática I"
       },
@@ -32,7 +32,7 @@ function App() {
         id: 1.1,
         name: "MAT222",
         greve: false,
-        teacher: "Antonio Magno",
+        teacher: "Jair Messias Matemática",
         classroom: "BLOCO D - Sala 4",
         description: "Matemática I"
       },
