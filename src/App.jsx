@@ -37,14 +37,24 @@ function App() {
         description: "Matemática I"
       },
     ],
-    {
-      id: 2,
-      name: "LET100",
-      greve: false,
-      teacher: "Wesley Correia",
-      classroom: "BLOCO B - Sala 6",
-      description: "Língua Portuguesa"
-    },
+    [
+      {
+        id: 2.0,
+        name: "LET100",
+        greve: false,
+        teacher: "Wesley Correia",
+        classroom: "BLOCO B - Sala 6",
+        description: "Língua Portuguesa"
+      },
+      {
+        id: 2.1,
+        name: "LET100",
+        greve: false,
+        teacher: "Wesley Correia",
+        classroom: "BLOCO D - Sala 2",
+        description: "Língua Portuguesa"
+      }
+    ],
     [
       {
         id: 3.0,
@@ -114,7 +124,7 @@ function App() {
     {
       id: 1,
       day: "Segunda-Feira",
-      lectures: [subjects[0], subjects[1][0], subjects[2]],
+      lectures: [subjects[0], subjects[1][0], subjects[2][0]],
     },
     {
       id: 2,
@@ -133,7 +143,7 @@ function App() {
     {
       id: 4,
       day: "Quinta-Feira",
-      lectures: [subjects[2], subjects[5][1], subjects[4][0]],
+      lectures: [subjects[2][1], subjects[5][1], subjects[4][0]],
     },
     {
       id: 5,
