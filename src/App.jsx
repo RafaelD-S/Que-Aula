@@ -1,7 +1,6 @@
 import DayClasses from "./components/dayClasses/dayClasses.jsx";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
-import Modal from "./components/modal/modal.jsx";
 
 import "./components/style/style.scss";
 import { useState } from "react";
@@ -162,7 +161,6 @@ function App() {
         day={schedule[currentWeekday].day}
         data={schedule[currentWeekday].lectures}
       />
-      <Modal></Modal>
       <Footer />
     </>
   );
