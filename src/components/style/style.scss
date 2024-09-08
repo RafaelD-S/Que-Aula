@@ -1,201 +1,132 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    background-color: rgb(8, 14, 19);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: rgb(8, 14, 19);
+  color: rgb(177, 200, 228);
 }
 p {
-    font-size: .9rem;
+  font-size: 0.9rem;
 }
 a {
-    color: currentColor;
-    text-decoration: none;
-    font-weight: 500;
+  color: currentColor;
+  text-decoration: none;
+  font-weight: 500;
 }
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 h1 {
-    font-size: 1.75rem;
-}
-
-// ------------------------------------------------
-
-header {
-    margin-bottom: 5.25rem;
-    position: relative;
+  font-size: 1.75rem;
 }
 .title {
-    background-color: rgb(13, 72, 82);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(198, 243, 245);
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgb(2, 33, 38);
-}
-header nav {
-    z-index: +1;
-    display: flex;
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(4, 44, 61);
-    transition: bottom .3s ease-in-out;
-
-    button {
-        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-        display: flex;
-        color: rgb(198, 243, 245);
-        padding: .3rem 0;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        padding: .5rem 0;
-        width: 100%;
-        justify-content: center;
-    }
-    h4 {
-        padding: .2rem;
-        font-size: 1rem;
-    }
-    img {
-        width: 24px;
-    }
-}
-.dropDown {
-    flex-direction: column;
-    opacity: .95;
-    
-    h3 {
-        width: 100%;
-        text-align: center;
-        padding: 1.35rem 0;
-        border-bottom:  1px solid rgba(162, 191, 226, 0.189);
-        font-size: 1rem;
-        color: rgb(183, 214, 237);
-        background-color: rgb(10, 25, 39);
-        letter-spacing: .5px;
-        cursor: pointer;
-    }
-    button {
-        padding: 1rem 0;
-        width: 100%;
-        justify-content: center;
-        img {
-            transform: rotate(180deg);
-        }
-    }
-}
-.reset {
-    position: absolute;
-    right: 1.5rem;
-    display: flex;
-    align-self: center;
-    cursor: pointer;
+  background-color: rgb(13, 72, 82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(198, 243, 245);
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(2, 33, 38);
 }
 
-// ------------------------------------------------
-
-body {
-    color: rgb(177, 200, 228);
-}
 #greve {
-    position: relative;
-    &::after {
-        content: 'GREVE';
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        height: fit-content;
-        transform: rotate(-15deg);
-        clip-path: polygon(50% 0%, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%, 0 0);
-        display: flex;
-        padding: .15rem .55rem;
-        background-color: rgb(224, 59, 30);
-        color: rgb(255, 200, 200);
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
+  position: relative;
+  &::after {
+    content: "GREVE";
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    transform: rotate(-15deg);
+    clip-path: polygon(50% 0%, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%, 0 0);
+    display: flex;
+    padding: 0.15rem 0.55rem;
+    background-color: rgb(224, 59, 30);
+    color: rgb(255, 200, 200);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
 }
 main h2 {
-    text-align: center;
-    color: rgb(232, 248, 246);
+  text-align: center;
+  color: rgb(232, 248, 246);
 }
 main h3 {
-    line-height: 1.7rem;
-    background: linear-gradient(180deg, rgba(244,244,244,0) 48%, rgba(117, 117, 201, 0.422) 49%, rgba(14,14,18,0) 51%);
+  line-height: 1.7rem;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 244, 244, 0) 48%,
+    rgba(117, 117, 201, 0.422) 49%,
+    rgba(14, 14, 18, 0) 51%
+  );
 }
 main article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 main section {
-    font-size: .8em;
-    gap: .875rem;
-    width: 100%;
-    display: flex;
-    padding: 2rem .5rem;
-    border-bottom:1px solid rgba(162, 191, 226, 0.264);
-    align-items: center;
+  font-size: 0.8em;
+  gap: 0.875rem;
+  width: 100%;
+  display: flex;
+  padding: 2rem 0.5rem;
+  border-bottom: 1px solid rgba(162, 191, 226, 0.264);
+  align-items: center;
 }
 .schedule {
-    max-width: 70px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    color: rgb(213, 225, 240);
+  max-width: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: rgb(213, 225, 240);
 }
 .block-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .blocks {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .lecture-title {
-    font-weight: 700;
-    letter-spacing: .5px;
-    font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.15em;
 }
 .lecture-classroom {
-    font-weight: 500;
-    color: rgb(136, 165, 185);
+  font-weight: 500;
+  color: rgb(136, 165, 185);
 }
 .lecture-description {
-    color: rgba(135, 228, 225, 0.448);
-    font-weight: 400;
+  color: rgba(135, 228, 225, 0.448);
+  font-weight: 400;
 }
 span {
-    color: #5fb74d;
+  color: #5fb74d;
 }
 
 // ------------------------------------------
 
 footer {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    padding: 1rem;
-    font-size: .7em;
-    opacity: .5;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 1rem;
+  font-size: 0.7em;
+  opacity: 0.5;
 }
-@media (min-width: 800px) {
-    .reset {
-        display: none;
-    }
-}
+// @media (min-width: 800px) {
+//   .reset {
+//     display: none;
+//   }
+// }

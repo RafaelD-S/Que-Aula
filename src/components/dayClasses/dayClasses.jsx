@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-class WeekDay extends React.Component {
+class DayClasses extends React.Component {
   render() {
     const blocks = [
       {
@@ -30,7 +30,7 @@ class WeekDay extends React.Component {
         <article>
           {blocks.map((block) => (
             <section key={block.index} className={block.style}>
-              <div id={block.greve ? "greve" : ''}>
+              <div id={block.greve ? "greve" : ""}>
                 <h3 className="schedule">{block.time}</h3>
               </div>
               <div className="block-container">
@@ -73,9 +73,9 @@ class WeekDay extends React.Component {
   }
 }
 
-WeekDay.propTypes = {
+DayClasses.propTypes = {
   day: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
 };
 
-export default WeekDay;
+export default DayClasses;

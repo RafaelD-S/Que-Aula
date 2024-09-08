@@ -1,0 +1,72 @@
+.header {
+  margin-bottom: 5.25rem;
+  position: relative;
+
+  &__reset {
+    position: absolute;
+    padding: 0.5rem;
+    right: 1.5rem;
+    display: flex;
+    cursor: pointer;
+  }
+
+  &__nav {
+    z-index: +1;
+    display: flex;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(4, 44, 61);
+    transition: bottom 0.3s ease-in-out;
+
+    &-button {
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      display: flex;
+      color: rgb(198, 243, 245);
+      padding: 0.3rem 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      width: 100%;
+      justify-content: center;
+
+      &-text {
+        padding: 0.2rem;
+        font-size: 1rem;
+      }
+
+      &-icon {
+        width: 24px;
+      }
+    }
+
+    &__dropDown {
+      flex-direction: column;
+      opacity: 0.95;
+
+      &-item {
+        width: 100%;
+        text-align: center;
+        padding: 1.35rem 0;
+        border-bottom: 1px solid rgba(162, 191, 226, 0.189);
+        font-size: 1rem;
+        color: rgb(183, 214, 237);
+        background-color: rgb(10, 25, 39);
+        letter-spacing: 0.5px;
+        cursor: pointer;
+      }
+      &-button {
+        padding: 1rem 0;
+        width: 100%;
+        justify-content: center;
+        &-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

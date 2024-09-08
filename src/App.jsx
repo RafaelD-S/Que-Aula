@@ -1,11 +1,10 @@
-import WeekDay from "./components/contents/WeekDay";
-
-import Footer from "./components/footer.jsx"
-import Header from "./components/header.jsx"
+import DayClasses from "./components/dayClasses/dayClasses.jsx";
+import Header from "./components/header/header.jsx";
+import Footer from "./components/footer/footer.jsx";
+import Modal from "./components/modal/modal.jsx";
 
 import "./components/style/style.scss";
 import { useState } from "react";
-
 
 function App() {
   const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());
@@ -26,7 +25,7 @@ function App() {
         greve: false,
         teacher: "Jair Messias Matemática",
         classroom: "BLOCO O - Sala 7",
-        description: "Matemática I"
+        description: "Matemática I",
       },
       {
         id: 1.1,
@@ -34,7 +33,7 @@ function App() {
         greve: false,
         teacher: "Jair Messias Matemática",
         classroom: "BLOCO D - Sala 4",
-        description: "Matemática I"
+        description: "Matemática I",
       },
     ],
     [
@@ -44,7 +43,7 @@ function App() {
         greve: false,
         teacher: "Wesley Correia",
         classroom: "BLOCO B - Sala 6",
-        description: "Língua Portuguesa"
+        description: "Língua Portuguesa",
       },
       {
         id: 2.1,
@@ -52,8 +51,8 @@ function App() {
         greve: false,
         teacher: "Wesley Correia",
         classroom: "BLOCO D - Sala 2",
-        description: "Língua Portuguesa"
-      }
+        description: "Língua Portuguesa",
+      },
     ],
     [
       {
@@ -63,7 +62,7 @@ function App() {
         class: "T01",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
-        description: "Inglês Instrumental"
+        description: "Inglês Instrumental",
       },
       {
         id: 3.1,
@@ -72,7 +71,7 @@ function App() {
         class: "T02",
         teacher: "Luzia Helena",
         classroom: "Bloco L - Cen. de Idiomas",
-        description: "Inglês Instrumental"
+        description: "Inglês Instrumental",
       },
     ],
     [
@@ -83,7 +82,7 @@ function App() {
         class: "T01",
         teacher: "Fred",
         classroom: "BLOCO E - Lab. 3",
-        description: "Introdução a Lógica de Programação"
+        description: "Introdução a Lógica de Programação",
       },
       {
         id: 4.1,
@@ -92,7 +91,7 @@ function App() {
         class: "T02",
         teacher: "Romilson",
         classroom: "BLOCO E - Lab. 4",
-        description: "Introdução a Lógica de Programação"
+        description: "Introdução a Lógica de Programação",
       },
     ],
     [
@@ -102,7 +101,7 @@ function App() {
         greve: false,
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO O - Sala 6",
-        description: "Introdução a Computação"
+        description: "Introdução a Computação",
       },
       {
         id: 5.1,
@@ -110,7 +109,7 @@ function App() {
         greve: false,
         teacher: "Antônio Carlos (AC)",
         classroom: "BLOCO E - Lab. 3",
-        description: "Introdução a Computação"
+        description: "Introdução a Computação",
       },
     ],
   ];
@@ -158,11 +157,12 @@ function App() {
   ];
   return (
     <>
-      <Header switchWeekday={setCurrentWeekday}/>
-      <WeekDay
+      <Header switchWeekday={setCurrentWeekday} />
+      <DayClasses
         day={schedule[currentWeekday].day}
         data={schedule[currentWeekday].lectures}
       />
+      <Modal></Modal>
       <Footer />
     </>
   );
