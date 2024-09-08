@@ -2,6 +2,21 @@
   margin-bottom: 5.25rem;
   position: relative;
 
+  &__title {
+    background-color: rgb(13, 72, 82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(198, 243, 245);
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgb(2, 33, 38);
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+
   &__reset {
     position: absolute;
     padding: 0.5rem;

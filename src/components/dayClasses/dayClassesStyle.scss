@@ -1,0 +1,92 @@
+.dayClasses {
+  &__item {
+    font-size: 0.8em;
+    gap: 0.875rem;
+    width: 100%;
+    display: flex;
+    padding: 2rem 0.5rem;
+    border-bottom: 1px solid rgba(162, 191, 226, 0.264);
+    align-items: center;
+  }
+
+  &__title {
+    text-align: center;
+    color: rgb(232, 248, 246);
+  }
+
+  &__schedule {
+    max-width: 70px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: rgb(213, 225, 240);
+    line-height: 1.7rem;
+    background: linear-gradient(
+      180deg,
+      rgba(244, 244, 244, 0) 48%,
+      rgba(117, 117, 201, 0.422) 49%,
+      rgba(14, 14, 18, 0) 51%
+    );
+
+    &--greve {
+      position: relative;
+      &::after {
+        content: "GREVE";
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        height: fit-content;
+        transform: rotate(-15deg);
+        clip-path: polygon(
+          50% 0%,
+          100% 0,
+          95% 50%,
+          100% 100%,
+          0 100%,
+          5% 50%,
+          0 0
+        );
+        display: flex;
+        padding: 0.15rem 0.55rem;
+        background-color: rgb(224, 59, 30);
+        color: rgb(255, 200, 200);
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &__info {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      &-title {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-size: 1.15em;
+      }
+      &-classroom {
+        font-weight: 500;
+        color: rgb(136, 165, 185);
+      }
+      &-description {
+        color: rgba(135, 228, 225, 0.448);
+        font-weight: 400;
+      }
+      &-class {
+        color: #5fb74d;
+      }
+    }
+  }
+}

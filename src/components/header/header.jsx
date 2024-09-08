@@ -1,4 +1,4 @@
-import Reset from "../../assets/recarregar.svg";
+import Reset from "../../assets/refresh.svg";
 import ArrowDown from "../../assets/arrow-down.svg";
 
 import "./headerStyle.scss";
@@ -10,7 +10,7 @@ export default function Header({ switchWeekday }) {
 
   return (
     <header className="header">
-      <section className="title" onClick={() => setNavSwitch(true)}>
+      <section className="header__title" onClick={() => setNavSwitch(true)}>
         <h1>Que Aula?</h1>
         <figure className="header__reset" onClick={() => location.reload()}>
           <img src={Reset} alt="reset" />

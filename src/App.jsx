@@ -2,8 +2,9 @@ import DayClasses from "./components/dayClasses/dayClasses.jsx";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
 
-import "./components/style/style.scss";
+import "./style/style.scss";
 import { useState } from "react";
+import Modal from "./components/modal/modal.jsx";
 
 function App() {
   const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());
@@ -117,41 +118,41 @@ function App() {
     {
       id: 0,
       day: "Domingo",
-      lectures: [subjects[0], subjects[0], subjects[0]],
+      lectures: [[subjects[0]], [subjects[0]], [subjects[0]]],
     },
     {
       id: 1,
       day: "Segunda-Feira",
-      lectures: [subjects[0], subjects[1][0], subjects[2][0]],
+      lectures: [[subjects[0]], [subjects[1][0]], [subjects[2][0]]],
     },
     {
       id: 2,
       day: "Terça-Feira",
       lectures: [
-        subjects[3][1],
+        [subjects[3][1]],
         [subjects[4][0], subjects[4][1]],
-        subjects[5][0],
+        [subjects[5][0]],
       ],
     },
     {
       id: 3,
       day: "Quarta-Feira",
-      lectures: [subjects[3][0], subjects[1][0], subjects[4][1]],
+      lectures: [[subjects[3][0]], [subjects[1][0]], [subjects[4][1]]],
     },
     {
       id: 4,
       day: "Quinta-Feira",
-      lectures: [subjects[2][1], subjects[5][1], subjects[4][0]],
+      lectures: [[subjects[2][1]], [subjects[5][1]], [subjects[4][0]]],
     },
     {
       id: 5,
       day: "Sexta-Feira",
-      lectures: [subjects[3][0], subjects[1][1], subjects[3][1]],
+      lectures: [[subjects[3][0]], [subjects[1][1]], [subjects[3][1]]],
     },
     {
       id: 6,
       day: "Sábado",
-      lectures: [subjects[0], subjects[0], subjects[0]],
+      lectures: [[subjects[0]], [subjects[0]], [subjects[0]]],
     },
   ];
   return (
@@ -161,6 +162,7 @@ function App() {
         day={schedule[currentWeekday].day}
         data={schedule[currentWeekday].lectures}
       />
+      <Modal></Modal>
       <Footer />
     </>
   );
