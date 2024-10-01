@@ -162,70 +162,47 @@ export default function dayClasses({ currentWeekday }) {
     ]);
   }, []);
 
+  const blocks = [
+    {
+      time: "17h 18h40",
+      data: classes[currentWeekday].classes.firstClass,
+    },
+    {
+      time: "18h40 20h20",
+      data: classes[currentWeekday].classes.secClass,
+    },
+    {
+      time: "20h20 22h",
+      data: classes[currentWeekday].classes.thirdClass,
+    },
+  ];
+
   return (
     <main className="dayClasses">
       <h2 className="dayClasses__title">{classes[currentWeekday].day}</h2>
       <article className="dayClasses__container">
-        <section className="dayClasses__item">
-          <div className={`dayClasses__schedule`}>
-            <h3 className="dayClasses__schedule">17h 18h40</h3>
-          </div>
-          <div className="dayClasses__info-container">
-            {classes[currentWeekday].classes.firstClass.map((e, index) => (
-              <div key={index} className="dayClasses__info-item">
-                <h4 className="dayClasses__info-item-title">
-                  {e.className} <span>{e.whichClass}</span> - {e.teacher}
-                </h4>
-                <h4 className="dayClasses__info-item-classroom">
-                  {e.classroom}
-                </h4>
-                <h5 className="dayClasses__info-item-description">
-                  {e.classDescription}
-                </h5>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="dayClasses__item">
-          <div className={`dayClasses__schedule`}>
-            <h3 className="dayClasses__schedule">18h40 20h20</h3>
-          </div>
-          <div className="dayClasses__info-container">
-            {classes[currentWeekday].classes.secClass.map((e, index) => (
-              <div key={index} className="dayClasses__info-item">
-                <h4 className="dayClasses__info-item-title">
-                  {e.className} <span>{e.whichClass}</span> - {e.teacher}
-                </h4>
-                <h4 className="dayClasses__info-item-classroom">
-                  {e.classroom}
-                </h4>
-                <h5 className="dayClasses__info-item-description">
-                  {e.classDescription}
-                </h5>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="dayClasses__item">
-          <div className={`dayClasses__schedule`}>
-            <h3 className="dayClasses__schedule">20h20 22h</h3>
-          </div>
-          <div className="dayClasses__info-container">
-            {classes[currentWeekday].classes.thirdClass.map((e, index) => (
-              <div key={index} className="dayClasses__info-item">
-                <h4 className="dayClasses__info-item-title">
-                  {e.className} <span>{e.whichClass}</span> - {e.teacher}
-                </h4>
-                <h4 className="dayClasses__info-item-classroom">
-                  {e.classroom}
-                </h4>
-                <h5 className="dayClasses__info-item-description">
-                  {e.classDescription}
-                </h5>
-              </div>
-            ))}
-          </div>
-        </section>
+        {blocks.map((item, i) => (
+          <section className="dayClasses__item" key={i}>
+            <div className={`dayClasses__schedule`}>
+              <h3 className="dayClasses__schedule">{item.time}</h3>
+            </div>
+            <div className="dayClasses__info-container">
+              {item.data.map((e, index) => (
+                <div key={index} className="dayClasses__info-item">
+                  <h4 className="dayClasses__info-item-title">
+                    {e.className} <span>{e.whichClass}</span> - {e.teacher}
+                  </h4>
+                  <h4 className="dayClasses__info-item-classroom">
+                    {e.classroom}
+                  </h4>
+                  <h5 className="dayClasses__info-item-description">
+                    {e.classDescription}
+                  </h5>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </article>
     </main>
   );
