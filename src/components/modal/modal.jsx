@@ -2,11 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
 
-export default function Modal({
-  setSelectedClasses,
-  selectedClasses,
-  isModalOpen,
-}) {
+export default function Modal({ setSelectedClasses, isModalOpen }) {
   const classesData = Data;
 
   useEffect(() => {
@@ -74,7 +70,7 @@ export default function Modal({
               Bem vindo ao <span className="modal-title">Que Aula?</span>
             </h2>
             <p>
-              Um site desenvoldido para ajudar com a bagunça que são as aulas do
+              Um site desenvolvido para ajudar com a bagunça que são as aulas do
               IFBA. Lhe informando suas aulas atualizadas diariamente e um
               calendário relativo a sua rotina.
             </p>

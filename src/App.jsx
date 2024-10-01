@@ -22,7 +22,6 @@ function App() {
       <DayClasses currentWeekday={currentWeekday} />
       <Modal
         setSelectedClasses={setSelectedClasses}
-        selectedClasses={selectedClasses}
         isModalOpen={isModalOpen}
       ></Modal>
       <Footer />
