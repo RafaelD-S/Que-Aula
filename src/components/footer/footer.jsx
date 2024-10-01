@@ -10,8 +10,17 @@ export default function Footer() {
       <a className="footer__new-calendar" onClick={() => setOpenWarning(true)}>
         Criar um novo calendário
       </a>
+      <div className="footer__feedback">
+        Achou algo ou quer dar uma sugestão?{" "}
+        <a
+          target="_blank"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link"
+        >
+          Feedback
+        </a>
+      </div>
       <div className="footer__credits">
-        Alpha V3 - Made By{" "}
+        Beta V1 - Made By{" "}
         <a href="https://github.com/RafaelD-S" target="blank_">
           Rafael Dantas Silva
         </a>
