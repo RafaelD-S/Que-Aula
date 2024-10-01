@@ -1,0 +1,1012 @@
+[
+  {
+    "name": "ADM504",
+    "description": "Contabilidade Geral",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Emerson Gibaut",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Emerson Gibaut",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "ADM530",
+    "description": "Economia",
+    "semester": "0",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "Alexandre da Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Alexandre da Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Alexandre da Silva",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Alexandre da Silva",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "ENG421",
+    "description": "Microcontroladores e Microprocessadores",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Fabiano Poderoso",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Fabiano Poderoso",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "HUM101",
+    "description": "Sociologia do Trabalho",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Luis Antonio Costa",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Luis Antonio Costa",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "HUM102",
+    "description": "Psicologia Aplicada ao Trabalho",
+    "semester": "0",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Samir Perez",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Samir Perez",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Samir Perez",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "4",
+        "period": "0",
+        "teacher": "Samir Perez",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "INF033",
+    "description": "Sistemas de Informação",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Lauro Paula",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Lauro Paula",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF032",
+    "description": "Tópicos Avançados II (Python)",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "5",
+        "period": "0",
+        "teacher": "Domingos Mainart",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF032E",
+    "description": "Introdução à Ciência de Dados com R",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "LET112",
+    "description": "LIBRAS",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Edmilson da Silva",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "MAT219",
+    "description": "Probabilidade e Estatística",
+    "semester": "0",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Everton Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Everton Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "3",
+        "period": "0",
+        "teacher": "Walter Porto",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "4",
+        "period": "0",
+        "teacher": "Walter Porto",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "MAT227",
+    "description": "Álgebra Vetorial e Geometria Analítica",
+    "semester": "0",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Mirele Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Mirele Silva",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Reinaldo Lima",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Reinaldo Lima",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "INF027",
+    "description": "Introdução à Lógica de Programação",
+    "semester": "1",
+    "multiClass": true,
+    "classList": ["T01", "T02", "T03"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Frederico Barboza",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Frederico Barboza",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Romilson Sampaio",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Romilson Sampaio",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "José Dihego Oliveira",
+        "classroom": "---",
+        "whichClass": "T03"
+      },
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "José Dihego Oliveira",
+        "classroom": "---",
+        "whichClass": "T03"
+      }
+    ]
+  },
+  {
+    "name": "INF026",
+    "description": "Introdução à Computação",
+    "semester": "1",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Antonio Carlos Souza",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Antonio Carlos Souza",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "LET100",
+    "description": "Língua Portuguesa",
+    "semester": "1",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Elane Plácido",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "0",
+        "teacher": "Elane Plácido",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "LET102",
+    "description": "Inglês",
+    "semester": "1",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "0",
+        "teacher": "Luzia Helena",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "5",
+        "period": "0",
+        "teacher": "Luzia Helena",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "2",
+        "period": "0",
+        "teacher": "Luzia Helena",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Luzia Helena",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "MAT222",
+    "description": "Matemática",
+    "semester": "1",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Jair Carneiro",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Jair Carneiro",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Jair Carneiro",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF006",
+    "description": "Estrutura de Dados e Algoritmos",
+    "semester": "2",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Allan Freitas",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "José Dihego Oliveira",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "José Dihego Oliveira",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF028",
+    "description": "Arquitetura de Computadores e Software Básico",
+    "semester": "2",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Flávia Maristela",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "0",
+        "teacher": "Flávia Maristela",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF029",
+    "description": "Laboratório de Programação",
+    "semester": "2",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Renato Novais",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Renato Novais",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF031",
+    "description": "Metodologia da Pesquisa",
+    "semester": "2",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Simone Amorim",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Simone Amorim",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF007",
+    "description": "Banco de Dados I",
+    "semester": "3",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Grinaldo Oliveira",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Grinaldo Oliveira",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF008",
+    "description": "Programação Orientada a Objetos",
+    "semester": "3",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF009",
+    "description": "Sistemas Operacionais",
+    "semester": "3",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "Flávia Maristela",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Flávia Maristela",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Flávia Maristela",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF021",
+    "description": "Estágio Supervisionado",
+    "semester": "3",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Ronaldo Pedreira",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "2",
+        "period": "0",
+        "teacher": "Ronaldo Pedreira",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "ADM500",
+    "description": "Introdução à Administração",
+    "semester": "3",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "4",
+        "period": "0",
+        "teacher": "Washington Laranjeiras",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Washington Laranjeiras",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF010",
+    "description": "Banco de Dados II",
+    "semester": "4",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF011",
+    "description": "Padrões de Projeto",
+    "semester": "4",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Frederico Barboza",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Frederico Barboza",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Frederico Barboza",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF012",
+    "description": "Programação Web",
+    "semester": "4",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Manoel Neto",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Manoel Neto",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF015",
+    "description": "Redes I",
+    "semester": "4",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Grinaldo Oliveira",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Grinaldo Oliveira",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF014",
+    "description": "Engenharia de Software",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "0",
+        "teacher": "Simone Amorim",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Simone Amorim",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Simone Amorim",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF017",
+    "description": "Redes II",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Antonio Carlos Souza",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Antonio Carlos Souza",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF022",
+    "description": "Tópicos Avançados",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Renato Novais",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Renato Novais",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF030",
+    "description": "Métodos Científicos em Computação",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "ADM550",
+    "description": "Empreendedorismo",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "Jorge Rodrigues",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Jorge Rodrigues",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "HUM100",
+    "description": "Filosofia",
+    "semester": "5",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Maria Lucileide",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Maria Lucileide",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF016",
+    "description": "Arquitetura de Software",
+    "semester": "6",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "2",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "2",
+        "period": "1",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Sandro Andrade",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF018",
+    "description": "Auditoria de Sistemas",
+    "semester": "6",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "Lauro Paula",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "3",
+        "period": "1",
+        "teacher": "Lauro Paula",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF019",
+    "description": "Gerência de Projetos",
+    "semester": "6",
+    "multiClass": true,
+    "classList": ["T01", "T02"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "0",
+        "teacher": "Jowaner Araujo",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Jowaner Araujo",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Lauro Paula",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Lauro Paula",
+        "classroom": "---",
+        "whichClass": "T02"
+      }
+    ]
+  },
+  {
+    "name": "INF020",
+    "description": "Sistemas Distribuídos",
+    "semester": "6",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Allan Freitas",
+        "classroom": "---"
+      },
+      {
+        "weekDay": "4",
+        "period": "2",
+        "teacher": "Allan Freitas",
+        "classroom": "---"
+      }
+    ]
+  },
+  {
+    "name": "INF023",
+    "description": "Trabalho de Conclusão de Curso",
+    "semester": "6",
+    "multiClass": true,
+    "classList": ["T01", "T02", "T03"],
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "2",
+        "period": "2",
+        "teacher": "Romilson Sampaio",
+        "classroom": "---",
+        "whichClass": "T01"
+      },
+      {
+        "weekDay": "1",
+        "period": "1",
+        "teacher": "Manoel Neto",
+        "classroom": "---",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "1",
+        "period": "0",
+        "teacher": "Manoel Neto",
+        "classroom": "---",
+        "whichClass": "T03"
+      }
+    ]
+  }
+]
