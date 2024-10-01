@@ -8,6 +8,12 @@ body {
   background-color: rgb(8, 14, 19);
   color: rgb(177, 200, 228);
 }
+input,
+select,
+textarea,
+button {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
 p {
   font-size: 0.9rem;
 }
