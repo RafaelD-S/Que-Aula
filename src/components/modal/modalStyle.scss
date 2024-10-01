@@ -10,6 +10,10 @@
   padding: 0.5rem;
   align-items: center;
 
+  &__warning {
+    color: rgb(173, 58, 58) !important;
+  }
+
   &--open {
     display: flex;
   }

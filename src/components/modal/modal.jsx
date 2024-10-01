@@ -74,6 +74,10 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
               IFBA. Lhe informando suas aulas atualizadas diariamente e um
               calendário relativo a sua rotina.
             </p>
+            <h4 className="modal__warning">
+              Estamos em periodo de testes. Locais das matérias ainda não foram
+              definidos.
+            </h4>
           </div>
           <div>
             <h3>Escolha as suas matérias</h3>
