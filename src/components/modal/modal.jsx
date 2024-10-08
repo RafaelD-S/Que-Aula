@@ -75,8 +75,9 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
               calendário relativo a sua rotina.
             </p>
             <h4 className="modal__warning">
-              Estamos em periodo de testes. Locais das matérias ainda não foram
-              definidos.
+              Estamos em periodo de testes. Apenas as aulas Optitativas e dos
+              dois primeiros semestres possuem localização. Caso ache algo, por
+              favor deixe seu Feedback.
             </h4>
           </div>
           <div>
