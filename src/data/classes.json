@@ -10,13 +10,13 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Emerson Gibaut",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 3"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Emerson Gibaut",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 3"
       }
     ]
   },
@@ -32,28 +32,28 @@
         "weekDay": "1",
         "period": "0",
         "teacher": "Alexandre da Silva",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 1",
         "whichClass": "T01"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Alexandre da Silva",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 1",
         "whichClass": "T01"
       },
       {
         "weekDay": "1",
         "period": "2",
         "teacher": "Alexandre da Silva",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 1 (2º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Alexandre da Silva",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 1 (2º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -69,13 +69,13 @@
         "weekDay": "5",
         "period": "1",
         "teacher": "Fabiano Poderoso",
-        "classroom": "---"
+        "classroom": "BLOCO P - Laboratório Integrado - P0003"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Fabiano Poderoso",
-        "classroom": "---"
+        "classroom": "BLOCO P - Laboratório Integrado - P0003"
       }
     ]
   },
@@ -90,13 +90,13 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Luis Antonio Costa",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 9"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Luis Antonio Costa",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 8"
       }
     ]
   },
@@ -112,28 +112,28 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Samir Perez",
-        "classroom": "---",
+        "classroom": "BLOCO B - Sala 10 (2º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Samir Perez",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "2",
         "period": "1",
         "teacher": "Samir Perez",
-        "classroom": "---",
+        "classroom": "BLOCO B - Sala 10 (2º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "4",
         "period": "0",
         "teacher": "Samir Perez",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -149,13 +149,13 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Lauro Paula",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Lauro Paula",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 3 (2º Andar)"
       }
     ]
   },
@@ -170,28 +170,13 @@
         "weekDay": "5",
         "period": "0",
         "teacher": "Domingos Mainart",
-        "classroom": "---"
-      }
-    ]
-  },
-  {
-    "name": "INF032E",
-    "description": "Introdução à Ciência de Dados com R",
-    "semester": "0",
-    "multiClass": false,
-    "greve": false,
-    "classes": [
-      {
-        "weekDay": "3",
-        "period": "2",
-        "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5"
       },
       {
-        "weekDay": "4",
+        "weekDay": "5",
         "period": "1",
-        "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "teacher": "Domingos Mainart",
+        "classroom": "BLOCO L - Lab. Inf. 5"
       }
     ]
   },
@@ -206,7 +191,7 @@
         "weekDay": "5",
         "period": "2",
         "teacher": "Edmilson da Silva",
-        "classroom": "---"
+        "classroom": "BLOCO L - 003 Centro de Idiomas"
       }
     ]
   },
@@ -222,28 +207,28 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Everton Silva",
-        "classroom": "---",
+        "classroom": "Bloco D - Sala 3 (1º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "3",
         "period": "1",
         "teacher": "Everton Silva",
-        "classroom": "---",
+        "classroom": "BLOCO L - Sala 2",
         "whichClass": "T01"
       },
       {
         "weekDay": "3",
         "period": "0",
         "teacher": "Walter Porto",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 7 (2º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "4",
         "period": "0",
         "teacher": "Walter Porto",
-        "classroom": "---",
+        "classroom": "BLOCO O - Sala 5 (2º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -260,28 +245,28 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Mirele Silva",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 2 (2º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Mirele Silva",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 2 (2º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "2",
         "period": "2",
         "teacher": "Reinaldo Lima",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 7",
         "whichClass": "T02"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Reinaldo Lima",
-        "classroom": "---",
+        "classroom": "BLOCO D - Sala 7",
         "whichClass": "T02"
       }
     ]
@@ -298,42 +283,42 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Frederico Barboza",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 03",
         "whichClass": "T01"
       },
       {
         "weekDay": "4",
         "period": "2",
         "teacher": "Frederico Barboza",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 03",
         "whichClass": "T01"
       },
       {
         "weekDay": "2",
         "period": "1",
         "teacher": "Romilson Sampaio",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 04",
         "whichClass": "T02"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Romilson Sampaio",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 04",
         "whichClass": "T02"
       },
       {
         "weekDay": "1",
         "period": "0",
         "teacher": "José Dihego Oliveira",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 03",
         "whichClass": "T03"
       },
       {
         "weekDay": "2",
         "period": "1",
         "teacher": "José Dihego Oliveira",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 02",
         "whichClass": "T03"
       }
     ]
@@ -349,7 +334,7 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Antonio Carlos Souza",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 6"
       },
       {
         "weekDay": "4",
@@ -370,13 +355,13 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Elane Plácido",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 6"
       },
       {
         "weekDay": "4",
         "period": "0",
         "teacher": "Elane Plácido",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 4"
       }
     ]
   },
@@ -392,28 +377,28 @@
         "weekDay": "3",
         "period": "0",
         "teacher": "Luzia Helena",
-        "classroom": "---",
+        "classroom": "BLOCO L 002 - Centro de Idiomas",
         "whichClass": "T01"
       },
       {
         "weekDay": "5",
         "period": "0",
         "teacher": "Luzia Helena",
-        "classroom": "---",
+        "classroom": "BLOCO L 003 - Centro de Idiomas",
         "whichClass": "T01"
       },
       {
         "weekDay": "2",
         "period": "0",
         "teacher": "Luzia Helena",
-        "classroom": "---",
+        "classroom": "BLOCO L 002 - Centro de Idiomas",
         "whichClass": "T02"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Luzia Helena",
-        "classroom": "---",
+        "classroom": "BLOCO L 002 - Centro de Idiomas",
         "whichClass": "T02"
       }
     ]
@@ -429,19 +414,19 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "---"
+        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
       },
       {
         "weekDay": "3",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "---"
+        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "---"
+        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
       }
     ]
   },
@@ -455,20 +440,20 @@
       {
         "weekDay": "1",
         "period": "2",
-        "teacher": "Allan Freitas",
-        "classroom": "---"
+        "teacher": "José Dihego Oliveira",
+        "classroom": "BLOCO E - Lab. 02"
       },
       {
         "weekDay": "3",
         "period": "1",
-        "teacher": "José Dihego Oliveira",
-        "classroom": "---"
+        "teacher": "Allan Freita",
+        "classroom": "BLOCO O - Sala 3"
       },
       {
         "weekDay": "4",
         "period": "1",
-        "teacher": "José Dihego Oliveira",
-        "classroom": "---"
+        "teacher": "Allan Freita",
+        "classroom": "BLOCO E - Lab. 02"
       }
     ]
   },
@@ -483,13 +468,13 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Flávia Maristela",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       },
       {
         "weekDay": "2",
         "period": "0",
         "teacher": "Flávia Maristela",
-        "classroom": "---"
+        "classroom": "BLOCO E = Lab.02"
       }
     ]
   },
@@ -504,13 +489,13 @@
         "weekDay": "3",
         "period": "2",
         "teacher": "Renato Novais",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Renato Novais",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       }
     ]
   },
@@ -525,13 +510,13 @@
         "weekDay": "4",
         "period": "2",
         "teacher": "Simone Amorim",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 3"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Simone Amorim",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
