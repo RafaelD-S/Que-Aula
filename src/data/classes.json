@@ -32,14 +32,14 @@
         "weekDay": "1",
         "period": "0",
         "teacher": "Alexandre da Silva",
-        "classroom": "BLOCO O - Sala 1",
+        "classroom": "BLOCO O - Sala 1 (2º Andar)",
         "whichClass": "T01"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Alexandre da Silva",
-        "classroom": "BLOCO O - Sala 1",
+        "classroom": "BLOCO O - Sala 1 (2º Andar)",
         "whichClass": "T01"
       },
       {
@@ -149,7 +149,7 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Lab. Inf. 5"
+        "classroom": "BLOCO O - Sala 5 (2º Andar)"
       },
       {
         "weekDay": "5",
@@ -170,13 +170,13 @@
         "weekDay": "5",
         "period": "0",
         "teacher": "Domingos Mainart",
-        "classroom": "BLOCO L - Lab. Inf. 5"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Domingos Mainart",
-        "classroom": "BLOCO L - Lab. Inf. 5"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       }
     ]
   },
@@ -446,13 +446,13 @@
       {
         "weekDay": "3",
         "period": "1",
-        "teacher": "Allan Freita",
+        "teacher": "Allan Freitas",
         "classroom": "BLOCO L - Sala 1 (1° Andar)"
       },
       {
         "weekDay": "4",
         "period": "1",
-        "teacher": "Allan Freita",
+        "teacher": "Allan Freitas",
         "classroom": "BLOCO E - Lab. 02"
       }
     ]
@@ -510,7 +510,7 @@
         "weekDay": "4",
         "period": "2",
         "teacher": "Simone Amorim",
-        "classroom": "BLOCO B - Sala 3"
+        "classroom": "BLOCO B - Sala 3 (1º Andar)"
       },
       {
         "weekDay": "5",
