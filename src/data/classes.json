@@ -651,13 +651,13 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "3",
         "period": "1",
         "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
@@ -672,19 +672,19 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Frederico Barboza",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "2",
         "period": "2",
         "teacher": "Frederico Barboza",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Frederico Barboza",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       }
     ]
   },
@@ -699,13 +699,13 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Manoel Neto",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "4",
         "period": "2",
         "teacher": "Manoel Neto",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       }
     ]
   },
@@ -720,13 +720,13 @@
         "weekDay": "3",
         "period": "2",
         "teacher": "Grinaldo Oliveira",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Grinaldo Oliveira",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
