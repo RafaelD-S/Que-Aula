@@ -867,19 +867,19 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "2",
         "period": "1",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO B - Sala 6 (2º Andar)"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
@@ -894,13 +894,13 @@
         "weekDay": "1",
         "period": "0",
         "teacher": "Lauro Paula",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       },
       {
         "weekDay": "3",
         "period": "1",
         "teacher": "Lauro Paula",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       }
     ]
   },
@@ -916,28 +916,28 @@
         "weekDay": "3",
         "period": "0",
         "teacher": "Jowaner Araujo",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 02",
         "whichClass": "T01"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Jowaner Araujo",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 02",
         "whichClass": "T01"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Lauro Paula",
-        "classroom": "---",
+        "classroom": "BLOCO L - Sala 2 (1º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Lauro Paula",
-        "classroom": "---",
+        "classroom": "BLOCO L - Sala 2 (1º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -953,13 +953,13 @@
         "weekDay": "3",
         "period": "2",
         "teacher": "Allan Freitas",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       },
       {
         "weekDay": "4",
         "period": "2",
         "teacher": "Allan Freitas",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       }
     ]
   },
