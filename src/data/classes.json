@@ -531,13 +531,13 @@
         "weekDay": "3",
         "period": "1",
         "teacher": "Grinaldo Oliveira",
-        "classroom": "---"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Grinaldo Oliveira",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
@@ -552,19 +552,19 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       },
       {
         "weekDay": "2",
         "period": "2",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       },
       {
         "weekDay": "4",
         "period": "2",
         "teacher": "Sandro Andrade",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
@@ -579,19 +579,19 @@
         "weekDay": "1",
         "period": "0",
         "teacher": "Flávia Maristela",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       },
       {
         "weekDay": "2",
         "period": "1",
         "teacher": "Flávia Maristela",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 3 (2º Andar)"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Flávia Maristela",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
@@ -607,14 +607,14 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Ronaldo Pedreira",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 01",
         "whichClass": "T01"
       },
       {
         "weekDay": "2",
         "period": "0",
         "teacher": "Ronaldo Pedreira",
-        "classroom": "---",
+        "classroom": "BLOCO E - Lab. 01",
         "whichClass": "T02"
       }
     ]
@@ -630,13 +630,13 @@
         "weekDay": "4",
         "period": "0",
         "teacher": "Washington Laranjeiras",
-        "classroom": "---"
+        "classroom": "BLOCO D - Sala 3 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Washington Laranjeiras",
-        "classroom": "---"
+        "classroom": "BLOCO D - Sala 4 (1º Andar)"
       }
     ]
   },
