@@ -90,13 +90,13 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Luis Antonio Costa",
-        "classroom": "BLOCO B - Sala 9"
+        "classroom": "BLOCO B - Sala 9 (2º Andar)"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Luis Antonio Costa",
-        "classroom": "BLOCO B - Sala 8"
+        "classroom": "BLOCO B - Sala 8 (2º Andar)"
       }
     ]
   },
@@ -259,14 +259,14 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Reinaldo Lima",
-        "classroom": "BLOCO D - Sala 7",
+        "classroom": "BLOCO D - Sala 7 (1º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Reinaldo Lima",
-        "classroom": "BLOCO D - Sala 7",
+        "classroom": "BLOCO D - Sala 7 (1º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -334,7 +334,7 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Antonio Carlos Souza",
-        "classroom": "BLOCO B - Sala 6"
+        "classroom": "BLOCO B - Sala 6 (2º Andar)"
       },
       {
         "weekDay": "4",
@@ -355,13 +355,13 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO B - Sala 6"
+        "classroom": "BLOCO B - Sala 6 (2º Andar)"
       },
       {
         "weekDay": "4",
         "period": "0",
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO B - Sala 4"
+        "classroom": "BLOCO B - Sala 4 (1º Andar)"
       }
     ]
   },
@@ -414,19 +414,19 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
+        "classroom": "BLOCO D - Sala 1 (2º Andar)"
       },
       {
         "weekDay": "3",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
+        "classroom": "BLOCO D - Sala 1 (2º Andar)"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (D - 201) (2º Andar)"
+        "classroom": "BLOCO D - Sala 1 (2º Andar)"
       }
     ]
   },
