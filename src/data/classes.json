@@ -10,13 +10,13 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Emerson Gibaut",
-        "classroom": "BLOCO O - Sala 3"
+        "classroom": "BLOCO O - Sala 3 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Emerson Gibaut",
-        "classroom": "BLOCO O - Sala 3"
+        "classroom": "BLOCO O - Sala 3 (1º Andar)"
       }
     ]
   },
@@ -214,7 +214,7 @@
         "weekDay": "3",
         "period": "1",
         "teacher": "Everton Silva",
-        "classroom": "BLOCO L - Sala 2",
+        "classroom": "BLOCO L - Sala 2 (1º Andar)",
         "whichClass": "T01"
       },
       {
