@@ -741,19 +741,19 @@
         "weekDay": "3",
         "period": "0",
         "teacher": "Simone Amorim",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "4",
         "period": "1",
         "teacher": "Simone Amorim",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Simone Amorim",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
@@ -768,13 +768,13 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Antonio Carlos Souza",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 01"
       },
       {
         "weekDay": "4",
         "period": "2",
         "teacher": "Antonio Carlos Souza",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       }
     ]
   },
@@ -789,13 +789,13 @@
         "weekDay": "3",
         "period": "1",
         "teacher": "Renato Novais",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "5",
         "period": "1",
         "teacher": "Renato Novais",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 02"
       }
     ]
   },
@@ -810,7 +810,7 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
@@ -825,13 +825,13 @@
         "weekDay": "1",
         "period": "0",
         "teacher": "Jorge Rodrigues",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 2 (1º Andar)"
       },
       {
         "weekDay": "3",
         "period": "2",
         "teacher": "Jorge Rodrigues",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 1 (1º Andar)"
       }
     ]
   },
@@ -846,13 +846,13 @@
         "weekDay": "1",
         "period": "1",
         "teacher": "Maria Lucileide",
-        "classroom": "---"
+        "classroom": "BLOCO L - Sala 2 (1º Andar)"
       },
       {
         "weekDay": "2",
         "period": "2",
         "teacher": "Maria Lucileide",
-        "classroom": "---"
+        "classroom": "BLOCO L - Sala 2 (1º Andar)"
       }
     ]
   },
