@@ -944,7 +944,7 @@
         "weekDay": "5",
         "period": "1",
         "teacher": "Jowaner Araujo",
-        "classroom": "BLOCO E - Lab. 02",
+        "classroom": "BLOCO E - Lab. 01",
         "whichClass": "T01"
       },
       {
@@ -958,7 +958,7 @@
         "weekDay": "5",
         "period": "2",
         "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Sala 2 (1º Andar)",
+        "classroom": "BLOCO L - Sala 2 (1º Andar) | BLOCO L - Lab. Inf. 5 (1º Andar)",
         "whichClass": "T02"
       }
     ]
