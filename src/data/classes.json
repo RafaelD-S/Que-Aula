@@ -69,13 +69,13 @@
         "weekDay": "5",
         "period": "1",
         "teacher": "Fabiano Poderoso",
-        "classroom": "BLOCO P - Laboratório Integrado - P0003"
+        "classroom": "BLOCO P - Laboratório Integrado - P0003 | BLOCO P - Sala de Informática - 103"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Fabiano Poderoso",
-        "classroom": "BLOCO P - Laboratório Integrado - P0003"
+        "classroom": "BLOCO P - Laboratório Integrado - P0003 | BLOCO P - Sala de Informática - 103"
       }
     ]
   },
@@ -177,6 +177,27 @@
         "period": "1",
         "teacher": "Domingos Mainart",
         "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+      }
+    ]
+  },
+  {
+    "name": "INF032E",
+    "description": "Tópicos Avançados II (Introdução à Ciência de Dados com R)",
+    "semester": "0",
+    "multiClass": false,
+    "greve": false,
+    "classes": [
+      {
+        "weekDay": "3",
+        "period": "2",
+        "teacher": "Pablo Florentino",
+        "classroom": "BLOCO E - Lab. 03"
+      },
+      {
+        "weekDay": "4",
+        "period": "1",
+        "teacher": "Pablo Florentino",
+        "classroom": "---"
       }
     ]
   },
