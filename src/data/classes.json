@@ -69,13 +69,25 @@
         "weekDay": "5",
         "period": "1",
         "teacher": "Fabiano Poderoso",
-        "classroom": "BLOCO P - Laboratório Integrado - P0003 | BLOCO P - Sala de Informática - 103"
+        "classroom": "BLOCO P - Laboratório Integrado - P003"
+      },
+      {
+        "weekDay": "5",
+        "period": "1",
+        "teacher": "Fabiano Poderoso",
+        "classroom": "BLOCO P - Sala de Informática - 103"
       },
       {
         "weekDay": "5",
         "period": "2",
         "teacher": "Fabiano Poderoso",
-        "classroom": "BLOCO P - Laboratório Integrado - P0003 | BLOCO P - Sala de Informática - 103"
+        "classroom": "BLOCO P - Laboratório Integrado - P003"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Fabiano Poderoso",
+        "classroom": "BLOCO P - Sala de Informática - 103"
       }
     ]
   },
@@ -958,7 +970,14 @@
         "weekDay": "5",
         "period": "2",
         "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Sala 2 (1º Andar) | BLOCO L - Lab. Inf. 5 (1º Andar)",
+        "classroom": "BLOCO L - Sala 2 (1º Andar) ",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "5",
+        "period": "2",
+        "teacher": "Lauro Paula",
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)",
         "whichClass": "T02"
       }
     ]
