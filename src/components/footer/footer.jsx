@@ -20,7 +20,7 @@ export default function Footer() {
         </a>
       </div>
       <div className="footer__credits">
-        Beta V1 - Made By{" "}
+        Beta V2 - Made By{" "}
         <a href="https://github.com/RafaelD-S" target="blank_">
           Rafael Dantas Silva
         </a>
