@@ -69,14 +69,14 @@ Ele foi para atender da melhor forma possível pessoas que utilizem da página e
   <td align="center">
     <img src="https://github.com/luad3cristal.png?size=100"/>
     <br/>
-    <a href="https://github.com/RafaelD-S" target="_blank">
+    <a href="https://github.com/luad3cristal" target="_blank">
       Luana Lima
     </a>
   </td>
   <td align="center">
     <img src="https://github.com/Descafeiinado.png?size=100"/>
     <br/>
-    <a href="https://github.com/RafaelD-S" target="_blank">
+    <a href="https://github.com/Descafeiinado" target="_blank">
       Júlio Sousa
     </a>
   </td>
