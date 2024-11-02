@@ -31,11 +31,55 @@ Ele foi para atender da melhor forma possível pessoas que utilizem da página e
 ![que aula](https://github.com/user-attachments/assets/8776c80b-976e-4787-bef3-e82bf8eb1947)
 
 ## Feito com:
-- React Js
-- Sass
-- Vite
+- <a href="https://pt-br.legacy.reactjs.org"> React Js </a>
+- <a href="https://reactrouter.com/en/main"> Node </a>
+- <a href="https://sass-lang.com"> Sass </a>
+- <a href="https://www.npmjs.com"> npm </a>
 
 ## Como iniciar o projeto
+### Primeiramente abra um terminal com git instalado
 
-## Constribuidores
+1. Clone o repositório:
+   ```
+   git clone https://github.com/RafaelD-S/Que-Aula
+   ```
+2. Entre no diretório do projeto:
+   ```
+   cd Que-Aula
+   ```
+3. Instale as dependências:
+   ```
+   npm install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```
+   npm run dev
+   ```
+
+## Contribuidores
+<table>
+  <td align="center">
+    <img src="https://github.com/rafaeld-s.png?size=100"/>
+    <br/>
+    <a href="https://github.com/RafaelD-S" target="_blank">
+      Rafael Dantas
+    </a>
+  </td>
+  <td align="center">
+    <img src="https://github.com/luad3cristal.png?size=100"/>
+    <br/>
+    <a href="https://github.com/RafaelD-S" target="_blank">
+      Luana Lima
+    </a>
+  </td>
+  <td align="center">
+    <img src="https://github.com/Descafeiinado.png?size=100"/>
+    <br/>
+    <a href="https://github.com/RafaelD-S" target="_blank">
+      Júlio Sousa
+    </a>
+  </td>
+</table>
+
 
