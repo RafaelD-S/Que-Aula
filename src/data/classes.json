@@ -124,7 +124,7 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Samir Perez",
-        "classroom": "BLOCO B - Sala 10 (2º Andar)",
+        "classroom": "BLOCO B - Sala 9 (2º Andar)",
         "whichClass": "T01"
       },
       {
@@ -138,7 +138,7 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Samir Perez",
-        "classroom": "BLOCO B - Sala 10 (2º Andar)",
+        "classroom": "BLOCO B - Sala 9 (2º Andar)",
         "whichClass": "T02"
       },
       {
@@ -261,7 +261,7 @@
         "weekDay": "4",
         "period": "0",
         "teacher": "Walter Porto",
-        "classroom": "BLOCO O - Sala 5 (2º Andar)",
+        "classroom": "BLOCO O - Sala 1 (2º Andar)",
         "whichClass": "T02"
       }
     ]
@@ -292,7 +292,7 @@
         "weekDay": "2",
         "period": "2",
         "teacher": "Reinaldo Lima",
-        "classroom": "BLOCO D - Sala 7 (1º Andar)",
+        "classroom": "BLOCO D - Sala 2 (1º Andar)",
         "whichClass": "T02"
       },
       {
@@ -373,7 +373,7 @@
         "weekDay": "4",
         "period": "1",
         "teacher": "Antonio Carlos Souza",
-        "classroom": "---"
+        "classroom": "BLOCO O - Sala 6 (2º Andar)"
       }
     ]
   },
@@ -388,13 +388,19 @@
         "weekDay": "1",
         "period": "2",
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO B - Sala 6 (2º Andar)"
+        "classroom": "BLOCO O - Sala 3 (2º Andar)"
       },
       {
         "weekDay": "4",
         "period": "0",
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO B - Sala 4 (1º Andar)"
+        "classroom": "BLOCO B - Sala 5 (1º Andar)"
+      },
+      {
+        "weekDay": "4",
+        "period": "0",
+        "teacher": "Elane Plácido",
+        "classroom": "BLOCO O - Sala 3 (2º Andar)"
       }
     ]
   },
@@ -663,7 +669,7 @@
         "weekDay": "4",
         "period": "0",
         "teacher": "Washington Laranjeiras",
-        "classroom": "BLOCO D - Sala 3 (1º Andar)"
+        "classroom": "BLOCO D - Sala 2 (1º Andar)"
       },
       {
         "weekDay": "5",
@@ -906,7 +912,7 @@
         "weekDay": "2",
         "period": "1",
         "teacher": "Sandro Andrade",
-        "classroom": "BLOCO B - Sala 6 (2º Andar)"
+        "classroom": "BLOCO D - Sala 6 (1º Andar)"
       },
       {
         "weekDay": "4",
