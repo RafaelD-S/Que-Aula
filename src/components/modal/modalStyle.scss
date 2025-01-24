@@ -76,6 +76,7 @@
     letter-spacing: 1px;
     font-weight: 400;
     cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease, font-weight 0.1s ease;
 
     &--selected {
       color: rgb(1, 17, 31);
