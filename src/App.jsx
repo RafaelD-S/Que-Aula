@@ -10,20 +10,17 @@ function App() {
   const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    !localStorage.getItem("chosenClasses") && setIsModalOpen(true);
-  }, []);
+  const weekDays = ["Segunda-Feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-Feira"];
 
-  const [selectedClasses, setSelectedClasses] = useState([]);
+  useEffect(() => {
+    if (!localStorage.getItem("chosenClasses")) setIsModalOpen(true);
+  });
 
   return (
     <>
-      <Header switchWeekday={setCurrentWeekday} />
+      <Header switchWeekday={setCurrentWeekday} weekDays={weekDays} />
       <DayClasses currentWeekday={currentWeekday} />
-      <Modal
-        setSelectedClasses={setSelectedClasses}
-        isModalOpen={isModalOpen}
-      ></Modal>
+      <Modal isModalOpen={isModalOpen} />
       <Footer />
     </>
   );

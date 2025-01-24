@@ -1,8 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
 
-export default function Modal({ setSelectedClasses, isModalOpen }) {
+export default function Modal({ isModalOpen }) {
   const classesData = Data;
 
   useEffect(() => {
@@ -21,14 +21,10 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
         element.selected = !element.selected;
       });
     } else {
-      const whichClass = e.target.innerText
-        .slice(e.target.innerText.lastIndexOf(" "))
-        .trim();
+      const whichClass = e.target.innerText.slice(e.target.innerText.lastIndexOf(" ")).trim();
 
       item.classes.forEach((element) => {
-        element.whichClass == whichClass
-          ? (element.selected = !element.selected)
-          : "";
+        element.whichClass == whichClass ? (element.selected = !element.selected) : "";
       });
     }
   };
@@ -46,7 +42,6 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
         item.classDescription = e.description;
       });
     });
-    setSelectedClasses(selecionados);
     localStorage.setItem("chosenClasses", JSON.stringify(selecionados));
     location.reload();
   };
@@ -70,13 +65,11 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
               Bem vindo ao <span className="modal-title">Que Aula?</span>
             </h2>
             <p>
-              Um site desenvolvido para ajudar com a bagunça que são as aulas do
-              IFBA. Lhe informando suas aulas atualizadas diariamente e um
-              calendário relativo a sua rotina.
+              Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe
+              informando suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
             </p>
             <h4 className="modal__warning">
-              Todas as aulas já disponíveis! Caso ache algo, por
-              favor deixe seu Feedback.
+              Todas as aulas já disponíveis! Caso ache algo, por favor deixe seu Feedback.
             </h4>
           </div>
           <div>
@@ -112,10 +105,7 @@ export default function Modal({ setSelectedClasses, isModalOpen }) {
               </Fragment>
             ))}
           </div>
-          <button
-            className="generate-calendar"
-            onClick={() => submitCalendar()}
-          >
+          <button className="generate-calendar" onClick={() => submitCalendar()}>
             Gerar Calendario
           </button>
         </div>

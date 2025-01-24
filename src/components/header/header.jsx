@@ -5,14 +5,7 @@ import "./headerStyle.scss";
 
 import { useState } from "react";
 
-export default function Header({ switchWeekday }) {
-  const dropdownItems = [
-    "Segunda-Feira",
-    "Terça-feira",
-    "Quarta-feira",
-    "Quinta-feira",
-    "Sexta-Feira",
-  ];
+export default function Header({ switchWeekday, weekDays }) {
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (
@@ -26,7 +19,7 @@ export default function Header({ switchWeekday }) {
       <DropDown
         setNavSwitch={setNavSwitch}
         switchWeekday={switchWeekday}
-        dropdownItems={dropdownItems}
+        dropdownItems={weekDays}
         navSwitch={navSwitch}
       />
     </header>
