@@ -13,11 +13,11 @@ export default function Header({ switchWeekday }) {
     "Quinta-feira",
     "Sexta-Feira",
   ];
-  const [navSwitch, setNavSwitch] = useState(true);
+  const [navSwitch, setNavSwitch] = useState(false);
 
   return (
     <header className="header">
-      <section className="header__title" onClick={() => setNavSwitch(true)}>
+      <section className="header__title" onClick={() => setNavSwitch(false)}>
         <h1>Que Aula?</h1>
         <figure className="header__reset" onClick={() => location.reload()}>
           <img src={Reset} alt="reset" />
