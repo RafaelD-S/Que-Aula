@@ -6,6 +6,13 @@ import "./headerStyle.scss";
 import { useState } from "react";
 
 export default function Header({ switchWeekday }) {
+  const dropdownItems = [
+    "Segunda-Feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-Feira",
+  ];
   const [navSwitch, setNavSwitch] = useState(true);
 
   return (
@@ -16,73 +23,37 @@ export default function Header({ switchWeekday }) {
           <img src={Reset} alt="reset" />
         </figure>
       </section>
-      {navSwitch ? (
-        <Nav setNavSwitch={setNavSwitch} />
-      ) : (
-        <DropDown setNavSwitch={setNavSwitch} switchWeekday={switchWeekday} />
-      )}
+      <DropDown
+        setNavSwitch={setNavSwitch}
+        switchWeekday={switchWeekday}
+        dropdownItems={dropdownItems}
+        navSwitch={navSwitch}
+      />
     </header>
   );
 }
 
-function DropDown({ setNavSwitch, switchWeekday }) {
+function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }) {
+  const navButtonClass = navSwitch ? "header__dropDown__button--focus" : "";
+  const navButtonClassIcon = navSwitch ? "header__dropDown__button__icon--focus" : "";
+
   return (
-    <nav
-      className="header__nav header__nav__dropDown"
-      onClick={() => setNavSwitch(true)}
-    >
-      <button className="header__nav-button header__nav__dropDown-button">
-        <h4 className="header__nav-button-text">Dias da Semana</h4>
+    <nav className="header__dropDown" onClick={() => setNavSwitch((prev) => !prev)}>
+      <button className={`header__dropDown__button ${navButtonClass}`}>
+        <h4 className="header__dropDown__button__text">Dias da Semana</h4>
         <img
           src={ArrowDown}
           alt=""
-          className="header__nav-button-icon header__nav__dropDown-button-icon"
+          className={`header__dropDown__button__icon ${navButtonClassIcon}`}
         />
       </button>
-      <h3
-        onClick={() => switchWeekday(1)}
-        className="header__nav__dropDown-item"
-      >
-        Segunda-Feira
-      </h3>
-      <h3
-        onClick={() => switchWeekday(2)}
-        className="header__nav__dropDown-item"
-      >
-        Terça-Feira
-      </h3>
-      <h3
-        onClick={() => switchWeekday(3)}
-        className="header__nav__dropDown-item"
-      >
-        Quarta-Feira
-      </h3>
-      <h3
-        onClick={() => switchWeekday(4)}
-        className="header__nav__dropDown-item"
-      >
-        Quinta-Feira
-      </h3>
-      <h3
-        onClick={() => switchWeekday(5)}
-        className="header__nav__dropDown-item"
-      >
-        Sexta-Feira
-      </h3>
-    </nav>
-  );
-}
 
-function Nav({ setNavSwitch }) {
-  return (
-    <nav className="header__nav">
-      <button
-        className="header__nav-button"
-        onClick={() => setNavSwitch(false)}
-      >
-        <h4 className="header__nav-button-text">Dias da Semana</h4>
-        <img src={ArrowDown} alt="" className="header__nav-button-icon" />
-      </button>
+      {navSwitch &&
+        dropdownItems.map((item, index) => (
+          <div onClick={() => switchWeekday(index + 1)} className="header__dropDown-item">
+            <h3 className="header__dropDown-item__text">{item}</h3>
+          </div>
+        ))}
     </nav>
   );
 }

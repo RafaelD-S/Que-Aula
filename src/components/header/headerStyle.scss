@@ -25,7 +25,7 @@
     cursor: pointer;
   }
 
-  &__nav {
+  &__dropDown {
     display: flex;
     position: absolute;
     top: 4rem;
@@ -36,7 +36,25 @@
     background-color: rgb(4, 44, 61);
     transition: bottom 0.3s ease-in-out;
 
-    &-button {
+    flex-direction: column;
+    opacity: 0.95;
+
+    &-item {
+      width: 100%;
+      text-align: center;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid rgba(162, 191, 226, 0.189);
+      background-color: rgb(10, 25, 39);
+      cursor: pointer;
+
+      &__text {
+        font-size: 1rem;
+        color: rgb(183, 214, 237);
+        letter-spacing: 0.5px;
+      }
+    }
+
+    &__button {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
       display: flex;
       color: rgb(198, 243, 245);
@@ -48,36 +66,21 @@
       width: 100%;
       justify-content: center;
 
-      &-text {
+      &--focus {
+        padding: 1rem 0;
+        width: 100%;
+        justify-content: center;
+      }
+
+      &__text {
         padding: 0.2rem;
         font-size: 1rem;
       }
 
-      &-icon {
+      &__icon {
         width: 24px;
-      }
-    }
 
-    &__dropDown {
-      flex-direction: column;
-      opacity: 0.95;
-
-      &-item {
-        width: 100%;
-        text-align: center;
-        padding: 1.35rem 0;
-        border-bottom: 1px solid rgba(162, 191, 226, 0.189);
-        font-size: 1rem;
-        color: rgb(183, 214, 237);
-        background-color: rgb(10, 25, 39);
-        letter-spacing: 0.5px;
-        cursor: pointer;
-      }
-      &-button {
-        padding: 1rem 0;
-        width: 100%;
-        justify-content: center;
-        &-icon {
+        &--focus {
           transform: rotate(180deg);
         }
       }
