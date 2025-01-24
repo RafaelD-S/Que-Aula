@@ -43,7 +43,11 @@ function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }) {
 
       {navSwitch &&
         dropdownItems.map((item, index) => (
-          <div onClick={() => switchWeekday(index + 1)} className="header__dropDown-item">
+          <div
+            onClick={() => switchWeekday(index + 1)}
+            className="header__dropDown-item"
+            key={index}
+          >
             <h3 className="header__dropDown-item__text">{item}</h3>
           </div>
         ))}
