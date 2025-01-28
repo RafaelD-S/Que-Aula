@@ -1,10 +1,11 @@
-import DayClasses from "./components/dayClasses/dayClasses.jsx";
-import Header from "./components/header/header.jsx";
-import Footer from "./components/footer/footer.jsx";
-
-import "./style/style.scss";
 import { useEffect, useState } from "react";
-import Modal from "./components/modal/modal.jsx";
+
+import DayClasses from "./components/dayClasses/dayClasses";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import Modal from "./components/modal/modal";
+
+import "./style/GlobalStyle.scss";
 
 function App() {
   const [currentWeekday, setCurrentWeekday] = useState(new Date().getDay());

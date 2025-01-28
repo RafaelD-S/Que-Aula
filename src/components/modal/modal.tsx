@@ -1,9 +1,11 @@
 import { Fragment, useEffect } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
+import { IModal } from "./modal.Interface";
+import { IClassesData } from "../../types/dataClasses.interface";
 
-const Modal = ({ isModalOpen }) => {
-  const classesData = Data;
+const Modal = ({ isModalOpen }: IModal) => {
+  const classesData: IClassesData[] = Data;
 
   useEffect(() => {
     classesData.forEach((e) => {
@@ -13,7 +15,7 @@ const Modal = ({ isModalOpen }) => {
     });
   }, []);
 
-  const selectClass = (e, item) => {
+  const selectClass = (e: any, item: IClassesData) => {
     e.target.classList.toggle("class-tags--selected");
 
     if (!item.multiClass) {
@@ -30,18 +32,21 @@ const Modal = ({ isModalOpen }) => {
   };
 
   const submitCalendar = () => {
-    const selecionados = [];
+    const selecionados: IClassesData[] = [];
+
     classesData.forEach((e) => {
       e.classes.forEach((f) => {
-        f.selected && !selecionados.includes(e) && selecionados.push(e);
+        if (f.selected && !selecionados.includes(e)) selecionados.push(e);
       });
     });
+
     selecionados.forEach((e) => {
       e.classes.forEach((item) => {
         item.className = e.name;
         item.classDescription = e.description;
       });
     });
+
     localStorage.setItem("chosenClasses", JSON.stringify(selecionados));
     location.reload();
   };
@@ -69,7 +74,7 @@ const Modal = ({ isModalOpen }) => {
               informando suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
             </p>
             <h4 className="modal__warning">
-              Todas as aulas já disponíveis! Caso ache algo, por favor deixe seu Feedback.
+              Passando por atualizações. Talvez seu calendário seja resetado.
             </h4>
           </div>
           <div>
@@ -90,6 +95,7 @@ const Modal = ({ isModalOpen }) => {
                           {item.name}
                         </div>
                       ) : (
+                        item.classList &&
                         item.classList.map((classInfo) => (
                           <div
                             className="class-tags"

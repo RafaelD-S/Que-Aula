@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import "./dayClassesStyle.scss";
+import { IClasses, IDayClasses } from "./dayClassesInterface";
+import { IClassesData } from "../../types/dataClasses.interface";
 
-const dayClasses = ({ currentWeekday }) => {
+const dayClasses = ({ currentWeekday }: IDayClasses) => {
   const classesTemplate = { firstClass: [], secClass: [], thirdClass: [] };
-  const [classes, setClasses] = useState([
+  const [classes, setClasses] = useState<IClasses[]>([
     {
       day: "Domingo",
       classes: classesTemplate,
@@ -35,22 +37,24 @@ const dayClasses = ({ currentWeekday }) => {
   ]);
 
   useEffect(() => {
-    const storedClasses = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
-    const selected = [];
+    const storedClasses: any[] = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
+    const selected: IClassesData["classes"] = [];
     storedClasses.forEach((e) => {
-      e.classes.forEach((f) => {
+      e.classes.forEach((f: any) => {
         if (f.selected && !selected.includes(e)) selected.push(f);
       });
     });
+
+    console.log(selected);
 
     setClasses((prev) =>
       prev.map((item, index) => {
         return {
           ...item,
           classes: {
-            firstClass: selected.filter((f) => f.weekDay == index && f.period == 0),
-            secClass: selected.filter((f) => f.weekDay == index && f.period == 1),
-            thirdClass: selected.filter((f) => f.weekDay == index && f.period == 2),
+            firstClass: selected.filter((f) => +f.weekDay === index && +f.period === 0),
+            secClass: selected.filter((f) => +f.weekDay === index && +f.period === 1),
+            thirdClass: selected.filter((f) => +f.weekDay === index && +f.period === 2),
           },
         };
       })
