@@ -69,7 +69,7 @@ const Modal = ({ isModalOpen }) => {
               informando suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
             </p>
             <h4 className="modal__warning">
-              Todas as aulas já disponíveis! Caso ache algo, por favor deixe seu Feedback.
+              Passando por atualizações. Talvez seu calendário seja resetado.
             </h4>
           </div>
           <div>
