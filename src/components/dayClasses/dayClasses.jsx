@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./dayClassesStyle.scss";
 
-export default function dayClasses({ currentWeekday }) {
+const dayClasses = ({ currentWeekday }) => {
   const classesTemplate = { firstClass: [], secClass: [], thirdClass: [] };
   const [classes, setClasses] = useState([
     {
@@ -97,4 +97,6 @@ export default function dayClasses({ currentWeekday }) {
       </article>
     </main>
   );
-}
+};
+
+export default dayClasses;

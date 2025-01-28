@@ -2,7 +2,7 @@ import "./footerStyle.scss";
 import closeIcon from "../../assets/close.svg";
 import { useState } from "react";
 
-export default function Footer() {
+const Footer = () => {
   const [openWarning, setOpenWarning] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export default function Footer() {
       {openWarning && <Warning setOpenWarning={setOpenWarning} />}
     </footer>
   );
-}
+};
 
 export function Warning({ setOpenWarning }) {
   const eraseCalendar = () => {
@@ -42,13 +42,12 @@ export function Warning({ setOpenWarning }) {
         <h2 className="footer__warning-content__title">
           Você tem certeza que quer apagar seu calendário?
         </h2>
-        <button
-          className="footer__warning-content__button"
-          onClick={eraseCalendar}
-        >
+        <button className="footer__warning-content__button" onClick={eraseCalendar}>
           Sim
         </button>
       </div>
     </div>
   );
 }
+
+export default Footer;

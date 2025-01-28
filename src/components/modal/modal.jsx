@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
 
-export default function Modal({ isModalOpen }) {
+const Modal = ({ isModalOpen }) => {
   const classesData = Data;
 
   useEffect(() => {
@@ -112,4 +112,6 @@ export default function Modal({ isModalOpen }) {
       </div>
     </>
   );
-}
+};
+
+export default Modal;

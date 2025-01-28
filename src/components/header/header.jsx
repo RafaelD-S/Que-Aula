@@ -5,7 +5,7 @@ import "./headerStyle.scss";
 
 import { useState } from "react";
 
-export default function Header({ switchWeekday, weekDays }) {
+const Header = ({ switchWeekday, weekDays }) => {
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ export default function Header({ switchWeekday, weekDays }) {
       />
     </header>
   );
-}
+};
 
 function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }) {
   const navButtonClass = navSwitch ? "header__dropDown__button--focus" : "";
@@ -54,3 +54,5 @@ function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }) {
     </nav>
   );
 }
+
+export default Header;
