@@ -12,6 +12,12 @@
 
   &__warning {
     color: rgb(173, 58, 58) !important;
+    margin: 1rem;
+    font-size: 0.9125rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 2rem;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.308);
   }
 
   &--open {
@@ -54,12 +60,14 @@
     color: rgb(136, 165, 185);
   }
   h3 {
-    margin-top: 1rem;
+    border-top: 1px solid rgb(35, 47, 51);
+    padding-top: 1rem;
     font-weight: 600;
+    letter-spacing: 0.25px;
     font-size: 1.25rem;
     padding-bottom: 0.5rem;
   }
-  h4 {
+  h4:not(.modal__warning) {
     border-bottom: 1px solid rgb(35, 47, 51);
     padding: 0.5rem;
     font-weight: 600;
