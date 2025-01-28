@@ -1,6 +1,6 @@
 import "./footerStyle.scss";
 import closeIcon from "../../assets/close.svg";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Footer = () => {
   const [openWarning, setOpenWarning] = useState(false);
@@ -31,13 +31,21 @@ const Footer = () => {
 };
 
 export function Warning({ setOpenWarning }) {
+  const modalRef = useRef();
+
+  const handleOverlayClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      setOpenWarning(false);
+    }
+  };
+
   const eraseCalendar = () => {
     localStorage.clear();
     location.reload();
   };
   return (
-    <div className="footer__warning" onClick={() => setOpenWarning(false)}>
-      <div className="footer__warning-content">
+    <div className="footer__warning" onClick={handleOverlayClick}>
+      <div className="footer__warning-content" ref={modalRef}>
         <img src={closeIcon} alt="" className="footer__warning-content__icon" />
         <h2 className="footer__warning-content__title">
           Você tem certeza que quer apagar seu calendário?
