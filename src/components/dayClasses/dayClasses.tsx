@@ -45,8 +45,6 @@ const dayClasses = ({ currentWeekday }: IDayClasses) => {
       });
     });
 
-    console.log(selected);
-
     setClasses((prev) =>
       prev.map((item, index) => {
         return {
