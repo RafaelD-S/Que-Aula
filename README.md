@@ -26,12 +26,13 @@
 O projeto nasceu a partir da necessidade de uma amostra mais fácil e viável para poder verificar a localização das aulas e seus horários. 
 Ele se iniciou comigo, porém, atualmente aceito a ajuda de outras pessoas no curso para poder melhorar a aplicação de uma forma onde todos sejam benefíciados.
 
-Ele foi para atender da melhor forma possível pessoas que utilizem da página em dispositivos móveis. Sendo feito em Mobile-First.
+Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem da página em dispositivos móveis. Sendo feito em Mobile-First.
 
 ![que aula](https://github.com/user-attachments/assets/8776c80b-976e-4787-bef3-e82bf8eb1947)
 
 ## Feito com:
-- <a href="https://pt-br.legacy.reactjs.org"> React Js </a>
+- <a href="https://pt-br.legacy.reactjs.org"> React </a>
+- <a href="https://www.typescriptlang.org/docs/"> Typescript </a>
 - <a href="https://reactrouter.com/en/main"> Node </a>
 - <a href="https://sass-lang.com"> Sass </a>
 - <a href="https://www.npmjs.com"> npm </a>
