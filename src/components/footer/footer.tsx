@@ -35,7 +35,7 @@ export function Warning({ setOpenWarning }: IWarning) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleOverlayClick = (e: React.SyntheticEvent) => {
-    let target = e.target as HTMLDivElement;
+    const target = e.target as HTMLDivElement;
     if (modalRef.current && !modalRef.current.contains(target)) {
       setOpenWarning(false);
     }

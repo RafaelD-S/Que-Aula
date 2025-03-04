@@ -13,20 +13,24 @@ const Modal = ({ isModalOpen }: IModal) => {
         item.selected = false;
       });
     });
-  }, []);
+  });
 
-  const selectClass = (e: any, item: IClassesData) => {
-    e.target.classList.toggle("class-tags--selected");
+  const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
+    e.currentTarget.classList.toggle("class-tags--selected");
 
     if (!item.multiClass) {
       item.classes.forEach((element) => {
         element.selected = !element.selected;
       });
     } else {
-      const whichClass = e.target.innerText.slice(e.target.innerText.lastIndexOf(" ")).trim();
+      const whichClass = e.currentTarget.innerText
+        .slice(e.currentTarget.innerText.lastIndexOf(" "))
+        .trim();
 
       item.classes.forEach((element) => {
-        element.whichClass == whichClass ? (element.selected = !element.selected) : "";
+        if (element.whichClass === whichClass) {
+          element.selected = !element.selected;
+        }
       });
     }
   };
