@@ -37,7 +37,7 @@ function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDr
         <h4 className="header__dropDown__button__text">Dias da Semana</h4>
         <img
           src={ArrowDown}
-          alt=""
+          alt="open-dropdown"
           className={`header__dropDown__button__icon ${navButtonClassIcon}`}
         />
       </button>

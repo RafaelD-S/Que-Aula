@@ -38,7 +38,7 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
 
   useEffect(() => {
     const storedClasses: IClassesData[] = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
-    const specificClasses = storedClasses.flatMap((item) => item.classes);
+    const specificClasses = storedClasses.flatMap((item) => item.classes).filter((f) => f.selected);
 
     setClasses((prev) =>
       prev.map((item, index) => {
