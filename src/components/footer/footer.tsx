@@ -1,6 +1,7 @@
 import "./footerStyle.scss";
-import closeIcon from "../../assets/close.svg";
+import warning from "../../assets/warning.svg";
 import { useRef, useState } from "react";
+import { IWarning } from "./footer.interface";
 
 const Footer = () => {
   const [openWarning, setOpenWarning] = useState(false);
@@ -30,11 +31,12 @@ const Footer = () => {
   );
 };
 
-export function Warning({ setOpenWarning }) {
-  const modalRef = useRef();
+export function Warning({ setOpenWarning }: IWarning) {
+  const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleOverlayClick = (e) => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
+  const handleOverlayClick = (e: React.SyntheticEvent) => {
+    const target = e.target as HTMLDivElement;
+    if (modalRef.current && !modalRef.current.contains(target)) {
       setOpenWarning(false);
     }
   };
@@ -45,12 +47,12 @@ export function Warning({ setOpenWarning }) {
   };
   return (
     <div className="footer__warning" onClick={handleOverlayClick}>
-      <div className="footer__warning-content" ref={modalRef}>
-        <img src={closeIcon} alt="" className="footer__warning-content__icon" />
-        <h2 className="footer__warning-content__title">
+      <div className="footer__warning__content" ref={modalRef}>
+        <img src={warning} alt="" className="footer__warning__content__icon" />
+        <h2 className="footer__warning__content__title">
           Você tem certeza que quer apagar seu calendário?
         </h2>
-        <button className="footer__warning-content__button" onClick={eraseCalendar}>
+        <button className="footer__warning__content__button" onClick={eraseCalendar}>
           Sim
         </button>
       </div>

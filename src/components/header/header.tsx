@@ -4,8 +4,9 @@ import ArrowDown from "../../assets/arrow-down.svg";
 import "./headerStyle.scss";
 
 import { useState } from "react";
+import { IDropdown, IHeader } from "./header.interface";
 
-const Header = ({ switchWeekday, weekDays }) => {
+const Header = ({ switchWeekday, weekDays }: IHeader) => {
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (
@@ -26,7 +27,7 @@ const Header = ({ switchWeekday, weekDays }) => {
   );
 };
 
-function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }) {
+function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDropdown) {
   const navButtonClass = navSwitch ? "header__dropDown__button--focus" : "";
   const navButtonClassIcon = navSwitch ? "header__dropDown__button__icon--focus" : "";
 

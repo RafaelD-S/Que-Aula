@@ -1,9 +1,11 @@
 import { Fragment, useEffect } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
+import { IModal } from "./modal.Interface";
+import { IClassesData } from "../../types/dataClasses.interface";
 
-const Modal = ({ isModalOpen }) => {
-  const classesData = Data;
+const Modal = ({ isModalOpen }: IModal) => {
+  const classesData: IClassesData[] = Data;
 
   useEffect(() => {
     classesData.forEach((e) => {
@@ -11,37 +13,44 @@ const Modal = ({ isModalOpen }) => {
         item.selected = false;
       });
     });
-  }, []);
+  });
 
-  const selectClass = (e, item) => {
-    e.target.classList.toggle("class-tags--selected");
+  const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
+    e.currentTarget.classList.toggle("class-tags--selected");
 
     if (!item.multiClass) {
       item.classes.forEach((element) => {
         element.selected = !element.selected;
       });
     } else {
-      const whichClass = e.target.innerText.slice(e.target.innerText.lastIndexOf(" ")).trim();
+      const whichClass = e.currentTarget.innerText
+        .slice(e.currentTarget.innerText.lastIndexOf(" "))
+        .trim();
 
       item.classes.forEach((element) => {
-        element.whichClass == whichClass ? (element.selected = !element.selected) : "";
+        if (element.whichClass === whichClass) {
+          element.selected = !element.selected;
+        }
       });
     }
   };
 
   const submitCalendar = () => {
-    const selecionados = [];
+    const selecionados: IClassesData[] = [];
+
     classesData.forEach((e) => {
       e.classes.forEach((f) => {
-        f.selected && !selecionados.includes(e) && selecionados.push(e);
+        if (f.selected && !selecionados.includes(e)) selecionados.push(e);
       });
     });
+
     selecionados.forEach((e) => {
       e.classes.forEach((item) => {
         item.className = e.name;
         item.classDescription = e.description;
       });
     });
+
     localStorage.setItem("chosenClasses", JSON.stringify(selecionados));
     location.reload();
   };
@@ -90,6 +99,7 @@ const Modal = ({ isModalOpen }) => {
                           {item.name}
                         </div>
                       ) : (
+                        item.classList &&
                         item.classList.map((classInfo) => (
                           <div
                             className="class-tags"
