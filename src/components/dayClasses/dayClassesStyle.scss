@@ -1,3 +1,5 @@
+@use "../../style/variables" as var;
+
 .dayClasses {
   &__item {
     font-size: 0.8em;
@@ -5,13 +7,13 @@
     width: 100%;
     display: flex;
     padding: 2rem 0.5rem;
-    border-bottom: 1px solid rgba(162, 191, 226, 0.264);
+    border-bottom: 1px solid var.$divider-color;
     align-items: center;
   }
 
   &__title {
     text-align: center;
-    color: rgb(232, 248, 246);
+    color: var.$white;
   }
 
   &__schedule {
@@ -40,19 +42,11 @@
         bottom: 0;
         height: fit-content;
         transform: rotate(-15deg);
-        clip-path: polygon(
-          50% 0%,
-          100% 0,
-          95% 50%,
-          100% 100%,
-          0 100%,
-          5% 50%,
-          0 0
-        );
+        clip-path: polygon(50% 0%, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%, 0 0);
         display: flex;
         padding: 0.15rem 0.55rem;
-        background-color: rgb(224, 59, 30);
-        color: rgb(255, 200, 200);
+        background-color: var.$red;
+        color: var.$light-red;
         font-weight: 700;
         letter-spacing: 1px;
       }
@@ -72,20 +66,22 @@
       gap: 6px;
 
       &-title {
+        color: var.$blue-light-gray;
         font-weight: 700;
         letter-spacing: 0.5px;
         font-size: 1.15em;
       }
       &-classroom {
         font-weight: 500;
-        color: rgb(136, 165, 185);
+        color: var.$blue-gray;
       }
       &-description {
-        color: rgba(135, 228, 225, 0.448);
+        color: var.$blue-weak-emphasis;
+        letter-spacing: 0.5px;
         font-weight: 400;
       }
-      span {
-        color: #5fb74d;
+      &-class {
+        color: var.$green;
       }
     }
   }
