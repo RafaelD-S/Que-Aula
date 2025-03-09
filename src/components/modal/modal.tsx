@@ -1,59 +1,65 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./modalStyle.scss";
 import Data from "../../data/classes.json";
 import { IModal } from "./modal.Interface";
 import { IClassesData } from "../../types/dataClasses.interface";
 
 const Modal = ({ isModalOpen }: IModal) => {
-  const classesData: IClassesData[] = Data;
+  const [classesData, setClassesData] = useState<IClassesData[]>(Data);
+  const [hasSelected, setHasSelected] = useState(false);
 
   useEffect(() => {
-    classesData.forEach((e) => {
-      e.classes.forEach((item) => {
-        item.selected = false;
-      });
-    });
-  });
+    const initializedData = classesData.map((e) => ({
+      ...e,
+      classes: e.classes.map((item) => ({ ...item, selected: false })),
+    }));
+    setClassesData(initializedData);
+  }, []);
 
   const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
-    e.currentTarget.classList.toggle("class-tags--selected");
+    const clickedText = e.currentTarget.innerText;
+    const whichClass = clickedText.slice(clickedText.lastIndexOf(" ")).trim();
 
-    if (!item.multiClass) {
-      item.classes.forEach((element) => {
-        element.selected = !element.selected;
-      });
-    } else {
-      const whichClass = e.currentTarget.innerText
-        .slice(e.currentTarget.innerText.lastIndexOf(" "))
-        .trim();
+    setClassesData((prevData) =>
+      prevData.map((data) => {
+        if (data.name === item.name) {
+          return {
+            ...data,
+            classes: data.classes.map((classData) => {
+              const isClickedClass = classData.whichClass === whichClass;
 
-      item.classes.forEach((element) => {
-        if (element.whichClass === whichClass) {
-          element.selected = !element.selected;
+              if (!item.multiClass || isClickedClass) {
+                return { ...classData, selected: !classData.selected };
+              }
+
+              return classData;
+            }),
+          };
         }
-      });
-    }
+        return data;
+      })
+    );
   };
 
   const submitCalendar = () => {
-    const selecionados: IClassesData[] = [];
+    const selecionados = classesData.filter((e) => e.classes.some((f) => f.selected));
 
-    classesData.forEach((e) => {
-      e.classes.forEach((f) => {
-        if (f.selected && !selecionados.includes(e)) selecionados.push(e);
-      });
-    });
+    const updatedSelecionados = selecionados.map((e) => ({
+      ...e,
+      classes: e.classes.map((item) => ({
+        ...item,
+        className: e.name,
+        classDescription: e.description,
+      })),
+    }));
 
-    selecionados.forEach((e) => {
-      e.classes.forEach((item) => {
-        item.className = e.name;
-        item.classDescription = e.description;
-      });
-    });
-
-    localStorage.setItem("chosenClasses", JSON.stringify(selecionados));
+    localStorage.setItem("chosenClasses", JSON.stringify(updatedSelecionados));
     location.reload();
   };
+
+  useEffect(() => {
+    setHasSelected(classesData.some((e) => e.classes.some((f) => f.selected)));
+  }, [classesData, setHasSelected]);
 
   const semestres = [
     "Optativas",
@@ -66,61 +72,72 @@ const Modal = ({ isModalOpen }: IModal) => {
   ];
 
   return (
-    <>
-      <div className={`modal modal--${isModalOpen ? "open" : "closed"}`}>
-        <div className="modal__container">
-          <div>
-            <h2>
-              Bem vindo ao <span className="modal-title">Que Aula?</span>
-            </h2>
-            <p>
-              Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe
-              informando suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
-            </p>
-            <h4 className="modal__warning">
-              Passando por atualizações. Talvez seu calendário seja resetado.
-            </h4>
-          </div>
-          <div>
-            <h3>Escolha as suas matérias</h3>
-            {semestres.map((e, i) => (
-              <Fragment key={i}>
-                <h4>{e}</h4>
-                <div className="class-tags-container">
-                  {classesData
-                    .filter((e) => +e.semester === i)
-                    .map((item) =>
-                      !item.multiClass ? (
+    <div className={`modal modal--${isModalOpen ? "open" : "closed"}`}>
+      <div className="modal__container">
+        <div className="modal__introduction">
+          <h2 className="modal__introduction__title">
+            Bem vindo ao <span className="modal__introduction__title__accent">Que Aula?</span>
+          </h2>
+          <p className="modal__introduction__paragraph">
+            Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe informando
+            suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
+          </p>
+          <h4 className="modal__warning">
+            Passando por atualizações. Talvez seu calendário seja resetado.
+          </h4>
+        </div>
+        <div className="modal__classes">
+          <h3 className="modal__classes__title">Escolha as suas matérias</h3>
+          {semestres.map((item, i) => (
+            <Fragment key={i}>
+              <h4 className="modal__classes__subtitle">{item}</h4>
+              <div className="modal__classes__container">
+                {classesData
+                  .filter((filter) => +filter.semester === i)
+                  .map((classData) =>
+                    !classData.multiClass ? (
+                      <div
+                        className={`modal__classes__tag ${
+                          classData.classes.some((cls) => cls.selected)
+                            ? "modal__classes__tag--selected"
+                            : ""
+                        }`}
+                        onClick={(e) => selectClass(e, classData)}
+                        key={classData.description}
+                      >
+                        {classData.name}
+                      </div>
+                    ) : (
+                      classData.classList &&
+                      classData.classList.map((classInfo) => (
                         <div
-                          className="class-tags"
-                          onClick={(e) => selectClass(e, item)}
-                          key={item.description}
+                          className={`modal__classes__tag ${
+                            classData.classes.find(
+                              (cls) => cls.whichClass === classInfo && cls.selected
+                            )
+                              ? "modal__classes__tag--selected"
+                              : ""
+                          }`}
+                          onClick={(e) => selectClass(e, classData)}
+                          key={classInfo}
                         >
-                          {item.name}
+                          {classData.name} {classInfo}
                         </div>
-                      ) : (
-                        item.classList &&
-                        item.classList.map((classInfo) => (
-                          <div
-                            className="class-tags"
-                            onClick={(e) => selectClass(e, item)}
-                            key={classInfo}
-                          >
-                            {item.name} {classInfo}
-                          </div>
-                        ))
-                      )
-                    )}
-                </div>
-              </Fragment>
-            ))}
-          </div>
-          <button className="generate-calendar" onClick={() => submitCalendar()}>
-            Gerar Calendario
-          </button>
+                      ))
+                    )
+                  )}
+              </div>
+            </Fragment>
+          ))}
         </div>
       </div>
-    </>
+      <button
+        className={`modal__submit ${hasSelected ? "modal__submit--active" : ""}`}
+        onClick={() => submitCalendar()}
+      >
+        Gerar Calendario
+      </button>
+    </div>
   );
 };
 
