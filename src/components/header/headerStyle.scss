@@ -1,16 +1,17 @@
+@use "../../style/variables" as var;
+
 .header {
-  margin-bottom: 5.25rem;
+  margin-bottom: 5rem;
   position: relative;
 
   &__title {
-    background-color: rgb(13, 72, 82);
+    background-color: var.$blue;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(198, 243, 245);
+    color: var.$blue-white;
     text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgb(2, 33, 38);
+    height: 68px;
 
     h1 {
       font-size: 1.75rem;
@@ -28,51 +29,38 @@
   &__dropDown {
     display: flex;
     position: absolute;
-    top: 4rem;
+    top: 100%;
     left: 0;
     right: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(4, 44, 61);
+    background-color: var.$blue-dark;
     transition: bottom 0.3s ease-in-out;
-
     flex-direction: column;
     opacity: 0.95;
-
-    &-item {
-      width: 100%;
-      text-align: center;
-      padding: 1.35rem 0;
-      border-bottom: 1px solid rgba(162, 191, 226, 0.189);
-      background-color: rgb(10, 25, 39);
-      cursor: pointer;
-
-      &__text {
-        font-size: 1rem;
-        color: rgb(183, 214, 237);
-        letter-spacing: 0.5px;
-      }
-    }
 
     &__button {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
       display: flex;
-      color: rgb(198, 243, 245);
-      padding: 0.3rem 0;
+      align-items: center;
       background-color: transparent;
       border: none;
       cursor: pointer;
-      padding: 0.5rem 0;
+      height: 40px;
       width: 100%;
       justify-content: center;
 
       &--focus {
+        height: 52px;
         padding: 1rem 0;
         width: 100%;
         justify-content: center;
       }
 
       &__text {
+        color: var.$blue-white;
+        font-weight: 600;
+        letter-spacing: 1px;
         padding: 0.2rem;
         font-size: 1rem;
       }
@@ -83,6 +71,25 @@
         &--focus {
           transform: rotate(180deg);
         }
+      }
+    }
+
+    &-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 60px;
+      border-bottom: 1px solid var.$divider-color;
+      background-color: var.$blue-darker;
+      cursor: pointer;
+
+      &__text {
+        font-weight: 500;
+        font-size: 1rem;
+        color: var.$blue-light-gray;
+        letter-spacing: 1px;
       }
     }
   }
