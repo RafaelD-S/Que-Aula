@@ -82,7 +82,9 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
               {item.data.map((info, index) => (
                 <div key={index} className="dayClasses__info-item">
                   <h4 className="dayClasses__info-item-title">
-                    {info.className} <span>{info.whichClass}</span> - {info.teacher}
+                    {info.className}
+                    <span className="dayClasses__info-item-class"> {info.whichClass} </span>-{" "}
+                    {info.teacher}
                   </h4>
                   <h4 className="dayClasses__info-item-classroom">{info.classroom}</h4>
                   <h5 className="dayClasses__info-item-description">{info.classDescription}</h5>
