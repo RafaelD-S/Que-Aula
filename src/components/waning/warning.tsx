@@ -3,7 +3,7 @@ import warning from "../../assets/warning.svg";
 import { IWarning } from "./warning.interface";
 import "./warningStyle.scss";
 
-const Warning = ({ children, message, buttonLabel, onClickButton }: IWarning) => {
+const Warning = ({ children, message, buttonLabel, onClickButton, disabled = false }: IWarning) => {
   const [isOpenState, setIsOpenState] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -14,9 +14,13 @@ const Warning = ({ children, message, buttonLabel, onClickButton }: IWarning) =>
     }
   };
 
+  if (disabled) return children;
+
   return (
     <>
-      <div onClick={() => setIsOpenState(true)}>{children}</div>
+      <div className="warning__opener" onClick={() => setIsOpenState(true)}>
+        {children}
+      </div>
       {isOpenState && (
         <div className="warning" onClick={handleOverlayClick}>
           <div className="warning__content" ref={modalRef}>

@@ -5,4 +5,5 @@ export interface IWarning {
   message: string;
   buttonLabel?: string;
   onClickButton?: () => void;
+  disabled?: boolean;
 }
