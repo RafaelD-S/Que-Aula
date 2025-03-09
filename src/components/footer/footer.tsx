@@ -1,16 +1,21 @@
+import Warning from "../waning/warning";
 import "./footerStyle.scss";
-import warning from "../../assets/warning.svg";
-import { useRef, useState } from "react";
-import { IWarning } from "./footer.interface";
 
 const Footer = () => {
-  const [openWarning, setOpenWarning] = useState(false);
+  const eraseCalendar = () => {
+    localStorage.clear();
+    location.reload();
+  };
 
   return (
     <footer className="footer">
-      <a className="footer__new-calendar" onClick={() => setOpenWarning(true)}>
-        Criar um novo calendário
-      </a>
+      <Warning
+        message="Você tem certeza que quer apagar seu calendário?"
+        buttonLabel="sim"
+        onClickButton={eraseCalendar}
+      >
+        <a className="footer__new-calendar">Criar um novo calendário</a>
+      </Warning>
       <div className="footer__feedback">
         Achou algo ou quer dar uma sugestão?{" "}
         <a
@@ -26,38 +31,8 @@ const Footer = () => {
           Rafael Dantas Silva
         </a>
       </div>
-      {openWarning && <Warning setOpenWarning={setOpenWarning} />}
     </footer>
   );
 };
-
-export function Warning({ setOpenWarning }: IWarning) {
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  const handleOverlayClick = (e: React.SyntheticEvent) => {
-    const target = e.target as HTMLDivElement;
-    if (modalRef.current && !modalRef.current.contains(target)) {
-      setOpenWarning(false);
-    }
-  };
-
-  const eraseCalendar = () => {
-    localStorage.clear();
-    location.reload();
-  };
-  return (
-    <div className="footer__warning" onClick={handleOverlayClick}>
-      <div className="footer__warning__content" ref={modalRef}>
-        <img src={warning} alt="" className="footer__warning__content__icon" />
-        <h2 className="footer__warning__content__title">
-          Você tem certeza que quer apagar seu calendário?
-        </h2>
-        <button className="footer__warning__content__button" onClick={eraseCalendar}>
-          Sim
-        </button>
-      </div>
-    </div>
-  );
-}
 
 export default Footer;

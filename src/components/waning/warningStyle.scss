@@ -1,0 +1,47 @@
+@use "../../style/variables" as var;
+
+.warning {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.603);
+  z-index: +1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+
+  &__content {
+    z-index: +3;
+    background-color: rgb(8, 14, 19);
+    display: flex;
+    min-width: 200px;
+    max-width: 300px;
+    border-radius: 4px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+
+    &__title {
+      font-size: 1.025rem;
+      color: var.$blue-light-gray;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    &__button {
+      background-color: var.$red;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 4px;
+
+      border: none;
+      color: var.$light-red;
+      width: 50%;
+      padding: 0.25rem;
+      cursor: pointer;
+    }
+  }
+}

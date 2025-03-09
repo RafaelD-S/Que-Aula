@@ -1,3 +1,5 @@
+@use "../../style/variables" as var;
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -9,51 +11,18 @@
   font-size: 0.7em;
 
   &__feedback {
+    color: var.$blue-light-gray;
     opacity: 0.7;
   }
   &__credits {
+    color: var.$blue-light-gray;
     opacity: 0.5;
   }
 
   &__new-calendar {
     cursor: pointer;
-    font-weight: 800;
-    color: rgb(138, 49, 49);
+    font-weight: 700;
+    color: var.$red;
     font-size: 0.8rem;
-  }
-
-  &__warning {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.603);
-    z-index: +1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.25rem;
-
-    &__content {
-      z-index: +3;
-      background-color: rgb(8, 14, 19);
-      display: flex;
-      max-width: 300px;
-      text-align: center;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.5rem 1rem;
-      gap: 1rem;
-
-      &__button {
-        background-color: rgb(177, 38, 38);
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 1px;
-        border: none;
-        color: #fff;
-        width: 50%;
-        padding: 0.25rem;
-        cursor: pointer;
-      }
-    }
   }
 }
