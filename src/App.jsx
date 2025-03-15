@@ -42,6 +42,7 @@ function App() {
           isClosable={false}
           message="Sua versão está desatualizada."
           buttonLabel="Atualizar"
+          type="info"
           onClickButton={() => updateCalendar()}
         />
       ) : (
