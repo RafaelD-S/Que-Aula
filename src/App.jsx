@@ -14,7 +14,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [urgentUpdate, setUrgentUpdate] = useState(false);
 
-  const weekDays = ["Segunda-Feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-Feira"];
+  const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
   const savedVersion = localStorage.getItem("version") || "";
 
   const verifyVersion = () => {
