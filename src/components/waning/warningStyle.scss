@@ -41,8 +41,8 @@
       cursor: pointer;
 
       &--info {
-        background-color: rgb(12, 20, 143);
-        color: rgb(183, 247, 255);
+        background-color: var.$info;
+        color: var.$light-info;
       }
 
       &--warning {
