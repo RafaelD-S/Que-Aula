@@ -9,11 +9,22 @@
     padding: 2rem 0.5rem;
     border-bottom: 1px solid var.$divider-color;
     align-items: center;
+
+    &:first-child {
+      padding-top: 0.25rem;
+    }
+
+    &--empty {
+      font-size: 0.6rem;
+      background-color: rgba(0, 0, 0, 0.192);
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   &__title {
     text-align: center;
     color: var.$white;
+    margin-bottom: 2rem;
   }
 
   &__schedule {
