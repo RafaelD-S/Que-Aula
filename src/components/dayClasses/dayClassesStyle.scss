@@ -1,6 +1,10 @@
 @use "../../style/variables" as var;
 
 .dayClasses {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   &__item {
     font-size: 0.8em;
     gap: 0.875rem;
@@ -24,7 +28,8 @@
   &__title {
     text-align: center;
     color: var.$white;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   &__schedule {
