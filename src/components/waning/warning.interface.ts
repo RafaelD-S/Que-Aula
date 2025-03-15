@@ -6,4 +6,7 @@ export interface IWarning {
   buttonLabel?: string;
   onClickButton?: () => void;
   disabled?: boolean;
+  opened?: boolean;
+  isClosable?: boolean;
+  type?: "warning" | "info";
 }
