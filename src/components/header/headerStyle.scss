@@ -38,6 +38,7 @@
     transition: bottom 0.3s ease-in-out;
     flex-direction: column;
     opacity: 0.95;
+    z-index: 1;
 
     &__button {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
