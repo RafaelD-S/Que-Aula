@@ -1,10 +1,12 @@
+import { IClassesData } from "../../types/dataClasses.interface";
+
 export interface IDayClasses {
   currentWeekday: number;
 }
 
 export interface IClasses {
   day: string;
-  classes: any[];
+  classes: IClassesData["classes"];
 }
 
 export interface ISectionArray {

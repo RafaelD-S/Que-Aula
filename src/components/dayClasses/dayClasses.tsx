@@ -56,10 +56,10 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
       end: item.period[item.period.length - 1],
       data: item,
     }));
-    let newArray: ISectionArray[][] = Array(6).fill(null);
+    const newArray: ISectionArray[][] = Array(6).fill(null);
 
     updatedSections.forEach((e) => {
-      for (let i = e.start; i <= e.end; i++) {
+      for (let i = +e.start; i <= +e.end; i++) {
         newArray[i] = newArray[i] ? [...newArray[i], e] : [e];
       }
     });
@@ -69,7 +69,7 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
     let i = 0;
     while (i < newArray.length) {
       if (newArray[i] === null) {
-        let start = i;
+        const start = i;
         let end = i;
 
         while (end < newArray.length && newArray[end] === null) {

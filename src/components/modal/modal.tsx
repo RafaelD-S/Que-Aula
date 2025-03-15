@@ -15,7 +15,7 @@ const Modal = ({ isModalOpen }: IModal) => {
       classes: e.classes.map((item) => ({ ...item, selected: false })),
     }));
     setClassesData(initializedData);
-  }, []);
+  });
 
   const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
     const clickedText = e.currentTarget.innerText;
