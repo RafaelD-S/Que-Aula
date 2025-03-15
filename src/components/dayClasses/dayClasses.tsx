@@ -64,8 +64,6 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
       }
     });
 
-    console.log(newArray);
-
     let i = 0;
     while (i < newArray.length) {
       if (newArray[i] === null) {
