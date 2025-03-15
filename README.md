@@ -61,21 +61,21 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
 ## Contribuidores
 <table>
   <td align="center">
-    <img src="https://github.com/rafaeld-s.png?size=100"/>
+    <img src="https://github.com/rafaeld-s.png?size=100" style="width: 100px"/>
     <br/>
     <a href="https://github.com/RafaelD-S" target="_blank">
       Rafael Dantas
     </a>
   </td>
   <td align="center">
-    <img src="https://github.com/luad3cristal.png?size=100"/>
+    <img src="https://github.com/luad3cristal.png?size=100" style="width: 100px"/>
     <br/>
     <a href="https://github.com/luad3cristal" target="_blank">
       Luana Lima
     </a>
   </td>
   <td align="center">
-    <img src="https://github.com/Descafeiinado.png?size=100"/>
+    <img src="https://github.com/Descafeiinado.png?size=100" style="width: 100px"/>
     <br/>
     <a href="https://github.com/Descafeiinado" target="_blank">
       Júlio Sousa
