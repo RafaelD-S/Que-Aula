@@ -3,6 +3,7 @@ import "./modalStyle.scss";
 import Data from "../../data/classes.json";
 import { IModal } from "./modal.Interface";
 import { IClassesData } from "../../types/dataClasses.interface";
+import { version } from "../../../package.json";
 
 const Modal = ({ isModalOpen }: IModal) => {
   const [classesData, setClassesData] = useState<IClassesData[]>(Data);
@@ -54,6 +55,7 @@ const Modal = ({ isModalOpen }: IModal) => {
     }));
 
     localStorage.setItem("chosenClasses", JSON.stringify(updatedSelecionados));
+    localStorage.setItem("version", version);
     location.reload();
   };
 

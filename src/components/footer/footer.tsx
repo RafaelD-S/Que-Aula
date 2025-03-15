@@ -1,5 +1,6 @@
 import Warning from "../waning/warning";
 import "./footerStyle.scss";
+import { version } from "../../../package.json";
 
 const Footer = () => {
   const eraseCalendar = () => {
@@ -26,7 +27,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="footer__credits">
-        Beta V2 - Made By{" "}
+        {version} - Made By{" "}
         <a href="https://github.com/RafaelD-S" target="blank_">
           Rafael Dantas Silva
         </a>
