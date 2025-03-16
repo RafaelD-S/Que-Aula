@@ -1,6 +1,7 @@
 import { IDropdown } from "./headerDropdown.interface";
 import ArrowDown from "../../../assets/arrow-down.svg";
 import "./headerDropdown.style.scss";
+import { Link } from "react-router-dom";
 
 const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDropdown) => {
   const navButtonClass = navSwitch ? "headerDropdown__button--focus" : "";
@@ -19,9 +20,15 @@ const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDr
 
       {navSwitch &&
         dropdownItems.map((item, index) => (
-          <div onClick={() => switchWeekday(index + 1)} className="headerDropdown-item" key={index}>
-            <h3 className="headerDropdown-item__text">{item}</h3>
-          </div>
+          <Link to="/">
+            <div
+              onClick={() => switchWeekday(index + 1)}
+              className="headerDropdown-item"
+              key={index}
+            >
+              <h3 className="headerDropdown-item__text">{item}</h3>
+            </div>
+          </Link>
         ))}
     </nav>
   );
