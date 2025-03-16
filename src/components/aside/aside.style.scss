@@ -24,6 +24,10 @@
   &__header {
     display: flex;
     justify-content: space-between;
+
+    &__close {
+      cursor: pointer;
+    }
   }
 
   &__main {
