@@ -1,6 +1,6 @@
 import { IDropdown } from "./headerDropdown.interface";
 import ArrowDown from "../../../assets/arrow-down.svg";
-import "./headerDropdown.scss";
+import "./headerDropdown.style.scss";
 
 const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDropdown) => {
   const navButtonClass = navSwitch ? "headerDropdown__button--focus" : "";
