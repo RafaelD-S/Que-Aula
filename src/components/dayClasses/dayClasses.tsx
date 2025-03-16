@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./dayClassesStyle.scss";
-import { IClasses, IDayClasses, ISectionArray } from "./dayClassesInterface";
+import "./dayClasses.style.scss";
+import { IClasses, IDayClasses, ISectionArray } from "./dayClasses.interface";
 import { IClassesData } from "../../types/dataClasses.interface";
 
 const DayClasses = ({ currentWeekday }: IDayClasses) => {

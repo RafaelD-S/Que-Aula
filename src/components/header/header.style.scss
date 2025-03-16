@@ -1,0 +1,28 @@
+@use "../../style/variables" as var;
+
+.header {
+  margin-bottom: 5rem;
+  position: relative;
+
+  &__title {
+    background-color: var.$blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var.$blue-white;
+    text-align: center;
+    height: 68px;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__reset {
+    position: absolute;
+    padding: 0.5rem;
+    right: 1.5rem;
+    display: flex;
+    cursor: pointer;
+  }
+}

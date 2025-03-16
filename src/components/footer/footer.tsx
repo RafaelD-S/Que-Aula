@@ -1,5 +1,5 @@
 import Warning from "../waning/warning";
-import "./footerStyle.scss";
+import "./footer.style.scss";
 import { version } from "../../../package.json";
 
 const Footer = () => {
