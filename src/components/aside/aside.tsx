@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Close from "../../assets/close.svg";
 import "./aside.style.scss";
 import Footer from "../footer/footer";
+import { Link } from "react-router-dom";
 
 const Aside = ({ children }: any) => {
   const [isOpenState, setIsOpenState] = useState(false);
@@ -23,16 +24,24 @@ const Aside = ({ children }: any) => {
         <div className="aside" onClick={handleOverlayClick}>
           <div className="aside__container" ref={asideRef}>
             <div className="aside__header">
-              <img src="./public/logo.svg" alt="" />
-              <figure className="aside__header__close">
+              <Link to="/">
+                <figure className="aside__header__logo" onClick={() => setIsOpenState(false)}>
+                  <img src="./public/logo.svg" alt="" />
+                </figure>
+              </Link>
+              <figure className="aside__header__close" onClick={() => setIsOpenState(false)}>
                 <img src={Close} alt="close" />
               </figure>
             </div>
             <div className="aside__content">
               <div className="aside__main">
-                <nav className="aside__main__nav">
-                  <div className="aside__main__nav__item">Página Inicial</div>
-                  <div className="aside__main__nav__item">Todas as Aulas</div>
+                <nav className="aside__main__nav" onClick={() => setIsOpenState(false)}>
+                  <Link to="/">
+                    <div className="aside__main__nav__item">Página Inicial</div>
+                  </Link>
+                  <Link to="/todas-as-aulas">
+                    <div className="aside__main__nav__item">Todas as Aulas</div>
+                  </Link>
                 </nav>
               </div>
               <div className="aside__footer">

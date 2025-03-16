@@ -6,6 +6,7 @@ import { useState } from "react";
 import { IHeader } from "./header.interface";
 import DropDown from "./views/headerDropdown";
 import Aside from "../aside/aside";
+import { Link } from "react-router-dom";
 
 const Header = ({ switchWeekday, weekDays }: IHeader) => {
   const [navSwitch, setNavSwitch] = useState(false);
@@ -13,7 +14,9 @@ const Header = ({ switchWeekday, weekDays }: IHeader) => {
   return (
     <header className="header">
       <section className="header__title" onClick={() => setNavSwitch(false)}>
-        <h1>Que Aula?</h1>
+        <Link to="/">
+          <h1>Que Aula?</h1>
+        </Link>
         <Aside>
           <figure className="header__menu">
             <img src={Menu} alt="menu" />
