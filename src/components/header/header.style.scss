@@ -18,9 +18,10 @@
     }
   }
 
-  &__reset {
+  &__menu {
     position: absolute;
-    padding: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     right: 1.5rem;
     display: flex;
     cursor: pointer;

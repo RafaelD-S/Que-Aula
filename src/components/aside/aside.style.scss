@@ -1,0 +1,51 @@
+@use "../../style/variables" as var;
+
+.aside {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 24px;
+    text-align: left;
+    background-color: var.$black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 320px;
+    width: 80%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__main {
+    &__nav {
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        color: var.$blue-light-gray;
+        font-weight: 600;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var.$divider-color;
+        padding: 0 8px;
+        height: 64px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__footer {
+    text-align: center;
+  }
+}

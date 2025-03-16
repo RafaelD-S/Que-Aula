@@ -49,7 +49,11 @@ function App() {
         <DayClasses currentWeekday={currentWeekday} />
       )}
       <Modal isModalOpen={isModalOpen} />
-      <Footer />
+      <Footer
+        calendarMessage="Criar um novo calendário"
+        feedbackMessage="Achou algo ou quer dar uma sugestão?"
+        hasCredits
+      />
     </>
   );
 }
