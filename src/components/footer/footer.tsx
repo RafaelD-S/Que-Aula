@@ -23,7 +23,7 @@ const Footer = ({
         <a className="footer__new-calendar">{calendarMessage}</a>
       </Warning>
       <div className="footer__feedback">
-        {feedbackMessage}
+        {feedbackMessage ? feedbackMessage + " " : ""}
         <a
           target="_blank"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link"
