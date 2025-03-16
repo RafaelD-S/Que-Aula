@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Close from "../../assets/close.svg";
+import Logo from "/logo.svg";
 import "./aside.style.scss";
 import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ const Aside = ({ children }: any) => {
             <div className="aside__header">
               <Link to="/">
                 <figure className="aside__header__logo" onClick={() => setIsOpenState(false)}>
-                  <img src="./public/logo.svg" alt="" />
+                  <img src={Logo} alt="" />
                 </figure>
               </Link>
               <figure className="aside__header__close" onClick={() => setIsOpenState(false)}>
