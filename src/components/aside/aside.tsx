@@ -4,8 +4,9 @@ import Logo from "/logo.svg";
 import "./aside.style.scss";
 import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
+import { IAside } from "./aside.interface";
 
-const Aside = ({ children }: any) => {
+const Aside = ({ children }: IAside) => {
   const [isOpenState, setIsOpenState] = useState(false);
   const asideRef = useRef<HTMLDivElement>(null);
 
