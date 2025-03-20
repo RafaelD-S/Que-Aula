@@ -6,7 +6,7 @@ import Calendar from "./pages/calendar/calendar";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Modal from "./components/modal/modal";
-import Warning from "./components/waning/warning";
+import Warning from "./components/warning/warning";
 import { version } from "../package.json";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
