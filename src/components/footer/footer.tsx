@@ -1,4 +1,4 @@
-import Warning from "../waning/warning";
+import Warning from "../warning/warning";
 import "./footer.style.scss";
 import { version } from "../../../package.json";
 import { IFooter } from "./footer.interface";
