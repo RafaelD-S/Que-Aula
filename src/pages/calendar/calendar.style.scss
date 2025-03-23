@@ -1,8 +1,6 @@
 @use "../../style/variables" as var;
 
 .calendar {
-  color: white;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,12 +12,25 @@
     text-align: center;
     color: var.$white;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 24px;
+    line-height: 100%;
   }
 
   &__schedule {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    width: 50px;
+    gap: 30px;
+
+    &__item {
+      color: var.$white;
+      font-size: 10px;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    h3:first-child {
+      border-bottom: 1px solid #7575c96c;
+    }
   }
 }
