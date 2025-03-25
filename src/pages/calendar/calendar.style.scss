@@ -113,4 +113,22 @@
       }
     }
   }
+
+  &__button-container {
+    padding: 10px 0 0;
+
+    &__button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+
+      background-color: var.$blue;
+      color: var.$blue-white;
+
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+  }
 }
