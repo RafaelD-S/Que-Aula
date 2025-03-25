@@ -3,34 +3,113 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  padding: 0 15px;
   width: 100%;
   gap: 2rem;
 
-  &__title {
-    text-align: center;
+  &-title {
     color: var.$white;
-    font-size: 1.5rem;
+    text-align: center;
     font-size: 24px;
     line-height: 100%;
   }
 
-  &__schedule {
-    display: flex;
-    flex-direction: column;
-    width: 50px;
-    gap: 30px;
+  &__container {
+    width: 100%;
 
-    &__item {
+    display: grid;
+    grid-template-columns: 50px repeat(5, 1fr);
+    grid-template-areas:
+      ". class-seg class-ter class-qua class-qui class-sex"
+      "schedule class-seg class-ter class-qua class-qui class-sex"
+      "schedule class-seg class-ter class-qua class-qui class-sex"
+      "schedule class-seg class-ter class-qua class-qui class-sex"
+      "schedule class-seg class-ter class-qua class-qui class-sex"
+      "schedule class-seg class-ter class-qua class-qui class-sex";
+    grid-template-rows: 30px;
+    gap: 5px 15px;
+  }
+
+  &__schedule {
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(5, 60px);
+
+    grid-area: schedule;
+
+    &__period {
       color: var.$white;
+
       font-size: 10px;
       line-height: 16px;
-      text-align: center;
+
+      &:first-child {
+        border-bottom: 1px solid #7575c9;
+      }
+    }
+  }
+
+  &__class {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    &--seg {
+      grid-area: class-seg;
+    }
+    &--ter {
+      grid-area: class-ter;
+    }
+    &--qua {
+      grid-area: class-qua;
+    }
+    &--qui {
+      grid-area: class-qui;
+    }
+    &--sex {
+      grid-area: class-sex;
     }
 
-    h3:first-child {
-      border-bottom: 1px solid #7575c96c;
+    &__day {
+      &-title {
+        color: var.$white;
+        text-transform: uppercase;
+        font-size: 10px;
+        line-height: 16px;
+      }
+    }
+
+    &__info {
+      border-bottom: 1px solid #a2bfe240;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-title {
+        color: var.$blue-white;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      &-classroom {
+        color: var.$blue-weak-emphasis;
+        font-size: 6px;
+        font-weight: 500;
+        line-height: 122%;
+      }
+
+      &-empty {
+        color: var.$blue-gray;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 16px;
+      }
     }
   }
 }
