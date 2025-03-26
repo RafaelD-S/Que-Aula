@@ -31,6 +31,8 @@
       "schedule class-seg class-ter class-qua class-qui class-sex";
     grid-template-rows: 30px;
     gap: 5px 10px;
+
+    padding: 10px 0;
   }
 
   &__schedule {
@@ -115,9 +117,8 @@
   }
 
   &__button-container {
-    padding: 10px 0 0;
-
     &__button {
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;

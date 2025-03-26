@@ -1,9 +1,12 @@
 import "./calendar.style.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { IClasses } from "./calendar.interface";
 import { IClassesData } from "../../types/dataClasses.interface";
+import html2canvas from "html2canvas";
 
 const Calendar = () => {
+  const calendarRef = useRef(null);
+
   const [classes, setClasses] = useState<IClasses[]>([
     {
       day: "Domingo",
@@ -100,12 +103,43 @@ const Calendar = () => {
     return organizedSchedule;
   };
 
-  const saveImage = () => {};
+  const saveImage = () => {
+    if (!calendarRef.current) return;
+
+    html2canvas(calendarRef.current, {
+      backgroundColor: "#0a1927",
+      useCORS: true,
+      scale: 2,
+    }).then((canvas) => {
+      const padding = 20;
+
+      const newCanvas = document.createElement("canvas");
+      const ctx = newCanvas.getContext("2d");
+
+      if (!ctx) {
+        console.error("Erro ao obter contexto do canvas.");
+        return;
+      }
+
+      newCanvas.width = canvas.width + 2 * padding;
+      newCanvas.height = canvas.height + 2 * padding;
+
+      ctx.fillStyle = "#0a1927";
+      ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+      ctx.drawImage(canvas, padding, padding);
+
+      const link = document.createElement("a");
+      link.href = newCanvas.toDataURL("image/png");
+      link.download = "calendario.png";
+      link.click();
+    });
+  };
 
   return (
     <main className="calendar">
       <h2 className="calendar-title">Todas as Aulas</h2>
-      <article className="calendar__container">
+      <article ref={calendarRef} className="calendar__container">
         <div className="calendar__schedule">
           {Array.from({ length: 6 }, (_, i) => (
             <div
