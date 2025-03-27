@@ -6,7 +6,6 @@ import html2canvas from "html2canvas";
 
 const Calendar = () => {
   const calendarRef = useRef(null);
-
   const [classes, setClasses] = useState<IClasses[]>([
     {
       day: "Domingo",
@@ -54,9 +53,9 @@ const Calendar = () => {
         };
       })
     );
-
-    console.log(classes);
   }, []);
+
+  console.log(classes);
 
   const definePeriod = (num: number) => {
     switch (num) {
@@ -100,6 +99,7 @@ const Calendar = () => {
       }
     });
 
+    console.log(organizedSchedule);
     return organizedSchedule;
   };
 
