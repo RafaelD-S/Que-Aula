@@ -138,14 +138,11 @@ const Calendar = () => {
 
   return (
     <main className="calendar">
-      <h2 className="calendar-title">Todas as Aulas</h2>
+      <h2 className="calendar__title">Todas as Aulas</h2>
       <article ref={calendarRef} className="calendar__container">
         <div className="calendar__schedule">
           {Array.from({ length: 6 }, (_, i) => (
-            <div
-              key={i}
-              className={`calendar__schedule__periods calendar__schedule__periods${i}`}
-            >
+            <div key={i}>
               <h3 className="calendar__schedule__period">{definePeriod(i)}</h3>
               <h3 className="calendar__schedule__period">
                 {definePeriod(i + 1)}
@@ -167,18 +164,20 @@ const Calendar = () => {
 
               {sortByPeriod(dayItem.classes) &&
                 organizeClass(dayItem.classes).map((classInfo, index) => (
-                  <div key={index} className="calendar__class__info">
+                  <div key={index} className="calendar__class__info-item">
                     {classInfo ? (
                       <>
-                        <h3 className="calendar__class__info-title">
+                        <h3 className="calendar__class__info-item-title">
                           {classInfo.className}
                         </h3>
-                        <h5 className="calendar__class__info-classroom">
+                        <h5 className="calendar__class__info-item-classroom">
                           {classInfo.classroom || "-----"}
                         </h5>
                       </>
                     ) : (
-                      <h3 className="calendar__class__info-empty">Vazio</h3>
+                      <h3 className="calendar__class__info-item--empty">
+                        Vazio
+                      </h3>
                     )}
                   </div>
                 ))}
