@@ -18,5 +18,6 @@ export interface ISectionArray {
     whichClass?: string;
     classDescription?: string;
     className?: string;
+    greve?: boolean;
   } | null;
 }

@@ -38,6 +38,7 @@
     margin-right: 2px;
     text-align: center;
     display: grid;
+    gap: 5px;
     grid-template-rows: repeat(5, 60px);
 
     grid-area: schedule;
@@ -59,6 +60,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    gap: 5px;
 
     &--seg {
       grid-area: class-seg;
@@ -86,7 +88,7 @@
     }
 
     &__info-item {
-      border-bottom: 1px solid #a2bfe240;
+      border-bottom: 1px solid var.$divider-color;
       height: 60px;
       display: flex;
       flex-direction: column;
@@ -99,11 +101,31 @@
         line-height: 16px;
       }
 
-      &-classroom {
+      &-description {
+        margin-top: 2px;
         color: var.$blue-weak-emphasis;
         font-size: 6px;
         font-weight: 500;
         line-height: 122%;
+      }
+
+      &--greve {
+        border-bottom: 1px solid var.$red;
+        background-color: var.$divider-color-strike;
+        &-title {
+          color: var.$light-red;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        &-description {
+          margin-top: 2px;
+          color: var.$light-red;
+          font-size: 6px;
+          font-weight: 500;
+          line-height: 122%;
+        }
       }
 
       &--empty {

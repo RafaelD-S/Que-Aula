@@ -41,17 +41,19 @@ const Calendar = () => {
     const storedClasses: IClassesData[] = JSON.parse(
       localStorage.getItem("chosenClasses") || "[]"
     );
-    const specificClasses = storedClasses
-      .flatMap((item) => item.classes)
-      .filter((f) => f.selected);
 
     setClasses((prev) =>
-      prev.map((item, index) => {
-        return {
-          ...item,
-          classes: specificClasses.filter((f) => +f.weekDay === index),
-        };
-      })
+      prev.map((item, index) => ({
+        ...item,
+        classes: storedClasses
+          .flatMap((classData) =>
+            classData.classes.map((classItem) => ({
+              ...classItem,
+              greve: classData.greve,
+            }))
+          )
+          .filter((f) => f.selected && +f.weekDay === index),
+      }))
     );
   }, []);
 
@@ -164,22 +166,39 @@ const Calendar = () => {
 
               {sortByPeriod(dayItem.classes) &&
                 organizeClass(dayItem.classes).map((classInfo, index) => (
-                  <div key={index} className="calendar__class__info-item">
+                  <>
                     {classInfo ? (
-                      <>
-                        <h3 className="calendar__class__info-item-title">
+                      <div
+                        key={index}
+                        className={`calendar__class__info-item calendar__class__info-item${
+                          classInfo.greve ? "--greve" : ""
+                        }`}
+                      >
+                        <h3
+                          className={`calendar__class__info-item${
+                            classInfo.greve ? "--greve" : ""
+                          }-title`}
+                        >
                           {classInfo.className}
                         </h3>
-                        <h5 className="calendar__class__info-item-classroom">
-                          {classInfo.classroom || "-----"}
+                        <h5
+                          className={`calendar__class__info-item${
+                            classInfo.greve ? "--greve" : ""
+                          }-description`}
+                        >
+                          {classInfo.greve
+                            ? "GREVE"
+                            : classInfo.classroom || "-----"}
                         </h5>
-                      </>
+                      </div>
                     ) : (
-                      <h3 className="calendar__class__info-item--empty">
-                        Vazio
-                      </h3>
+                      <div key={index} className="calendar__class__info-item">
+                        <h3 className="calendar__class__info-item--empty">
+                          Vazio
+                        </h3>
+                      </div>
                     )}
-                  </div>
+                  </>
                 ))}
             </div>
           ))}
