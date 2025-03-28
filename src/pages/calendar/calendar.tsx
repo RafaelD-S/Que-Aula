@@ -57,8 +57,6 @@ const Calendar = () => {
     );
   }, []);
 
-  console.log(classes);
-
   const definePeriod = (num: number) => {
     switch (num) {
       case 0:
@@ -103,7 +101,6 @@ const Calendar = () => {
       }
     });
 
-    console.log(organizedSchedule);
     return organizedSchedule;
   };
 
@@ -113,7 +110,8 @@ const Calendar = () => {
     html2canvas(calendarRef.current, {
       backgroundColor: "#0a1927",
       useCORS: true,
-      scale: 2,
+      scale: 2,      
+      windowWidth: 400,
     }).then((canvas) => {
       const padding = 20;
 
