@@ -109,9 +109,10 @@
         line-height: 122%;
       }
 
-      &--greve {
+      &--greve,
+      &--full {
         border-bottom: 1px solid var.$red;
-        background-color: var.$divider-color-strike;
+        background-color: var.$background-red;
         &-title {
           color: var.$light-red;
           font-weight: 500;

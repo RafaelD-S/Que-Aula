@@ -90,14 +90,16 @@ const Calendar = () => {
   };
 
   const organizeClass = (classes: any[]) => {
-    let organizedSchedule = Array(6).fill(null);
+    let organizedSchedule: any[][] = Array(6)
+      .fill(null)
+      .map(() => []);
 
     classes.forEach((classInfo) => {
       const startPeriod = +classInfo.period[0];
       const endPeriod = +classInfo.period[classInfo.period.length - 1];
 
       for (let i = startPeriod; i <= endPeriod; i++) {
-        organizedSchedule[i] = classInfo;
+        organizedSchedule[i].push(classInfo);
       }
     });
 
@@ -166,39 +168,63 @@ const Calendar = () => {
 
               {sortByPeriod(dayItem.classes) &&
                 organizeClass(dayItem.classes).map((classInfo, index) => (
-                  <>
-                    {classInfo ? (
-                      <div
-                        key={index}
-                        className={`calendar__class__info-item calendar__class__info-item${
-                          classInfo.greve ? "--greve" : ""
-                        }`}
-                      >
-                        <h3
-                          className={`calendar__class__info-item${
-                            classInfo.greve ? "--greve" : ""
-                          }-title`}
-                        >
-                          {classInfo.className}
-                        </h3>
-                        <h5
-                          className={`calendar__class__info-item${
-                            classInfo.greve ? "--greve" : ""
-                          }-description`}
-                        >
-                          {classInfo.greve
-                            ? "GREVE"
-                            : classInfo.classroom || "-----"}
-                        </h5>
-                      </div>
-                    ) : (
+                  <div key={index} className="calendar__class__info">
+                    {classInfo.length === 0 && (
                       <div key={index} className="calendar__class__info-item">
                         <h3 className="calendar__class__info-item--empty">
                           Vazio
                         </h3>
                       </div>
                     )}
-                  </>
+
+                    {classInfo.length === 1 &&
+                      classInfo.map((info, subIndex) => (
+                        <div
+                          key={subIndex}
+                          className={`calendar__class__info-item calendar__class__info-item${
+                            info.greve ? "--greve" : ""
+                          }`}
+                        >
+                          <h3
+                            className={`calendar__class__info-item${
+                              info.greve ? "--greve" : ""
+                            }-title`}
+                          >
+                            {info.className}
+                          </h3>
+                          <h5
+                            className={`calendar__class__info-item${
+                              info.greve ? "--greve" : ""
+                            }-description`}
+                          >
+                            {info.greve ? "GREVE" : info.classroom || "-----"}
+                          </h5>
+                        </div>
+                      ))}
+
+                    {classInfo.length >= 2 && (
+                      <div
+                        key={index}
+                        className={`calendar__class__info-item calendar__class__info-item--full`}
+                      >
+                        <h3
+                          className={`calendar__class__info-item--full-title`}
+                        >
+                          {classInfo[0].className}
+                        </h3>
+                        <h3
+                          className={`calendar__class__info-item--full-title`}
+                        >
+                          {classInfo[1].className}
+                        </h3>
+                        <h5
+                          className={`calendar__class__info-item--full-description`}
+                        >
+                          {`... mais ${classInfo.length}`}
+                        </h5>
+                      </div>
+                    )}
+                  </div>
                 ))}
             </div>
           ))}
