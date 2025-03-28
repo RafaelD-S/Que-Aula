@@ -31,12 +31,12 @@
     display: grid;
     grid-template-columns: 38px repeat(5, 1fr);
     grid-template-areas:
-      ". class-seg class-ter class-qua class-qui class-sex"
-      "schedule class-seg class-ter class-qua class-qui class-sex"
-      "schedule class-seg class-ter class-qua class-qui class-sex"
-      "schedule class-seg class-ter class-qua class-qui class-sex"
-      "schedule class-seg class-ter class-qua class-qui class-sex"
-      "schedule class-seg class-ter class-qua class-qui class-sex";
+      ". seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex";
     grid-template-rows: 30px;
     gap: 5px;
 
@@ -52,7 +52,7 @@
 
     grid-area: schedule;
 
-    &__period {
+    &-period {
       color: var.$white;
 
       font-size: 10px;
@@ -72,28 +72,26 @@
     gap: 5px;
 
     &--seg {
-      grid-area: class-seg;
+      grid-area: seg;
     }
     &--ter {
-      grid-area: class-ter;
+      grid-area: ter;
     }
     &--qua {
-      grid-area: class-qua;
+      grid-area: qua;
     }
     &--qui {
-      grid-area: class-qui;
+      grid-area: qui;
     }
     &--sex {
-      grid-area: class-sex;
+      grid-area: sex;
     }
 
-    &__day {
-      &-title {
-        color: var.$white;
-        text-transform: uppercase;
-        font-size: 10px;
-        line-height: 16px;
-      }
+    &__day-title {
+      color: var.$white;
+      text-transform: uppercase;
+      font-size: 10px;
+      line-height: 16px;
     }
 
     &__info-item {
@@ -124,19 +122,10 @@
       &--full {
         border-bottom: 1px solid var.$red;
         background-color: var.$background-red;
-        &-title {
-          color: var.$light-red;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 16px;
-        }
 
-        &-description {
-          margin-top: 2px;
+        .calendar__class__info-item-title,
+        .calendar__class__info-item-description {
           color: var.$light-red;
-          font-size: 6px;
-          font-weight: 500;
-          line-height: 122%;
         }
       }
 
@@ -150,20 +139,18 @@
     }
   }
 
-  &__button-container {
-    &__button {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-align: center;
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
 
-      background-color: var.$blue;
-      color: var.$blue-white;
+    background-color: var.$blue;
+    color: var.$blue-white;
 
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-    }
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
   }
 }

@@ -110,7 +110,7 @@ const Calendar = () => {
     html2canvas(calendarRef.current, {
       backgroundColor: "#0a1927",
       useCORS: true,
-      scale: 2,      
+      scale: 2,
       windowWidth: 400,
     }).then((canvas) => {
       const padding = 20;
@@ -145,8 +145,8 @@ const Calendar = () => {
         <div className="calendar__schedule">
           {Array.from({ length: 6 }, (_, i) => (
             <div key={i}>
-              <h3 className="calendar__schedule__period">{definePeriod(i)}</h3>
-              <h3 className="calendar__schedule__period">
+              <h3 className="calendar__schedule-period">{definePeriod(i)}</h3>
+              <h3 className="calendar__schedule-period">
                 {definePeriod(i + 1)}
               </h3>
             </div>
@@ -183,18 +183,10 @@ const Calendar = () => {
                             info.greve ? "--greve" : ""
                           }`}
                         >
-                          <h3
-                            className={`calendar__class__info-item${
-                              info.greve ? "--greve" : ""
-                            }-title`}
-                          >
+                          <h3 className="calendar__class__info-item-title">
                             {info.className}
                           </h3>
-                          <h5
-                            className={`calendar__class__info-item${
-                              info.greve ? "--greve" : ""
-                            }-description`}
-                          >
+                          <h5 className="calendar__class__info-item-description">
                             {info.greve ? "GREVE" : info.classroom || "-----"}
                           </h5>
                         </div>
@@ -205,18 +197,14 @@ const Calendar = () => {
                         key={index}
                         className={`calendar__class__info-item calendar__class__info-item--full`}
                       >
-                        <h3
-                          className={`calendar__class__info-item--full-title`}
-                        >
+                        <h3 className={`calendar__class__info-item-title`}>
                           {classInfo[0].className}
                         </h3>
-                        <h3
-                          className={`calendar__class__info-item--full-title`}
-                        >
+                        <h3 className={`calendar__class__info-item-title`}>
                           {classInfo[1].className}
                         </h3>
                         <h5
-                          className={`calendar__class__info-item--full-description`}
+                          className={`calendar__class__info-item-description`}
                         >
                           {`... mais ${classInfo.length}`}
                         </h5>
@@ -227,38 +215,33 @@ const Calendar = () => {
             </div>
           ))}
       </article>
-      <section className="calendar__button-container">
-        <button
-          className="calendar__button-container__button"
-          onClick={saveImage}
+      <button className="calendar__button" onClick={saveImage}>
+        Salvar imagem do calendário
+        <svg
+          width="14"
+          height="13"
+          viewBox="0 0 14 13"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Salvar imagem do calendário
-          <svg
-            width="14"
-            height="13"
-            viewBox="0 0 14 13"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1.46954 6.49851C1.46954 3.6693 1.46954 2.2547 2.34823 1.37579C3.09272 0.631093 4.22167 0.517369 6.26954 0.5M13.4695 6.49851C13.4695 3.6693 13.4695 2.2547 12.5908 1.37579C11.8464 0.631093 10.7174 0.517369 8.66954 0.5"
-              stroke="#C6F3F5"
-              stroke-linecap="round"
-            />
-            <path
-              d="M6.26954 12.5C4.58939 12.5 3.74931 12.5 3.10757 12.173C2.54309 11.8853 2.08414 11.4262 1.79653 10.8616C1.46954 10.2197 1.46954 9.37938 1.46954 7.69875C1.46954 6.01812 1.46954 5.17784 1.79653 4.53593C2.08414 3.97129 2.54309 3.51222 3.10757 3.22453C3.74931 2.89746 4.58939 2.89746 6.26954 2.89746H8.66954C10.3497 2.89746 11.1898 2.89746 11.8315 3.22453C12.396 3.51222 12.855 3.97129 13.1425 4.53593C13.4695 5.17784 13.4695 6.01812 13.4695 7.69875C13.4695 9.37938 13.4695 10.2197 13.1425 10.8616C12.855 11.4262 12.396 11.8853 11.8315 12.173C11.1898 12.5 10.3497 12.5 8.66954 12.5"
-              stroke="#C6F3F5"
-              stroke-linecap="round"
-            />
-            <path
-              d="M7.46954 5.89819V9.49916M7.46954 9.49916L8.96954 7.99876M7.46954 9.49916L5.96954 7.99876"
-              stroke="#C6F3F5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-      </section>
+          <path
+            d="M1.46954 6.49851C1.46954 3.6693 1.46954 2.2547 2.34823 1.37579C3.09272 0.631093 4.22167 0.517369 6.26954 0.5M13.4695 6.49851C13.4695 3.6693 13.4695 2.2547 12.5908 1.37579C11.8464 0.631093 10.7174 0.517369 8.66954 0.5"
+            stroke="#C6F3F5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M6.26954 12.5C4.58939 12.5 3.74931 12.5 3.10757 12.173C2.54309 11.8853 2.08414 11.4262 1.79653 10.8616C1.46954 10.2197 1.46954 9.37938 1.46954 7.69875C1.46954 6.01812 1.46954 5.17784 1.79653 4.53593C2.08414 3.97129 2.54309 3.51222 3.10757 3.22453C3.74931 2.89746 4.58939 2.89746 6.26954 2.89746H8.66954C10.3497 2.89746 11.1898 2.89746 11.8315 3.22453C12.396 3.51222 12.855 3.97129 13.1425 4.53593C13.4695 5.17784 13.4695 6.01812 13.4695 7.69875C13.4695 9.37938 13.4695 10.2197 13.1425 10.8616C12.855 11.4262 12.396 11.8853 11.8315 12.173C11.1898 12.5 10.3497 12.5 8.66954 12.5"
+            stroke="#C6F3F5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M7.46954 5.89819V9.49916M7.46954 9.49916L8.96954 7.99876M7.46954 9.49916L5.96954 7.99876"
+            stroke="#C6F3F5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
     </main>
   );
 };
