@@ -85,7 +85,7 @@ const Calendar = () => {
   };
 
   const organizeClass = (classes: any[]) => {
-    let organizedSchedule: any[][] = Array(6)
+    const organizedSchedule: any[][] = Array(6)
       .fill(null)
       .map(() => []);
 
