@@ -201,11 +201,13 @@ const Calendar = () => {
                         <h3 className={`calendar__class__info-item-title`}>
                           {classInfo[1].className}
                         </h3>
-                        <h5
-                          className={`calendar__class__info-item-description`}
-                        >
-                          {`... mais ${classInfo.length}`}
-                        </h5>
+                        {classInfo.length > 2 && (
+                          <h5
+                            className={`calendar__class__info-item-description`}
+                          >
+                            {`... mais ${classInfo.length - 2}`}
+                          </h5>
+                        )}
                       </div>
                     )}
                   </div>
