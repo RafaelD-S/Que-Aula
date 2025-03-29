@@ -1,13 +1,5 @@
 @use "../../style/variables" as var;
-
-@mixin dynamicLineClamp($clamp: 3) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $clamp;
-  line-clamp: $clamp;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+@use "../../style/mixins.scss" as mixin;
 
 .calendar {
   display: flex;
@@ -115,7 +107,7 @@
         font-weight: 500;
         line-height: 122%;
 
-        @include dynamicLineClamp;
+        @include mixin.dynamicLineClamp;
       }
 
       &--greve,

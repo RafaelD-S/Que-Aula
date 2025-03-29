@@ -1,0 +1,8 @@
+@mixin dynamicLineClamp($clamp: 3) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $clamp;
+  line-clamp: $clamp;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
