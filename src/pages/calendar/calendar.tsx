@@ -1,12 +1,14 @@
 import "./calendar.style.scss";
 import Download from "../../assets/download.svg";
 import { useEffect, useState, useRef } from "react";
+import Warning from "../../components/warning/warning";
 import { IClasses } from "./calendar.interface";
 import { IClassesData } from "../../types/dataClasses.interface";
 import html2canvas from "html2canvas";
 
 const Calendar = () => {
   const calendarRef = useRef(null);
+  const [warning, setWarning] = useState(false);
   const [classes, setClasses] = useState<IClasses[]>([
     {
       day: "Domingo",
@@ -117,7 +119,7 @@ const Calendar = () => {
       const ctx = newCanvas.getContext("2d");
 
       if (!ctx) {
-        console.error("Erro ao obter contexto do canvas.");
+        setWarning(true);
         return;
       }
 
@@ -138,6 +140,22 @@ const Calendar = () => {
 
   return (
     <main className="calendar">
+      {warning && (
+        <div className="calendar__warning">
+          <Warning
+            children={<></>}
+            message="Não foi possível fazer o download da imagem. Tente novamente mais tarde."
+            type="info"
+            opened
+            isClosable
+            buttonLabel="Fechar"
+            onClickButton={() => {
+              setWarning(false);
+            }}
+          />
+        </div>
+      )}
+
       <h2 className="calendar__title">Todas as Aulas</h2>
       <article ref={calendarRef} className="calendar__container">
         <div className="calendar__schedule">

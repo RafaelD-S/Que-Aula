@@ -10,6 +10,10 @@
   width: 100%;
   gap: 2rem;
 
+  &__warning {
+    position: absolute;
+  }
+
   &__title {
     color: var.$white;
     text-align: center;
