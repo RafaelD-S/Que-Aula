@@ -59,7 +59,7 @@
       line-height: 16px;
 
       &:first-child {
-        border-bottom: 1px solid #7575c9;
+        border-bottom: 1px solid var.$divider-color;
       }
     }
   }
