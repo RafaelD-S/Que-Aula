@@ -76,10 +76,7 @@ const Calendar = () => {
     }
   };
 
-  const checkDate = (dia: string) => {
-    if (dia === "Domingo" || dia === "Sábado") return false;
-    else return true;
-  };
+  const checkDate = (dia: string) => dia !== "Domingo" && dia !== "Sábado";
 
   const sortByPeriod = (dayClasses: any[]) => {
     return dayClasses.sort(
