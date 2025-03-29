@@ -1,10 +1,12 @@
-import Reset from "../../assets/refresh.svg";
-import ArrowDown from "../../assets/arrow-down.svg";
+import Menu from "../../assets/menu.svg";
 
-import "./headerStyle.scss";
+import "./header.style.scss";
 
 import { useState } from "react";
-import { IDropdown, IHeader } from "./header.interface";
+import { IHeader } from "./header.interface";
+import DropDown from "./views/headerDropdown";
+import Aside from "../aside/aside";
+import { Link } from "react-router-dom";
 
 const Header = ({ switchWeekday, weekDays }: IHeader) => {
   const [navSwitch, setNavSwitch] = useState(false);
@@ -12,10 +14,14 @@ const Header = ({ switchWeekday, weekDays }: IHeader) => {
   return (
     <header className="header">
       <section className="header__title" onClick={() => setNavSwitch(false)}>
-        <h1>Que Aula?</h1>
-        <figure className="header__reset" onClick={() => location.reload()}>
-          <img src={Reset} alt="reset" />
-        </figure>
+        <Link to="/">
+          <h1>Que Aula?</h1>
+        </Link>
+        <Aside>
+          <figure className="header__menu">
+            <img src={Menu} alt="menu" />
+          </figure>
+        </Aside>
       </section>
       <DropDown
         setNavSwitch={setNavSwitch}
@@ -26,34 +32,4 @@ const Header = ({ switchWeekday, weekDays }: IHeader) => {
     </header>
   );
 };
-
-function DropDown({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDropdown) {
-  const navButtonClass = navSwitch ? "header__dropDown__button--focus" : "";
-  const navButtonClassIcon = navSwitch ? "header__dropDown__button__icon--focus" : "";
-
-  return (
-    <nav className="header__dropDown" onClick={() => setNavSwitch((prev) => !prev)}>
-      <button className={`header__dropDown__button ${navButtonClass}`}>
-        <h4 className="header__dropDown__button__text">Dias da Semana</h4>
-        <img
-          src={ArrowDown}
-          alt="open-dropdown"
-          className={`header__dropDown__button__icon ${navButtonClassIcon}`}
-        />
-      </button>
-
-      {navSwitch &&
-        dropdownItems.map((item, index) => (
-          <div
-            onClick={() => switchWeekday(index + 1)}
-            className="header__dropDown-item"
-            key={index}
-          >
-            <h3 className="header__dropDown-item__text">{item}</h3>
-          </div>
-        ))}
-    </nav>
-  );
-}
-
 export default Header;

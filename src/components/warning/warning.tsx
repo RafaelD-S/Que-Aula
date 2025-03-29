@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import warning from "../../assets/warning.svg";
 import info from "../../assets/info.svg";
 import { IWarning } from "./warning.interface";
-import "./warningStyle.scss";
+import "./warning.style.scss";
 
 const Warning = ({
   children,
