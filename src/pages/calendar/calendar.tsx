@@ -108,7 +108,7 @@ const Calendar = () => {
     if (!calendarRef.current) return;
 
     html2canvas(calendarRef.current, {
-      backgroundColor: "#0a1927",
+      backgroundColor: "#080e13",
       useCORS: true,
       scale: 2,
       windowWidth: 400,
@@ -126,7 +126,7 @@ const Calendar = () => {
       newCanvas.width = canvas.width + 2 * padding;
       newCanvas.height = canvas.height + 2 * padding;
 
-      ctx.fillStyle = "#0a1927";
+      ctx.fillStyle = "#080e13";
       ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
       ctx.drawImage(canvas, padding, padding);
