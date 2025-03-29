@@ -133,7 +133,7 @@ const Calendar = () => {
 
       const link = document.createElement("a");
       link.href = newCanvas.toDataURL("image/png");
-      link.download = "calendario.png";
+      link.download = "que-aula-calendario.png";
       link.click();
     });
   };
