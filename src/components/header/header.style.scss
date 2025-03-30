@@ -13,7 +13,12 @@
     text-align: center;
     height: 68px;
 
+    a {
+      width: fit-content;
+    }
+
     h1 {
+      border: 1px solid red;
       font-size: 1.75rem;
       &:hover {
         text-decoration: none;
