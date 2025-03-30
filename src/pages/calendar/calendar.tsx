@@ -103,11 +103,12 @@ const Calendar = () => {
 
     return organizedSchedule;
   };
+
   const saveImage = () => {
+    if (!calendarRef.current) return;
+
     const backgroundColor = "#080e13";
     const imgBackgroundColor = "#0d4852";
-
-    if (!calendarRef.current) return;
 
     html2canvas(calendarRef.current, {
       backgroundColor: backgroundColor,
@@ -141,10 +142,10 @@ const Calendar = () => {
 
       ctx.font = "700 40px Montserrat, Arial, Helvetica, sans-serif";
       ctx.fillStyle = "#c6f3f5";
-      ctx.textAlign = "center"; // Alinhar texto à esquerda
+      ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      const textX = newCanvas.width / 2; // Posição do texto à esquerda
+      const textX = newCanvas.width / 2;
       const textY = (padding + textHeight) / 2;
 
       ctx.fillText("Que Aula?", textX, textY);
