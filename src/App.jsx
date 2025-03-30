@@ -32,22 +32,22 @@ function App() {
     else verifyVersion();
   });
 
-  const updateCalendar = () => {
-    localStorage.clear();
-    location.reload();
-  };
-
-  if (urgentUpdate)
-    return (
-      <Warning
-        opened
-        isClosable={false}
-        message="Sua versão está desatualizada."
-        buttonLabel="Atualizar"
-        type="info"
-        onClickButton={() => updateCalendar()}
-      />
-    );
+  // Code comented until the new classrooms are defined for the subjects
+  // const updateCalendar = () => {
+  //   localStorage.clear();
+  //   location.reload();
+  // };
+  // if (urgentUpdate)
+  //   return (
+  //     <Warning
+  //       opened
+  //       isClosable={false}
+  //       message="Sua versão está desatualizada."
+  //       buttonLabel="Atualizar"
+  //       type="info"
+  //       onClickButton={() => updateCalendar()}
+  //     />
+  //   );
 
   return (
     <BrowserRouter>
