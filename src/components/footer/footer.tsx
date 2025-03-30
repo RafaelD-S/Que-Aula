@@ -1,7 +1,13 @@
-import Warning from "../waning/warning";
-import "./footerStyle.scss";
+import Warning from "../warning/warning";
+import "./footer.style.scss";
+import { version } from "../../../package.json";
+import { IFooter } from "./footer.interface";
 
-const Footer = () => {
+const Footer = ({
+  calendarMessage = "Apagar calendário",
+  feedbackMessage,
+  hasCredits = true,
+}: IFooter) => {
   const eraseCalendar = () => {
     localStorage.clear();
     location.reload();
@@ -14,10 +20,10 @@ const Footer = () => {
         buttonLabel="sim"
         onClickButton={eraseCalendar}
       >
-        <a className="footer__new-calendar">Criar um novo calendário</a>
+        <a className="footer__new-calendar">{calendarMessage}</a>
       </Warning>
       <div className="footer__feedback">
-        Achou algo ou quer dar uma sugestão?{" "}
+        {feedbackMessage ? feedbackMessage + " " : ""}
         <a
           target="_blank"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link"
@@ -26,10 +32,13 @@ const Footer = () => {
         </a>
       </div>
       <div className="footer__credits">
-        Beta V2 - Made By{" "}
-        <a href="https://github.com/RafaelD-S" target="blank_">
-          Rafael Dantas Silva
-        </a>
+        {version}
+        {hasCredits && (
+          <a href="https://github.com/RafaelD-S" target="blank_">
+            {" "}
+            - Made By Rafael Dantas Silva
+          </a>
+        )}
       </div>
     </footer>
   );

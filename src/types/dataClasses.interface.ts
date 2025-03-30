@@ -7,7 +7,7 @@ export interface IClassesData {
   greve: boolean;
   classes: {
     weekDay: string;
-    period: string;
+    period: string[];
     teacher: string;
     selected?: boolean;
     classList?: string[];
