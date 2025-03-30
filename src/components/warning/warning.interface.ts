@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export interface IWarning {
-  children: ReactNode;
+  children?: ReactNode;
   message: string;
   buttonLabel?: string;
   onClickButton?: () => void;

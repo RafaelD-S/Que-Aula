@@ -41,9 +41,7 @@ const Calendar = () => {
   ]);
 
   useEffect(() => {
-    const storedClasses: IClassesData[] = JSON.parse(
-      localStorage.getItem("chosenClasses") || "[]"
-    );
+    const storedClasses: IClassesData[] = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
 
     setClasses((prev) =>
       prev.map((item, index) => ({
@@ -82,9 +80,7 @@ const Calendar = () => {
   const checkDate = (dia: string) => dia !== "Domingo" && dia !== "Sábado";
 
   const sortByPeriod = (dayClasses: ClassInfo[]) => {
-    return dayClasses.sort(
-      (class1, class2) => Number(class1.period[0]) - Number(class2.period[0])
-    );
+    return dayClasses.sort((class1, class2) => Number(class1.period[0]) - Number(class2.period[0]));
   };
 
   const organizeClass = (classes: ClassInfo[]) => {
@@ -113,12 +109,12 @@ const Calendar = () => {
     html2canvas(calendarRef.current, {
       backgroundColor: backgroundColor,
       useCORS: true,
-      scale: 2,
-      windowWidth: 400,
+      scale: 4,
+      windowWidth: 420,
     }).then((canvas) => {
       const padding = 20;
       const bottomPadding = 10;
-      const textHeight = 50;
+      const textHeight = 96;
 
       const newCanvas = document.createElement("canvas");
       const ctx = newCanvas.getContext("2d");
@@ -140,7 +136,7 @@ const Calendar = () => {
       ctx.fillStyle = imgBackgroundColor;
       ctx.fillRect(0, padding, newCanvas.width, textHeight);
 
-      ctx.font = "700 40px Montserrat, Arial, Helvetica, sans-serif";
+      ctx.font = "700 64px Montserrat, Arial, Helvetica, sans-serif";
       ctx.fillStyle = "#c6f3f5";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -161,31 +157,25 @@ const Calendar = () => {
 
   return (
     <main className="calendar">
-      {warning && (
-        <div className="calendar__warning">
-          <Warning
-            children={<></>}
-            message="Não foi possível fazer o download da imagem. Tente novamente mais tarde."
-            type="info"
-            opened
-            isClosable
-            buttonLabel="Fechar"
-            onClickButton={() => {
-              setWarning(false);
-            }}
-          />
-        </div>
-      )}
-
+      <div className="calendar__warning">
+        <Warning
+          message="Não foi possível fazer o download da imagem. Tente novamente mais tarde."
+          type="info"
+          opened={warning}
+          isClosable
+          buttonLabel="Fechar"
+          onClickButton={() => {
+            setWarning(false);
+          }}
+        />
+      </div>
       <h2 className="calendar__title">Todas as Aulas</h2>
       <article ref={calendarRef} className="calendar__container">
         <div className="calendar__schedule">
           {Array.from({ length: 6 }, (_, i) => (
             <div key={i}>
               <h3 className="calendar__schedule-period">{definePeriod(i)}</h3>
-              <h3 className="calendar__schedule-period">
-                {definePeriod(i + 1)}
-              </h3>
+              <h3 className="calendar__schedule-period">{definePeriod(i + 1)}</h3>
             </div>
           ))}
         </div>
@@ -193,10 +183,7 @@ const Calendar = () => {
         {classes
           .filter((dayItem) => checkDate(dayItem.day))
           .map((dayItem, id) => (
-            <div
-              key={id}
-              className={`calendar__class calendar__class--${dayItem.day}`}
-            >
+            <div key={id} className={`calendar__class calendar__class--${dayItem.day}`}>
               <div className="calendar__class__day">
                 <h3 className="calendar__class__day-title">{dayItem.day}</h3>
               </div>
@@ -206,9 +193,7 @@ const Calendar = () => {
                   <div key={index} className="calendar__class__info">
                     {classInfo.length === 0 && (
                       <div key={index} className="calendar__class__info-item">
-                        <h3 className="calendar__class__info-item--empty">
-                          Vazio
-                        </h3>
+                        <h3 className="calendar__class__info-item--empty">Vazio</h3>
                       </div>
                     )}
 
@@ -220,9 +205,7 @@ const Calendar = () => {
                             info.greve ? "--greve" : ""
                           }`}
                         >
-                          <h3 className="calendar__class__info-item-title">
-                            {info.className}
-                          </h3>
+                          <h3 className="calendar__class__info-item-title">{info.className}</h3>
                           <h5 className="calendar__class__info-item-description">
                             {info.greve ? "GREVE" : info.classroom || "-----"}
                           </h5>
@@ -241,9 +224,7 @@ const Calendar = () => {
                           {classInfo[1].className}
                         </h3>
                         {classInfo.length > 2 && (
-                          <h5
-                            className={`calendar__class__info-item-description`}
-                          >
+                          <h5 className={`calendar__class__info-item-description`}>
                             {`... mais ${classInfo.length - 2}`}
                           </h5>
                         )}

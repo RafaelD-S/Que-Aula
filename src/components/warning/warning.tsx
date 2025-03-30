@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import warning from "../../assets/warning.svg";
 import info from "../../assets/info.svg";
 import { IWarning } from "./warning.interface";
@@ -23,6 +23,10 @@ const Warning = ({
       setIsOpenState(false);
     }
   };
+
+  useEffect(() => {
+    setIsOpenState(opened);
+  }, [opened]);
 
   if (disabled) return children;
 
