@@ -4,14 +4,14 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.603);
-  z-index: +1;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.25rem;
 
   &__content {
-    z-index: +3;
+    z-index: 11;
     background-color: rgb(8, 14, 19);
     display: flex;
     min-width: 200px;

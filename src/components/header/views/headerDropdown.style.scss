@@ -1,0 +1,70 @@
+@use "../../../style/variables" as var;
+
+.headerDropdown {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var.$blue-dark;
+  transition: bottom 0.3s ease-in-out;
+  flex-direction: column;
+  opacity: 0.95;
+  z-index: 1;
+
+  &__button {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+
+    &--focus {
+      height: 52px;
+      padding: 1rem 0;
+      width: 100%;
+      justify-content: center;
+    }
+
+    &__text {
+      color: var.$blue-white;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 0.2rem;
+      font-size: 1rem;
+    }
+
+    &__icon {
+      width: 24px;
+
+      &--focus {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-item {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 60px;
+    border-bottom: 1px solid var.$divider-color;
+    background-color: var.$blue-darker;
+    cursor: pointer;
+
+    &__text {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var.$blue-light-gray;
+      letter-spacing: 1px;
+    }
+  }
+}

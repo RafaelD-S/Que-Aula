@@ -1,0 +1,152 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  gap: 2rem;
+
+  &__warning {
+    position: absolute;
+  }
+
+  &__title {
+    color: var.$white;
+    text-align: center;
+    font-size: 24px;
+    line-height: 100%;
+  }
+
+  &__container {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 38px repeat(5, 1fr);
+    grid-template-areas:
+      ". seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex"
+      "schedule seg ter qua qui sex";
+    grid-template-rows: 30px;
+    gap: 5px;
+
+    padding: 10px 10px 5px;
+  }
+
+  &__schedule {
+    margin-right: 2px;
+    text-align: center;
+    display: grid;
+    gap: 5px;
+    grid-template-rows: repeat(5, 60px);
+
+    grid-area: schedule;
+
+    &-period {
+      color: var.$white;
+
+      font-size: 10px;
+      line-height: 16px;
+
+      &:first-child {
+        border-bottom: 1px solid var.$divider-color;
+      }
+    }
+  }
+
+  &__class {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    gap: 5px;
+
+    &--seg {
+      grid-area: seg;
+    }
+    &--ter {
+      grid-area: ter;
+    }
+    &--qua {
+      grid-area: qua;
+    }
+    &--qui {
+      grid-area: qui;
+    }
+    &--sex {
+      grid-area: sex;
+    }
+
+    &__day-title {
+      color: var.$white;
+      text-transform: uppercase;
+      font-size: 10px;
+      line-height: 16px;
+    }
+
+    &__info-item {
+      border-bottom: 1px solid var.$divider-color;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-title {
+        color: var.$blue-white;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      &-description {
+        margin-top: 2px;
+        color: var.$blue-weak-emphasis;
+        font-size: 6px;
+        font-weight: 500;
+        line-height: 122%;
+
+        @include mixin.dynamicLineClamp;
+      }
+
+      &--greve,
+      &--full {
+        border-bottom: 1px solid var.$red;
+        background-color: var.$background-red;
+
+        .calendar__class__info-item-title,
+        .calendar__class__info-item-description {
+          color: var.$light-red;
+        }
+      }
+
+      &--empty {
+        color: var.$blue-gray;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 16px;
+        opacity: 30%;
+      }
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+
+    background-color: var.$blue;
+    color: var.$blue-white;
+
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+}
