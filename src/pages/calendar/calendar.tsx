@@ -2,7 +2,7 @@ import "./calendar.style.scss";
 import Download from "../../assets/download.svg";
 import { useEffect, useState, useRef } from "react";
 import Warning from "../../components/warning/warning";
-import { IClasses } from "./calendar.interface";
+import { IClasses, ClassInfo } from "./calendar.interface";
 import { IClassesData } from "../../types/dataClasses.interface";
 import html2canvas from "html2canvas";
 
@@ -81,14 +81,14 @@ const Calendar = () => {
 
   const checkDate = (dia: string) => dia !== "Domingo" && dia !== "Sábado";
 
-  const sortByPeriod = (dayClasses: any[]) => {
+  const sortByPeriod = (dayClasses: ClassInfo[]) => {
     return dayClasses.sort(
       (class1, class2) => Number(class1.period[0]) - Number(class2.period[0])
     );
   };
 
-  const organizeClass = (classes: any[]) => {
-    const organizedSchedule: any[][] = Array(6)
+  const organizeClass = (classes: ClassInfo[]) => {
+    const organizedSchedule: ClassInfo[][] = Array(6)
       .fill(null)
       .map(() => []);
 
