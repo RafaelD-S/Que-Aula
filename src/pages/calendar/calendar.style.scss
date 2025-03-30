@@ -22,7 +22,7 @@
   }
 
   &__container {
-    width: 98%;
+    width: 100%;
 
     display: grid;
     grid-template-columns: 38px repeat(5, 1fr);
@@ -36,7 +36,7 @@
     grid-template-rows: 30px;
     gap: 5px;
 
-    padding: 10px 0 5px;
+    padding: 10px 10px 5px;
   }
 
   &__schedule {
