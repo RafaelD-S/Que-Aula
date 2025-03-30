@@ -103,17 +103,21 @@ const Calendar = () => {
 
     return organizedSchedule;
   };
-
   const saveImage = () => {
+    const backgroundColor = "#080e13";
+    const imgBackgroundColor = "#0d4852";
+
     if (!calendarRef.current) return;
 
     html2canvas(calendarRef.current, {
-      backgroundColor: "#080e13",
+      backgroundColor: backgroundColor,
       useCORS: true,
       scale: 2,
       windowWidth: 400,
     }).then((canvas) => {
       const padding = 20;
+      const bottomPadding = 10;
+      const textHeight = 50;
 
       const newCanvas = document.createElement("canvas");
       const ctx = newCanvas.getContext("2d");
@@ -123,13 +127,29 @@ const Calendar = () => {
         return;
       }
 
-      newCanvas.width = canvas.width + 2 * padding;
-      newCanvas.height = canvas.height + 2 * padding;
+      newCanvas.width = canvas.width;
+      newCanvas.height = canvas.height + padding + textHeight + bottomPadding;
 
-      ctx.fillStyle = "#080e13";
+      ctx.fillStyle = backgroundColor;
       ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-      ctx.drawImage(canvas, padding, padding);
+      ctx.fillStyle = imgBackgroundColor;
+      ctx.fillRect(0, 0, newCanvas.width, padding);
+
+      ctx.fillStyle = imgBackgroundColor;
+      ctx.fillRect(0, padding, newCanvas.width, textHeight);
+
+      ctx.font = "700 40px Montserrat, Arial, Helvetica, sans-serif";
+      ctx.fillStyle = "#c6f3f5";
+      ctx.textAlign = "center"; // Alinhar texto à esquerda
+      ctx.textBaseline = "middle";
+
+      const textX = newCanvas.width / 2; // Posição do texto à esquerda
+      const textY = (padding + textHeight) / 2;
+
+      ctx.fillText("Que Aula?", textX, textY);
+
+      ctx.drawImage(canvas, 0, padding + textHeight);
 
       const link = document.createElement("a");
       link.href = newCanvas.toDataURL("image/png");
