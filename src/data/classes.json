@@ -173,43 +173,46 @@
   },
   {
     "name": "INF032",
-    "description": "Tópicos Avançados II (Python)",
+    "description": "Tópicos Avançados II",
     "semester": "0",
-    "multiClass": false,
+    "multiClass": true,
+    "classList": ["T01", "T02", "T03"],
     "greve": false,
     "classes": [
       {
         "weekDay": "5",
-        "period": ["0", "1"],
+        "period": ["0", "1", "2", "3"],
         "teacher": "Domingos Mainart",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 01",
+        "whichClass": "T01"
       },
-      {
-        "weekDay": "5",
-        "period": ["2", "3"],
-        "teacher": "Domingos Mainart",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
-      }
-    ]
-  },
-  {
-    "name": "INF032E",
-    "description": "Tópicos Avançados II (Introdução à Ciência de Dados com R)",
-    "semester": "0",
-    "multiClass": false,
-    "greve": false,
-    "classes": [
       {
         "weekDay": "3",
         "period": ["4", "5"],
-        "teacher": "Pablo Florentino",
-        "classroom": "BLOCO E - Lab. 03"
+        "teacher": "Pablo FLorentino",
+        "classroom": "BLOCO L - Lab. 05",
+        "whichClass": "T02"
       },
       {
         "weekDay": "4",
         "period": ["2", "3"],
-        "teacher": "Pablo Florentino",
-        "classroom": "---"
+        "teacher": "Pablo FLorentino",
+        "classroom": "BLOCO K - Sala 11 (1º Andar)",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "1",
+        "period": ["0", "1"],
+        "teacher": "Marcelo Diniz",
+        "classroom": "BLOCO L - Lab. 05",
+        "whichClass": "T03"
+      },
+      {
+        "weekDay": "2",
+        "period": ["0", "1"],
+        "teacher": "Marcelo Diniz",
+        "classroom": "BLOCO E - Lab. 03",
+        "whichClass": "T03"
       }
     ]
   },
@@ -330,7 +333,7 @@
         "weekDay": "2",
         "period": ["2", "3"],
         "teacher": "Romilson Sampaio",
-        "classroom": "BLOCO E - Lab. 04",
+        "classroom": "BLOCO E - Lab. 02",
         "whichClass": "T02"
       },
       {
@@ -351,7 +354,7 @@
         "weekDay": "2",
         "period": ["2", "3"],
         "teacher": "José Dihego Oliveira",
-        "classroom": "BLOCO E - Lab. 02",
+        "classroom": "BLOCO L - Lab. 05",
         "whichClass": "T03"
       }
     ]
@@ -486,13 +489,13 @@
         "weekDay": "3",
         "period": ["2", "3"],
         "teacher": "Allan Freitas",
-        "classroom": "BLOCO L - Sala 1 (1° Andar)"
+        "classroom": "BLOCO D - Sala 1 (1° Andar)"
       },
       {
         "weekDay": "4",
         "period": ["2", "3"],
         "teacher": "Allan Freitas",
-        "classroom": "BLOCO E - Lab. 02"
+        "classroom": "BLOCO E - Lab. 03"
       }
     ]
   },
@@ -570,7 +573,7 @@
         "weekDay": "3",
         "period": ["1", "2", "3"],
         "teacher": "Grinaldo Oliveira",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "5",
@@ -603,7 +606,7 @@
         "weekDay": "4",
         "period": ["4", "5"],
         "teacher": "Sandro Andrade",
-        "classroom": "BLOCO E - Lab. 04"
+        "classroom": "BLOCO E - Lab. 02"
       }
     ]
   },
@@ -624,7 +627,7 @@
         "weekDay": "2",
         "period": ["2", "3"],
         "teacher": "Flávia Maristela",
-        "classroom": "BLOCO O - Sala 3 (2º Andar)"
+        "classroom": "indefinido"
       },
       {
         "weekDay": "4",
@@ -643,15 +646,15 @@
     "greve": false,
     "classes": [
       {
-        "weekDay": "1",
-        "period": ["4", "5"],
+        "weekDay": "2",
+        "period": ["0", "1"],
         "teacher": "Ronaldo Pedreira",
         "classroom": "BLOCO E - Lab. 01",
         "whichClass": "T01"
       },
       {
-        "weekDay": "2",
-        "period": ["0", "1"],
+        "weekDay": "1",
+        "period": ["4", "5"],
         "teacher": "Ronaldo Pedreira",
         "classroom": "BLOCO E - Lab. 01",
         "whichClass": "T02"
@@ -688,13 +691,13 @@
     "classes": [
       {
         "weekDay": "1",
-        "period": ["2", "3"],
+        "period": ["1", "2", "3"],
         "teacher": "Pablo Florentino",
         "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "3",
-        "period": ["2", "3"],
+        "period": ["1", "2", "3"],
         "teacher": "Pablo Florentino",
         "classroom": "BLOCO E - Lab. 03"
       }
@@ -759,7 +762,7 @@
         "weekDay": "3",
         "period": ["4", "5"],
         "teacher": "Grinaldo Oliveira",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 03"
       },
       {
         "weekDay": "5",
@@ -780,7 +783,7 @@
         "weekDay": "3",
         "period": ["0", "1"],
         "teacher": "Simone Amorim",
-        "classroom": "BLOCO E - Lab. 04"
+        "classroom": "BLOCO E - Lab. 01"
       },
       {
         "weekDay": "4",
@@ -930,8 +933,8 @@
     "greve": false,
     "classes": [
       {
-        "weekDay": "1",
-        "period": ["0", "1"],
+        "weekDay": "2",
+        "period": ["4", "5"],
         "teacher": "Lauro Paula",
         "classroom": "BLOCO E - Lab. 01"
       },
