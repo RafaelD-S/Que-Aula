@@ -84,9 +84,7 @@ const Modal = ({ isModalOpen }: IModal) => {
             Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe informando
             suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
           </p>
-          <h4 className="modal__warning">
-            Passando por atualizações. Talvez seu calendário seja resetado.
-          </h4>
+          <h4 className="modal__warning">Horários e salas de aulas para 2025.1 atualizados!</h4>
         </div>
         <div className="modal__classes">
           <h3 className="modal__classes__title">Escolha as suas matérias</h3>
