@@ -197,14 +197,14 @@
         "teacher": "Edmilson da Silva",
         "classroom": "BLOCO L - 002 Centro de Idiomas",
         "whichClass": "T01"
-      }, 
+      },
       {
         "weekDay": "4",
         "period": ["2", "3"],
         "teacher": "Edmilson da Silva",
         "classroom": "BLOCO L - 002 Centro de Idiomas",
         "whichClass": "T02"
-      }, 
+      },
       {
         "weekDay": "4",
         "period": ["4", "5"],
@@ -353,13 +353,13 @@
         "weekDay": "2",
         "period": ["4", "5"],
         "teacher": "Antonio Carlos Souza",
-        "classroom": "BLOCO B - Sala 6 (2º Andar)"
+        "classroom": "BLOCO B - Sala 10 (2º Andar)"
       },
       {
         "weekDay": "4",
         "period": ["2", "3"],
         "teacher": "Antonio Carlos Souza",
-        "classroom": "BLOCO O - Sala 6 (2º Andar)"
+        "classroom": "BLOCO O - Sala 4 (2º Andar)"
       }
     ]
   },
@@ -374,19 +374,13 @@
         "weekDay": "1",
         "period": ["4", "5"],
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO O - Sala 3 (2º Andar)"
+        "classroom": "BLOCO D - Sala 2 (1º Andar)"
       },
       {
         "weekDay": "4",
         "period": ["0", "1"],
         "teacher": "Elane Plácido",
-        "classroom": "BLOCO B - Sala 5 (1º Andar)"
-      },
-      {
-        "weekDay": "4",
-        "period": ["0", "1"],
-        "teacher": "Elane Plácido",
-        "classroom": "BLOCO O - Sala 3 (2º Andar)"
+        "classroom": "BLOCO D - Sala 1 (1º Andar)"
       }
     ]
   },
@@ -407,7 +401,7 @@
       },
       {
         "weekDay": "5",
-        "period": ["0", "1"],
+        "period": ["4", "5"],
         "teacher": "Luzia Helena",
         "classroom": "BLOCO L 003 - Centro de Idiomas",
         "whichClass": "T01"
@@ -421,9 +415,9 @@
       },
       {
         "weekDay": "5",
-        "period": ["4", "5"],
+        "period": ["0", "1"],
         "teacher": "Luzia Helena",
-        "classroom": "BLOCO L 002 - Centro de Idiomas",
+        "classroom": "BLOCO L 003 - Centro de Idiomas",
         "whichClass": "T02"
       }
     ]
@@ -439,19 +433,19 @@
         "weekDay": "1",
         "period": ["2", "3"],
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (2º Andar)"
+        "classroom": "BLOCO B - Sala 5 (1º Andar)"
       },
       {
         "weekDay": "3",
         "period": ["2", "3"],
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (2º Andar)"
+        "classroom": "BLOCO B - Sala 5 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": ["2", "3"],
         "teacher": "Jair Carneiro",
-        "classroom": "BLOCO D - Sala 1 (2º Andar)"
+        "classroom": "BLOCO B - Sala 5 (1º Andar)"
       }
     ]
   },
@@ -535,7 +529,7 @@
         "weekDay": "4",
         "period": ["4", "5"],
         "teacher": "Simone Amorim",
-        "classroom": "BLOCO B - Sala 3 (1º Andar)"
+        "classroom": "BLOCO O - Sala 4 (2º Andar)"
       },
       {
         "weekDay": "5",
@@ -648,20 +642,37 @@
     "name": "ADM500",
     "description": "Introdução à Administração",
     "semester": "3",
-    "multiClass": false,
+    "multiClass": true,
+    "classList": ["T02", "T03"],
     "greve": false,
     "classes": [
       {
         "weekDay": "4",
         "period": ["0", "1"],
         "teacher": "Washington Laranjeiras",
-        "classroom": "BLOCO D - Sala 2 (1º Andar)"
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
+        "whichClass": "T02"
       },
       {
         "weekDay": "5",
         "period": ["4", "5"],
         "teacher": "Washington Laranjeiras",
-        "classroom": "BLOCO D - Sala 4 (1º Andar)"
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
+        "whichClass": "T02"
+      },
+      {
+        "weekDay": "1",
+        "period": ["2", "3"],
+        "teacher": "Washington Laranjeiras",
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
+        "whichClass": "T03"
+      },
+      {
+        "weekDay": "4",
+        "period": ["2", "3"],
+        "teacher": "Washington Laranjeiras",
+        "classroom": "BLOCO D - Sala 1 (2º Andar)",
+        "whichClass": "T03"
       }
     ]
   },
@@ -707,9 +718,9 @@
       },
       {
         "weekDay": "4",
-        "period": ["2", "3"],
+        "period": ["1", "2"],
         "teacher": "Frederico Barboza",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
@@ -722,15 +733,15 @@
     "classes": [
       {
         "weekDay": "2",
-        "period": ["2", "3"],
+        "period": ["1", "2", "3"],
         "teacher": "Manoel Neto",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 04"
       },
       {
         "weekDay": "4",
-        "period": ["4", "5"],
+        "period": ["3", "4", "5"],
         "teacher": "Manoel Neto",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
+        "classroom": "BLOCO E - Lab. 04"
       }
     ]
   },
@@ -799,7 +810,7 @@
         "weekDay": "4",
         "period": ["4", "5"],
         "teacher": "Antonio Carlos Souza",
-        "classroom": "BLOCO E - Lab. 02"
+        "classroom": "BLOCO O - Sala 6 (2º Andar)"
       }
     ]
   },
@@ -814,13 +825,13 @@
         "weekDay": "3",
         "period": ["2", "3"],
         "teacher": "Renato Novais",
-        "classroom": "BLOCO E - Lab. 04"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       },
       {
         "weekDay": "5",
         "period": ["2", "3"],
         "teacher": "Renato Novais",
-        "classroom": "BLOCO E - Lab. 02"
+        "classroom": "LOCO L - Lab. Inf. 5 (1º Andar)"
       }
     ]
   },
@@ -850,13 +861,13 @@
         "weekDay": "1",
         "period": ["0", "1"],
         "teacher": "Jorge Rodrigues",
-        "classroom": "BLOCO O - Sala 2 (1º Andar)"
+        "classroom": "BLOCO O - Sala 1 (1º Andar)"
       },
       {
         "weekDay": "3",
         "period": ["4", "5"],
         "teacher": "Jorge Rodrigues",
-        "classroom": "BLOCO O - Sala 1 (1º Andar)"
+        "classroom": "ITCP/ Observatório do Trabalho/ GP Trabalho, Desenvolvimento e Tec. Sociais (40)"
       }
     ]
   },
@@ -871,13 +882,13 @@
         "weekDay": "1",
         "period": ["2", "3"],
         "teacher": "Maria Lucileide",
-        "classroom": "BLOCO L - Sala 2 (1º Andar)"
+        "classroom": "BLOCO L - Sala 1 (1º Andar)"
       },
       {
         "weekDay": "2",
         "period": ["4", "5"],
         "teacher": "Maria Lucileide",
-        "classroom": "BLOCO L - Sala 2 (1º Andar)"
+        "classroom": "BLOCO L - Sala 3 (1º Andar)"
       }
     ]
   },
@@ -898,13 +909,13 @@
         "weekDay": "2",
         "period": ["2", "3"],
         "teacher": "Sandro Andrade",
-        "classroom": "BLOCO D - Sala 6 (1º Andar)"
+        "classroom": "BLOCO D - Sala 8 (1º Andar)"
       },
       {
         "weekDay": "4",
         "period": ["2", "3"],
         "teacher": "Sandro Andrade",
-        "classroom": "BLOCO E - Lab. 03"
+        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)"
       }
     ]
   },
@@ -945,31 +956,17 @@
         "whichClass": "T01"
       },
       {
-        "weekDay": "5",
-        "period": ["2", "3"],
-        "teacher": "Jowaner Araujo",
-        "classroom": "BLOCO E - Lab. 01",
-        "whichClass": "T01"
-      },
-      {
         "weekDay": "3",
         "period": ["4", "5"],
         "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Sala 2 (1º Andar)",
+        "classroom": "BLOCO L - Sala 7 (2º Andar)",
         "whichClass": "T02"
       },
       {
         "weekDay": "5",
         "period": ["4", "5"],
         "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Sala 2 (1º Andar) ",
-        "whichClass": "T02"
-      },
-      {
-        "weekDay": "5",
-        "period": ["4", "5"],
-        "teacher": "Lauro Paula",
-        "classroom": "BLOCO L - Lab. Inf. 5 (1º Andar)",
+        "classroom": "BLOCO L - Sala 7 (2º Andar) ",
         "whichClass": "T02"
       }
     ]
