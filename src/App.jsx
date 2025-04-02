@@ -22,7 +22,10 @@ function App() {
   const savedVersion = localStorage.getItem("version") || "";
 
   const verifyVersion = () => {
-    if (!savedVersion || +savedVersion.charAt(0) < version.charAt(0)) {
+    const localVersion = +savedVersion.slice(0, savedVersion.lastIndexOf("."));
+    const appVersion = +version.slice(0, version.lastIndexOf("."));
+
+    if (!savedVersion || localVersion < appVersion) {
       setUrgentUpdate(true);
     }
   };
