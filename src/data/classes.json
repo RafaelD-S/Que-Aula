@@ -655,7 +655,7 @@
       },
       {
         "weekDay": "5",
-        "period": ["2", "3"],
+        "period": ["4", "5"],
         "teacher": "Washington Laranjeiras",
         "classroom": "BLOCO D - Sala 1 (2º Andar)",
         "whichClass": "T02"
