@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import DayClasses from "./pages/dayClasses/dayClasses";
 import Calendar from "./pages/calendar/calendar";
 
+import Data from "./data/classes.json";
+
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Modal from "./components/modal/modal";
@@ -31,6 +33,28 @@ function App() {
   };
 
   useEffect(() => {
+    const localVersion = +savedVersion.slice(-1);
+    const appVersion = +version.slice(-1);
+
+    if (localVersion < appVersion && savedVersion) {
+      const selectedClasses = JSON.parse(
+        localStorage.getItem("chosenClasses") || "[]"
+      )
+  
+      const allClasses = Data.flatMap((item) => item.classes)
+  
+      selectedClasses.forEach((item) => {
+        item.classes.forEach((e) => {
+          const cu = allClasses.find((element) => e.teacher === element.teacher && e.period[0] === element.period[0] && e.weekDay === element.weekDay)
+          e.classroom = cu.classroom
+        })
+      })
+  
+      localStorage.setItem("chosenClasses", JSON.stringify(selectedClasses));
+      localStorage.setItem("version", version)
+      location.reload()
+    }
+
     if (!localStorage.getItem("chosenClasses")) setIsModalOpen(true);
     else verifyVersion();
   });
