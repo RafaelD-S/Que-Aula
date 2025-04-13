@@ -37,12 +37,8 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
   ]);
 
   useEffect(() => {
-    const storedClasses: IClassesData[] = JSON.parse(
-      localStorage.getItem("chosenClasses") || "[]"
-    );
-    const specificClasses = storedClasses
-      .flatMap((item) => item.classes)
-      .filter((f) => f.selected);
+    const storedClasses: IClassesData[] = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
+    const specificClasses = storedClasses.flatMap((item) => item.classes).filter((f) => f.selected);
 
     setClasses((prev) =>
       prev.map((item, index) => {
@@ -136,10 +132,8 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
       <article className="dayClasses__container">
         {sections.map((item, i) => (
           <section
-            className={`dayClasses__item ${
-              !item[0].data ? "dayClasses__item--empty" : ""
-            }`}
-            key={i}
+            className={`dayClasses__item ${!item[0].data ? "dayClasses__item--empty" : ""}`}
+            key={`${item[0].data?.weekDay}${i}`}
           >
             <div className={`dayClasses__schedule`}>
               <h3>
@@ -147,7 +141,7 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
               </h3>
             </div>
             <div className="dayClasses__info-container">
-              {item.map((info, index: number) =>
+              {item.map((info, index) =>
                 info.data ? (
                   <div key={index} className="dayClasses__info-item">
                     <h4 className="dayClasses__info-item-title">
@@ -155,21 +149,15 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
                       <span className="dayClasses__info-item-class">
                         {" "}
                         {info.data.whichClass}{" "}
-                      </span>
-                      - {info.data.teacher}
+                      </span>- {info.data.teacher}
                     </h4>
-                    <h4 className="dayClasses__info-item-classroom">
-                      {info.data.classroom}
-                    </h4>
+                    <h4 className="dayClasses__info-item-classroom">{info.data.classroom}</h4>
                     <h5 className="dayClasses__info-item-description">
                       {info.data.classDescription}
                     </h5>
                   </div>
                 ) : (
-                  <div
-                    className="dayClasses__info-item-title"
-                    key={index}
-                  ></div>
+                  <div className="dayClasses__info-item-title" key={index}></div>
                 )
               )}
             </div>
