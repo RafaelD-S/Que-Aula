@@ -25,7 +25,7 @@
     gap: 1rem;
     animation: warningAppear 0.2s ease;
 
-    @include mixin.containerAppear(-50px, warningAppear);
+    @include mixin.containerAppear(warningAppear, -50px);
 
     &__title {
       font-size: 1.025rem;

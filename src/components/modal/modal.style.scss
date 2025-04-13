@@ -40,7 +40,7 @@
     width: 100%;
     animation: modalAppear 0.5s ease;
 
-    @include mixin.containerAppear(-150px, modalAppear);
+    @include mixin.containerAppear(modalAppear, -50px);
   }
 
   &__introduction {
