@@ -1,4 +1,5 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -37,18 +38,9 @@
     max-width: 30rem;
     border-radius: 8px;
     width: 100%;
-    animation: containerAppear 0.5s ease;
-  }
+    animation: modalAppear 0.5s ease;
 
-  @keyframes containerAppear {
-    0% {
-      transform: translate(0, -150px);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
+    @include mixin.containerAppear(-150px, modalAppear);
   }
 
   &__introduction {
