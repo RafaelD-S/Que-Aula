@@ -130,10 +130,10 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
     <main className="dayClasses">
       <h2 className="dayClasses__title">{classes[currentWeekday].day}</h2>
       <article className="dayClasses__container">
-        {sections.map((item, i) => (
+        {sections.map((item) => (
           <section
             className={`dayClasses__item ${!item[0].data ? "dayClasses__item--empty" : ""}`}
-            key={`${item[0].data?.weekDay}${i}`}
+            key={`${item[0].data?.weekDay}${Math.random()}`}
           >
             <div className={`dayClasses__schedule`}>
               <h3>
@@ -157,7 +157,7 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
                     </h5>
                   </div>
                 ) : (
-                  <div className="dayClasses__info-item-title" key={i}></div>
+                  <div className="dayClasses__info-item-title" key={info.start}></div>
                 )
               )}
             </div>
