@@ -17,11 +17,11 @@
   &__link {
     width: 100%;
 
-    @for $i from 1 through 5 {
+    @for $i from 1 through 6 {
       &-#{$i} {
         opacity: 0;
-        animation-delay: #{$i * 0.02}s;
         animation: dropdownAppear 0.1s ease forwards;
+        animation-delay: #{$i * 0.02}s;
         @include mixin.containerAppear(dropdownAppear, -35px);
       }
     }
