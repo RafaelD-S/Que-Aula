@@ -19,3 +19,15 @@
     }
   }
 }
+
+@mixin cascadingAnimation($start, $end, $delay) {
+  & {
+    opacity: 0;
+  }
+
+  @for $i from $start through $end {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * $delay}s;
+    }
+  }
+}

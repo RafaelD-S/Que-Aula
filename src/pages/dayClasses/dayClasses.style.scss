@@ -14,15 +14,9 @@
     padding: 2rem 0.5rem;
     border-bottom: 1px solid var.$divider-color;
     align-items: center;
-    opacity: 0;
-
-    @for $i from 1 through 5 {
-      &:nth-child(#{$i}) {
-        animation: classesAppear 0.2s ease forwards;
-        animation-delay: #{$i * 0.03}s;
-        @include mixin.containerAppear(classesAppear, 0, -15px);
-      }
-    }
+    animation: classesAppear 0.2s ease forwards;
+    @include mixin.containerAppear(classesAppear, 0, -15px);
+    @include mixin.cascadingAnimation(1, 3, 0.03);
 
     &:first-child {
       padding-top: 0.25rem;
