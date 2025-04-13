@@ -20,7 +20,7 @@
       &:nth-child(#{$i}) {
         animation: classesAppear 0.2s ease forwards;
         animation-delay: #{$i * 0.03}s;
-        @include mixin.containerAppear(classesAppear, -15px);
+        @include mixin.containerAppear(classesAppear, 0, -15px);
       }
     }
 
