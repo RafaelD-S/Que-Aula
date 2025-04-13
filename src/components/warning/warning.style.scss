@@ -10,6 +10,8 @@
   justify-content: center;
   align-items: center;
   padding: 0.25rem;
+  animation: backgroundAppear 0.2s ease forwards;
+  @include mixin.containerAppear(backgroundAppear, 0, 0);
 
   &__content {
     z-index: 11;
