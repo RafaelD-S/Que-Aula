@@ -141,9 +141,9 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
               </h3>
             </div>
             <div className="dayClasses__info-container">
-              {item.map((info, index) =>
+              {item.map((info) =>
                 info.data ? (
-                  <div key={index} className="dayClasses__info-item">
+                  <div key={info.data.classroom} className="dayClasses__info-item">
                     <h4 className="dayClasses__info-item-title">
                       {info.data.className}
                       <span className="dayClasses__info-item-class">
@@ -157,7 +157,7 @@ const DayClasses = ({ currentWeekday }: IDayClasses) => {
                     </h5>
                   </div>
                 ) : (
-                  <div className="dayClasses__info-item-title" key={index}></div>
+                  <div className="dayClasses__info-item-title" key={i}></div>
                 )
               )}
             </div>
