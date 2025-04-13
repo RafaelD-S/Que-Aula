@@ -1,4 +1,5 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .warning {
   position: fixed;
@@ -22,6 +23,9 @@
     align-items: center;
     padding: 1.5rem 1rem;
     gap: 1rem;
+    animation: warningAppear 0.2s ease;
+
+    @include mixin.containerAppear(-50px, warningAppear);
 
     &__title {
       font-size: 1.025rem;

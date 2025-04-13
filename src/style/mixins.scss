@@ -6,3 +6,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin containerAppear($distance, $name) {
+  @keyframes #{$name} {
+    0% {
+      transform: translate(0, $distance);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+}
