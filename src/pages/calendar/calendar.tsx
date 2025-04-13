@@ -160,13 +160,10 @@ const Calendar = () => {
       <div className="calendar__warning">
         <Warning
           message="Não foi possível fazer o download da imagem. Tente novamente mais tarde."
-          type="info"
+          type="warning"
           opened={warning}
           isClosable
           buttonLabel="Fechar"
-          onClickButton={() => {
-            setWarning(false);
-          }}
         />
       </div>
       <h2 className="calendar__title">Todas as Aulas</h2>
@@ -235,10 +232,17 @@ const Calendar = () => {
             </div>
           ))}
       </article>
-      <button className="calendar__button" onClick={saveImage}>
-        Salvar imagem do calendário
-        <img src={Download} alt="download icon" />
-      </button>
+      <Warning
+        message="Seu download foi iniciado. Aguarde."
+        type="info"
+        buttonLabel="Fechar"
+        disabled={warning}
+      >
+        <button className="calendar__button" onClick={saveImage}>
+          Salvar imagem do calendário
+          <img src={Download} alt="download icon" />
+        </button>
+      </Warning>
     </main>
   );
 };

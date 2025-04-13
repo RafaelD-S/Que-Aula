@@ -49,7 +49,9 @@ const Warning = ({
                 className={`warning__content__button warning__content__button${
                   type === "warning" ? "--warning" : "--info"
                 }`}
-                onClick={onClickButton}
+                onClick={() => {
+                  onClickButton ? onClickButton() : setIsOpenState(false);
+                }}
               >
                 {buttonLabel}
               </button>
