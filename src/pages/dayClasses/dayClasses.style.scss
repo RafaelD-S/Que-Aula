@@ -1,4 +1,5 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .dayClasses {
   display: flex;
@@ -13,6 +14,15 @@
     padding: 2rem 0.5rem;
     border-bottom: 1px solid var.$divider-color;
     align-items: center;
+    opacity: 0;
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation: classesAppear 0.2s ease forwards;
+        @include mixin.containerAppear(classesAppear, -25px);
+        animation-delay: #{$i * 0.03}s;
+      }
+    }
 
     &:first-child {
       padding-top: 0.25rem;
