@@ -1,4 +1,5 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .dayClasses {
   display: flex;
@@ -13,6 +14,9 @@
     padding: 2rem 0.5rem;
     border-bottom: 1px solid var.$divider-color;
     align-items: center;
+    animation: classesAppear 0.2s ease forwards;
+    @include mixin.containerAppear(classesAppear, 0, -15px);
+    @include mixin.cascadingAnimation(1, 3, 0.03);
 
     &:first-child {
       padding-top: 0.25rem;

@@ -6,3 +6,28 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin containerAppear($name: containerAppear, $yDistance: 0, $xDistance: 0) {
+  @keyframes #{$name} {
+    0% {
+      transform: translate($xDistance, $yDistance);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin cascadingAnimation($start, $end, $delay) {
+  & {
+    opacity: 0;
+  }
+
+  @for $i from $start through $end {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * $delay}s;
+    }
+  }
+}

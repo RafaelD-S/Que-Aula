@@ -1,10 +1,13 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .aside {
   position: fixed;
   inset: 0;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.6);
+  animation: backgroundAppear 0.2s ease forwards;
+  @include mixin.containerAppear(backgroundAppear, 0, 0);
 
   &__container {
     display: flex;
@@ -19,6 +22,8 @@
     bottom: 0;
     max-width: 320px;
     width: 80%;
+    animation: asideAppear 0.2s ease forwards;
+    @include mixin.containerAppear(asideAppear, 0, 100px);
   }
 
   &__header {

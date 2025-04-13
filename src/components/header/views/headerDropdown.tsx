@@ -20,8 +20,8 @@ const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDr
 
       {navSwitch &&
         dropdownItems.map((item, index) => (
-          <Link to="/" key={index}>
-            <div onClick={() => switchWeekday(index + 1)} className="headerDropdown-item">
+          <Link to="/" key={++index} className={`headerDropdown__link`}>
+            <div onClick={() => switchWeekday(index)} className="headerDropdown-item">
               <h3 className="headerDropdown-item__text">{item}</h3>
             </div>
           </Link>

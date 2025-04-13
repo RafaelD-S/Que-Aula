@@ -37,22 +37,25 @@ function App() {
     const appVersion = +version.slice(-1);
 
     if (localVersion < appVersion && savedVersion) {
-      const selectedClasses = JSON.parse(
-        localStorage.getItem("chosenClasses") || "[]"
-      )
-  
-      const allClasses = Data.flatMap((item) => item.classes)
-  
+      const selectedClasses = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
+
+      const allClasses = Data.flatMap((item) => item.classes);
+
       selectedClasses.forEach((item) => {
         item.classes.forEach((e) => {
-          const cu = allClasses.find((element) => e.teacher === element.teacher && e.period[0] === element.period[0] && e.weekDay === element.weekDay)
-          e.classroom = cu.classroom
-        })
-      })
-  
+          const foundClass = allClasses.find(
+            (element) =>
+              e.teacher === element.teacher &&
+              e.period[0] === element.period[0] &&
+              e.weekDay === element.weekDay
+          );
+          e.classroom = foundClass.classroom;
+        });
+      });
+
       localStorage.setItem("chosenClasses", JSON.stringify(selectedClasses));
-      localStorage.setItem("version", version)
-      location.reload()
+      localStorage.setItem("version", version);
+      location.reload();
     }
 
     if (!localStorage.getItem("chosenClasses")) setIsModalOpen(true);
@@ -63,6 +66,7 @@ function App() {
     localStorage.clear();
     location.reload();
   };
+
   if (urgentUpdate)
     return (
       <Warning
