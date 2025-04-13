@@ -66,6 +66,9 @@
     justify-content: space-between;
     text-align: center;
     gap: 5px;
+    animation: calendarItemAppear 0.3s ease forwards;
+    @include mixin.containerAppear(calendarItemAppear, 0, 15px);
+    @include mixin.cascadingAnimation(1, 6, 0.02);
 
     &--seg {
       grid-area: seg;
