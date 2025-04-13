@@ -24,8 +24,8 @@ function App() {
   const savedVersion = localStorage.getItem("version") || "";
 
   const verifyVersion = () => {
-    const localVersion = +savedVersion.slice(0, savedVersion.lastIndexOf("."));
-    const appVersion = +version.slice(0, version.lastIndexOf("."));
+    const localVersion = +savedVersion.slice(0, savedVersion.indexOf("."));
+    const appVersion = +version.slice(0, version.indexOf("."));
 
     if (!savedVersion || localVersion < appVersion) {
       setUrgentUpdate(true);
