@@ -20,9 +20,9 @@
     @for $i from 1 through 5 {
       &-#{$i} {
         opacity: 0;
+        animation-delay: #{$i * 0.02}s;
         animation: dropdownAppear 0.1s ease forwards;
         @include mixin.containerAppear(dropdownAppear, -35px);
-        animation-delay: #{$i * 0.02}s;
       }
     }
   }

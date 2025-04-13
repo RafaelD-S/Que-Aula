@@ -19,8 +19,8 @@
     @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
         animation: classesAppear 0.2s ease forwards;
-        @include mixin.containerAppear(classesAppear, -25px);
         animation-delay: #{$i * 0.03}s;
+        @include mixin.containerAppear(classesAppear, -25px);
       }
     }
 
