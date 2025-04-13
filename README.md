@@ -1,5 +1,3 @@
-
-
 <div align="center">
   <h1>
     Que Aula?
@@ -19,25 +17,34 @@
     <a href="https://github.com/RafaelD-S/Portifolio">
       Meu portfólio
     </a>
+    ·
+    <a href="https://www.figma.com/design/rSh7d9PtnzMkshoMjtsoG3/Que-Aula-?node-id=0-1&p=f&t=pfHWPJR22XS5iFYq-0">
+      Figma
+    </a>
   </div>
 </div>
 
 ## Sobre o projeto
-O projeto nasceu a partir da necessidade de uma amostra mais fácil e viável para poder verificar a localização das aulas e seus horários. 
+
+O projeto nasceu a partir da necessidade de uma amostra mais fácil e viável para poder verificar a localização das aulas, seus horários e suas salas.
 Ele se iniciou comigo, porém, atualmente aceito a ajuda de outras pessoas no curso para poder melhorar a aplicação de uma forma onde todos sejam benefíciados.
 
 Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem da página em dispositivos móveis. Sendo feito em Mobile-First.
 
-![que aula](https://github.com/user-attachments/assets/8776c80b-976e-4787-bef3-e82bf8eb1947)
+![Mobile](https://github.com/user-attachments/assets/85468421-0061-4e6e-9987-7f7d1a686083)
 
 ## Feito com:
+
 - <a href="https://pt-br.legacy.reactjs.org"> React </a>
 - <a href="https://www.typescriptlang.org/docs/"> Typescript </a>
 - <a href="https://reactrouter.com/en/main"> Node </a>
 - <a href="https://sass-lang.com"> Sass </a>
 - <a href="https://www.npmjs.com"> npm </a>
+- <a href="https://www.npmjs.com/package/react-router-dom"> React-router-dom </a>
+- <a href="https://html2canvas.hertzen.com/"> html2canvas </a>
 
 ## Como iniciar o projeto
+
 ### Primeiramente abra um terminal com git instalado
 
 1. Clone o repositório:
@@ -49,6 +56,7 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
    cd Que-Aula
    ```
 3. Instale as dependências:
+
    ```
    npm install
    ```
@@ -59,6 +67,7 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
    ```
 
 ## Contribuidores
+
 <table>
   <td align="center">
     <img src="https://github.com/rafaeld-s.png?size=100" style="width: 100px"/>
@@ -82,5 +91,3 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
     </a>
   </td>
 </table>
-
-
