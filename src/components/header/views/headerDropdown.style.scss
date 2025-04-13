@@ -1,4 +1,5 @@
 @use "../../../style/variables" as var;
+@use "../../../style/mixins.scss" as mixin;
 
 .headerDropdown {
   display: flex;
@@ -8,21 +9,30 @@
   right: 0;
   justify-content: center;
   align-items: center;
-  background-color: var.$blue-dark;
   transition: bottom 0.3s ease-in-out;
   flex-direction: column;
   opacity: 0.95;
   z-index: 1;
 
-  a {
+  &__link {
     width: 100%;
+
+    @for $i from 1 through 5 {
+      &-#{$i} {
+        opacity: 0;
+        animation: dropdownAppear 0.1s ease forwards;
+        @include mixin.containerAppear(dropdownAppear, -35px);
+        animation-delay: #{$i * 0.02}s;
+      }
+    }
   }
 
   &__button {
+    z-index: 1;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
-    background-color: transparent;
+    background-color: var.$blue-dark;
     border: none;
     cursor: pointer;
     height: 40px;
