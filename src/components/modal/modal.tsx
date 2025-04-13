@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import "./modalStyle.scss";
+import "./modal.style.scss";
 import Data from "../../data/classes.json";
 import { IModal } from "./modal.Interface";
 import { IClassesData } from "../../types/dataClasses.interface";
