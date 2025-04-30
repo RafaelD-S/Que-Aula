@@ -1,0 +1,41 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
+
+.flowchart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  width: 100%;
+  gap: 2rem;
+
+  &__title {
+    color: var.$white;
+    text-align: center;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 950px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var.$blue-dark;
+    padding: 0.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+}
