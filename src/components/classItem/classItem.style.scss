@@ -1,4 +1,5 @@
 @use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .class-item {
   position: relative;
@@ -12,8 +13,9 @@
   margin: 0.5rem;
   width: calc(100% - 5rem);
   max-width: 8.5rem;
-  min-height: 7.3rem;
+  height: 7.3rem;
   text-align: center;
+  cursor: pointer;
   &--state-0 {
     background-color: var.$black;
     border: 2px dashed var.$divider-color;
@@ -56,6 +58,7 @@
   &__description {
     color: var.$blue-gray;
     font-size: 0.6rem;
+    @include mixin.dynamicLineClamp;
   }
   &__credit {
     color: var.$blue-gray;

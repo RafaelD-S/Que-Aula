@@ -23,7 +23,16 @@
     "semester": 3,
     "line": 2,
     "prerequisites": ["INF029"],
-    "credit": "60 - 3",
+    "credit": "90 - 5",
     "state": 2
+  },
+  {
+    "name": "INF028",
+    "description": "Arquitetura de Computadores e Software Básico",
+    "semester": 2,
+    "line": 4,
+    "prerequisites": ["INF026"],
+    "credit": "60 - 3",
+    "state": 1
   }
 ]
