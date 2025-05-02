@@ -1,0 +1,29 @@
+[
+  {
+    "name": "INF027",
+    "description": "Introdução à Lógica",
+    "semester": 1,
+    "line": 2,
+    "prerequisites": [],
+    "credit": "60 - 3",
+    "state": 0
+  },
+  {
+    "name": "INF029",
+    "description": "Laboratório de Programação",
+    "semester": 2,
+    "line": 2,
+    "prerequisites": ["INF027"],
+    "credit": "60 - 3",
+    "state": 1
+  },
+  {
+    "name": "INF008",
+    "description": "Programação Orientada a Objetos",
+    "semester": 3,
+    "line": 2,
+    "prerequisites": ["INF029"],
+    "credit": "60 - 3",
+    "state": 2
+  }
+]
