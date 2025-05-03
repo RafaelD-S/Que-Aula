@@ -6,8 +6,6 @@ const ClassItem = ({ data }: { data: IClassItem }) => {
   const {
     name,
     description,
-    //semester,
-    // line,
     // prerequisites,
     credit,
     state,
@@ -38,6 +36,10 @@ const ClassItem = ({ data }: { data: IClassItem }) => {
       setClassState(1);
     }
   };
+
+  if (name === undefined) {
+    return <div className="class-item class-item--empty"></div>;
+  }
 
   return (
     <div
