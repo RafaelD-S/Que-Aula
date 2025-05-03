@@ -28,6 +28,7 @@
     }
     &:active {
       border-color: var.$divider-color;
+      opacity: 80%;
     }
   }
   &--state-1 {
@@ -38,6 +39,7 @@
     }
     &:active {
       box-shadow: none;
+      opacity: 80%;
     }
   }
   &--state-2 {
@@ -48,6 +50,7 @@
     }
     &:active {
       box-shadow: none;
+      opacity: 80%;
     }
   }
 
