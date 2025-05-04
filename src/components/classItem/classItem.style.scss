@@ -13,18 +13,22 @@
   height: 64px;
   text-align: center;
   cursor: pointer;
+  user-select: none;
+  transition: border 0.2s ease, background-color 0.2s ease, box-shadow 0.5s ease;
 
   &--empty {
     cursor: default;
   }
 
   &--default {
-    background-color: var.$blue-darker;
     border: 1px solid var.$divider-color;
+    background-color: var.$blue-darker;
+
     &:hover {
       box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
       border-color: var.$emphasis-divider-color;
     }
+
     &:active {
       box-shadow: none;
       border-color: var.$divider-color;
@@ -35,9 +39,11 @@
   &--disabled {
     background-color: var.$black;
     border: 1px dashed var.$divider-color;
+
     &:hover {
       border-color: var.$blue-weak-emphasis;
     }
+
     &:active {
       border-color: var.$divider-color;
       opacity: 80%;
@@ -47,10 +53,12 @@
   &--selected {
     background-color: var.$blue-darker;
     border: 1px solid var.$blue-gray;
+
     &:hover {
       box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
       border-color: var.$blue-light-gray;
     }
+
     &:active {
       box-shadow: none;
       border-color: var.$blue-light-gray;
@@ -72,6 +80,7 @@
       background-color: var.$blue-darker;
       border: 1px solid var.$divider-color;
     }
+
     &--selected {
       background-color: var.$blue-light-gray;
       border: 1px solid var.$blue-light-gray;
@@ -84,6 +93,7 @@
     font-size: 12px;
     line-height: 16px;
   }
+
   &__description {
     color: var.$blue-gray;
     font-weight: 500;
@@ -92,6 +102,7 @@
 
     @include mixin.dynamicLineClamp;
   }
+
   &__credit {
     color: var.$blue-gray;
     font-weight: 500;

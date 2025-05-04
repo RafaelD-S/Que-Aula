@@ -61,6 +61,10 @@
   &__semester {
     flex-shrink: 0;
     width: 72px;
+    animation: semesterAppear 0.5s ease forwards;
+    @include mixin.containerAppear(semesterAppear, -10px, 0);
+    @include mixin.cascadingAnimation(1, 6, 0.075);
+
     &-content {
       display: flex;
       flex-direction: column;
