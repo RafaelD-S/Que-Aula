@@ -84,6 +84,13 @@
     &--selected {
       background-color: var.$blue-light-gray;
       border: 1px solid var.$blue-light-gray;
+
+      &:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(../../assets/check.svg);
+      }
     }
   }
 
