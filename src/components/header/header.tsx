@@ -14,7 +14,7 @@ const Header = ({ switchWeekday, weekDays }: IHeader) => {
   return (
     <header className="header">
       <section className="header__title" onClick={() => setNavSwitch(false)}>
-        <Link to="/">
+        <Link to="/" onClick={() => switchWeekday(new Date().getDay())}>
           <h1>Que Aula?</h1>
         </Link>
         <Aside>
