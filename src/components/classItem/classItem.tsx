@@ -2,20 +2,12 @@ import "./classItem.style.scss";
 import { IClassItemProps } from "./classItem.Interface";
 
 const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
-  const {
-    name,
-    description,
-    // prerequisites,
-    credit,
-    state = "default",
-  } = data;
+  const { name, description, credit, state = "default" } = data;
 
   const handleClick = () => {
     let newState: string;
 
-    if (state === "disabled") {
-      newState = "default";
-    } else if (state === "default") {
+    if (state === "default") {
       newState = "disabled";
     } else {
       newState = "default";
@@ -26,9 +18,7 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
   const handleCheckboxClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     let newState: string;
-    if (state === "disabled") {
-      newState = "default";
-    } else if (state === "default") {
+    if (state === "default") {
       newState = "selected";
     } else {
       newState = "default";
@@ -36,9 +26,7 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
     onStateChange(name, newState);
   };
 
-  if (name === undefined) {
-    return <div className="class-item class-item--empty"></div>;
-  }
+  if (name === undefined) return <div className="class-item class-item--empty"></div>;
 
   return (
     <div onClick={handleClick} className={`class-item class-item--${state}`}>
