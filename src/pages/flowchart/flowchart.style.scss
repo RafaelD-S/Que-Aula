@@ -42,7 +42,6 @@
     scrollbar-color: var.$blue var.$black;
     --webkit-overflow-scrolling: touch;
 
-    // For Chrome/Edge/Safari
     &::-webkit-scrollbar {
       height: 8px;
     }

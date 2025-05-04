@@ -4,7 +4,6 @@ import ClassItem from "../../components/classItem/classItem";
 import { IClassItem } from "../../components/classItem/classItem.Interface";
 import { useCallback, useEffect, useState } from "react";
 
-// Helper function to deeply compare arrays/objects
 const deepEqual = (
   a: Array<Array<IClassItem>>,
   b: Array<Array<IClassItem>>

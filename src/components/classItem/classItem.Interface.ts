@@ -1,9 +1,9 @@
 export interface IClassItem {
-  name?: string; //INF028
-  description?: string; //Algoritmos e Lógica de Programação
-  prerequisites?: string[]; //INF027
-  credit?: string; // 60 - 3
-  state?: string; // default, disabled, selected
+  name?: string;
+  description?: string;
+  prerequisites?: string[];
+  credit?: string;
+  state?: string;
 }
 
 export interface IClassItemProps {
