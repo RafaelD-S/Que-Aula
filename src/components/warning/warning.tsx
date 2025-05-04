@@ -19,6 +19,11 @@ const Warning = ({
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
+  const warningTypes = {
+    warning,
+    info,
+  };
+
   const handleOverlayClick = (e: React.SyntheticEvent) => {
     const target = e.target as HTMLDivElement;
     if (isClosable && modalRef.current && !modalRef.current.contains(target)) {
@@ -39,12 +44,6 @@ const Warning = ({
         }
       };
     }
-
-    return () => {
-      if (portalTarget && document.body.contains(portalTarget)) {
-        document.body.removeChild(portalTarget);
-      }
-    };
   }, [isOpenState]);
 
   useEffect(() => {
@@ -63,20 +62,12 @@ const Warning = ({
         createPortal(
           <div className="warning" onClick={handleOverlayClick}>
             <div className="warning__content" ref={modalRef}>
-              <img
-                src={type === "warning" ? warning : info}
-                alt=""
-                className="warning__content__icon"
-              />
+              <img src={warningTypes[type]} alt="" className="warning__content__icon" />
               <h2 className="warning__content__title">{message}</h2>
               {buttonLabel && (
                 <button
-                  className={`warning__content__button warning__content__button${
-                    type === "warning" ? "--warning" : "--info"
-                  }`}
-                  onClick={() => {
-                    onClickButton ? onClickButton() : setIsOpenState(false);
-                  }}
+                  className={`warning__content__button warning__content__button--${type}`}
+                  onClick={() => (onClickButton ? onClickButton() : setIsOpenState(false))}
                 >
                   {buttonLabel}
                 </button>
