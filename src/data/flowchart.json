@@ -6,7 +6,7 @@
       "description": "Introdução à Lógica",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 0
+      "state": 1
     },
     {},
     {
@@ -14,7 +14,7 @@
       "description": "Introdução à Computação",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 0
+      "state": 1
     },
     {
       "name": "MAT222",
@@ -28,14 +28,14 @@
       "description": "Língua Portuguesa",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 0
+      "state": 1
     },
     {
       "name": "LET102",
       "description": "Inglês",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 0
+      "state": 1
     },
     {}
   ],
@@ -53,7 +53,7 @@
       "description": "Estruturas de Dados e Algoritmos",
       "prerequisites": ["INF027"],
       "credit": "90 - 5",
-      "state": 2
+      "state": 1
     },
     {
       "name": "INF028",
@@ -68,14 +68,14 @@
       "description": "Metodologia de Pesquisa",
       "prerequisites": ["LET100"],
       "credit": "60 - 4",
-      "state": 0
+      "state": 1
     },
     {
       "name": "OPTATIVA",
       "description": "OPTATIVA I",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 2
+      "state": 1
     },
     {}
   ],
@@ -86,14 +86,14 @@
       "description": "Programação Orientada a Objetos",
       "prerequisites": ["INF029"],
       "credit": "90 - 5",
-      "state": 2
+      "state": 1
     },
     {
       "name": "INF021",
       "description": "Estágio Supervisionado",
       "prerequisites": ["INF029"],
       "credit": "300 - 10",
-      "state": 2
+      "state": 1
     },
     {
       "name": "INF009",
@@ -107,7 +107,7 @@
       "description": "Banco de Dados I",
       "prerequisites": ["MAT222"],
       "credit": "90 - 5",
-      "state": 2
+      "state": 1
     },
     {},
     {
@@ -115,7 +115,7 @@
       "description": "Introdução à Administração",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 0
+      "state": 1
     },
     {}
   ],
@@ -140,14 +140,14 @@
       "description": "Redes de Computadores I",
       "prerequisites": ["INF009"],
       "credit": "60 - 3",
-      "state": 2
+      "state": 1
     },
     {
       "name": "INF010",
       "description": "Banco de Dados II",
       "prerequisites": ["INF007"],
       "credit": "90 - 5",
-      "state": 0
+      "state": 1
     },
     {},
     {},
@@ -168,7 +168,7 @@
       "description": "Redes de Computadores II",
       "prerequisites": ["INF015"],
       "credit": "60 - 2",
-      "state": 0
+      "state": 1
     },
     {
       "name": "INF022",
@@ -182,21 +182,21 @@
       "description": "Métodos Científicos em Computação",
       "prerequisites": ["INF031"],
       "credit": "30 - 2",
-      "state": 2
+      "state": 1
     },
     {
       "name": "ADM550",
       "description": "Empreendedorismo",
       "prerequisites": ["ADM500"],
       "credit": "60 - 4",
-      "state": 0
+      "state": 1
     },
     {
       "name": "HUM100",
       "description": "Filosofia",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 0
+      "state": 1
     }
   ],
   [
@@ -205,14 +205,14 @@
       "description": "Auditoria de Sistemas",
       "prerequisites": ["INF014"],
       "credit": "60 - 3",
-      "state": 2
+      "state": 1
     },
     {
       "name": "INF019",
       "description": "Gerência de Projetos",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 0
+      "state": 1
     },
     {
       "name": "INF016",
@@ -226,7 +226,7 @@
       "description": "Sistemas Distribuídos",
       "prerequisites": ["INF015"],
       "credit": "60 - 3",
-      "state": 2
+      "state": 1
     },
     {},
     {
@@ -234,14 +234,14 @@
       "description": "Trabalho Final de Curso",
       "prerequisites": ["INF030"],
       "credit": "90 - 3",
-      "state": 2
+      "state": 1
     },
     {
       "name": "OPTATIVA",
       "description": "OPTATIVA II",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 0
+      "state": 1
     },
     {}
   ]

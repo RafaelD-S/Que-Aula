@@ -2,65 +2,78 @@ import "./flowchart.style.scss";
 import Data from "../../data/flowchart.json";
 import ClassItem from "../../components/classItem/classItem";
 import { IClassItem } from "../../components/classItem/classItem.Interface";
+import { useCallback, useEffect, useState } from "react";
 
-/*
-  Data[
-  [
-  {
-    name: String //INF028
-    description: String //Algoritmos e Lógica de Programação
-    semester: Number //1
-    line: Number //1
-    prerequisites: [String] //INF027
-    state: Number //0 = Disabled, 1 = Default, 2 = Selected
-  },
-  {
-    name: String //INF028
-    description: String //Algoritmos e Lógica de Programação
-    semester: Number //1
-    line: Number //1
-    prerequisites: [String] //INF027
-    state: Number //0 = Disabled, 1 = Default, 2 = Selected
-  }
-  ],
-  [
-    {
-      name: String //INF028
-      description: String //Algoritmos e Lógica de Programação
-      semester: Number //1
-      line: Number //1
-      prerequisites: [String] //INF027
-      state: Number //0 = Disabled, 1 = Default, 2 = Selected
-    },
-    {
-      name: String //INF028
-      description: String //Algoritmos e Lógica de Programação
-      semester: Number //1
-      line: Number //1
-      prerequisites: [String] //INF027
-      state: Number //0 = Disabled, 1 = Default, 2 = Selected
-    }
-  ]
-]
+// Helper function to deeply compare arrays/objects
+const deepEqual = (
+  a: Array<Array<IClassItem>>,
+  b: Array<Array<IClassItem>>
+): boolean => JSON.stringify(a) === JSON.stringify(b);
 
-  UserCache
-  {
-    name: String //INF028
-    state: Number //0 = Default, 1 = Disabled, 2 = Selected
-  }
-*/
-
-const classData: IClassItem[][] = Data.map((semester) =>
+const defaultData: IClassItem[][] = Data.map((semester) =>
   semester.map((item) => ({
     name: item.name,
     description: item.description,
-    prerequisites: item.prerequisites,
+    prerequisites: item.prerequisites || [],
     credit: item.credit,
-    state: item.state,
+    state: typeof item.state === "number" ? item.state : 1,
   }))
 );
 
 const Flowchart = () => {
+  const [classData, setClassData] = useState<IClassItem[][]>(() => {
+    try {
+      const storedData = localStorage.getItem("classData");
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        if (Array.isArray(parsedData) && parsedData.every(Array.isArray)) {
+          return parsedData;
+        }
+      }
+    } catch (error) {
+      console.error("Error parsing classData from localStorage:", error);
+    }
+
+    return defaultData;
+  });
+
+  useEffect(() => {
+    try {
+      const currentStorageData = localStorage.getItem("classData");
+      if (
+        !currentStorageData ||
+        !deepEqual(JSON.parse(currentStorageData), classData)
+      ) {
+        localStorage.setItem("classData", JSON.stringify(classData));
+      }
+    } catch (error) {
+      console.error("Error saving classData to localStorage:", error);
+    }
+  }, [classData]);
+
+  const handleClassStateChange = useCallback(
+    (itemName: string | undefined, newState: number) => {
+      if (!itemName) return;
+
+      setClassData((prevClassData) => {
+        const newData = prevClassData.map((semester) => {
+          return semester.map((item) => {
+            if (item.name === itemName) {
+              return { ...item, state: newState };
+            }
+            return item;
+          });
+        });
+
+        if (deepEqual(newData, prevClassData)) {
+          return prevClassData;
+        }
+        return newData;
+      });
+    },
+    []
+  );
+
   return (
     <main className="flowchart">
       <div>
@@ -73,7 +86,11 @@ const Flowchart = () => {
               </h3>
               <div className="flowchart__semester-content">
                 {semester.map((item, line) => (
-                  <ClassItem key={`${index}-${line}`} data={item} />
+                  <ClassItem
+                    key={`${index}-${line}`}
+                    data={item}
+                    onStateChange={handleClassStateChange}
+                  />
                 ))}
               </div>
             </div>

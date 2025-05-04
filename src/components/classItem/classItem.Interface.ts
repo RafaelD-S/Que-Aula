@@ -5,3 +5,8 @@ export interface IClassItem {
   credit?: string; // 60 - 3
   state?: number; //0 = Default, 1 = Disabled, 2 = Selected
 }
+
+export interface IClassItemProps {
+  data: IClassItem;
+  onStateChange: (itemName: string | undefined, newState: number) => void;
+}

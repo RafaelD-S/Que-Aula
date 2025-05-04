@@ -92,4 +92,25 @@
     display: flex;
     justify-content: end;
   }
+
+  @media (max-width: 768px) {
+    width: 7.5rem;
+    height: 5.5rem;
+    margin: 0.5rem;
+
+    &__title {
+      font-size: 0.8rem;
+    }
+    &__description {
+      font-size: 0.4rem;
+    }
+    &__credit {
+      font-size: 0.4rem;
+    }
+    &__checkbox {
+      width: 0.8rem;
+      height: 0.8rem;
+      font-size: 1.2rem;
+    }
+  }
 }

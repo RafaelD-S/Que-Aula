@@ -1,40 +1,39 @@
 import "./classItem.style.scss";
-import { IClassItem } from "./classItem.Interface";
-import { useState } from "react";
+import { IClassItemProps } from "./classItem.Interface";
 
-const ClassItem = ({ data }: { data: IClassItem }) => {
+const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
   const {
     name,
     description,
     // prerequisites,
     credit,
-    state,
+    state = 1,
   } = data;
 
-  const [classState, setClassState] = useState(state);
-
   const handleClick = () => {
-    if (classState === 0) {
-      setClassState(1);
+    let newState: number;
+
+    if (state === 0) {
+      newState = 1;
+    } else if (state === 1) {
+      newState = 0;
+    } else {
+      newState = 1;
     }
-    if (classState === 1) {
-      setClassState(0);
-    }
-    if (classState === 2) {
-      setClassState(1);
-    }
+    onStateChange(name, newState);
   };
+
   const handleCheckboxClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    if (classState === 0) {
-      setClassState(1);
+    let newState: number;
+    if (state === 0) {
+      newState = 1;
+    } else if (state === 1) {
+      newState = 2;
+    } else {
+      newState = 1;
     }
-    if (classState === 1) {
-      setClassState(2);
-    }
-    if (classState === 2) {
-      setClassState(1);
-    }
+    onStateChange(name, newState);
   };
 
   if (name === undefined) {
@@ -44,12 +43,12 @@ const ClassItem = ({ data }: { data: IClassItem }) => {
   return (
     <div
       onClick={handleClick}
-      className={`class-item class-item--state-${classState}`}
+      className={`class-item class-item--state-${state}`}
     >
       <div className="class-item_checkbox-area">
         <div
           onClick={handleCheckboxClick}
-          className={`class-item__checkbox class-item__checkbox--state-${classState}`}
+          className={`class-item__checkbox class-item__checkbox--state-${state}`}
         ></div>
       </div>
       <div className="class-item__content">
