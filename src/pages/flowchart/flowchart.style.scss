@@ -2,13 +2,12 @@
 @use "../../style/mixins.scss" as mixin;
 
 .flowchart {
-  padding: 1rem 0;
   width: 100%;
   box-sizing: border-box;
 
   > div {
     width: 100%;
-    max-width: 1000px;
+    max-width: 501px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -21,21 +20,24 @@
 
   &__title {
     color: var.$white;
-    text-align: center;
+    font-family: Montserrat;
+    font-weight: 700;
     font-size: 24px;
     line-height: 100%;
+    letter-spacing: 0%;
+
     margin-bottom: 1rem;
   }
 
   &__container {
     display: flex;
     position: relative;
-    justify-content: space-around;
     width: 100%;
+    gap: 7px;
 
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 1rem 0.5rem;
+    padding: 16px;
     box-sizing: border-box;
 
     scrollbar-width: thin;
@@ -61,6 +63,7 @@
 
   &__semester {
     flex-shrink: 0;
+    width: 72px;
     &-content {
       display: flex;
       flex-direction: column;
@@ -70,30 +73,9 @@
     &-title {
       color: var.$white;
       text-align: center;
-      font-size: 1rem;
+      font-size: 10px;
       line-height: 100%;
       margin-bottom: 1rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    & > div {
-      max-width: 100%;
-      padding: 0 0.5rem;
-    }
-    &__title {
-      font-size: 20px;
-    }
-
-    &__container {
-      padding: 0.5rem 0;
-    }
-
-    &__semester {
-      padding: 0 0.25rem;
-      &-title {
-        font-size: 0.9rem;
-      }
     }
   }
 }

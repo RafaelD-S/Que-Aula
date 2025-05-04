@@ -42,12 +42,10 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
 
   return (
     <div onClick={handleClick} className={`class-item class-item--${state}`}>
-      <div className="class-item_checkbox-area">
-        <div
-          onClick={handleCheckboxClick}
-          className={`class-item__checkbox class-item__checkbox--${state}`}
-        ></div>
-      </div>
+      <div
+        onClick={handleCheckboxClick}
+        className={`class-item__checkbox class-item__checkbox--${state}`}
+      ></div>
       <div className="class-item__content">
         <h3 className="class-item__title">{name}</h3>
         <p className="class-item__description">{description}</p>
