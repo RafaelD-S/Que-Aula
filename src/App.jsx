@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import DayClasses from "./pages/dayClasses/dayClasses";
 import Calendar from "./pages/calendar/calendar";
+import Flowchart from "./pages/flowchart/flowchart";
 
 import Data from "./data/classes.json";
 
@@ -20,7 +21,13 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [urgentUpdate, setUrgentUpdate] = useState(false);
 
-  const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
+  const weekDays = [
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+  ];
   const savedVersion = localStorage.getItem("version") || "";
 
   const verifyVersion = () => {
@@ -37,7 +44,9 @@ function App() {
     const appVersion = +version.slice(-1);
 
     if (localVersion < appVersion && savedVersion) {
-      const selectedClasses = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
+      const selectedClasses = JSON.parse(
+        localStorage.getItem("chosenClasses") || "[]"
+      );
 
       const allClasses = Data.flatMap((item) => item.classes);
 
@@ -84,8 +93,12 @@ function App() {
       <Header switchWeekday={setCurrentWeekday} weekDays={weekDays} />
 
       <Routes>
-        <Route path="/" element={<DayClasses currentWeekday={currentWeekday} />} />
+        <Route
+          path="/"
+          element={<DayClasses currentWeekday={currentWeekday} />}
+        />
         <Route path="/todas-as-aulas" element={<Calendar />} />
+        <Route path="/fluxograma" element={<Flowchart />} />
       </Routes>
 
       <Modal isModalOpen={isModalOpen} />

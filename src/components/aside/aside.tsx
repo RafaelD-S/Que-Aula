@@ -27,22 +27,34 @@ const Aside = ({ children }: IAside) => {
           <div className="aside__container" ref={asideRef}>
             <div className="aside__header">
               <Link to="/">
-                <figure className="aside__header__logo" onClick={() => setIsOpenState(false)}>
+                <figure
+                  className="aside__header__logo"
+                  onClick={() => setIsOpenState(false)}
+                >
                   <img src={Logo} alt="" />
                 </figure>
               </Link>
-              <figure className="aside__header__close" onClick={() => setIsOpenState(false)}>
+              <figure
+                className="aside__header__close"
+                onClick={() => setIsOpenState(false)}
+              >
                 <img src={Close} alt="close" />
               </figure>
             </div>
             <div className="aside__content">
               <div className="aside__main">
-                <nav className="aside__main__nav" onClick={() => setIsOpenState(false)}>
+                <nav
+                  className="aside__main__nav"
+                  onClick={() => setIsOpenState(false)}
+                >
                   <Link to="/">
                     <div className="aside__main__nav__item">Página Inicial</div>
                   </Link>
                   <Link to="/todas-as-aulas">
                     <div className="aside__main__nav__item">Todas as Aulas</div>
+                  </Link>
+                  <Link to="/fluxograma">
+                    <div className="aside__main__nav__item">Fluxograma</div>
                   </Link>
                 </nav>
               </div>

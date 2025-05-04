@@ -1,0 +1,79 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
+
+.flowchart {
+  width: 100%;
+  box-sizing: border-box;
+
+  > div {
+    width: 100%;
+    max-width: 501px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    color: var.$white;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    gap: 7px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 16px;
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+    scrollbar-color: var.$blue var.$black;
+    --webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var.$black;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var.$blue-weak-emphasis;
+      border-radius: 4px;
+      border: 2px solid var.$black;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var.$blue-gray;
+    }
+  }
+
+  &__semester {
+    flex-shrink: 0;
+    width: 72px;
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+    }
+    &-title {
+      color: var.$white;
+      text-align: center;
+      font-size: 10px;
+      line-height: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+}
