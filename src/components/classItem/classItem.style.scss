@@ -22,10 +22,12 @@
     background-color: var.$blue-darker;
     border: 1px solid var.$divider-color;
     &:hover {
-      box-shadow: 0px 0px 2px 0px var.$emphasis-divider-color;
+      box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
+      border-color: var.$emphasis-divider-color;
     }
     &:active {
       box-shadow: none;
+      border-color: var.$divider-color;
       opacity: 80%;
     }
   }
@@ -46,10 +48,12 @@
     background-color: var.$blue-darker;
     border: 1px solid var.$blue-gray;
     &:hover {
-      box-shadow: 0px 0px 2px 0px var.$blue-light-gray;
+      box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
+      border-color: var.$blue-light-gray;
     }
     &:active {
       box-shadow: none;
+      border-color: var.$blue-light-gray;
       opacity: 80%;
     }
   }
