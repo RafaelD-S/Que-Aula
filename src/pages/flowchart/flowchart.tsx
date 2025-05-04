@@ -4,22 +4,20 @@ import ClassItem from "../../components/classItem/classItem";
 import { IClassItem } from "../../components/classItem/classItem.Interface";
 import { useCallback, useEffect, useState } from "react";
 
-const deepEqual = (
-  a: Array<Array<IClassItem>>,
-  b: Array<Array<IClassItem>>
-): boolean => JSON.stringify(a) === JSON.stringify(b);
-
-const defaultData: IClassItem[][] = Data.map((semester) =>
-  semester.map((item) => ({
-    name: item.name,
-    description: item.description,
-    prerequisites: item.prerequisites || [],
-    credit: item.credit,
-    state: item.state !== undefined ? item.state : "default",
-  }))
-);
-
 const Flowchart = () => {
+  const deepEqual = (a: Array<Array<IClassItem>>, b: Array<Array<IClassItem>>): boolean =>
+    JSON.stringify(a) === JSON.stringify(b);
+
+  const defaultData: IClassItem[][] = Data.map((semester) =>
+    semester.map((item) => ({
+      name: item.name,
+      description: item.description,
+      prerequisites: item.prerequisites || [],
+      credit: item.credit,
+      state: item.state || "default",
+    }))
+  );
+
   const [classData, setClassData] = useState<IClassItem[][]>(() => {
     try {
       const storedData = localStorage.getItem("classData");
@@ -39,10 +37,7 @@ const Flowchart = () => {
   useEffect(() => {
     try {
       const currentStorageData = localStorage.getItem("classData");
-      if (
-        !currentStorageData ||
-        !deepEqual(JSON.parse(currentStorageData), classData)
-      ) {
+      if (!currentStorageData || !deepEqual(JSON.parse(currentStorageData), classData)) {
         localStorage.setItem("classData", JSON.stringify(classData));
       }
     } catch (error) {
@@ -80,9 +75,7 @@ const Flowchart = () => {
         <article className="flowchart__container">
           {classData.map((semester, index) => (
             <div key={index} className="flowchart__semester">
-              <h3 className="flowchart__semester-title">
-                {index + 1}º Semestre
-              </h3>
+              <h3 className="flowchart__semester-title">{index + 1}º Semestre</h3>
               <div className="flowchart__semester-content">
                 {semester.map((item, line) => (
                   <ClassItem
