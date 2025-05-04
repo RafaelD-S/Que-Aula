@@ -1,6 +1,5 @@
 [
   [
-    {},
     {
       "name": "INF027",
       "description": "Introdução à Lógica",
@@ -40,7 +39,6 @@
     {}
   ],
   [
-    {},
     {
       "name": "INF029",
       "description": "Laboratório de Programação",
@@ -80,7 +78,6 @@
     {}
   ],
   [
-    {},
     {
       "name": "INF008",
       "description": "Programação Orientada a Objetos",
@@ -120,7 +117,6 @@
     {}
   ],
   [
-    {},
     {
       "name": "INF011",
       "description": "Padrões de Projeto",
@@ -154,7 +150,6 @@
     {}
   ],
   [
-    {},
     {
       "name": "INF014",
       "description": "Engenharia de Software",
@@ -208,13 +203,6 @@
       "state": "default"
     },
     {
-      "name": "INF019",
-      "description": "Gerência de Projetos",
-      "prerequisites": [],
-      "credit": "60 - 4",
-      "state": "default"
-    },
-    {
       "name": "INF016",
       "description": "Arquitetura de Software",
       "prerequisites": ["INF014", "INF012"],
@@ -228,7 +216,13 @@
       "credit": "60 - 3",
       "state": "default"
     },
-    {},
+    {
+      "name": "INF019",
+      "description": "Gerência de Projetos",
+      "prerequisites": [],
+      "credit": "60 - 4",
+      "state": "default"
+    },
     {
       "name": "INF023",
       "description": "Trabalho Final de Curso",
