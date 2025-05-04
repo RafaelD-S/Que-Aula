@@ -7,31 +7,31 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
     description,
     // prerequisites,
     credit,
-    state = 1,
+    state = "default",
   } = data;
 
   const handleClick = () => {
-    let newState: number;
+    let newState: string;
 
-    if (state === 0) {
-      newState = 1;
-    } else if (state === 1) {
-      newState = 0;
+    if (state === "disabled") {
+      newState = "default";
+    } else if (state === "default") {
+      newState = "disabled";
     } else {
-      newState = 1;
+      newState = "default";
     }
     onStateChange(name, newState);
   };
 
   const handleCheckboxClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    let newState: number;
-    if (state === 0) {
-      newState = 1;
-    } else if (state === 1) {
-      newState = 2;
+    let newState: string;
+    if (state === "disabled") {
+      newState = "default";
+    } else if (state === "default") {
+      newState = "selected";
     } else {
-      newState = 1;
+      newState = "default";
     }
     onStateChange(name, newState);
   };
@@ -41,14 +41,11 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
   }
 
   return (
-    <div
-      onClick={handleClick}
-      className={`class-item class-item--state-${state}`}
-    >
+    <div onClick={handleClick} className={`class-item class-item--${state}`}>
       <div className="class-item_checkbox-area">
         <div
           onClick={handleCheckboxClick}
-          className={`class-item__checkbox class-item__checkbox--state-${state}`}
+          className={`class-item__checkbox class-item__checkbox--${state}`}
         ></div>
       </div>
       <div className="class-item__content">

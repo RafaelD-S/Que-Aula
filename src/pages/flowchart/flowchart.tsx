@@ -16,7 +16,7 @@ const defaultData: IClassItem[][] = Data.map((semester) =>
     description: item.description,
     prerequisites: item.prerequisites || [],
     credit: item.credit,
-    state: typeof item.state === "number" ? item.state : 1,
+    state: item.state !== undefined ? item.state : "default",
   }))
 );
 
@@ -52,7 +52,7 @@ const Flowchart = () => {
   }, [classData]);
 
   const handleClassStateChange = useCallback(
-    (itemName: string | undefined, newState: number) => {
+    (itemName: string | undefined, newState: string) => {
       if (!itemName) return;
 
       setClassData((prevClassData) => {

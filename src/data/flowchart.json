@@ -6,7 +6,7 @@
       "description": "Introdução à Lógica",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {},
     {
@@ -14,28 +14,28 @@
       "description": "Introdução à Computação",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "MAT222",
       "description": "Matemática I",
       "prerequisites": [],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "LET100",
       "description": "Língua Portuguesa",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "LET102",
       "description": "Inglês",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {}
   ],
@@ -46,21 +46,21 @@
       "description": "Laboratório de Programação",
       "prerequisites": ["INF027"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF006",
       "description": "Estruturas de Dados e Algoritmos",
       "prerequisites": ["INF027"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF028",
       "description": "Arquitetura de Computadores e Software Básico",
       "prerequisites": ["INF026"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {},
     {
@@ -68,14 +68,14 @@
       "description": "Metodologia de Pesquisa",
       "prerequisites": ["LET100"],
       "credit": "60 - 4",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "OPTATIVA I",
       "description": "OPTATIVA I",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {}
   ],
@@ -86,28 +86,28 @@
       "description": "Programação Orientada a Objetos",
       "prerequisites": ["INF029"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF021",
       "description": "Estágio Supervisionado",
       "prerequisites": ["INF029"],
       "credit": "300 - 10",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF009",
       "description": "Sistemas Operacionais",
       "prerequisites": ["INF006", "INF028"],
       "credit": "90 - 4",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF007",
       "description": "Banco de Dados I",
       "prerequisites": ["MAT222"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {},
     {
@@ -115,7 +115,7 @@
       "description": "Introdução à Administração",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 1
+      "state": "default"
     },
     {}
   ],
@@ -126,28 +126,28 @@
       "description": "Padrões de Projeto",
       "prerequisites": ["INF008"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF012",
       "description": "Programação Web",
       "prerequisites": ["INF008"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF015",
       "description": "Redes de Computadores I",
       "prerequisites": ["INF009"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF010",
       "description": "Banco de Dados II",
       "prerequisites": ["INF007"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {},
     {},
@@ -160,7 +160,7 @@
       "description": "Engenharia de Software",
       "prerequisites": ["INF011"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {},
     {
@@ -168,35 +168,35 @@
       "description": "Redes de Computadores II",
       "prerequisites": ["INF015"],
       "credit": "60 - 2",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF022",
       "description": "Tópicos Avançados",
       "prerequisites": ["INF010"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF030",
       "description": "Métodos Científicos em Computação",
       "prerequisites": ["INF031"],
       "credit": "30 - 2",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "ADM550",
       "description": "Empreendedorismo",
       "prerequisites": ["ADM500"],
       "credit": "60 - 4",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "HUM100",
       "description": "Filosofia",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 1
+      "state": "default"
     }
   ],
   [
@@ -205,28 +205,28 @@
       "description": "Auditoria de Sistemas",
       "prerequisites": ["INF014"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF019",
       "description": "Gerência de Projetos",
       "prerequisites": [],
       "credit": "60 - 4",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF016",
       "description": "Arquitetura de Software",
       "prerequisites": ["INF014", "INF012"],
       "credit": "90 - 5",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "INF020",
       "description": "Sistemas Distribuídos",
       "prerequisites": ["INF015"],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {},
     {
@@ -234,14 +234,14 @@
       "description": "Trabalho Final de Curso",
       "prerequisites": ["INF030"],
       "credit": "90 - 3",
-      "state": 1
+      "state": "default"
     },
     {
       "name": "OPTATIVA II",
       "description": "OPTATIVA II",
       "prerequisites": [],
       "credit": "60 - 3",
-      "state": 1
+      "state": "default"
     },
     {}
   ]

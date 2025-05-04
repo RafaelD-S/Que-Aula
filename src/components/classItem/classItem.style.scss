@@ -20,18 +20,7 @@
     cursor: default;
   }
 
-  &--state-0 {
-    background-color: var.$black;
-    border: 2px dashed var.$divider-color;
-    &:hover {
-      border-color: var.$blue-weak-emphasis;
-    }
-    &:active {
-      border-color: var.$divider-color;
-      opacity: 80%;
-    }
-  }
-  &--state-1 {
+  &--default {
     background-color: var.$blue-darker;
     border: 2px solid var.$divider-color;
     &:hover {
@@ -42,7 +31,20 @@
       opacity: 80%;
     }
   }
-  &--state-2 {
+
+  &--disabled {
+    background-color: var.$black;
+    border: 2px dashed var.$divider-color;
+    &:hover {
+      border-color: var.$blue-weak-emphasis;
+    }
+    &:active {
+      border-color: var.$divider-color;
+      opacity: 80%;
+    }
+  }
+
+  &--selected {
     background-color: var.$blue-darker;
     border: 2px solid var.$blue-gray;
     &:hover {
@@ -65,11 +67,11 @@
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 
-    &--state-1 {
+    &--default {
       background-color: var.$blue-darker;
       border: 2px solid var.$divider-color;
     }
-    &--state-2 {
+    &--selected {
       background-color: var.$blue-light-gray;
       border: 2px solid var.$blue-light-gray;
     }
