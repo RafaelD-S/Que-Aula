@@ -75,6 +75,7 @@
     border-radius: 2px;
     box-sizing: border-box;
     color: var.$blue-darker;
+    transition: border 0.2s ease, background-color 0.2s ease;
 
     &--default {
       background-color: var.$blue-darker;
