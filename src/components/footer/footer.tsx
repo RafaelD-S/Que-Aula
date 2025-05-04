@@ -9,7 +9,8 @@ const Footer = ({
   hasCredits = true,
 }: IFooter) => {
   const eraseCalendar = () => {
-    localStorage.clear();
+    localStorage.removeItem("version");
+    localStorage.removeItem("chosenClasses");
     location.reload();
   };
 
