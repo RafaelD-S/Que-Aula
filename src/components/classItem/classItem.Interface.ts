@@ -1,7 +1,7 @@
 export interface IClassItem {
   name?: string;
   description?: string;
-  prerequisites?: string[];
+  requiredFor?: string[];
   credit?: string;
   state?: string;
 }
