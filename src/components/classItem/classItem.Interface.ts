@@ -4,6 +4,7 @@ export interface IClassItem {
   requiredFor?: string[];
   credit?: string;
   state?: string;
+  semester?: number;
 }
 
 export interface IClassItemProps {

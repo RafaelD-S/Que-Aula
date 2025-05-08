@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 const Flowchart = () => {
   const defaultData: IClassItem[][] = Data.map((semester) =>
     semester.map((item) => {
-      const { state, credit, requiredFor, description, name } = item;
+      const { state, credit, requiredFor, description, name, semester } = item;
 
       if (item.state === "empty") return { state };
 
@@ -17,6 +17,7 @@ const Flowchart = () => {
         requiredFor,
         credit,
         state,
+        semester,
       };
     })
   );
@@ -72,10 +73,41 @@ const Flowchart = () => {
   }, [classData]);
 
   useEffect(() => {
-    const teste = classData.map((item) => item);
+    const allClases = classData.flatMap((m) => m);
 
-    console.log(teste);
-  }, []);
+    classData.forEach((item) => {
+      item.forEach((e, i) => {
+        if (e.requiredFor?.length && e.name) {
+          const element = document.querySelector(`.${e.name}`);
+
+          e.requiredFor.forEach((clazz) => {
+            allClases.forEach((allClass) => {
+              if (clazz === allClass.name && allClass.semester) {
+                const tagetIndex = classData[allClass.semester].findIndex(
+                  (f) => f.name === allClass.name
+                );
+
+                if (e.semester === allClass.semester - 1) {
+                  if (i === tagetIndex) {
+                    element?.classList.add("class-item__dependency--straight");
+                  } else if (i === tagetIndex - 1) {
+                    element?.classList.add("class-item__dependency--beside");
+                  }
+                } else {
+                  element?.classList.add("class-item__dependency--straight");
+
+                  for (let j = e.semester! + 1; j < allClass.semester; j++) {
+                    const itemState = classData[j][i].state;
+                    if (itemState === "empty") classData[j][i].state = "empty-through";
+                  }
+                }
+              }
+            });
+          });
+        }
+      });
+    });
+  }, [classData]);
 
   return (
     <main className="flowchart">

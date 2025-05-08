@@ -26,10 +26,11 @@ const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
     onStateChange(name, newState);
   };
 
-  if (name === undefined) return <div className="class-item class-item--empty"></div>;
+  if (state === "empty" || state === "empty-through")
+    return <div className={`class-item class-item--${state}`} />;
 
   return (
-    <div onClick={handleClick} className={`class-item class-item--${state}`}>
+    <div onClick={handleClick} className={`class-item ${name} class-item--${state}`}>
       <div
         onClick={handleCheckboxClick}
         className={`class-item__checkbox class-item__checkbox--${state}`}
