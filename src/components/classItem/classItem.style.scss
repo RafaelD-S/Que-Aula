@@ -14,10 +14,89 @@
   text-align: center;
   cursor: pointer;
   user-select: none;
-  transition: border 0.2s ease, background-color 0.2s ease, box-shadow 0.5s ease;
+  transition: border 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+
+  // hardcoded until logic for it can be made
+  &.INF017 {
+    &:after {
+      position: absolute;
+      content: "";
+      margin: auto;
+      width: calc(100% + 8px);
+      bottom: 50%;
+      height: 34px;
+      border: 1.25px dashed var.$emphasis-divider-color;
+      border-bottom: transparent;
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: calc(100% + 4px);
+      margin: auto;
+      width: 4px;
+      height: 0px;
+      border-bottom: 1.25px dashed var.$emphasis-divider-color;
+    }
+  }
+
+  &__dependency {
+    &--beside {
+      &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: calc(100% + 1px);
+        margin: auto;
+        width: 4px;
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: calc(100% + 4px);
+        width: 3px;
+        height: 52px;
+        border-left: 1.25px dashed var.$emphasis-divider-color;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
+
+    &--straight {
+      &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: calc(100% + 1px);
+        margin: auto;
+        width: 7px;
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
+  }
 
   &--empty {
     cursor: default;
+
+    &-through {
+      cursor: default;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: calc(100% + 14px);
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
   }
 
   &--default {
