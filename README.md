@@ -90,4 +90,11 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
       Júlio Sousa
     </a>
   </td>
+  <td align="center">
+    <img src="https://github.com/johncobain.png?size=100" style="width: 100px"/>
+    <br/>
+    <a href="https://github.com/johncobain" target="_blank">
+      Andrey Gomes
+    </a>
+  </td>
 </table>
