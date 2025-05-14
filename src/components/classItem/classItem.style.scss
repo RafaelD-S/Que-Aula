@@ -1,0 +1,202 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
+
+.class-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: 8px 4px;
+  width: 72px;
+  height: 64px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: border 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+
+  // hardcoded until logic for it can be made
+  &.INF017 {
+    &:after {
+      position: absolute;
+      content: "";
+      margin: auto;
+      width: calc(100% + 8px);
+      bottom: 50%;
+      height: 34px;
+      border: 1.25px dashed var.$emphasis-divider-color;
+      border-bottom: transparent;
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: calc(100% + 4px);
+      margin: auto;
+      width: 4px;
+      height: 0px;
+      border-bottom: 1.25px dashed var.$emphasis-divider-color;
+    }
+  }
+
+  &__dependency {
+    &--beside {
+      &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: calc(100% + 1px);
+        margin: auto;
+        width: 4px;
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: calc(100% + 4px);
+        width: 3px;
+        height: 52px;
+        border-left: 1.25px dashed var.$emphasis-divider-color;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
+
+    &--straight {
+      &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: calc(100% + 1px);
+        margin: auto;
+        width: 7px;
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
+  }
+
+  &--empty {
+    cursor: default;
+
+    &-through {
+      cursor: default;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: calc(100% + 14px);
+        height: 0px;
+        border-bottom: 1.25px dashed var.$emphasis-divider-color;
+      }
+    }
+  }
+
+  &--default {
+    border: 1px solid var.$divider-color;
+    background-color: var.$blue-darker;
+
+    &:hover {
+      box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
+      border-color: var.$emphasis-divider-color;
+    }
+
+    &:active {
+      box-shadow: none;
+      border-color: var.$divider-color;
+      opacity: 80%;
+    }
+  }
+
+  &--disabled {
+    background-color: var.$black;
+    border: 1px dashed var.$divider-color;
+
+    &:hover {
+      border-color: var.$blue-weak-emphasis;
+    }
+
+    &:active {
+      border-color: var.$divider-color;
+      opacity: 80%;
+    }
+  }
+
+  &--selected {
+    background-color: var.$blue-darker;
+    border: 1px solid var.$blue-gray;
+
+    &:hover {
+      box-shadow: 0px 0px 2px 0px var.$blue-weak-emphasis;
+      border-color: var.$blue-light-gray;
+    }
+
+    &:active {
+      box-shadow: none;
+      border-color: var.$blue-light-gray;
+      opacity: 80%;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: var.$blue-darker;
+    transition: border 0.2s ease, background-color 0.2s ease;
+
+    &--default {
+      background-color: var.$blue-darker;
+      border: 1px solid var.$divider-color;
+    }
+
+    &--selected {
+      background-color: var.$blue-light-gray;
+      border: 1px solid var.$blue-light-gray;
+
+      &:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(../../assets/check.svg);
+      }
+    }
+  }
+
+  &__title {
+    color: var.$blue-white;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__description {
+    color: var.$blue-gray;
+    font-weight: 500;
+    font-size: 6px;
+    line-height: 122%;
+
+    @include mixin.dynamicLineClamp;
+  }
+
+  &__credit {
+    color: var.$blue-gray;
+    font-weight: 500;
+    font-size: 6px;
+    line-height: 122%;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+  }
+}

@@ -9,10 +9,12 @@ import { IAside } from "./aside.interface";
 const Aside = ({ children }: IAside) => {
   const [isOpenState, setIsOpenState] = useState(false);
   const asideRef = useRef<HTMLDivElement>(null);
+  const asideBackgroundRef = useRef<HTMLDivElement>(null);
 
   const handleOverlayClick = (e: React.SyntheticEvent) => {
     const target = e.target as HTMLDivElement;
-    if (asideRef.current && !asideRef.current.contains(target)) {
+
+    if (asideBackgroundRef.current && asideBackgroundRef.current === target) {
       setIsOpenState(false);
     }
   };
@@ -23,7 +25,7 @@ const Aside = ({ children }: IAside) => {
         {children}
       </span>
       {isOpenState && (
-        <div className="aside" onClick={handleOverlayClick}>
+        <div className="aside" onClick={handleOverlayClick} ref={asideBackgroundRef}>
           <div className="aside__container" ref={asideRef}>
             <div className="aside__header">
               <Link to="/">
@@ -43,6 +45,9 @@ const Aside = ({ children }: IAside) => {
                   </Link>
                   <Link to="/todas-as-aulas">
                     <div className="aside__main__nav__item">Todas as Aulas</div>
+                  </Link>
+                  <Link to="/fluxograma">
+                    <div className="aside__main__nav__item">Fluxograma</div>
                   </Link>
                 </nav>
               </div>

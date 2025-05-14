@@ -3,6 +3,7 @@ import warning from "../../assets/warning.svg";
 import info from "../../assets/info.svg";
 import { IWarning } from "./warning.interface";
 import "./warning.style.scss";
+import { createPortal } from "react-dom";
 
 const Warning = ({
   children,
@@ -15,7 +16,13 @@ const Warning = ({
   type = "warning",
 }: IWarning) => {
   const [isOpenState, setIsOpenState] = useState(opened);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const warningTypes = {
+    warning,
+    info,
+  };
 
   const handleOverlayClick = (e: React.SyntheticEvent) => {
     const target = e.target as HTMLDivElement;
@@ -23,6 +30,21 @@ const Warning = ({
       setIsOpenState(false);
     }
   };
+
+  useEffect(() => {
+    if (isOpenState) {
+      const element = document.createElement("div");
+      element.className = "overlay";
+      document.body.appendChild(element);
+      setPortalTarget(element);
+
+      return () => {
+        if (element && document.body.contains(element)) {
+          document.body.removeChild(element);
+        }
+      };
+    }
+  }, [isOpenState]);
 
   useEffect(() => {
     setIsOpenState(opened);
@@ -35,30 +57,25 @@ const Warning = ({
       <div className="warning__opener" onClick={() => setIsOpenState(true)}>
         {children}
       </div>
-      {isOpenState && (
-        <div className="warning" onClick={handleOverlayClick}>
-          <div className="warning__content" ref={modalRef}>
-            <img
-              src={type === "warning" ? warning : info}
-              alt=""
-              className="warning__content__icon"
-            />
-            <h2 className="warning__content__title">{message}</h2>
-            {buttonLabel && (
-              <button
-                className={`warning__content__button warning__content__button${
-                  type === "warning" ? "--warning" : "--info"
-                }`}
-                onClick={() => {
-                  onClickButton ? onClickButton() : setIsOpenState(false);
-                }}
-              >
-                {buttonLabel}
-              </button>
-            )}
-          </div>
-        </div>
-      )}
+      {isOpenState &&
+        portalTarget &&
+        createPortal(
+          <div className="warning" onClick={handleOverlayClick}>
+            <div className="warning__content" ref={modalRef}>
+              <img src={warningTypes[type]} alt="" className="warning__content__icon" />
+              <h2 className="warning__content__title">{message}</h2>
+              {buttonLabel && (
+                <button
+                  className={`warning__content__button warning__content__button--${type}`}
+                  onClick={() => (onClickButton ? onClickButton() : setIsOpenState(false))}
+                >
+                  {buttonLabel}
+                </button>
+              )}
+            </div>
+          </div>,
+          portalTarget!
+        )}
     </>
   );
 };

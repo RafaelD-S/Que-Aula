@@ -1,0 +1,306 @@
+[
+  [
+    {
+      "name": "INF027",
+      "description": "Introdução à Lógica",
+      "requiredFor": ["INF029", "INF006"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 0
+    },
+    {
+      "state": "empty",
+      "semester": 0
+    },
+    {
+      "name": "INF026",
+      "description": "Introdução à Computação",
+      "requiredFor": ["INF028"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 0
+    },
+    {
+      "name": "MAT222",
+      "description": "Matemática I",
+      "requiredFor": ["INF007"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 0
+    },
+    {
+      "name": "LET100",
+      "description": "Língua Portuguesa",
+      "requiredFor": ["INF031"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 0
+    },
+    {
+      "name": "LET102",
+      "description": "Inglês",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 0
+    },
+    {
+      "state": "empty",
+      "semester": 0
+    }
+  ],
+  [
+    {
+      "name": "INF029",
+      "description": "Laboratório de Programação",
+      "requiredFor": ["INF008", "INF021"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 1
+    },
+    {
+      "name": "INF006",
+      "description": "Estruturas de Dados e Algoritmos",
+      "requiredFor": ["INF009"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 1
+    },
+    {
+      "name": "INF028",
+      "description": "Arquitetura de Computadores e Software Básico",
+      "requiredFor": ["INF009"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 1
+    },
+    {
+      "state": "empty",
+      "semester": 1
+    },
+    {
+      "name": "INF031",
+      "description": "Metodologia de Pesquisa",
+      "requiredFor": ["INF030"],
+      "credit": "60 - 4",
+      "state": "default",
+      "semester": 1
+    },
+    {
+      "name": "OPT. I",
+      "description": "OPTATIVA I",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 1
+    },
+    {
+      "state": "empty",
+      "semester": 1
+    }
+  ],
+  [
+    {
+      "name": "INF008",
+      "description": "Programação Orientada a Objetos",
+      "requiredFor": ["INF011", "INF012"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 2
+    },
+    {
+      "name": "INF021",
+      "description": "Estágio Supervisionado",
+      "requiredFor": [],
+      "credit": "300 - 10",
+      "state": "default",
+      "semester": 2
+    },
+    {
+      "name": "INF009",
+      "description": "Sistemas Operacionais",
+      "requiredFor": ["INF015"],
+      "credit": "90 - 4",
+      "state": "default",
+      "semester": 2
+    },
+    {
+      "name": "INF007",
+      "description": "Banco de Dados I",
+      "requiredFor": ["INF010"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 2
+    },
+    {
+      "state": "empty",
+      "semester": 2
+    },
+    {
+      "name": "ADM500",
+      "description": "Introdução à Administração",
+      "requiredFor": ["ADM550"],
+      "credit": "60 - 4",
+      "state": "default",
+      "semester": 2
+    },
+    {
+      "state": "empty",
+      "semester": 2
+    }
+  ],
+  [
+    {
+      "name": "INF011",
+      "description": "Padrões de Projeto",
+      "requiredFor": ["INF014"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 3
+    },
+    {
+      "name": "INF012",
+      "description": "Programação Web",
+      "requiredFor": ["INF016"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 3
+    },
+    {
+      "name": "INF015",
+      "description": "Redes de Computadores I",
+      "requiredFor": ["INF017", "INF020"],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 3
+    },
+    {
+      "name": "INF010",
+      "description": "Banco de Dados II",
+      "requiredFor": ["INF022"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 3
+    },
+    {
+      "state": "empty",
+      "semester": 3
+    },
+    {
+      "state": "empty",
+      "semester": 3
+    },
+    {
+      "state": "empty",
+      "semester": 3
+    }
+  ],
+  [
+    {
+      "name": "INF014",
+      "description": "Engenharia de Software",
+      "requiredFor": ["INF018", "INF016"],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 4
+    },
+    {
+      "state": "empty",
+      "semester": 4
+    },
+    {
+      "name": "INF017",
+      "description": "Redes de Computadores II",
+      "requiredFor": [],
+      "credit": "60 - 2",
+      "state": "default",
+      "semester": 4
+    },
+    {
+      "name": "INF022",
+      "description": "Tópicos Avançados",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 4
+    },
+    {
+      "name": "INF030",
+      "description": "Métodos Científicos em Computação",
+      "requiredFor": ["INF023"],
+      "credit": "30 - 2",
+      "state": "default",
+      "semester": 4
+    },
+    {
+      "name": "ADM550",
+      "description": "Empreendedorismo",
+      "requiredFor": [],
+      "credit": "60 - 4",
+      "state": "default",
+      "semester": 4
+    },
+    {
+      "name": "HUM100",
+      "description": "Filosofia",
+      "requiredFor": [],
+      "credit": "60 - 4",
+      "state": "default",
+      "semester": 4
+    }
+  ],
+  [
+    {
+      "name": "INF018",
+      "description": "Auditoria de Sistemas",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "name": "INF016",
+      "description": "Arquitetura de Software",
+      "requiredFor": [],
+      "credit": "90 - 5",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "name": "INF020",
+      "description": "Sistemas Distribuídos",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "name": "INF019",
+      "description": "Gerência de Projetos",
+      "requiredFor": [],
+      "credit": "60 - 4",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "name": "INF023",
+      "description": "Trabalho Final de Curso",
+      "requiredFor": [],
+      "credit": "90 - 3",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "name": "OPT. II",
+      "description": "OPTATIVA II",
+      "requiredFor": [],
+      "credit": "60 - 3",
+      "state": "default",
+      "semester": 5
+    },
+    {
+      "state": "empty",
+      "semester": 5
+    }
+  ]
+]

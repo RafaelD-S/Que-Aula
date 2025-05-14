@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import DayClasses from "./pages/dayClasses/dayClasses";
 import Calendar from "./pages/calendar/calendar";
+import Flowchart from "./pages/flowchart/flowchart";
 
 import Data from "./data/classes.json";
 
@@ -86,6 +87,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DayClasses currentWeekday={currentWeekday} />} />
         <Route path="/todas-as-aulas" element={<Calendar />} />
+        <Route path="/fluxograma" element={<Flowchart />} />
       </Routes>
 
       <Modal isModalOpen={isModalOpen} />
