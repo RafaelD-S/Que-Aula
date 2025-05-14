@@ -84,7 +84,7 @@ const Flowchart = () => {
             allClases.forEach((allClass) => {
               if (clazz === allClass.name && allClass.semester) {
                 const tagetIndex = classData[allClass.semester].findIndex(
-                  (f) => f.name === allClass.name
+                  (findItem) => findItem.name === allClass.name
                 );
 
                 if (e.semester === allClass.semester - 1) {
