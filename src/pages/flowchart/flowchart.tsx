@@ -38,33 +38,41 @@ const Flowchart = () => {
     return defaultData;
   });
 
-  const deepEqual = (a: Array<Array<IClassItem>>, b: Array<Array<IClassItem>>): boolean =>
-    JSON.stringify(a) === JSON.stringify(b);
+  const deepEqual = (
+    a: Array<Array<IClassItem>>,
+    b: Array<Array<IClassItem>>
+  ): boolean => JSON.stringify(a) === JSON.stringify(b);
 
-  const handleClassStateChange = useCallback((itemName: string | undefined, newState: string) => {
-    if (!itemName) return;
+  const handleClassStateChange = useCallback(
+    (itemName: string | undefined, newState: string) => {
+      if (!itemName) return;
 
-    setClassData((prevClassData) => {
-      const newData = prevClassData.map((semester) => {
-        return semester.map((item) => {
-          if (item.name === itemName) {
-            return { ...item, state: newState };
-          }
-          return item;
+      setClassData((prevClassData) => {
+        const newData = prevClassData.map((semester) => {
+          return semester.map((item) => {
+            if (item.name === itemName) {
+              return { ...item, state: newState };
+            }
+            return item;
+          });
         });
-      });
 
-      if (deepEqual(newData, prevClassData)) {
-        return prevClassData;
-      }
-      return newData;
-    });
-  }, []);
+        if (deepEqual(newData, prevClassData)) {
+          return prevClassData;
+        }
+        return newData;
+      });
+    },
+    []
+  );
 
   useEffect(() => {
     try {
       const currentStorageData = localStorage.getItem("classData");
-      if (!currentStorageData || !deepEqual(JSON.parse(currentStorageData), classData)) {
+      if (
+        !currentStorageData ||
+        !deepEqual(JSON.parse(currentStorageData), classData)
+      ) {
         localStorage.setItem("classData", JSON.stringify(classData));
       }
     } catch (error) {
@@ -98,7 +106,8 @@ const Flowchart = () => {
 
                   for (let j = e.semester! + 1; j < allClass.semester; j++) {
                     const itemState = classData[j][i].state;
-                    if (itemState === "empty") classData[j][i].state = "empty-through";
+                    if (itemState === "empty")
+                      classData[j][i].state = "empty-through";
                   }
                 }
               }
@@ -116,7 +125,9 @@ const Flowchart = () => {
         <div className="flowchart__container__content">
           {classData.map((semester, index) => (
             <div key={index} className="flowchart__semester">
-              <h3 className="flowchart__semester-title">{index + 1}º Semestre</h3>
+              <h3 className="flowchart__semester-title">
+                {index + 1}º Semestre
+              </h3>
               <div className="flowchart__semester-classes">
                 {semester.map((item, line) => (
                   <ClassItem
