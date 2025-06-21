@@ -2,7 +2,7 @@
 @use "../../style/mixins.scss" as mixin;
 
 .modal {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var.$background-strong;
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +28,7 @@
     letter-spacing: 0.5px;
     padding: 0.5rem 2rem;
     border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var.$background-weak;
   }
 
   &__container {
@@ -111,10 +111,10 @@
     position: fixed;
     width: 100%;
     padding: 1rem 0;
-    background-color: rgb(13, 72, 82);
+    background-color: var.$blue-dark-emphasis;
     cursor: pointer;
     border: none;
-    color: rgb(177, 200, 228);
+    color: var.$blue-light-gray;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;

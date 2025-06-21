@@ -24,7 +24,7 @@
 
     &--empty {
       font-size: 0.6rem;
-      background-color: rgba(0, 0, 0, 0.192);
+      background-color: var.$background-weak;
       padding: 0.25rem 0.5rem;
     }
   }
@@ -45,12 +45,7 @@
     width: 100%;
     color: rgb(213, 225, 240);
     line-height: 1.7rem;
-    background: linear-gradient(
-      180deg,
-      rgba(244, 244, 244, 0) 48%,
-      rgba(117, 117, 201, 0.422) 49%,
-      rgba(14, 14, 18, 0) 51%
-    );
+    background: linear-gradient(180deg, #f4f4f400 48%, #7575c96c 49%, #0e0e1200 51%);
 
     &--greve {
       position: relative;
