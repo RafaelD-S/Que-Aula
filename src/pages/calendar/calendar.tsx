@@ -240,7 +240,7 @@ const Calendar = () => {
       >
         <button className="calendar__button" onClick={saveImage}>
           Salvar imagem do calendário
-          <img src={Download} alt="download icon" />
+          <img src={Download} alt="download icon" className="calendar__button__icon" />
         </button>
       </Warning>
     </main>

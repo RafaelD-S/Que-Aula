@@ -31,3 +31,9 @@
     }
   }
 }
+
+@mixin desktopStyle() {
+  @media (min-width: 720px) {
+    @content;
+  }
+}
