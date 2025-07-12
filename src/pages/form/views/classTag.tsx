@@ -8,8 +8,8 @@ export const ClassTag = ({
   onClick = () => {},
 }: IClassTag) => {
   const tagClasses = classNames({
-    ["modal__classes__tag"]: true,
-    "modal__classes__tag--selected": selected,
+    ["form__classes__tag"]: true,
+    "form__classes__tag--selected": selected,
     shimmer: loading,
   });
 

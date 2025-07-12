@@ -25,8 +25,8 @@ const Form = () => {
   ];
 
   const submitButtonClasses = classNames({
-    ["modal__submit"]: true,
-    "modal__submit--active": hasSelected,
+    ["form__submit"]: true,
+    "form__submit--active": hasSelected,
   });
 
   const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
@@ -86,26 +86,26 @@ const Form = () => {
   }, [apiClasses]);
 
   return (
-    <div className="modal">
-      <div className="modal__container">
-        <div className="modal__introduction">
-          <h2 className="modal__introduction__title">
-            Bem vindo ao <span className="modal__introduction__title__accent">Que Aula?</span>
+    <div className="form">
+      <div className="form__container">
+        <div className="form__introduction">
+          <h2 className="form__introduction__title">
+            Bem vindo ao <span className="form__introduction__title__accent">Que Aula?</span>
           </h2>
-          <p className="modal__introduction__paragraph">
+          <p className="form__introduction__paragraph">
             Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe informando
             suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
           </p>
-          <h4 className="modal__warning">Horários e salas de aulas para 2025.1 atualizados!</h4>
+          <h4 className="form__warning">Horários e salas de aulas para 2025.1 atualizados!</h4>
         </div>
-        <div className="modal__classes">
-          <h3 className="modal__classes__title">Escolha as suas matérias</h3>
+        <div className="form__classes">
+          <h3 className="form__classes__title">Escolha as suas matérias</h3>
 
           {(loading || error) &&
             semestres.map((item, index) => (
               <Fragment key={index}>
-                <h4 className="modal__classes__subtitle">{item}</h4>
-                <div className="modal__classes__container">
+                <h4 className="form__classes__subtitle">{item}</h4>
+                <div className="form__classes__container">
                   {Array.from({ length: 9 }).map((_, i) => (
                     <ClassTag key={i} loading />
                   ))}
@@ -138,8 +138,8 @@ const Form = () => {
             classesData.length > 0 &&
             semestres.map((item, i) => (
               <Fragment key={i}>
-                <h4 className="modal__classes__subtitle">{item}</h4>
-                <div className="modal__classes__container">
+                <h4 className="form__classes__subtitle">{item}</h4>
+                <div className="form__classes__container">
                   {classesData
                     .filter((filter) => +filter.semester === i)
                     .map((classData, index) =>
