@@ -4,8 +4,6 @@ import DayClasses from "./pages/dayClasses/dayClasses";
 import Calendar from "./pages/calendar/calendar";
 import Flowchart from "./pages/flowchart/flowchart";
 
-import Data from "./data/classes.json";
-
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Modal from "./components/modal/modal";
@@ -21,7 +19,13 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [urgentUpdate, setUrgentUpdate] = useState(false);
 
-  const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
+  const weekDays = [
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+  ];
   const savedVersion = localStorage.getItem("version") || "";
 
   const verifyVersion = () => {
@@ -34,34 +38,12 @@ function App() {
   };
 
   useEffect(() => {
-    const localVersion = +savedVersion.slice(-1);
-    const appVersion = +version.slice(-1);
-
-    if (localVersion < appVersion && savedVersion) {
-      const selectedClasses = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
-
-      const allClasses = Data.flatMap((item) => item.classes);
-
-      selectedClasses.forEach((item) => {
-        item.classes.forEach((e) => {
-          const foundClass = allClasses.find(
-            (element) =>
-              e.teacher === element.teacher &&
-              e.period[0] === element.period[0] &&
-              e.weekDay === element.weekDay
-          );
-          e.classroom = foundClass.classroom;
-        });
-      });
-
-      localStorage.setItem("chosenClasses", JSON.stringify(selectedClasses));
-      localStorage.setItem("version", version);
-      location.reload();
+    if (!localStorage.getItem("chosenClasses")) {
+      setIsModalOpen(true);
+    } else {
+      verifyVersion();
     }
-
-    if (!localStorage.getItem("chosenClasses")) setIsModalOpen(true);
-    else verifyVersion();
-  });
+  }, []);
 
   const updateCalendar = () => {
     localStorage.clear();
@@ -85,7 +67,10 @@ function App() {
       <Header switchWeekday={setCurrentWeekday} weekDays={weekDays} />
 
       <Routes>
-        <Route path="/" element={<DayClasses currentWeekday={currentWeekday} />} />
+        <Route
+          path="/"
+          element={<DayClasses currentWeekday={currentWeekday} />}
+        />
         <Route path="/todas-as-aulas" element={<Calendar />} />
         <Route path="/fluxograma" element={<Flowchart />} />
       </Routes>
