@@ -5,21 +5,49 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   background-color: var.$black;
 }
+
 input,
 select,
 textarea,
 button {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
+
 p {
   font-size: 0.9rem;
 }
+
 a {
   color: currentColor;
   text-decoration: none;
   font-weight: 500;
+}
+
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.shimmer {
+  cursor: auto;
+  color: transparent;
+  background-color: #1a2131;
+  background-image: linear-gradient(to right, #26304b 0%, #1b2338 20%, #28304b 40%, #202941 100%);
+  background-repeat: no-repeat;
+  background-size: 200px auto;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeholderShimmer;
+  animation-timing-function: linear;
 }

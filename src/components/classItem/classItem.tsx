@@ -1,7 +1,9 @@
 import "./classItem.style.scss";
 import { IClassItemProps } from "./classItem.Interface";
 
-const ClassItem = ({ data, onStateChange }: IClassItemProps) => {
+const ClassItem = ({ data, loading, onStateChange = () => {} }: IClassItemProps) => {
+  if (loading || !data) return <div className="class-item shimmer" />;
+
   const { name, description, credit, state = "default" } = data;
 
   const handleClick = () => {
