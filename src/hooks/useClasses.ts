@@ -42,7 +42,7 @@ export const useFlowchart = () => {
         const data = await api.getFlowchart();
         setFlowchart(data);
       } catch (err) {
-        console.error("❌ Erro ao buscar fluxograma:", err);
+        console.error("Erro ao buscar fluxograma:", err);
         setError("Erro ao carregar fluxograma");
       } finally {
         setLoading(false);

@@ -8,6 +8,7 @@ export interface IClassItem {
 }
 
 export interface IClassItemProps {
-  data: IClassItem;
-  onStateChange: (itemName: string | undefined, newState: string) => void;
+  data?: IClassItem;
+  onStateChange?: (itemName: string | undefined, newState: string) => void;
+  loading?: boolean;
 }

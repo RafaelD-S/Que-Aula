@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import "./dayClasses.style.scss";
-import { IClasses, IDayClasses, ISectionArray } from "./dayClasses.interface";
+import { IClasses, ISectionArray } from "./dayClasses.interface";
 import { IClassesData } from "../../types/dataClasses.interface";
+import { useAppContext } from "../../context/AppContext";
 
-const DayClasses = ({ currentWeekday }: IDayClasses) => {
+const DayClasses = () => {
+  const { currentWeekday } = useAppContext();
   const [sections, setSections] = useState<ISectionArray[][]>([]);
   const [classes, setClasses] = useState<IClasses[]>([
     {

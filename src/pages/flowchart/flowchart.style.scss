@@ -51,9 +51,12 @@
 
   &__semester {
     flex-shrink: 0;
-    animation: semesterAppear 0.5s ease forwards;
-    @include mixin.containerAppear(semesterAppear, -10px, 0);
-    @include mixin.cascadingAnimation(1, 6, 0.075);
+
+    &:not(.flowchart__semester--loading) {
+      animation: semesterAppear 0.5s ease forwards;
+      @include mixin.containerAppear(semesterAppear, -10px, 0);
+      @include mixin.cascadingAnimation(1, 6, 0.075);
+    }
 
     &-classes {
       display: flex;
