@@ -14,12 +14,12 @@
       Visite o site
     </a>
     ·
-    <a href="https://github.com/RafaelD-S/Portifolio">
-      Meu portfólio
-    </a>
-    ·
     <a href="https://www.figma.com/design/rSh7d9PtnzMkshoMjtsoG3/Que-Aula-?node-id=0-1&p=f&t=pfHWPJR22XS5iFYq-0">
       Figma
+    </a>
+    ·
+    <a href="https://github.com/RafaelD-S/Que-Aula/blob/main/changelog.md">
+      Changelog
     </a>
   </div>
 </div>
