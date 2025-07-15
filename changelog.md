@@ -24,7 +24,7 @@
 - Adicionar animação aos componentes
 - Correções de bug
 
-## 2.1.1 - 08/04/2025
+## 2.1.2 - 08/04/2025
 
 - Atualizar localização de sala
 - Trocar imagem de visualização em links
