@@ -2,9 +2,16 @@
 
 # Changelog
 
-### Versão atual: 2.3.0
+### Versão atual: 2.4.0
 
 </div>
+
+## 2.4.0 - 14/07/2025
+
+- Mudança do consumo de todas as aulas e aulas do fluxograma de json's estáticos para API
+- Refatoração das rotas. Agora quando sem aulas registradas, sempre irá para o forms, e caso não haja página indique isso.
+- Refatoração do código para melhores práticas e organização de pastas
+- Melhor configuração de eslint para evitar problemas futuros no código
 
 ## 2.3.0 - 14/05/2025
 
