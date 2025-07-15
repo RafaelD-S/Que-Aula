@@ -3,18 +3,20 @@ import Menu from "../../assets/menu.svg";
 import "./header.style.scss";
 
 import { useState } from "react";
-import { IHeader } from "./header.interface";
 import DropDown from "./views/headerDropdown";
 import Aside from "../aside/aside";
 import { Link } from "react-router-dom";
+import { useAppContext } from "../../context/AppContext";
 
-const Header = ({ switchWeekday, weekDays }: IHeader) => {
+const Header = () => {
+  const { setWeekday } = useAppContext();
+  const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (
     <header className="header">
       <section className="header__title" onClick={() => setNavSwitch(false)}>
-        <Link to="/" onClick={() => switchWeekday(new Date().getDay())}>
+        <Link to="/" onClick={() => setWeekday(new Date().getDay())}>
           <h1>Que Aula?</h1>
         </Link>
         <Aside>
@@ -25,7 +27,7 @@ const Header = ({ switchWeekday, weekDays }: IHeader) => {
       </section>
       <DropDown
         setNavSwitch={setNavSwitch}
-        switchWeekday={switchWeekday}
+        switchWeekday={setWeekday}
         dropdownItems={weekDays}
         navSwitch={navSwitch}
       />
