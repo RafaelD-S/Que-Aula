@@ -2,33 +2,16 @@
 @use "../../style/mixins.scss" as mixin;
 
 .warning {
-  position: fixed;
-  inset: 0;
-  background-color: var.$background-medium;
-  z-index: 10;
+  min-width: 200px;
+  max-width: 300px;
   display: flex;
-  justify-content: center;
+  text-align: center;
   align-items: center;
-  padding: 0.25rem;
-  animation: backgroundAppear 0.2s ease forwards;
-  @include mixin.containerAppear(backgroundAppear, 0, 0);
+  padding: 1.5rem 1rem;
+  gap: 1rem;
+  flex-direction: column;
 
   &__content {
-    z-index: 11;
-    background-color: rgb(8, 14, 19);
-    display: flex;
-    min-width: 200px;
-    max-width: 300px;
-    border-radius: 4px;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem;
-    gap: 1rem;
-    animation: warningAppear 0.2s ease;
-
-    @include mixin.containerAppear(warningAppear, -50px);
-
     &__title {
       font-size: 1.025rem;
       color: var.$blue-light-gray;

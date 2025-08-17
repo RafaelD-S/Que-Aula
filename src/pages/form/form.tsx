@@ -7,6 +7,7 @@ import { ClassTag } from "./views/classTag";
 import { classNames } from "../../utils/functions/classNames";
 import Warning from "../../components/warning/warning";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "../../components/modal/modal";
 
 const Form = () => {
   const { classes: apiClasses, loading, error } = useClasses();
@@ -86,8 +87,8 @@ const Form = () => {
   }, [apiClasses]);
 
   return (
-    <div className="form">
-      <div className="form__container">
+    <Modal>
+      <div className="form">
         <div className="form__introduction">
           <h2 className="form__introduction__title">
             Bem vindo ao <span className="form__introduction__title__accent">Que Aula?</span>
@@ -168,12 +169,12 @@ const Form = () => {
               </Fragment>
             ))}
         </div>
-      </div>
 
-      <button className={submitButtonClasses} onClick={() => submitCalendar()}>
-        Gerar Calendario
-      </button>
-    </div>
+        <button className={submitButtonClasses} onClick={() => submitCalendar()}>
+          Gerar Calendario
+        </button>
+      </div>
+    </Modal>
   );
 };
 
