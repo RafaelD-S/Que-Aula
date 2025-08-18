@@ -133,7 +133,7 @@ const Flowchart = () => {
           );
           setClassData(mergedData);
         } catch (error) {
-          console.log("Error parsing classData from localStorage:", error);
+          console.error("Error parsing classData from localStorage:", error);
           setClassData(processedData);
         }
       } else {
@@ -165,7 +165,7 @@ const Flowchart = () => {
   }
 
   if (error) {
-    console.log("Error fetching flowchart:", error);
+    console.error("Error fetching flowchart:", error);
     return (
       <Warning
         message="Ocorreu um erro no carregamento do fluxograma."
