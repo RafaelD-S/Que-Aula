@@ -1,59 +1,14 @@
 import { useEffect, useState } from "react";
 import "./dayClasses.style.scss";
-import { IClasses, ISectionArray } from "./dayClasses.interface";
-import { IClassesData } from "../../types/dataClasses.interface";
+import { ISectionArray } from "./dayClasses.interface";
 import { useAppContext } from "../../context/AppContext";
 
 const DayClasses = () => {
-  const { currentWeekday } = useAppContext();
+  const { currentWeekday, storedClasses, weekDays } = useAppContext();
   const [sections, setSections] = useState<ISectionArray[][]>([]);
-  const [classes, setClasses] = useState<IClasses[]>([
-    {
-      day: "Domingo",
-      classes: [],
-    },
-    {
-      day: "Segunda-Feira",
-      classes: [],
-    },
-    {
-      day: "Terça-Feira",
-      classes: [],
-    },
-    {
-      day: "Quarta-Feira",
-      classes: [],
-    },
-    {
-      day: "Quinta-Feira",
-      classes: [],
-    },
-    {
-      day: "Sexta-Feira",
-      classes: [],
-    },
-    {
-      day: "Sábado",
-      classes: [],
-    },
-  ]);
 
   useEffect(() => {
-    const storedClasses: IClassesData[] = JSON.parse(localStorage.getItem("chosenClasses") || "[]");
-    const specificClasses = storedClasses.flatMap((item) => item.classes).filter((f) => f.selected);
-
-    setClasses((prev) =>
-      prev.map((item, index) => {
-        return {
-          ...item,
-          classes: specificClasses.filter((f) => +f.weekDay === index),
-        };
-      })
-    );
-  }, []);
-
-  useEffect(() => {
-    const updatedSections = classes[currentWeekday].classes.map((item) => ({
+    const updatedSections = storedClasses[currentWeekday].classes.map((item) => ({
       start: item.period[0],
       end: item.period[item.period.length - 1],
       data: item,
@@ -107,7 +62,7 @@ const DayClasses = () => {
     });
 
     setSections(uniqueArray);
-  }, [classes, currentWeekday]);
+  }, [storedClasses, currentWeekday]);
 
   const definePeriod = (num: number) => {
     switch (num) {
@@ -130,7 +85,7 @@ const DayClasses = () => {
 
   return (
     <main className="dayClasses">
-      <h2 className="dayClasses__title">{classes[currentWeekday].day}</h2>
+      <h2 className="dayClasses__title">{weekDays[currentWeekday - 1]}</h2>
       <article className="dayClasses__container">
         {sections.map((item) => (
           <section

@@ -85,18 +85,41 @@
   &__submit {
     position: fixed;
     width: 100%;
-    padding: 1rem 0;
-    background-color: var.$blue;
     cursor: pointer;
-    border: none;
-    color: var.$blue-light-gray;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     right: 0;
     left: 0;
-    bottom: -3rem;
+    bottom: -4.3rem;
     transition: bottom 0.1s ease;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    &__button {
+      min-height: 41px;
+      cursor: pointer;
+      border: none;
+      padding: 1rem;
+      letter-spacing: 2px;
+    }
+
+    &__preview {
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      background-color: var.$blue-dark;
+      color: var.$blue-light-gray;
+      text-transform: uppercase;
+    }
+
+    &__generate {
+      font-weight: 700;
+      font-size: 14px;
+      color: var.$blue-light-gray;
+      background-color: var.$blue;
+      text-transform: uppercase;
+    }
 
     &--active {
       bottom: 0;

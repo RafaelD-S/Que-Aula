@@ -3,7 +3,6 @@
 
 .modal {
   background-color: var.$background-strong;
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -14,10 +13,17 @@
   padding: 0.5rem 0.5rem 1.5rem 0.5rem;
   align-items: center;
 
+  &--absolute {
+    position: absolute;
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+
   &__container {
     background-color: var.$black;
     border-radius: 8px;
-    width: fit-content;
     animation: modalAppear 0.3s ease;
 
     @include mixin.containerAppear(modalAppear, -50px);
