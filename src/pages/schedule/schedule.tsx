@@ -1,6 +1,6 @@
 import "./schedule.style.scss";
 import Download from "../../assets/download.svg";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Warning from "../../components/warning/warning";
 import html2canvas from "html2canvas";
 import { Calendar } from "../../components/calendar/calendar";
