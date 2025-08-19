@@ -64,12 +64,6 @@ const Form = () => {
     setClassesData(newClasses);
   };
 
-  // To-do
-  /*
-    - Create a selected classes state to use on the Calendar component inside the preview
-    - Finish the preview
-  */
-
   const submitCalendar = () => {
     setClasses(selectedClasses);
     localStorage.setItem("chosenClasses", JSON.stringify(selectedClasses));
@@ -90,7 +84,7 @@ const Form = () => {
         .filter((f) => f.selected && +f.weekDay === index),
     }));
 
-    setPreviewDataState(previewData as any);
+    setPreviewDataState(previewData);
   };
 
   useEffect(() => {
@@ -106,7 +100,7 @@ const Form = () => {
       })),
     }));
 
-    setSelectedClasses(updatedSelecionados as any);
+    setSelectedClasses(updatedSelecionados);
   }, [classesData, setHasSelected]);
 
   useEffect(() => {
