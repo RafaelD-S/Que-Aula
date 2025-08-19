@@ -5,6 +5,9 @@
   margin: 0;
   box-sizing: border-box;
 
+  scrollbar-width: thin;
+  scrollbar-color: var.$blue var.$black;
+
   &::-webkit-scrollbar {
     height: 8px;
   }
