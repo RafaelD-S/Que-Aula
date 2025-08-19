@@ -100,7 +100,7 @@ const Form = () => {
       })),
     }));
 
-    setSelectedClasses(updatedSelecionados);
+    setSelectedClasses(updatedSelecionados as any);
   }, [classesData, setHasSelected]);
 
   useEffect(() => {
