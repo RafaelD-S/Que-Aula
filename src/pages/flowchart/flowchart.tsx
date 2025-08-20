@@ -5,10 +5,44 @@ import { useCallback, useEffect, useState } from "react";
 import { useFlowchart } from "../../hooks/useClasses";
 import Warning from "../../components/warning/warning";
 import { useNavigate } from "react-router-dom";
+import ProgressTracker from "../../components/progressTracker/progressTracker";
 
 const Flowchart = () => {
   const { flowchart: apiData, loading, error } = useFlowchart();
   const navigate = useNavigate();
+
+  const [classesAmount, setClassesAmount] = useState(0);
+  const [checkedAmount, setCheckedAmount] = useState(0);
+
+  const checkClassesAmount = () => {
+    const totalClasses = classData
+      .map((semester) => {
+        let count = 0;
+        semester.forEach((aula) => {
+          if (
+            aula.state === "default" ||
+            aula.state === "selected" ||
+            aula.state === "disabled"
+          )
+            count++;
+        });
+        return count;
+      })
+      .reduce((acc, val) => acc + val);
+
+    const totalChecked = classData
+      .map((semester) => {
+        let count = 0;
+        semester.forEach((aula) => {
+          if (aula.state === "disabled") count++;
+        });
+        return count;
+      })
+      .reduce((acc, val) => acc + val);
+
+    setClassesAmount(totalClasses);
+    setCheckedAmount(totalChecked);
+  };
 
   const [classData, setClassData] = useState<IClassItem[][]>(() => {
     try {
@@ -95,6 +129,9 @@ const Flowchart = () => {
   useEffect(requirementStyling, [classData]);
 
   useEffect(() => {
+    // checar a quantidade de aulas e a quantidade de aulas concluidas
+    checkClassesAmount();
+
     try {
       const currentStorageData = localStorage.getItem("classData");
       if (
@@ -194,40 +231,14 @@ const Flowchart = () => {
     );
   }
 
-  const checkClassesAmount = () => {
-    const classesAmount = classData
-      .map((semester) => {
-        let count = 0;
-        semester.forEach((aula) => {
-          if (
-            aula.state === "default" ||
-            aula.state === "selected" ||
-            aula.state === "disabled"
-          )
-            count++;
-        });
-        return count;
-      })
-      .reduce((acc, val) => acc + val);
-
-    const checkedAmount = classData
-      .map((semester) => {
-        let count = 0;
-        semester.forEach((aula) => {
-          if (aula.state === "disabled") count++;
-        });
-        return count;
-      })
-      .reduce((acc, val) => acc + val);
-
-  };
-
-  checkClassesAmount();
-
   return (
     <main className="flowchart">
       <h2 className="flowchart__title">Fluxograma</h2>
       <article className="flowchart__container">
+        <ProgressTracker
+          classesAmount={classesAmount}
+          checkedAmount={checkedAmount}
+        />
         <div className="flowchart__container__content">
           {classData.map((semester, index) => (
             <div key={index} className="flowchart__semester">
