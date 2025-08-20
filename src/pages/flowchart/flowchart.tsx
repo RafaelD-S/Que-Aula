@@ -26,28 +26,33 @@ const Flowchart = () => {
     return [];
   });
 
-  const deepEqual = (a: Array<Array<IClassItem>>, b: Array<Array<IClassItem>>): boolean =>
-    JSON.stringify(a) === JSON.stringify(b);
+  const deepEqual = (
+    a: Array<Array<IClassItem>>,
+    b: Array<Array<IClassItem>>
+  ): boolean => JSON.stringify(a) === JSON.stringify(b);
 
-  const handleClassStateChange = useCallback((itemName: string | undefined, newState: string) => {
-    if (!itemName) return;
+  const handleClassStateChange = useCallback(
+    (itemName: string | undefined, newState: string) => {
+      if (!itemName) return;
 
-    setClassData((prevClassData) => {
-      const newData = prevClassData.map((semester) => {
-        return semester.map((item) => {
-          if (item.name === itemName) {
-            return { ...item, state: newState };
-          }
-          return item;
+      setClassData((prevClassData) => {
+        const newData = prevClassData.map((semester) => {
+          return semester.map((item) => {
+            if (item.name === itemName) {
+              return { ...item, state: newState };
+            }
+            return item;
+          });
         });
-      });
 
-      if (deepEqual(newData, prevClassData)) {
-        return prevClassData;
-      }
-      return newData;
-    });
-  }, []);
+        if (deepEqual(newData, prevClassData)) {
+          return prevClassData;
+        }
+        return newData;
+      });
+    },
+    []
+  );
 
   const requirementStyling = () => {
     const allClases = classData.flatMap((m) => m);
@@ -75,7 +80,8 @@ const Flowchart = () => {
 
                   for (let j = e.semester! + 1; j < allClass.semester; j++) {
                     const itemState = classData[j][i].state;
-                    if (itemState === "empty") classData[j][i].state = "empty-through";
+                    if (itemState === "empty")
+                      classData[j][i].state = "empty-through";
                   }
                 }
               }
@@ -91,7 +97,10 @@ const Flowchart = () => {
   useEffect(() => {
     try {
       const currentStorageData = localStorage.getItem("classData");
-      if (!currentStorageData || !deepEqual(JSON.parse(currentStorageData), classData)) {
+      if (
+        !currentStorageData ||
+        !deepEqual(JSON.parse(currentStorageData), classData)
+      ) {
         localStorage.setItem("classData", JSON.stringify(classData));
       }
     } catch (error) {
@@ -103,7 +112,8 @@ const Flowchart = () => {
     if (apiData.length > 0) {
       const processedData: IClassItem[][] = apiData.map((semester) =>
         semester.map((item) => {
-          const { state, credit, requiredFor, description, name, semester } = item;
+          const { state, credit, requiredFor, description, name, semester } =
+            item;
 
           if (item.state === "empty") return { state };
 
@@ -125,7 +135,11 @@ const Flowchart = () => {
           const mergedData = processedData.map((semester, semesterIndex) =>
             semester.map((item, itemIndex) => {
               const savedItem = savedData[semesterIndex]?.[itemIndex];
-              if (savedItem && savedItem.name === item.name && savedItem.state) {
+              if (
+                savedItem &&
+                savedItem.name === item.name &&
+                savedItem.state
+              ) {
                 return { ...item, state: savedItem.state };
               }
               return item;
@@ -149,7 +163,10 @@ const Flowchart = () => {
         <article className="flowchart__container">
           <div className="flowchart__container__content">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="flowchart__semester flowchart__semester--loading">
+              <div
+                key={i}
+                className="flowchart__semester flowchart__semester--loading"
+              >
                 <h3 className="flowchart__semester-title">{i + 1}º Semestre</h3>
                 <div className="flowchart__semester-classes">
                   {Array.from({ length: 7 }).map((_, i) => (
@@ -177,6 +194,36 @@ const Flowchart = () => {
     );
   }
 
+  const checkClassesAmount = () => {
+    const classesAmount = classData
+      .map((semester) => {
+        let count = 0;
+        semester.forEach((aula) => {
+          if (
+            aula.state === "default" ||
+            aula.state === "selected" ||
+            aula.state === "disabled"
+          )
+            count++;
+        });
+        return count;
+      })
+      .reduce((acc, val) => acc + val);
+
+    const checkedAmount = classData
+      .map((semester) => {
+        let count = 0;
+        semester.forEach((aula) => {
+          if (aula.state === "disabled") count++;
+        });
+        return count;
+      })
+      .reduce((acc, val) => acc + val);
+
+  };
+
+  checkClassesAmount();
+
   return (
     <main className="flowchart">
       <h2 className="flowchart__title">Fluxograma</h2>
@@ -184,7 +231,9 @@ const Flowchart = () => {
         <div className="flowchart__container__content">
           {classData.map((semester, index) => (
             <div key={index} className="flowchart__semester">
-              <h3 className="flowchart__semester-title">{index + 1}º Semestre</h3>
+              <h3 className="flowchart__semester-title">
+                {index + 1}º Semestre
+              </h3>
               <div className="flowchart__semester-classes">
                 {semester.map((item, line) => (
                   <ClassItem
