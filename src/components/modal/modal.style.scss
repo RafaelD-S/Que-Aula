@@ -10,18 +10,23 @@
   z-index: 3;
   display: flex;
   justify-content: center;
-  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
   align-items: center;
+  position: fixed;
 
-  &--absolute {
-    position: absolute;
-  }
-
-  &--fixed {
+  &__scroll-box {
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
     position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    right: 0;
+    height: 100%;
+    overflow: auto;
   }
 
   &__container {
+    margin: auto;
+    width: fit-content;
     background-color: var.$black;
     border-radius: 8px;
     animation: modalAppear 0.3s ease;

@@ -114,7 +114,7 @@ const Form = () => {
   }, [apiClasses]);
 
   return (
-    <Modal position="absolute">
+    <Modal>
       <div className="form">
         <div className="form__introduction">
           <h2 className="form__introduction__title">

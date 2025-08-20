@@ -3,12 +3,7 @@ import { IModal } from "./modal.interface";
 
 import "./modal.style.scss";
 
-export const Modal = ({
-  children,
-  isClosable,
-  onOverlayClick = () => {},
-  position = "fixed",
-}: IModal) => {
+export const Modal = ({ children, isClosable, onOverlayClick = () => {} }: IModal) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -19,9 +14,11 @@ export const Modal = ({
   };
 
   return (
-    <div className={`modal modal--${position}`} onClick={handleOverlayClick}>
-      <div className="modal__container" ref={modalRef}>
-        {children}
+    <div className="modal" onClick={handleOverlayClick}>
+      <div className="modal__scroll-box">
+        <div className="modal__container" ref={modalRef}>
+          {children}
+        </div>
       </div>
     </div>
   );
