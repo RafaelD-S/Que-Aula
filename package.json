@@ -1,5 +1,6 @@
 {
   "name": "que-aula",
+  "type": "module",
   "private": true,
   "version": "2.4.0",
   "scripts": {

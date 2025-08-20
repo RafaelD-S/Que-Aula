@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { setWeekday } = useAppContext();
-  const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
+  const { setWeekday, weekDays } = useAppContext();
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (

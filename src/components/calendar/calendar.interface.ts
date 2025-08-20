@@ -1,11 +1,16 @@
 import { IClassesData } from "../../types/dataClasses.interface";
 
+export interface ICalendar {
+  classes: IClasses[];
+  secondaryInfo?: "classroom" | "description" | "teacher";
+}
+
 export interface IClasses {
   day: string;
   classes: IClassesData["classes"];
 }
 
-export interface ClassInfo {
+export interface IClassInfo {
   classDescription?: string;
   className?: string;
   classroom: string;

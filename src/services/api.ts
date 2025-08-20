@@ -1,7 +1,7 @@
 import { IClassesData } from "../types/dataClasses.interface";
 import { IClassItem } from "../components/classItem/classItem.Interface";
 
-const API_BASE_URL = "https://que-aula-api.up.railway.app";
+const API_BASE_URL = "https://que-aula-api.vercel.app";
 
 interface IHealthCheck {
   message: string;
