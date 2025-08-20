@@ -25,6 +25,10 @@
       gap: 7px;
       overflow: auto;
       padding: 16px;
+
+      @include mixin.desktopStyle() {
+        gap: 12px;
+      }
     }
   }
 
@@ -49,8 +53,13 @@
       color: var.$white;
       text-align: center;
       font-size: 10px;
-      line-height: 100%;
+      line-height: 12px;
       margin-bottom: 1rem;
+
+      @include mixin.desktopStyle() {
+        font-size: 12px;
+        line-height: 15px;
+      }
     }
   }
 }
