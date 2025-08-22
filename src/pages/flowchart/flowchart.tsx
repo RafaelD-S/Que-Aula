@@ -15,34 +15,25 @@ const Flowchart = () => {
   const [checkedAmount, setCheckedAmount] = useState(0);
 
   const checkClassesAmount = () => {
-    const totalClasses = classData
-      .map((semester) => {
-        let count = 0;
-        semester.forEach((aula) => {
-          if (
-            aula.state === "default" ||
-            aula.state === "selected" ||
-            aula.state === "disabled"
-          )
-            count++;
-        });
-        return count;
-      })
-      .reduce((acc, val) => acc + val);
+    if (!classData) return;
+    const totalClasses = classData.flatMap((item) => {
+      const valid = item.filter((e) => {
+        return e.state !== "empty" && e.state !== "empty-through";
+      });
+      return valid;
+    }).length;
 
-    const totalChecked = classData
-      .map((semester) => {
-        let count = 0;
-        semester.forEach((aula) => {
-          if (aula.state === "disabled") count++;
-        });
-        return count;
-      })
-      .reduce((acc, val) => acc + val);
+    const totalChecked = classData.flatMap((item) => {
+      const checked = item.filter((e) => {
+        return e.state === "disabled";
+      });
+      return checked;
+    }).length;
 
     setClassesAmount(totalClasses);
     setCheckedAmount(totalChecked);
   };
+
 
   const [classData, setClassData] = useState<IClassItem[][]>(() => {
     try {
