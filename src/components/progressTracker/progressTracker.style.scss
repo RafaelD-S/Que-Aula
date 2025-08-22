@@ -1,11 +1,10 @@
 @use "../../style/variables" as var;
 
-.progress__tracker {
+.progress-tracker {
+  padding: 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 465px; //mudar isso que o tamanho do componente seja responsivo
   gap: 8px;
 
   &__bar {
@@ -13,28 +12,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 2px;
-    background-color: var.$blue-darker;
+    flex: 1;
+    border: 3px solid var.$blue-darker;
     border-radius: 8px;
-
-    &__completed {
-      position: absolute;
-      left: 0;
-      border-radius: 8px;
-      width: calc(
-        100% * var(--checked-amount) / var(--classes-amount)
-      ); // Calcula a largura com base na quantidade de aulas concluídas e totais
-      height: 5px;
-      background-color: var.$blue-light-gray;
-    }
   }
 
-  &__percentage {
+  &__progress {
+    position: absolute;
+    left: 0;
+    border: 3px solid var.$blue-light-gray;
+    border-radius: 8px;
+    width: var(--percentage, 0%);
+    transition: width 0.3s ease;
+  }
+
+  &__percentage-text {
+    flex-shrink: 0;
+    min-width: 30px;
+
     color: var.$blue-light-gray;
     font-weight: 500;
     font-size: 12px;
     line-height: 100%;
-    letter-spacing: 5%;
+    text-align: end;
   }
 }

@@ -1,21 +1,21 @@
 import "./progressTracker.style.scss";
-import { progressTrackerProps } from "./progressTracker.interface";
+import { IProgressTrackerProps } from "./progressTracker.interface";
 
 const ProgressTracker = ({
   classesAmount,
   checkedAmount,
-}: progressTrackerProps) => {
-  const percentage = (checkedAmount / classesAmount) * 100;
+}: IProgressTrackerProps) => {
+  const percentage = Math.round((checkedAmount / classesAmount) * 100);
 
   return (
-    <section className="progress__tracker">
-      <div className="progress__tracker__bar">
-        <div
-          className="progress__tracker__bar__completed"
-          style={{ width: `${percentage}%` }}
-        />
+    <section
+      className="progress-tracker"
+      style={{ "--percentage": `${percentage}%` } as React.CSSProperties}
+    >
+      <div className="progress-tracker__bar">
+        <div className="progress-tracker__progress" />
       </div>
-      <p className="progress__tracker__percentage">{Math.round(percentage)}%</p>
+      <p className="progress-tracker__percentage-text">{percentage}%</p>
     </section>
   );
 };
