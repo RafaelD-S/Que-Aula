@@ -1,4 +1,4 @@
-export interface progressTrackerProps {
+export interface IProgressTrackerProps {
   classesAmount: number;
   checkedAmount: number;
 }
