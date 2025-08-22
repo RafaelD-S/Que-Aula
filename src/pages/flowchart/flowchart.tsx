@@ -234,11 +234,11 @@ const Flowchart = () => {
   return (
     <main className="flowchart">
       <h2 className="flowchart__title">Fluxograma</h2>
+      <ProgressTracker
+        classesAmount={classesAmount}
+        checkedAmount={checkedAmount}
+      />
       <article className="flowchart__container">
-        <ProgressTracker
-            classesAmount={classesAmount}
-            checkedAmount={checkedAmount}
-          />
         <div className="flowchart__container__content">
           {classData.map((semester, index) => (
             <div key={index} className="flowchart__semester">
