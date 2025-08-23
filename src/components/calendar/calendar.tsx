@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { ICalendar, IClassInfo } from "./calendar.interface";
 
-import "./canlendar.style.scss";
+import "./calendar.style.scss";
 
 export const Calendar = forwardRef<HTMLDivElement, ICalendar>(
   ({ classes, secondaryInfo = "classroom" }, ref) => {

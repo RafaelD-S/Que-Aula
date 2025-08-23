@@ -1,0 +1,46 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
+
+.progress-tracker {
+  padding: 15px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  &__bar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 3px;
+    background-color: var.$blue-dark;
+    border-radius: 8px;
+  }
+
+  &__progress {
+    position: absolute;
+    left: 0;
+    background-color: var.$blue-light-gray;
+    height: 3px;
+    border-radius: 8px;
+    width: var(--percentage, 0%);
+    transition: width 0.3s ease;
+  }
+
+  &__percentage-text {
+    flex-shrink: 0;
+
+    color: var.$blue-light-gray;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    text-align: end;
+
+    @include mixin.desktopStyle() {
+      font-size: 16px;
+    }
+  }
+}
