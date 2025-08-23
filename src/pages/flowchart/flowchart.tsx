@@ -34,7 +34,6 @@ const Flowchart = () => {
     setCheckedAmount(totalChecked);
   };
 
-
   const [classData, setClassData] = useState<IClassItem[][]>(() => {
     try {
       const storedData = localStorage.getItem("classData");
@@ -225,28 +224,30 @@ const Flowchart = () => {
   return (
     <main className="flowchart">
       <h2 className="flowchart__title">Fluxograma</h2>
-      <ProgressTracker
-        classesAmount={classesAmount}
-        checkedAmount={checkedAmount}
-      />
       <article className="flowchart__container">
-        <div className="flowchart__container__content">
-          {classData.map((semester, index) => (
-            <div key={index} className="flowchart__semester">
-              <h3 className="flowchart__semester-title">
-                {index + 1}º Semestre
-              </h3>
-              <div className="flowchart__semester-classes">
-                {semester.map((item, line) => (
-                  <ClassItem
-                    key={`${index}-${line}`}
-                    data={item}
-                    onStateChange={handleClassStateChange}
-                  />
-                ))}
+        <ProgressTracker
+          classesAmount={classesAmount}
+          checkedAmount={checkedAmount}
+        />
+        <div className="flowchart__container__content-wrapper">
+          <div className="flowchart__container__content">
+            {classData.map((semester, index) => (
+              <div key={index} className="flowchart__semester">
+                <h3 className="flowchart__semester-title">
+                  {index + 1}º Semestre
+                </h3>
+                <div className="flowchart__semester-classes">
+                  {semester.map((item, line) => (
+                    <ClassItem
+                      key={`${index}-${line}`}
+                      data={item}
+                      onStateChange={handleClassStateChange}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </article>
     </main>

@@ -18,16 +18,22 @@
   &__container {
     outline-offset: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-
+    max-width: 100%;
+    
+    &__content-wrapper {
+      display: flex;
+      width: 100%;
+    }
+    
     &__content {
       display: flex;
       gap: 7px;
       overflow: auto;
       padding: 0 16px 16px 16px;
       margin: 0 auto;
-      
+
       @include mixin.desktopStyle() {
         gap: 12px;
       }
