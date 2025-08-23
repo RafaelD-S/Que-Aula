@@ -16,14 +16,16 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    border: 3px solid var.$blue-darker;
+    height: 3px;
+    background-color: var.$blue-dark;
     border-radius: 8px;
   }
 
   &__progress {
     position: absolute;
     left: 0;
-    border: 3px solid var.$blue-light-gray;
+    background-color: var.$blue-light-gray;
+    height: 3px;
     border-radius: 8px;
     width: var(--percentage, 0%);
     transition: width 0.3s ease;
