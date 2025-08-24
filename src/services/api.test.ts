@@ -1,10 +1,15 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { mockClassesData } from "../test/mocks/classData.mock";
 import api from "./api";
 import { mockClassesitems, mockSingleClassItem } from "../test/mocks/classItem.mock";
 
 beforeEach(() => {
     vi.clearAllMocks();
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterEach(() => {
+    vi.restoreAllMocks();
 });
 
 describe('API Service', () => {
@@ -33,7 +38,18 @@ describe('API Service', () => {
 
             expect(globalThis.fetch).toHaveBeenCalledWith("https://que-aula-api.vercel.app/");
             expect(result.message).toBe("Que Aula API is running!");
-        })
+        });
+
+        it('should throw error when health check fails', async () => {
+            globalThis.fetch = vi.fn().mockResolvedValue({
+                ok: false,
+                status: 500,
+                json: vi.fn().mockResolvedValue({ message: 'Server error' }),
+            });
+
+            await expect(api.healthCheck()).rejects.toThrow('HTTP error! status: 500');
+            expect(globalThis.fetch).toHaveBeenCalledWith("https://que-aula-api.vercel.app/");
+        });
     })
 
     describe('Get Classes', () => {
@@ -108,7 +124,7 @@ describe('API Service', () => {
                 json: vi.fn().mockResolvedValue({ message: 'Error fetching classes' }),
             });
 
-            await expect(api.getFlowchart).rejects.toThrow('HTTP error! status: 404');
+            await expect(api.getFlowchart()).rejects.toThrow('HTTP error! status: 404');
             expect(globalThis.fetch).toHaveBeenCalledTimes(1);
             expect(globalThis.fetch).toHaveBeenCalledWith('https://que-aula-api.vercel.app/flowchart');
         })
@@ -125,6 +141,18 @@ describe('API Service', () => {
             expect(globalThis.fetch).toHaveBeenCalledTimes(1);
             expect(globalThis.fetch).toHaveBeenCalledWith('https://que-aula-api.vercel.app/flowchart/INF027');
             expect(result).toEqual(mockSingleClassItem);
-        })
+        });
+
+        it('should throw error when fetch fails', async () => {
+            globalThis.fetch = vi.fn().mockResolvedValue({
+                ok: false,
+                status: 404,
+                json: vi.fn().mockResolvedValue({ message: 'Class not found' }),
+            });
+
+            await expect(api.getFlowchartClass("INF999")).rejects.toThrow('HTTP error! status: 404');
+            expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+            expect(globalThis.fetch).toHaveBeenCalledWith('https://que-aula-api.vercel.app/flowchart/INF999');
+        });
     })
 })
