@@ -15,8 +15,8 @@ describe('useClasses Hook', () => {
         vi.clearAllMocks();
     })
 
-    describe('Estado inicial', () => {
-        it('deve ter o estado inicial correto', async () => {
+    describe('Initial State', () => {
+        it('should have the correct initial state', async () => {
             mockApi.getClasses.mockResolvedValue([]);
             const { result } = renderHook(() => useClasses());
 
@@ -28,8 +28,8 @@ describe('useClasses Hook', () => {
         })
     })
 
-    describe('Carregamento de Dados', () => {
-        it('deve carregar disciplinas com sucesso', async () => {
+    describe('Data Loading', () => {
+        it('should load classes successfully', async () => {
             mockApi.getClasses.mockResolvedValue(mockClassesData);
             
             const { result } = renderHook(() => useClasses());
@@ -47,10 +47,10 @@ describe('useClasses Hook', () => {
             expect(mockApi.getClasses).toHaveBeenCalledTimes(1);
         });
 
-        it('deve tratar erros ao carregar disciplinas', async () => {
+        it('should handle errors when loading classes', async () => {
             const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-            const errorMessage = 'Erro de rede';
+            const errorMessage = 'Network Error';
             mockApi.getClasses.mockRejectedValue(new Error(errorMessage));
             
             const { result } = renderHook(() => useClasses());
@@ -83,8 +83,8 @@ describe('useFlowchart Hook', () => {
         vi.clearAllMocks();
     })
 
-    describe('Estado Inicial', () => {
-        it('deve ter o estado inicial correto', async () => {
+    describe('Initial State', () => {
+        it('should have the correct initial state', async () => {
             mockApi.getFlowchart.mockResolvedValue([]);
             const { result } = renderHook(() => useFlowchart());
 
@@ -96,11 +96,11 @@ describe('useFlowchart Hook', () => {
         });
     });
 
-    describe('Carregamento de Dados', () => {
-        it('deve carregar fluxograma com sucesso', async () => {
+    describe('Data Loading', () => {
+        it('should load the flowchart successfully', async () => {
             const mockFlowchartData = [
-                [{ name: 'Disciplina 1', semester: '1' }],
-                [{ name: 'Disciplina 2', semester: '2' }]
+                [{ name: 'Class 1', semester: '1' }],
+                [{ name: 'Class 2', semester: '2' }]
             ];
             
             mockApi.getFlowchart.mockResolvedValue(mockFlowchartData);
@@ -116,10 +116,10 @@ describe('useFlowchart Hook', () => {
             expect(mockApi.getFlowchart).toHaveBeenCalledTimes(1);
         });
 
-        it('deve tratar erros ao carregar fluxograma', async () => {
+        it('should handle errors when loading the flowchart', async () => {
             const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-            mockApi.getFlowchart.mockRejectedValue(new Error('Erro de rede'));
+            mockApi.getFlowchart.mockRejectedValue(new Error('Network Error'));
             const { result } = renderHook(() => useFlowchart());
             
             await waitFor(() => {

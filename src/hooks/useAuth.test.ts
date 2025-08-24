@@ -11,8 +11,8 @@ describe('useAuth Hook', () => {
     localStorage.clear()
   })
 
-  describe('Estado quando NÃO há classes salvas', () => {
-    it('deve retornar hasSavedClasses como false quando localStorage está vazio', () => {
+  describe('State when there are NO saved classes', () => {
+    it('should return hasSavedClasses as false when localStorage is empty', () => {
       
       const { result } = renderHook(() => useAuth())
       
@@ -20,7 +20,7 @@ describe('useAuth Hook', () => {
       expect(result.current.token).toBe(null)
     })
 
-    it('deve retornar hasSavedClasses como false quando chosenClasses é null', () => {
+    it('should return hasSavedClasses as false when chosenClasses is null', () => {
       localStorage.removeItem('chosenClasses')
       
       const { result } = renderHook(() => useAuth())
@@ -30,10 +30,10 @@ describe('useAuth Hook', () => {
     })
   })
 
-  describe('Estado quando HÁ classes salvas', () => {
-    it('deve retornar hasSavedClasses como true quando há dados no localStorage', () => {
+  describe('State when there ARE saved classes', () => {
+    it('should return hasSavedClasses as true when there is data in localStorage', () => {
       const mockClassesData = JSON.stringify([
-        { name: 'Matemática', selected: true }
+        { name: 'Mathematics', selected: true }
       ])
       localStorage.setItem('chosenClasses', mockClassesData)
       
@@ -43,7 +43,7 @@ describe('useAuth Hook', () => {
       expect(result.current.token).toBe(mockClassesData)
     })
 
-    it('deve retornar hasSavedClasses como true mesmo com string vazia', () => {
+    it('should return hasSavedClasses as false for an empty string', () => {
       localStorage.setItem('chosenClasses', '')
       
       const { result } = renderHook(() => useAuth())
@@ -52,8 +52,8 @@ describe('useAuth Hook', () => {
       expect(result.current.token).toBe(null)
     })
 
-    it('deve retornar o valor exato do localStorage como token', () => {
-      const testData = '{"classes": [{"name": "Programação"}]}'
+    it('should return the exact value from localStorage as the token', () => {
+      const testData = '{"classes": [{"name": "Programming"}]}'
       localStorage.setItem('chosenClasses', testData)
       
       const { result } = renderHook(() => useAuth())
@@ -63,17 +63,17 @@ describe('useAuth Hook', () => {
     })
   })
 
-  describe('Casos extremos', () => {
-    it('deve tratar dados corrompidos no localStorage', () => {
-      localStorage.setItem('chosenClasses', 'dados-corrompidos-não-json')
+  describe('Edge cases', () => {
+    it('should handle corrupted data in localStorage', () => {
+      localStorage.setItem('chosenClasses', 'corrupted-non-json-data')
       
       const { result } = renderHook(() => useAuth())
       
-      expect(result.current.token).toBe('dados-corrompidos-não-json')
+      expect(result.current.token).toBe('corrupted-non-json-data')
       expect(result.current.hasSavedClasses).toBe(true)
     })
 
-    it('deve funcionar com números como string', () => {
+    it('should work with numbers as a string', () => {
       localStorage.setItem('chosenClasses', '123')
       
       const { result } = renderHook(() => useAuth())
@@ -82,7 +82,7 @@ describe('useAuth Hook', () => {
       expect(result.current.hasSavedClasses).toBe(true)
     })
 
-    it('deve funcionar com espaços em branco', () => {
+    it('should work with whitespace', () => {
       localStorage.setItem('chosenClasses', '   ')
       
       const { result } = renderHook(() => useAuth())
@@ -92,8 +92,8 @@ describe('useAuth Hook', () => {
     })
   })
 
-  describe('Consistência entre chamadas', () => {
-    it('deve retornar os mesmos valores em múltiplas chamadas', () => {
+  describe('Consistency between calls', () => {
+    it('should return the same values on multiple calls', () => {
       const testData = JSON.stringify({ test: 'data' })
       localStorage.setItem('chosenClasses', testData)
       

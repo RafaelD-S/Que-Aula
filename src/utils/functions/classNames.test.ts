@@ -2,12 +2,12 @@ import { describe, it, expect } from 'vitest'
 import { classNames } from './classNames'
 
 describe('classNames', () => {
-  it('deve retornar string vazia quando objeto estiver vazio', () => {
+  it('should return an empty string when the object is empty', () => {
     const result = classNames({})
     expect(result).toBe('')
   })
 
-  it('deve retornar apenas classes com valores truthy', () => {
+  it('should return only classes with truthy values', () => {
     const result = classNames({
       'class-a': true,
       'class-b': false,
@@ -18,7 +18,7 @@ describe('classNames', () => {
     expect(result).toBe('class-a class-c')
   })
 
-  it('deve lidar com valores diversos de truthy/falsy', () => {
+  it('should handle various truthy/falsy values', () => {
     const result = classNames({
       'active': true,
       'disabled': false,
@@ -32,7 +32,7 @@ describe('classNames', () => {
     expect(result).toBe('active loading success')
   })
 
-  it('deve retornar string vazia quando todas as classes são falsy', () => {
+  it('should return an empty string when all classes are falsy', () => {
     const result = classNames({
       'class-a': false,
       'class-b': null,

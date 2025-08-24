@@ -5,18 +5,18 @@ import Warning from "./warning";
 import { render } from "../../test/utils/renderWithProviders";
 
 describe('Warning Component', () => {
-    describe('Estado Inicial', () => {
-        it('deve renderizar corretamente quando aberto', () => {
+    describe('Initial State', () => {
+        it('should render correctly when opened', () => {
             render(<Warning message="alerta" opened={true} />);
             expect(screen.getByText('alerta')).toBeInTheDocument();
         })
 
-        it('deve renderizar corretamente quando fechado', () => {
+        it('should render correctly when closed', () => {
             render(<Warning message="alerta" opened={false} />);
             expect(screen.queryByText('alerta')).not.toBeInTheDocument();
         })
 
-        it('deve renderizar o children corretamente', () => {
+        it('should render children correctly', () => {
             render(
                 <Warning message="teste">
                     <button>Botão de teste</button>
@@ -27,7 +27,7 @@ describe('Warning Component', () => {
             expect(screen.queryByText('teste')).not.toBeInTheDocument();
         })
 
-        it('deve aplicar classe warning__opener ao container do children', () => {
+        it('should apply warning__opener class to children container', () => {
             render(
                 <Warning message="teste">
                     <span>Conteúdo</span>
@@ -41,8 +41,8 @@ describe('Warning Component', () => {
         });
     })
 
-    describe('Props e Configurações', () => {
-        it('deve renderizar botão quando buttonLabel é fornecido', () => {
+    describe('Props and Configuration', () => {
+        it('should render button when buttonLabel is provided', () => {
             render(
                 <Warning message="teste"
                 buttonLabel="Confirmar"
@@ -54,7 +54,7 @@ describe('Warning Component', () => {
             expect(button).toBeInTheDocument();
         });
 
-        it('deve retornar apenas children quando disabled={true}', () => {
+        it('should return only children when disabled={true}', () => {
             render(
                 <Warning message="não deve aparecer" disabled={true}>
                 <span>Apenas isso</span>
@@ -67,7 +67,7 @@ describe('Warning Component', () => {
             expect(span.parentElement).not.toHaveClass('warning__opener');
         });
 
-        it('deve aplicar classe correta no botão baseada no tipo warning', () => {
+        it('should apply correct class to button based on warning type', () => {
             render(
             <Warning 
                 message="teste" 
@@ -82,8 +82,8 @@ describe('Warning Component', () => {
         });
     })
 
-    describe('Interações do Usuário', () => {
-        it('deve abrir o modal ao clicar no elemento chidren', async () => {
+    describe('User Interactions', () => {
+        it('should open modal when clicking on children element', async () => {
             const user = userEvent.setup();
             
             render(
@@ -100,7 +100,7 @@ describe('Warning Component', () => {
             expect(screen.getByText('teste')).toBeInTheDocument();
         })
 
-        it('deve permitir abrir e fechar o modal multiplas vezes', async () => {
+        it('should allow opening and closing modal multiple times', async () => {
             const user = userEvent.setup();
 
             render(
@@ -120,7 +120,7 @@ describe('Warning Component', () => {
             expect(screen.queryByText('teste')).not.toBeInTheDocument();
         })
 
-        it('deve chamar onClickButton quando botão é clicado', async () => {
+        it('should call onClickButton when button is clicked', async () => {
             const mockCallback = vi.fn();
             const user = userEvent.setup();
             
@@ -139,13 +139,13 @@ describe('Warning Component', () => {
         
     });
 
-    describe('Casos Extremos', () => {
-        it('deve funcionar sem children', () => {
+    describe('Edge Cases', () => {
+        it('should work without children', () => {
             render(<Warning message="sem children" opened={true} />);
             expect(screen.getByText('sem children')).toBeInTheDocument();
         });
 
-        it('deve lidar com mensagem vazia', () => {
+        it('should handle empty message', () => {
             render(<Warning message="" opened={true} />);
             
             const title = document.querySelector('.warning__content__title');
@@ -153,7 +153,7 @@ describe('Warning Component', () => {
             expect(title?.textContent).toBe('');
         });
 
-        it('deve aceitar diferentes tipos de children', () => {
+        it('should accept different types of children', () => {
             render(
             <Warning message="teste">
                 <div>
