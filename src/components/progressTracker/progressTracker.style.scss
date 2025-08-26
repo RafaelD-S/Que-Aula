@@ -27,7 +27,7 @@
     height: 3px;
     border-radius: 8px;
     width: var(--percentage, 0%);
-    transition: width 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.1, 0.5, 0.5, 0.75);
   }
 
   &__percentage-text {
