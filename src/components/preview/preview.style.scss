@@ -1,0 +1,44 @@
+@use "../../style/variables" as var;
+@use "../../style/mixins" as mixin;
+
+.preview {
+  padding: 2rem 1rem;
+  display: grid;
+  gap: 24px;
+  text-align: center;
+
+  &__button {
+    padding: 12px;
+    background-color: var.$blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    gap: 10px;
+    cursor: pointer;
+
+    &__text {
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var.$blue-white;
+
+      @include mixin.desktopStyle() {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    color: var.$white;
+    font-weight: 600;
+
+    @include mixin.desktopStyle() {
+      font-size: 24px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import DayClasses from "../pages/dayClasses/dayClasses";
-import Calendar from "../pages/calendar/calendar";
+import Schedule from "../pages/schedule/schedule";
 import Flowchart from "../pages/flowchart/flowchart";
 import ProtectedRoutes from "../components/protectedRoutes/ProtectedRoutes";
 import Form from "../pages/form/form";
@@ -18,7 +18,7 @@ export default function AppRouter() {
           <ProtectedRoutes>
             <Routes>
               <Route path="/" element={<DayClasses />} />
-              <Route path="/todas-as-aulas" element={<Calendar />} />
+              <Route path="/todas-as-aulas" element={<Schedule />} />
               <Route path="/fluxograma" element={<Flowchart />} />
               <Route
                 path="*"

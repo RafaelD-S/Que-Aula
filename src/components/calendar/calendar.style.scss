@@ -2,27 +2,11 @@
 @use "../../style/mixins.scss" as mixin;
 
 .calendar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
+  overflow: auto;
   width: 100%;
-  gap: 2rem;
-
-  &__warning {
-    position: absolute;
-  }
-
-  &__title {
-    color: var.$white;
-    text-align: center;
-    font-size: 24px;
-    line-height: 100%;
-  }
 
   &__container {
+    margin: auto;
     width: 100%;
     max-width: fit-content;
     display: grid;
@@ -37,13 +21,14 @@
     grid-template-rows: 30px;
     gap: 5px;
     padding: 10px 10px 5px;
-
-    @include mixin.desktopStyle() {
-      gap: 5px 8px;
-    }
+    min-width: 402px;
   }
 
-  &__schedule {
+  @include mixin.desktopStyle() {
+    gap: 5px 8px;
+  }
+
+  &__period {
     margin-right: 2px;
     text-align: center;
     display: grid;
@@ -59,7 +44,7 @@
       padding: 32px 0;
     }
 
-    &-period {
+    &__day {
       color: var.$white;
       font-size: 10px;
       line-height: 16px;
@@ -168,31 +153,6 @@
         @include mixin.desktopStyle() {
           font-size: 20px;
         }
-      }
-    }
-  }
-
-  &__button {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    text-align: center;
-    background-color: var.$blue;
-    color: var.$blue-white;
-    font-size: 12px;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-
-    @include mixin.desktopStyle() {
-      font-size: 16px;
-      padding: 8px 16px;
-
-      &__icon {
-        width: 16px;
-        height: 16px;
       }
     }
   }

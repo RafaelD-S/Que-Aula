@@ -1,10 +1,3 @@
-import { IClassesData } from "../../types/dataClasses.interface";
-
-export interface IClasses {
-  day: string;
-  classes: IClassesData["classes"];
-}
-
 export interface ISectionArray {
   start: string | number;
   end: string | number;

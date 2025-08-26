@@ -7,12 +7,23 @@ import { ClassTag } from "./views/classTag";
 import { classNames } from "../../utils/functions/classNames";
 import Warning from "../../components/warning/warning";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "../../components/modal/modal";
+
+import PreviewIcon from "../../assets/preview.svg";
+import { Preview } from "../../components/preview/preview";
+import { useAppContext } from "../../context/AppContext";
+import { IClasses } from "../../context/appContext.interface";
+import { storedClassesMock } from "../../context/mocks/storedClasses";
 
 const Form = () => {
   const { classes: apiClasses, loading, error } = useClasses();
   const [classesData, setClassesData] = useState<IClassesData[]>([]);
+  const [selectedClasses, setSelectedClasses] = useState<IClasses[]>([]);
   const [hasSelected, setHasSelected] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewDataState, setPreviewDataState] = useState(storedClassesMock);
   const navigate = useNavigate();
+  const { setClasses } = useAppContext();
 
   const semestres = [
     "Optativas",
@@ -32,29 +43,52 @@ const Form = () => {
   const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
     const clickedText = e.currentTarget.innerText;
     const whichClass = clickedText.slice(clickedText.lastIndexOf(" ")).trim();
+    const newClasses = classesData.map((data) => {
+      if (data.name === item.name) {
+        return {
+          ...data,
+          classes: data.classes.map((classData) => {
+            const isClickedClass = classData.whichClass === whichClass;
 
-    setClassesData((prevData) =>
-      prevData.map((data) => {
-        if (data.name === item.name) {
-          return {
-            ...data,
-            classes: data.classes.map((classData) => {
-              const isClickedClass = classData.whichClass === whichClass;
+            if (!item.multiClass || isClickedClass) {
+              return { ...classData, selected: !classData.selected };
+            }
 
-              if (!item.multiClass || isClickedClass) {
-                return { ...classData, selected: !classData.selected };
-              }
+            return classData;
+          }),
+        };
+      }
+      return data;
+    });
 
-              return classData;
-            }),
-          };
-        }
-        return data;
-      })
-    );
+    setClassesData(newClasses);
   };
 
   const submitCalendar = () => {
+    setClasses(selectedClasses);
+    localStorage.setItem("chosenClasses", JSON.stringify(selectedClasses));
+    localStorage.setItem("version", version);
+    navigate("/");
+  };
+
+  const handleClickPreview = () => {
+    setIsPreviewOpen(true);
+    const previewData = storedClassesMock.map((item, index) => ({
+      ...item,
+      classes: selectedClasses
+        .flatMap((classData) =>
+          classData.classes.map((classItem) => ({
+            ...classItem,
+          }))
+        )
+        .filter((f) => f.selected && +f.weekDay === index),
+    }));
+
+    setPreviewDataState(previewData);
+  };
+
+  useEffect(() => {
+    setHasSelected(classesData.some((e) => e.classes.some((f) => f.selected)));
     const selecionados = classesData.filter((e) => e.classes.some((f) => f.selected));
 
     const updatedSelecionados = selecionados.map((e) => ({
@@ -66,13 +100,7 @@ const Form = () => {
       })),
     }));
 
-    localStorage.setItem("chosenClasses", JSON.stringify(updatedSelecionados));
-    localStorage.setItem("version", version);
-    navigate("/");
-  };
-
-  useEffect(() => {
-    setHasSelected(classesData.some((e) => e.classes.some((f) => f.selected)));
+    setSelectedClasses(updatedSelecionados as any);
   }, [classesData, setHasSelected]);
 
   useEffect(() => {
@@ -86,17 +114,18 @@ const Form = () => {
   }, [apiClasses]);
 
   return (
-    <div className="form">
-      <div className="form__container">
+    <Modal>
+      <div className="form">
         <div className="form__introduction">
           <h2 className="form__introduction__title">
             Bem vindo ao <span className="form__introduction__title__accent">Que Aula?</span>
           </h2>
           <p className="form__introduction__paragraph">
-            Um site desenvolvido para ajudar com a bagunça que são as aulas do IFBA. Lhe informando
-            suas aulas atualizadas diariamente e um calendário relativo a sua rotina.
+            Um site desenvolvido por estudantes, para estudantes! Lhe informando suas aulas
+            atualizadas diariamente, um calendário relativo a sua rotina, um fluxograma editável, e
+            muito mais!
           </p>
-          <h4 className="form__warning">Horários e salas de aulas para 2025.1 atualizados!</h4>
+          <h4 className="form__warning">Localizações pendentes de atualização para 2025.2</h4>
         </div>
         <div className="form__classes">
           <h3 className="form__classes__title">Escolha as suas matérias</h3>
@@ -168,12 +197,27 @@ const Form = () => {
               </Fragment>
             ))}
         </div>
-      </div>
 
-      <button className={submitButtonClasses} onClick={() => submitCalendar()}>
-        Gerar Calendario
-      </button>
-    </div>
+        <Preview
+          isOpen={isPreviewOpen}
+          classesData={previewDataState}
+          onOverlayClick={() => setIsPreviewOpen(false)}
+          onButtonClick={() => setIsPreviewOpen(false)}
+        />
+
+        <div className={submitButtonClasses}>
+          <button
+            className="form__submit__button form__submit__preview"
+            onClick={handleClickPreview}
+          >
+            <span>Preview</span> <img src={PreviewIcon} alt="" />
+          </button>
+          <button className="form__submit__button form__submit__generate" onClick={submitCalendar}>
+            Gerar Calendario
+          </button>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

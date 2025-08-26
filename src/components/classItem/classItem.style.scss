@@ -16,6 +16,11 @@
   user-select: none;
   transition: border 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
 
+  @include mixin.desktopStyle() {
+    width: 102px;
+    height: 92px;
+  }
+
   // hardcoded until logic for it can be made
   &.INF017 {
     &:after {
@@ -38,6 +43,18 @@
       width: 4px;
       height: 0px;
       border-bottom: 1.25px dashed var.$emphasis-divider-color;
+    }
+
+    @include mixin.desktopStyle() {
+      &:after {
+        height: 50px;
+        width: calc(100% + 10px);
+      }
+
+      &:before {
+        width: 8px;
+        left: calc(100% + 4px);
+      }
     }
   }
 
@@ -65,6 +82,17 @@
         border-left: 1.25px dashed var.$emphasis-divider-color;
         border-bottom: 1.25px dashed var.$emphasis-divider-color;
       }
+
+      @include mixin.desktopStyle() {
+        &:after {
+          width: 6px;
+        }
+        &:before {
+          left: calc(100% + 6px);
+          height: 72px;
+          width: 6px;
+        }
+      }
     }
 
     &--straight {
@@ -78,6 +106,10 @@
         width: 7px;
         height: 0px;
         border-bottom: 1.25px dashed var.$emphasis-divider-color;
+
+        @include mixin.desktopStyle() {
+          width: 12px;
+        }
       }
     }
   }
@@ -95,6 +127,10 @@
         width: calc(100% + 14px);
         height: 0px;
         border-bottom: 1.25px dashed var.$emphasis-divider-color;
+
+        @include mixin.desktopStyle() {
+          width: calc(100% + 22px);
+        }
       }
     }
   }
@@ -156,6 +192,11 @@
     color: var.$blue-darker;
     transition: border 0.2s ease, background-color 0.2s ease;
 
+    @include mixin.desktopStyle() {
+      width: 12px;
+      height: 12px;
+    }
+
     &--default {
       background-color: var.$blue-darker;
       border: 1px solid var.$divider-color;
@@ -169,6 +210,8 @@
         content: "";
         position: absolute;
         inset: 0;
+        background-position: center;
+        background-repeat: no-repeat;
         background-image: url(../../assets/check.svg);
       }
     }
@@ -179,6 +222,11 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
+
+    @include mixin.desktopStyle() {
+      font-size: 16px;
+      line-height: 16px;
+    }
   }
 
   &__description {
@@ -188,6 +236,11 @@
     line-height: 122%;
 
     @include mixin.dynamicLineClamp;
+
+    @include mixin.desktopStyle() {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 
   &__credit {
@@ -198,5 +251,10 @@
     position: absolute;
     bottom: 4px;
     right: 4px;
+
+    @include mixin.desktopStyle() {
+      font-size: 8px;
+      line-height: 10px;
+    }
   }
 }
