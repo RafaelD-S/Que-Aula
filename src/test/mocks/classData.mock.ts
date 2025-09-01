@@ -12,7 +12,7 @@ export const mockClassesData: IClassesData[] = [
     classes: [
       {
         weekDay: "segunda",
-        period: ["08:00", "10:00"],
+        period: ["1", "2"],
         teacher: "Prof. João Silva",
         selected: false,
         classList: ["Turma A"],
@@ -33,7 +33,7 @@ export const mockClassesData: IClassesData[] = [
     classes: [
       {
         weekDay: "terça",
-        period: ["14:00", "16:00"],
+        period: ["3", "4"],
         teacher: "Prof. Maria Santos",
         selected: false,
         classList: ["Turma A", "Turma B"],
@@ -47,3 +47,9 @@ export const mockClassesData: IClassesData[] = [
 ];
 
 export const mockSingleClassData: IClassesData = mockClassesData[0];
+
+export const mockClassDataWithGreve: IClassesData = {
+  ...mockSingleClassData,
+  greve: true,
+  name: "Disciplina em Greve"
+};
