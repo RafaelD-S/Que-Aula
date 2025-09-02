@@ -16,19 +16,28 @@ const Flowchart = () => {
 
   const checkClassesAmount = () => {
     if (!classData) return;
-    const totalClasses = classData.flatMap((item) => {
-      const valid = item.filter((e) => {
-        return e.state !== "empty" && e.state !== "empty-through";
-      });
-      return valid;
-    }).length;
 
-    const totalChecked = classData.flatMap((item) => {
-      const checked = item.filter((e) => {
-        return e.state === "disabled";
-      });
-      return checked;
-    }).length;
+    const totalClasses = classData
+      .flatMap((item) => {
+        const valid = item
+          .filter((e) => {
+            return e.state !== "empty" && e.state !== "empty-through";
+          })
+          .map((aula) => Number(aula.credit?.split(" - ")[0] ?? 0));
+        return valid;
+      })
+      .reduce((acc, curr) => acc + curr, 0);
+
+    const totalChecked = classData
+      .flatMap((item) => {
+        const checked = item
+          .filter((e) => {
+            return e.state === "disabled";
+          })
+          .map((aula) => Number(aula.credit?.split(" - ")[0] ?? 0));
+        return checked;
+      })
+      .reduce((acc, curr) => acc + curr, 0);
 
     setClassesAmount(totalClasses);
     setCheckedAmount(totalChecked);
