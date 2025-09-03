@@ -23,7 +23,6 @@ const Flowchart = () => {
     for (const semester of classData) {
       for (const aula of semester) {
         const hours = Number(aula.credit?.split(" - ")[0] ?? 0);
-        console.log(hours);
 
         if (aula.state !== "empty" && aula.state !== "empty-through")
           totalHours += hours;
