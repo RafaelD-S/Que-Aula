@@ -349,3 +349,86 @@ export const mockClassesitems: IClassItem [][] = [
 ];
 
 export const mockSingleClassItem: IClassItem = mockClassesitems [0] [0];
+
+import { vi } from "vitest";
+
+export const mockClassItemDefault: IClassItem = {
+  name: "INF027",
+  description: "Introdução à Lógica",
+  requiredFor: ["INF029", "INF006"],
+  credit: "60 - 3",
+  state: "default",
+  semester: 1
+};
+
+export const mockClassItemSelected: IClassItem = {
+  name: "MAT222",
+  description: "Matemática I",
+  requiredFor: ["INF007"],
+  credit: "90 - 5",
+  state: "selected",
+  semester: 1
+};
+
+export const mockClassItemDisabled: IClassItem = {
+  name: "INF026",
+  description: "Introdução à Computação",
+  requiredFor: ["INF028"],
+  credit: "60 - 3",
+  state: "disabled",
+  semester: 1
+};
+
+export const mockClassItemEmpty: IClassItem = {
+  state: "empty",
+  semester: 1
+};
+
+export const mockClassItemEmptyThrough: IClassItem = {
+  state: "empty-through",
+  semester: 1
+};
+
+export const mockClassItemMinimal: IClassItem = {
+  name: "TST001",
+  description: "Teste Básico",
+  credit: "30 - 2"
+};
+
+export const mockClassItemLongDescription: IClassItem = {
+  name: "LET100",
+  description: "Língua Portuguesa e Literatura Brasileira com foco em redação técnica e comunicação empresarial",
+  credit: "60 - 3",
+  state: "default",
+  semester: 2
+};
+
+export const mockOnStateChange = vi.fn();
+
+export const resetClassItemMocks = () => {
+  mockOnStateChange.mockClear();
+};
+
+export const getDefaultClassItemProps = () => ({
+  data: mockClassItemDefault,
+  onStateChange: mockOnStateChange,
+  loading: false
+});
+
+export const getLoadingClassItemProps = () => ({
+  data: undefined,
+  onStateChange: mockOnStateChange,
+  loading: true
+});
+
+export const getNoDataClassItemProps = () => ({
+  data: undefined,
+  onStateChange: mockOnStateChange,
+  loading: false
+});
+
+export const getCustomClassItemProps = (data: IClassItem, loading = false) => ({
+  data,
+  onStateChange: mockOnStateChange,
+  loading
+});
