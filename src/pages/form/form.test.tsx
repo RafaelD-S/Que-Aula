@@ -26,106 +26,92 @@ beforeEach(() => {
 });
 
 describe('Form', () => {
+  describe('Rendering and States', () => {
+    it('should render form correctly with loading, error, and success states', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
 
-  it('should render form with title and introduction when loading successfully', async () => {
-    mockUseClasses.mockReturnValue(createMockClassesState());
+      const { unmount } = render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
 
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
+      expect(screen.getByText('Bem vindo ao')).toBeInTheDocument();
+      expect(screen.getByText('Que Aula?')).toBeInTheDocument();
+      expect(screen.getByText('Escolha as suas matérias')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /gerar calendario/i })).toBeInTheDocument();
+      
+      await waitFor(() => {
+        expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
+        expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
+      });
+      unmount();
 
-    expect(screen.getByText('Bem vindo ao')).toBeInTheDocument();
-    expect(screen.getByText('Que Aula?')).toBeInTheDocument();
-    expect(screen.getByText('Escolha as suas matérias')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /gerar calendario/i })).toBeInTheDocument();
-  });
+      mockUseClasses.mockReturnValue(createMockClassesState(true));
+      const { unmount: unmount2 } = render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
 
-  it('should show loading state with skeleton tags', async () => {
-    mockUseClasses.mockReturnValue(createMockClassesState(true));
+      expect(screen.getByText('Optativas')).toBeInTheDocument();
+      expect(screen.getByText('1º Semestre')).toBeInTheDocument();
+      expect(screen.getByText('2º Semestre')).toBeInTheDocument();
+      
+      const shimmerTags = document.querySelectorAll('.shimmer');
+      expect(shimmerTags.length).toBeGreaterThan(0);
+      unmount2();
 
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
+      mockUseClasses.mockReturnValue(createMockClassesState(false, "Erro ao carregar disciplinas"));
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
 
-    expect(screen.getByText('Optativas')).toBeInTheDocument();
-    expect(screen.getByText('1º Semestre')).toBeInTheDocument();
-    expect(screen.getByText('2º Semestre')).toBeInTheDocument();
-    
-    const shimmerTags = document.querySelectorAll('.shimmer');
-    expect(shimmerTags.length).toBeGreaterThan(0);
-  });
-
-  it('should show error state with warning message', async () => {
-    mockUseClasses.mockReturnValue(createMockClassesState(false, "Erro ao carregar disciplinas"));
-
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
-
-    expect(screen.getByTestId('warning')).toBeInTheDocument();
-    expect(screen.getByText('Ocorreu um erro no carregamento das aulas.')).toBeInTheDocument();
-  });
-
-  it('should render classes when data is loaded', async () => {
-    mockUseClasses.mockReturnValue(createMockClassesState());
-
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
-      expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
+      expect(screen.getByTestId('warning')).toBeInTheDocument();
+      expect(screen.getByText('Ocorreu um erro no carregamento das aulas.')).toBeInTheDocument();
     });
   });
 
-  it('should have submit buttons with correct structure', async () => {
-    mockUseClasses.mockReturnValue(createMockClassesState());
+  describe('User Interactions', () => {
+    it('should handle button interactions and navigation correctly', async () => {
+      const { navigateFunction } = setupFormMocks(mockUseClasses, mockUseNavigate, mockUseAppContext);
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      const user = userEvent.setup();
 
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
+      const { unmount } = render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
 
-    const previewButton = screen.getByRole('button', { name: /preview/i });
-    const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
-    
-    expect(previewButton).toBeInTheDocument();
-    expect(generateButton).toBeInTheDocument();
-  });
+      const previewButton = screen.getByRole('button', { name: /preview/i });
+      const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
+      
+      expect(previewButton).toBeInTheDocument();
+      expect(generateButton).toBeInTheDocument();
 
-  it('should call navigate when generate button is clicked', async () => {
-    const { navigateFunction } = setupFormMocks(mockUseClasses, mockUseNavigate, mockUseAppContext);
-    mockUseClasses.mockReturnValue(createMockClassesState());
+      await user.click(generateButton);
+      expect(navigateFunction).toHaveBeenCalledWith('/');
+      unmount();
 
-    const user = userEvent.setup();
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
 
-    render(
-      <MemoryRouter>
-        <Form />
-      </MemoryRouter>
-    );
+      const previewBtn = screen.getByRole('button', { name: /preview/i });
+      await user.click(previewBtn);
+      expect(previewBtn).toBeInTheDocument();
+    });
 
-    const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
-    await user.click(generateButton);
-
-    expect(navigateFunction).toHaveBeenCalledWith('/');
-  });
-
-  describe('Class Selection Logic', () => {
-    it('should select and deselect classes when clicked', async () => {
+    it('should handle class selection interactions correctly', async () => {
       mockUseClasses.mockReturnValue(createMockClassesState());
 
-      render(
+      const { unmount } = render(
         <MemoryRouter>
           <Form />
         </MemoryRouter>
@@ -134,10 +120,7 @@ describe('Form', () => {
       expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
       expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
       expect(screen.getByText('Programação I Turma B')).toBeInTheDocument();
-    });
-
-    it('should handle multi-class selection correctly', async () => {
-      mockUseClasses.mockReturnValue(createMockClassesState());
+      unmount();
 
       render(
         <MemoryRouter>
@@ -150,24 +133,6 @@ describe('Form', () => {
       
       expect(multiClassButtonA).toBeInTheDocument();
       expect(multiClassButtonB).toBeInTheDocument();
-    });
-  });
-
-  describe('Preview Functionality', () => {
-    it('should open preview when preview button is clicked', async () => {
-      mockUseClasses.mockReturnValue(createMockClassesState());
-      const user = userEvent.setup();
-
-      render(
-        <MemoryRouter>
-          <Form />
-        </MemoryRouter>
-      );
-
-      const previewButton = screen.getByRole('button', { name: /preview/i });
-      await user.click(previewButton);
-
-      expect(previewButton).toBeInTheDocument();
     });
   });
 });
