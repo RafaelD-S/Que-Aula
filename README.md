@@ -66,6 +66,36 @@ Ele foi desenvolvido para atender da melhor forma possível pessoas que utilizem
    npm run dev
    ```
 
+## Comandos de Teste
+
+O projeto possui uma suíte completa de testes implementada com Vitest. Use os seguintes comandos:
+
+### Comandos Disponíveis
+
+```bash
+# Executar todos os testes
+npm test
+
+# Executar testes em modo watch (reexecuta automaticamente quando arquivos mudam)
+npm run test:watch
+
+# Executar testes uma única vez (sem watch)
+npm run test:run
+
+# Executar testes com relatório de cobertura
+npm run test:coverage
+
+# Executar testes com interface gráfica
+npm run test:ui
+```
+
+### Sobre os Testes
+
+- **Framework**: Vitest com React Testing Library
+- **Cobertura**: Relatórios detalhados de cobertura de código
+- **Mocks**: Dados mock abrangentes para todos os componentes
+- **Tipos de Teste**: Componentes, páginas, hooks, serviços e utilitários
+
 ## Contribuidores
 
 <table>
