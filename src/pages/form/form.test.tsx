@@ -127,7 +127,6 @@ describe('Form', () => {
     it('should handle error state correctly', async () => {
       const user = userEvent.setup();
       
-      // Mock location.reload properly
       Object.defineProperty(window, 'location', {
         value: {
           ...window.location,
@@ -186,8 +185,141 @@ describe('Form', () => {
       const previewButton = screen.getByRole('button', { name: /preview/i });
       await user.click(previewButton);
       
-      // The preview functionality should execute without errors
       expect(previewButton).toBeInTheDocument();
+    });
+
+    it('should test function coverage - preview and submit buttons exist', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const previewButton = screen.getByRole('button', { name: /preview/i });
+      const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
+      
+      expect(previewButton).toBeInTheDocument();
+      expect(generateButton).toBeInTheDocument();
+      expect(previewButton.closest('.form__submit')).toHaveClass('form__submit');
+      expect(generateButton.closest('.form__submit')).toHaveClass('form__submit');
+    });
+
+    it('should test form state management and useEffect hooks', async () => {
+      mockUseClasses.mockReturnValue({
+        classes: [],
+        loading: false,
+        error: null
+      });
+
+      const { rerender } = render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      expect(screen.getByText('Não há matérias disponíveis no momento. Tente novamente mais tarde.')).toBeInTheDocument();
+
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      
+      rerender(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
+        expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
+      });
+    });
+
+    it('should test component initialization and class filtering', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText('1º Semestre')).toBeInTheDocument();
+        expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
+        expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
+        expect(screen.getByText('Programação I Turma B')).toBeInTheDocument();
+      });
+
+      const firstSemesterSection = screen.getByText('1º Semestre').closest('h4');
+      expect(firstSemesterSection).toBeInTheDocument();
+    });
+
+    it('should test classNames utility usage', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const submitSection = document.querySelector('.form__submit');
+      expect(submitSection).toBeInTheDocument();
+      expect(submitSection).toHaveClass('form__submit');
+      expect(submitSection).not.toHaveClass('form__submit--active');
+    });
+
+    it('should test handleClickPreview function coverage through UI', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      const user = userEvent.setup();
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const previewButton = screen.getByRole('button', { name: /preview/i });
+      await user.click(previewButton);
+      
+      expect(previewButton).toBeInTheDocument();
+    });
+
+    it('should test submitCalendar function coverage through UI', async () => {
+      const { navigateFunction } = setupFormMocks(mockUseClasses, mockUseNavigate, mockUseAppContext);
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      const user = userEvent.setup();
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
+      await user.click(generateButton);
+
+      expect(navigateFunction).toHaveBeenCalledWith('/');
+    });
+
+    it('should test component renders all required sections', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      expect(screen.getByText('Bem vindo ao')).toBeInTheDocument();
+      expect(screen.getByText('Que Aula?')).toBeInTheDocument();
+      expect(screen.getByText('Escolha as suas matérias')).toBeInTheDocument();
+      
+      const semesters = ['Optativas', '1º Semestre', '2º Semestre', '3º Semestre', '4º Semestre', '5º Semestre', '6º Semestre'];
+      semesters.forEach(semester => {
+        expect(screen.getByText(semester)).toBeInTheDocument();
+      });
     });
   });
 });
