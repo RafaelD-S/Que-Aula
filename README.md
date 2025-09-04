@@ -127,4 +127,11 @@ npm run test:ui
       Andrey Gomes
     </a>
   </td>
+  <td align="center">
+    <img src="https://github.com/mFonseca00.png?size=100" style="width: 100px"/>
+    <br/>
+    <a href="https://github.com/mFonseca00" target="_blank">
+      Mateus Fonseca
+    </a>
+  </td>
 </table>
