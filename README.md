@@ -131,7 +131,7 @@ npm run test:ui
     <img src="https://github.com/mFonseca00.png?size=100" style="width: 100px"/>
     <br/>
     <a href="https://github.com/mFonseca00" target="_blank">
-      Mateus Fonseca
+      Marcus Fonseca
     </a>
   </td>
 </table>
