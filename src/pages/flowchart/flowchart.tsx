@@ -11,26 +11,28 @@ const Flowchart = () => {
   const { flowchart: apiData, loading, error } = useFlowchart();
   const navigate = useNavigate();
 
-  const [classesAmount, setClassesAmount] = useState(0);
+  const [hoursAmount, setHoursAmount] = useState(0);
   const [checkedAmount, setCheckedAmount] = useState(0);
 
   const checkClassesAmount = () => {
     if (!classData) return;
-    const totalClasses = classData.flatMap((item) => {
-      const valid = item.filter((e) => {
-        return e.state !== "empty" && e.state !== "empty-through";
-      });
-      return valid;
-    }).length;
 
-    const totalChecked = classData.flatMap((item) => {
-      const checked = item.filter((e) => {
-        return e.state === "disabled";
-      });
-      return checked;
-    }).length;
+    let totalHours = 0;
+    let totalChecked = 0;
 
-    setClassesAmount(totalClasses);
+    for (const semester of classData) {
+      for (const aula of semester) {
+        const hours = Number(aula.credit?.split(" - ")[0] ?? 0);
+
+        if (aula.state !== "empty" && aula.state !== "empty-through")
+          totalHours += hours;
+
+        if (aula.state === "disabled") 
+          totalChecked += hours;
+      }
+    }
+
+    setHoursAmount(totalHours);
     setCheckedAmount(totalChecked);
   };
 
@@ -226,7 +228,7 @@ const Flowchart = () => {
       <h2 className="flowchart__title">Fluxograma</h2>
       <article className="flowchart__container">
         <ProgressTracker
-          classesAmount={classesAmount}
+          classesAmount={hoursAmount}
           checkedAmount={checkedAmount}
         />
         <div className="flowchart__container__content-wrapper">

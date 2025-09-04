@@ -210,6 +210,8 @@
         content: "";
         position: absolute;
         inset: 0;
+        background-position: center;
+        background-repeat: no-repeat;
         background-image: url(../../assets/check.svg);
       }
     }

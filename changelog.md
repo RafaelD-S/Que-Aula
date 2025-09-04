@@ -2,9 +2,16 @@
 
 # Changelog
 
-### Versão atual: 2.4.0
+### Versão atual: 2.5.0
 
 </div>
+
+## 2.5.0 - 26/08/2025
+
+- Criação de um preview na página do Form para poder prever as aulas selecionadas antes de gerar um calendário
+- Criação de uma versão desktop para a página do fluxograma
+- Criação de uma barra de progresso no fluxograma
+- Troca do consumo de dados a partir da Railway para Vercel
 
 ## 2.4.0 - 14/07/2025
 
