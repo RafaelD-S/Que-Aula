@@ -108,19 +108,12 @@ describe('Form', () => {
       expect(previewBtn).toBeInTheDocument();
     });
 
-    it('should handle class selection interactions correctly', async () => {
-      mockUseClasses.mockReturnValue(createMockClassesState());
-
-      const { unmount } = render(
-        <MemoryRouter>
-          <Form />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByText('Matemática Básica')).toBeInTheDocument();
-      expect(screen.getByText('Programação I Turma A')).toBeInTheDocument();
-      expect(screen.getByText('Programação I Turma B')).toBeInTheDocument();
-      unmount();
+    it('should handle empty classes state correctly', async () => {
+      mockUseClasses.mockReturnValue({
+        classes: [],
+        loading: false,
+        error: null
+      });
 
       render(
         <MemoryRouter>
@@ -128,11 +121,73 @@ describe('Form', () => {
         </MemoryRouter>
       );
 
-      const multiClassButtonA = screen.getByText('Programação I Turma A');
-      const multiClassButtonB = screen.getByText('Programação I Turma B');
+      expect(screen.getByText('Não há matérias disponíveis no momento. Tente novamente mais tarde.')).toBeInTheDocument();
+    });
+
+    it('should handle error state correctly', async () => {
+      const user = userEvent.setup();
       
-      expect(multiClassButtonA).toBeInTheDocument();
-      expect(multiClassButtonB).toBeInTheDocument();
+      // Mock location.reload properly
+      Object.defineProperty(window, 'location', {
+        value: {
+          ...window.location,
+          reload: vi.fn(),
+        },
+        writable: true,
+      });
+      
+      mockUseClasses.mockReturnValue(createMockClassesState(false, "Error loading classes"));
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      expect(screen.getByText('Ocorreu um erro no carregamento das aulas.')).toBeInTheDocument();
+      
+      const retryButton = screen.getByRole('button', { name: /tentar novamente/i });
+      await user.click(retryButton);
+      
+      expect(window.location.reload).toHaveBeenCalled();
+    });
+
+    it('should test submitCalendar function coverage', async () => {
+      const { navigateFunction } = setupFormMocks(mockUseClasses, mockUseNavigate, mockUseAppContext);
+      const setItemSpy = vi.spyOn(Storage.prototype, 'setItem');
+      
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      const user = userEvent.setup();
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const generateButton = screen.getByRole('button', { name: /gerar calendario/i });
+      await user.click(generateButton);
+
+      expect(navigateFunction).toHaveBeenCalledWith('/');
+      
+      setItemSpy.mockRestore();
+    });
+
+    it('should test preview functionality', async () => {
+      mockUseClasses.mockReturnValue(createMockClassesState());
+      const user = userEvent.setup();
+
+      render(
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      );
+
+      const previewButton = screen.getByRole('button', { name: /preview/i });
+      await user.click(previewButton);
+      
+      // The preview functionality should execute without errors
+      expect(previewButton).toBeInTheDocument();
     });
   });
 });

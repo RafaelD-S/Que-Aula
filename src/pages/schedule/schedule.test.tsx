@@ -116,6 +116,38 @@ describe('Schedule', () => {
       
       await new Promise(resolve => setTimeout(resolve, 0));
     });
+
+    it('shows warning when canvas context is null', async () => {
+      const user = userEvent.setup();
+      
+      const originalCreateElement = document.createElement;
+      document.createElement = vi.fn().mockImplementation((tagName) => {
+        if (tagName === 'a') {
+          return {
+            href: '',
+            download: '',
+            click: vi.fn(),
+            style: {}
+          } as any;
+        }
+        if (tagName === 'canvas') {
+          const canvas = originalCreateElement.call(document, 'canvas') as HTMLCanvasElement;
+          (canvas as any).getContext = vi.fn().mockReturnValue(null);
+          return canvas;
+        }
+        return originalCreateElement.call(document, tagName);
+      });
+
+      renderComponent();
+
+      const downloadButton = screen.getByRole('button', { name: /salvar imagem do calendário/i });
+      
+      await user.click(downloadButton);
+      
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      expect(screen.getByText('Não foi possível fazer o download da imagem. Tente novamente mais tarde.')).toBeInTheDocument();
+    });
   });
 
   describe('Warning Components', () => {

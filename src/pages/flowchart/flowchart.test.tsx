@@ -300,49 +300,28 @@ describe('Flowchart', () => {
   });
 
   describe('Class State Management Advanced', () => {
-    it('handles class state change with valid item name', () => {
+    it('handles class state changes and deepEqual comparison', () => {
       setupFlowchartTestScenario('withData', mockUseFlowchart);
-      renderComponent();
+      const { container } = renderComponent();
+      
+      expectFlowchartStructure(container);
+      expectClassContent(container, 'Algoritmos');
       
       const classItem = screen.getByText('Algoritmos');
       fireEvent.click(classItem);
       
       expectClassContent(screen.getByRole('main'), 'Algoritmos');
     });
-
-    it('handles class state change with undefined item name', () => {
-      setupFlowchartTestScenario('withData', mockUseFlowchart);
-      const { container } = renderComponent();
-      
-      expectFlowchartStructure(container);
-      expectClassContent(container, 'Algoritmos');
-    });
-
-    it('handles deepEqual comparison correctly', () => {
-      setupFlowchartTestScenario('withData', mockUseFlowchart);
-      const { container } = renderComponent();
-      
-      expectFlowchartStructure(container);
-      expectClassContent(container, 'Algoritmos');
-      expectClassContent(container, 'Programacao1');
-    });
   });
 
   describe('Requirement Styling and Dependencies', () => {
-    it('handles requirement styling calculations', () => {
+    it('handles requirement styling and class dependencies', () => {
       setupFlowchartTestScenario('withData', mockUseFlowchart);
       const { container } = renderComponent();
       
       expectFlowchartStructure(container);
       expectClassContent(container, 'Algoritmos');
       expectClassContent(container, 'Programacao1');
-    });
-
-    it('processes class dependencies correctly', () => {
-      setupFlowchartTestScenario('withData', mockUseFlowchart);
-      const { container } = renderComponent();
-      
-      expectFlowchartStructure(container);
       expect(container.querySelectorAll('.flowchart__semester')).toHaveLength(2);
     });
   });
@@ -386,6 +365,35 @@ describe('Flowchart', () => {
       
       expectFlowchartStructure(container);
       expectClassContent(container, 'Algoritmos');
+    });
+
+    it('handles deepEqual comparison returning true (no change needed)', () => {
+      setupFlowchartTestScenario('withData', mockUseFlowchart);
+      const { container } = renderComponent();
+      
+      expectFlowchartStructure(container);
+      expectClassContent(container, 'Algoritmos');
+      
+      const classItem = container.querySelector('[data-testid="class-item-Algoritmos"]');
+      if (classItem) {
+        fireEvent.click(classItem);
+        fireEvent.click(classItem);
+      }
+    });
+
+    it('tests requirementStyling with dependency management', () => {
+      setupFlowchartTestScenario('withRequiredFor', mockUseFlowchart);
+      
+      const mockElement = { classList: { add: vi.fn(), remove: vi.fn() } };
+      const originalQuerySelector = document.querySelector;
+      document.querySelector = vi.fn().mockReturnValue(mockElement);
+      
+      const { container } = renderComponent();
+      
+      expectFlowchartStructure(container);
+      expect(document.querySelector).toHaveBeenCalled();
+      
+      document.querySelector = originalQuerySelector;
     });
   });
 });

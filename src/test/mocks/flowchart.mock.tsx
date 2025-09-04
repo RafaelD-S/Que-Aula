@@ -8,6 +8,8 @@ interface IClassItem {
   optionalClass: boolean;
   requirements: number[];
   workload: number;
+  state?: string;
+  requiredFor?: string[];
 }
 
 export const mockFlowchartData: IClassItem[][] = [
@@ -49,6 +51,77 @@ export const mockFlowchartData: IClassItem[][] = [
       optionalClass: false,
       requirements: [2],
       workload: 60
+    }
+  ]
+];
+
+export const mockFlowchartDataWithRequiredFor: IClassItem[][] = [
+  [
+    {
+      id: 1,
+      name: "Algoritmos",
+      semester: 0,
+      code: "ALG001",
+      optionalClass: false,
+      requirements: [],
+      workload: 60,
+      state: "available",
+      requiredFor: ["Programacao1"]
+    },
+    {
+      id: 2,
+      name: "Matematica1",
+      semester: 0,
+      code: "MAT001",
+      optionalClass: false,
+      requirements: [],
+      workload: 60,
+      state: "available",
+      requiredFor: ["Matematica2"]
+    }
+  ],
+  [
+    {
+      id: 5,
+      name: "EmptyClass",
+      semester: 1,
+      code: "",
+      optionalClass: false,
+      requirements: [],
+      workload: 0,
+      state: "empty"
+    },
+    {
+      id: 6,
+      name: "AnotherEmpty",
+      semester: 1,
+      code: "",
+      optionalClass: false,
+      requirements: [],
+      workload: 0,
+      state: "empty"
+    }
+  ],
+  [
+    {
+      id: 3,
+      name: "Programacao1",
+      semester: 2,
+      code: "PRG001",
+      optionalClass: false,
+      requirements: [1],
+      workload: 60,
+      state: "available"
+    },
+    {
+      id: 4,
+      name: "Matematica2",
+      semester: 2,
+      code: "MAT002",
+      optionalClass: false,
+      requirements: [2],
+      workload: 60,
+      state: "available"
     }
   ]
 ];
@@ -163,6 +236,14 @@ export const setupFlowchartTestScenario = (scenario: string, mockUseFlowchart?: 
       
       mockUseFlowchart.mockReturnValue({
         flowchart: dataWithRequirements,
+        loading: false,
+        error: false
+      });
+      break;
+      
+    case 'withRequiredFor':
+      mockUseFlowchart.mockReturnValue({
+        flowchart: mockFlowchartDataWithRequiredFor,
         loading: false,
         error: false
       });
