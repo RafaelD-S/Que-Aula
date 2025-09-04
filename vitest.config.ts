@@ -17,6 +17,17 @@ export default defineConfig({
         '**/*.d.ts',
         '**/*.config.*',
         'dist/',
+        'coverage/',
+        '.eslintrc.cjs',
+        '*.config.js',
+        '*.config.ts',
+        'vite.config.*',
+        'vitest.config.*',
+        'tsconfig.*',
+        'vercel.json',
+        'package.json',
+        'README.md',
+        'changelog.md',
       ],
       thresholds: {
         global: {
