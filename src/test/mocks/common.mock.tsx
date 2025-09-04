@@ -53,3 +53,45 @@ export const mockReactDOM = {
 };
 
 export const mockStyles = () => ({});
+
+export const commonTestData = {
+  classNames: {
+    algorithms: "Algoritmos",
+    programming: "Programação I",
+    database: "Banco de Dados",
+    math: "Matemática",
+    chemistry: "Química",
+    physics: "Física",
+    clickable: "Clickable",
+    multiClick: "Multi Click",
+    empty: "Empty Title Test"
+  },
+  teachers: {
+    silva: "Prof. Silva",
+    santos: "Prof. Santos",
+    oliveira: "Prof. Oliveira"
+  },
+  classrooms: {
+    lab1: "Lab 1",
+    lab2: "Lab 2", 
+    lab3: "Lab 3",
+    sala201: "Sala 201",
+    sala202: "Sala 202"
+  },
+  periods: {
+    morning1: ["08:00", "09:40"],
+    morning2: ["10:00", "11:40"],
+    afternoon1: ["14:00", "15:40"],
+    afternoon2: ["16:00", "17:40"],
+    evening1: ["17:00", "18:40"],
+    evening2: ["19:30", "21:10"]
+  },
+  weekdays: {
+    monday: "Segunda-feira",
+    tuesday: "Terça-feira",
+    wednesday: "Quarta-feira",
+    thursday: "Quinta-feira",
+    friday: "Sexta-feira",
+    saturday: "Sábado"
+  }
+};
