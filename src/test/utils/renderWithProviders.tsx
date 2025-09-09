@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import { AppProvider } from '../../context/AppContext'
 
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
@@ -12,11 +12,11 @@ const AllTheProviders = ({ children, initialEntries = ['/'] }: {
   initialEntries?: string[] 
 }) => {
   return (
-    <BrowserRouter>
+    <MemoryRouter initialEntries={initialEntries}>
       <AppProvider>
         {children}
       </AppProvider>
-    </BrowserRouter>
+    </MemoryRouter>
   )
 }
 
