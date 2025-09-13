@@ -2,9 +2,16 @@
 
 # Changelog
 
-### Versão atual: 2.5.0
+### Versão atual: 2.6.0
 
 </div>
+
+## 2.6.0 - 26/08/2025
+
+- Mudança da lógica de porcentagem do fluxograma de quantidade de aulas completadas para quantas horas cada matéria representa
+- Corrigido bug do formulário em que dados eram substituídos mesmo após ja serem consumidos
+- Melhora no consumo do fluxograma para não carregar caso não tenham novos dados
+- Desenvolvido testes unitários para todo o projeto
 
 ## 2.5.0 - 26/08/2025
 
