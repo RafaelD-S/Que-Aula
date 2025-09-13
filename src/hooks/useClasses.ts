@@ -7,22 +7,21 @@ export const useClasses = () => {
   const [classes, setClasses] = useState<IClassesData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const fetchClasses = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await api.getClasses();
+      setClasses(data);
+    } catch (err) {
+      console.error("Erro ao buscar disciplinas:", err);
+      setError("Erro ao carregar disciplinas");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchClasses = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await api.getClasses();
-        setClasses(data);
-      } catch (err) {
-        console.error("Erro ao buscar disciplinas:", err);
-        setError("Erro ao carregar disciplinas");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchClasses();
   }, []);
 
