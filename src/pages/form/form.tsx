@@ -104,7 +104,7 @@ const Form = () => {
   }, [classesData, setHasSelected]);
 
   useEffect(() => {
-    if (apiClasses.length > 0) {
+    if (apiClasses.length > 0 && classesData.length < 1) {
       const initializedData = apiClasses.map((e) => ({
         ...e,
         classes: e.classes.map((item) => ({ ...item, selected: false })),
