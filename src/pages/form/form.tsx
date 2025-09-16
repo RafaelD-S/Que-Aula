@@ -125,7 +125,7 @@ const Form = () => {
             atualizadas diariamente, um calendário relativo a sua rotina, um fluxograma editável, e
             muito mais!
           </p>
-          <h4 className="form__warning">Localizações pendentes de atualização para 2025.2</h4>
+          <h4 className="form__warning">Aulas e locais para 2025.2 atualizados!</h4>
         </div>
         <div className="form__classes">
           <h3 className="form__classes__title">Escolha as suas matérias</h3>
