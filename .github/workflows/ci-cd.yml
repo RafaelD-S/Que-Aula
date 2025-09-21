@@ -1,0 +1,214 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: 
+      - main
+      - develop
+      - 'test/**'           # Test branches
+      - 'ci/**'             # CI branches
+      - CI/CD_development   # dev branch 
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  ci:
+    name: CI - Tests & Coverage
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Check merge develop
+      - name: Verify branch is up to date
+        if: github.event_name == 'pull_request' || github.ref == 'refs/heads/CI/CD_development'
+        run: |
+          git fetch origin develop
+          BEHIND=$(git rev-list --count HEAD..origin/develop)
+          
+          if [ $BEHIND -eq 0 ]; then
+            echo "Branch is up to date with develop"
+          else
+            echo "Branch is $BEHIND commits behind develop"
+            echo "Please update your branch: git pull origin develop"
+          fi
+          
+          # Verificar conflitos
+          if git merge-tree $(git merge-base HEAD origin/develop) HEAD origin/develop | grep -q '<<<<<<<'; then
+            echo "Branch has merge conflicts with develop"
+            echo "Please resolve conflicts before merging"
+            exit 1
+          fi
+        
+      # Setup Node.js com cache
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+        
+      # Lint check
+      - name: ESLint Check
+        run: npm run lint
+        
+      # Build check
+      - name: Build Check
+        run: npm run build
+        
+      # Run tests with coverage
+      - name: Run Tests with Coverage
+        run: npm run test:coverage
+        
+      # Upload coverage artifacts
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 30
+          
+      # Comment coverage on PR
+      - name: Comment Coverage on PR
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          recreate: true
+          message: |
+            ## Test Coverage Report
+            
+            **All tests passed!** 
+            
+            **Coverage Summary (Real Data):**
+            ```bash
+            $(cat coverage/coverage-summary.json | jq -r '"Statements: " + (.total.statements.pct|tostring) + "%"')
+            $(cat coverage/coverage-summary.json | jq -r '"Branches: " + (.total.branches.pct|tostring) + "%"')
+            $(cat coverage/coverage-summary.json | jq -r '"Functions: " + (.total.functions.pct|tostring) + "%"')
+            $(cat coverage/coverage-summary.json | jq -r '"Lines: " + (.total.lines.pct|tostring) + "%"')
+            ```
+            
+            **Coverage details:** [Download full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            
+            ---
+            *Coverage thresholds: 75% for statements, branches, functions, and lines*
+            
+      # Verify coverage thresholds
+      - name: Verify Coverage Thresholds
+        run: |
+          echo "Verifying coverage thresholds and test results..."
+          
+          # Verificar se o arquivo de coverage existe
+          if [ ! -f "coverage/coverage-summary.json" ]; then
+            echo "ERROR: Coverage summary file not found!"
+            exit 1
+          fi
+          
+          # Extrair métricas de cobertura do arquivo JSON
+          STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
+          LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          
+          echo "REAL Coverage Results:"
+          echo "  • Statements: ${STATEMENTS}%"
+          echo "  • Branches: ${BRANCHES}%"
+          echo "  • Functions: ${FUNCTIONS}%"
+          echo "  • Lines: ${LINES}%"
+          
+          # Verificar thresholds (75% mínimo)
+          THRESHOLD=75
+          
+          if (( $(echo "$STATEMENTS >= $THRESHOLD" | bc -l) )); then
+            echo "PASS: Statements coverage: ${STATEMENTS}% (>= ${THRESHOLD}%)"
+          else
+            echo "FAIL: Statements coverage: ${STATEMENTS}% (< ${THRESHOLD}%) - FAILED!"
+            exit 1
+          fi
+          
+          if (( $(echo "$BRANCHES >= $THRESHOLD" | bc -l) )); then
+            echo "PASS: Branches coverage: ${BRANCHES}% (>= ${THRESHOLD}%)"
+          else
+            echo "FAIL: Branches coverage: ${BRANCHES}% (< ${THRESHOLD}%) - FAILED!"
+            exit 1
+          fi
+          
+          if (( $(echo "$FUNCTIONS >= $THRESHOLD" | bc -l) )); then
+            echo "PASS: Functions coverage: ${FUNCTIONS}% (>= ${THRESHOLD}%)"
+          else
+            echo "FAIL: Functions coverage: ${FUNCTIONS}% (< ${THRESHOLD}%) - FAILED!"
+            exit 1
+          fi
+          
+          if (( $(echo "$LINES >= $THRESHOLD" | bc -l) )); then
+            echo "PASS: Lines coverage: ${LINES}% (>= ${THRESHOLD}%)"
+          else
+            echo "FAIL: Lines coverage: ${LINES}% (< ${THRESHOLD}%) - FAILED!"
+            exit 1
+          fi
+          
+          echo "ALL coverage verification checks passed!"
+          
+      # Pipeline summary
+      - name: CI Summary
+        if: always()
+        run: |
+          echo "## CI Pipeline Summary - REAL DATA"
+          
+          # Extrair número REAL de testes e métricas
+          TOTAL_TEST_FILES=$(find . -name "*.test.*" -type f | wc -l)
+          
+          if [ -f "coverage/coverage-summary.json" ]; then
+            # Extrair métricas REAIS de cobertura
+            STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
+            BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
+            FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
+            LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
+            
+            echo "### REAL Test Results:"
+            echo "  • Test files encontrados: ${TOTAL_TEST_FILES}"
+            echo "  • Coverage REAL:"
+            echo "    - Statements: ${STATEMENTS}%"
+            echo "    - Branches: ${BRANCHES}%"
+            echo "    - Functions: ${FUNCTIONS}%"
+            echo "    - Lines: ${LINES}%"
+          else
+            echo "### ERROR: Coverage data NOT AVAILABLE"
+          fi
+          
+          echo ""
+          echo "### REAL Steps Status:"
+          
+          # Verificar status REAL baseado no job
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "  PASS: ESLint Check"
+            echo "  PASS: Build Check"
+            echo "  PASS: Tests with Coverage"
+            echo "  PASS: Coverage Thresholds"
+          else
+            echo "  FAIL: Some step failed - check logs!"
+          fi
+          
+          echo ""
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "### This is a PR - no deployment triggered"
+          else
+            echo "### Push to ${{ github.ref_name }} detected"
+          fi
+          
+          # Status geral REAL
+          if [ "${{ job.status }}" = "success" ]; then
+            echo ""
+            echo "**ALL CHECKS PASSED!**"
+          else
+            echo ""
+            echo "**PIPELINE FAILED - CHECK ERRORS!**"
+          fi
