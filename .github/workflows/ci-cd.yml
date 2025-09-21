@@ -26,7 +26,7 @@ jobs:
 
       # Checagem do merge com develop
       - name: Verify branch is up to date
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || github.ref == 'refs/heads/CI/CD_development'
         run: |
           git fetch origin develop
           BEHIND=$(git rev-list --count HEAD..origin/develop)
