@@ -16,39 +16,60 @@ env:
 
 jobs:
   ci:
-    name: 🧪 CI - Tests & Coverage
+    name: CI - Tests & Coverage
     runs-on: ubuntu-latest
     
     steps:
-      # 1. Checkout do código
-      - name: 📥 Checkout code
+      # Checkout do código
+      - name: Checkout code
         uses: actions/checkout@v4
+
+      # Checagem do merge com develop
+      - name: Verify branch is up to date
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin develop
+          BEHIND=$(git rev-list --count HEAD..origin/develop)
+          
+          if [ $BEHIND -eq 0 ]; then
+            echo "Branch is up to date with develop"
+          else
+            echo "Branch is $BEHIND commits behind develop"
+            echo "Please update your branch: git pull origin develop"
+          fi
+          
+          # Verificar conflitos
+          if git merge-tree $(git merge-base HEAD origin/develop) HEAD origin/develop | grep -q '<<<<<<<'; then
+            echo "Branch has merge conflicts with develop"
+            echo "Please resolve conflicts before merging"
+            exit 1
+          fi
         
-      # 2. Setup Node.js com cache
-      - name: 🟢 Setup Node.js
+      # Setup Node.js com cache
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
           
-      # 3. Install dependencies
-      - name: 📦 Install dependencies
+      # Install dependencies
+      - name: Install dependencies
         run: npm ci
         
-      # 4. Lint check
-      - name: 🔍 ESLint Check
+      # Lint check
+      - name: ESLint Check
         run: npm run lint
         
-      # 5. Build check
-      - name: 🏗️ Build Check
+      # Build check
+      - name: Build Check
         run: npm run build
         
-      # 6. Run tests with coverage
-      - name: 🧪 Run Tests with Coverage
+      # Run tests with coverage
+      - name: Run Tests with Coverage
         run: npm run test:coverage
         
-      # 7. Upload coverage artifacts
-      - name: 📊 Upload Coverage Artifacts
+      # Upload coverage artifacts
+      - name: Upload Coverage Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -56,8 +77,8 @@ jobs:
           path: coverage/
           retention-days: 30
           
-      # 8. Comment coverage on PR
-      - name: 💬 Comment Coverage on PR
+      # Comment coverage on PR
+      - name: Comment Coverage on PR
         if: github.event_name == 'pull_request'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -76,14 +97,14 @@ jobs:
             ---
             *Coverage thresholds: 75% for statements, branches, functions, and lines*
             
-      # 9. Verify coverage thresholds
+      # Verify coverage thresholds
       - name: ✅ Verify Coverage Thresholds
         run: |
           echo "🎯 Coverage verification completed!"
           echo "✅ All coverage thresholds met (75% minimum)"
           echo "📊 Current coverage is excellent (>97%)"
           
-      # 10. Pipeline summary
+      # Pipeline summary
       - name: 📋 CI Summary
         if: always()
         run: |
