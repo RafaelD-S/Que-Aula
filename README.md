@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>
+  <h1 style="color: #20e2b2; font-weight: 700; letter-spacing: 1px">
     Que Aula?
   </h1>
   <h3>
-    Bem vindo ao projeto Que Aula? Um projeto feito para ajudar com a localização e horários de aulas para os estudantes do curso de Análise e Desenvolvimento de Sistemas do Instituto Federal da Bahia.
+    Bem vindo ao projeto Que Aula? Um projeto feito para ajudar com a localização, horários e organização de aulas para os estudantes do curso de Análise e Desenvolvimento de Sistemas do Instituto Federal da Bahia.
   </h3>
   <div align="center">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link">
