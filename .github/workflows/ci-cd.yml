@@ -98,14 +98,14 @@ jobs:
             *Coverage thresholds: 75% for statements, branches, functions, and lines*
             
       # Verify coverage thresholds
-      - name: ✅ Verify Coverage Thresholds
+      - name: Verify Coverage Thresholds
         run: |
           echo "🎯 Coverage verification completed!"
           echo "✅ All coverage thresholds met (75% minimum)"
           echo "📊 Current coverage is excellent (>97%)"
           
       # Pipeline summary
-      - name: 📋 CI Summary
+      - name: CI Summary
         if: always()
         run: |
           echo "## 🚀 CI Pipeline Summary"
