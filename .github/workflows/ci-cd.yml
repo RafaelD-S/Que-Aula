@@ -43,7 +43,6 @@ jobs:
             echo "Please update your branch: git pull origin develop"
           fi
           
-          # Verificar conflitos
           if git merge-tree $(git merge-base HEAD origin/develop) HEAD origin/develop | grep -q '<<<<<<<'; then
             echo "Branch has merge conflicts with develop"
             echo "Please resolve conflicts before merging"
