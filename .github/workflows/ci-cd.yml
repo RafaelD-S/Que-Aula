@@ -14,6 +14,11 @@ on:
 env:
   NODE_VERSION: '18'
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   ci:
     name: CI - Tests & Coverage
@@ -80,26 +85,37 @@ jobs:
       # Comment coverage on PR
       - name: Comment Coverage on PR
         if: github.event_name == 'pull_request'
+        run: |
+          # Extract coverage data
+          STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
+          LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          
+          # Create comment body
+          cat > pr_comment.md << EOF
+          ## Test Coverage Report
+          
+          **All tests passed!** 
+          
+          **Coverage Summary (Real Data):**
+          - **Statements:** ${STATEMENTS}%
+          - **Branches:** ${BRANCHES}%
+          - **Functions:** ${FUNCTIONS}%
+          - **Lines:** ${LINES}%
+          
+          **Coverage details:** [Download full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          
+          ---
+          *Coverage thresholds: 75% for statements, branches, functions, and lines*
+          EOF
+          
+      - name: Post Coverage Comment
+        if: github.event_name == 'pull_request'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
-          message: |
-            ## Test Coverage Report
-            
-            **All tests passed!** 
-            
-            **Coverage Summary (Real Data):**
-            ```bash
-            $(cat coverage/coverage-summary.json | jq -r '"Statements: " + (.total.statements.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Branches: " + (.total.branches.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Functions: " + (.total.functions.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Lines: " + (.total.lines.pct|tostring) + "%"')
-            ```
-            
-            **Coverage details:** [Download full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            
-            ---
-            *Coverage thresholds: 75% for statements, branches, functions, and lines*
+          path: pr_comment.md
             
       # Verify coverage thresholds
       - name: Verify Coverage Thresholds
