@@ -14,6 +14,11 @@ on:
 env:
   NODE_VERSION: '18'
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   ci:
     name: CI - Tests & Coverage
@@ -38,7 +43,6 @@ jobs:
             echo "Please update your branch: git pull origin develop"
           fi
           
-          # Verificar conflitos
           if git merge-tree $(git merge-base HEAD origin/develop) HEAD origin/develop | grep -q '<<<<<<<'; then
             echo "Branch has merge conflicts with develop"
             echo "Please resolve conflicts before merging"
@@ -77,54 +81,84 @@ jobs:
           path: coverage/
           retention-days: 30
           
-      # Comment coverage on PR
+      # Comment coverage on PR (only for internal PRs)
       - name: Comment Coverage on PR
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
+          LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          
+          cat > pr_comment.md << EOF
+          ## Test Coverage Report
+          
+          **All tests passed!** 
+          
+          **Coverage Summary:**
+          - **Statements:** ${STATEMENTS}%
+          - **Branches:** ${BRANCHES}%
+          - **Functions:** ${FUNCTIONS}%
+          - **Lines:** ${LINES}%
+          
+          **Coverage details:** [Download full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          
+          ---
+          *Coverage thresholds: 75% for statements, branches, functions, and lines*
+          EOF
+          
+      - name: Post Coverage Comment (Internal PRs only)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
-          message: |
-            ## Test Coverage Report
-            
-            **All tests passed!** 
-            
-            **Coverage Summary (Real Data):**
-            ```bash
-            $(cat coverage/coverage-summary.json | jq -r '"Statements: " + (.total.statements.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Branches: " + (.total.branches.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Functions: " + (.total.functions.pct|tostring) + "%"')
-            $(cat coverage/coverage-summary.json | jq -r '"Lines: " + (.total.lines.pct|tostring) + "%"')
-            ```
-            
-            **Coverage details:** [Download full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            
-            ---
-            *Coverage thresholds: 75% for statements, branches, functions, and lines*
+          path: pr_comment.md
+          
+      # Log coverage info for external PRs
+      - name: Log Coverage Info (External PRs)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          echo " COVERAGE REPORT (External PR - cannot post comment)"
+          echo "=============================================="
+          
+          STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
+          LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          
+          echo " All tests passed!"
+          echo ""
+          echo " Coverage Summary:"
+          echo "  • Statements: ${STATEMENTS}%"
+          echo "  • Branches: ${BRANCHES}%"
+          echo "  • Functions: ${FUNCTIONS}%"
+          echo "  • Lines: ${LINES}%"
+          echo ""
+          echo " Coverage report available in artifacts"
+          echo " Thresholds: 75% for statements, branches, functions, and lines"
+          echo "=============================================="
             
       # Verify coverage thresholds
       - name: Verify Coverage Thresholds
         run: |
           echo "Verifying coverage thresholds and test results..."
           
-          # Verificar se o arquivo de coverage existe
           if [ ! -f "coverage/coverage-summary.json" ]; then
             echo "ERROR: Coverage summary file not found!"
             exit 1
           fi
           
-          # Extrair métricas de cobertura do arquivo JSON
           STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
           FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
           LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
           
-          echo "REAL Coverage Results:"
+          echo " Coverage Results:"
           echo "  • Statements: ${STATEMENTS}%"
           echo "  • Branches: ${BRANCHES}%"
           echo "  • Functions: ${FUNCTIONS}%"
           echo "  • Lines: ${LINES}%"
           
-          # Verificar thresholds (75% mínimo)
           THRESHOLD=75
           
           if (( $(echo "$STATEMENTS >= $THRESHOLD" | bc -l) )); then
@@ -161,21 +195,19 @@ jobs:
       - name: CI Summary
         if: always()
         run: |
-          echo "## CI Pipeline Summary - REAL DATA"
+          echo "## CI Pipeline Summary"
           
-          # Extrair número REAL de testes e métricas
           TOTAL_TEST_FILES=$(find . -name "*.test.*" -type f | wc -l)
           
           if [ -f "coverage/coverage-summary.json" ]; then
-            # Extrair métricas REAIS de cobertura
             STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             
-            echo "### REAL Test Results:"
+            echo "### Test Results:"
             echo "  • Test files encontrados: ${TOTAL_TEST_FILES}"
-            echo "  • Coverage REAL:"
+            echo "  • Coverage:"
             echo "    - Statements: ${STATEMENTS}%"
             echo "    - Branches: ${BRANCHES}%"
             echo "    - Functions: ${FUNCTIONS}%"
@@ -185,9 +217,8 @@ jobs:
           fi
           
           echo ""
-          echo "### REAL Steps Status:"
+          echo "###  Steps Status:"
           
-          # Verificar status REAL baseado no job
           if [ "${{ job.status }}" = "success" ]; then
             echo "  PASS: ESLint Check"
             echo "  PASS: Build Check"
@@ -204,7 +235,6 @@ jobs:
             echo "### Push to ${{ github.ref_name }} detected"
           fi
           
-          # Status geral REAL
           if [ "${{ job.status }}" = "success" ]; then
             echo ""
             echo "**ALL CHECKS PASSED!**"
