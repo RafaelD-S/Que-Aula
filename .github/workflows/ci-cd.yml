@@ -86,13 +86,11 @@ jobs:
       - name: Comment Coverage on PR
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          # Extract coverage data
           STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
           FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
           LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
           
-          # Create comment body
           cat > pr_comment.md << EOF
           ## Test Coverage Report
           
@@ -124,7 +122,6 @@ jobs:
           echo " COVERAGE REPORT (External PR - cannot post comment)"
           echo "=============================================="
           
-          # Extract coverage data
           STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
           FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
@@ -147,13 +144,11 @@ jobs:
         run: |
           echo "Verifying coverage thresholds and test results..."
           
-          # Verificar se o arquivo de coverage existe
           if [ ! -f "coverage/coverage-summary.json" ]; then
             echo "ERROR: Coverage summary file not found!"
             exit 1
           fi
           
-          # Extrair métricas de cobertura do arquivo JSON
           STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
           FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
@@ -165,7 +160,6 @@ jobs:
           echo "  • Functions: ${FUNCTIONS}%"
           echo "  • Lines: ${LINES}%"
           
-          # Verificar thresholds (75% mínimo)
           THRESHOLD=75
           
           if (( $(echo "$STATEMENTS >= $THRESHOLD" | bc -l) )); then
@@ -207,7 +201,6 @@ jobs:
           TOTAL_TEST_FILES=$(find . -name "*.test.*" -type f | wc -l)
           
           if [ -f "coverage/coverage-summary.json" ]; then
-            # Extrair métricas REAIS de cobertura
             STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
@@ -227,7 +220,6 @@ jobs:
           echo ""
           echo "###  Steps Status:"
           
-          # Verificar status  baseado no job
           if [ "${{ job.status }}" = "success" ]; then
             echo "  PASS: ESLint Check"
             echo "  PASS: Build Check"
@@ -244,7 +236,6 @@ jobs:
             echo "### Push to ${{ github.ref_name }} detected"
           fi
           
-          # Status geral 
           if [ "${{ job.status }}" = "success" ]; then
             echo ""
             echo "**ALL CHECKS PASSED!**"
