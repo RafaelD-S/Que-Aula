@@ -117,7 +117,7 @@ jobs:
           recreate: true
           path: pr_comment.md
           
-      # Log coverage info for external PRs (can't comment due to permissions)
+      # Log coverage info for external PRs
       - name: Log Coverage Info (External PRs)
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
         run: |
