@@ -98,7 +98,7 @@ jobs:
           
           **All tests passed!** 
           
-          **Coverage Summary (Real Data):**
+          **Coverage Summary:**
           - **Statements:** ${STATEMENTS}%
           - **Branches:** ${BRANCHES}%
           - **Functions:** ${FUNCTIONS}%
@@ -132,7 +132,7 @@ jobs:
           
           echo " All tests passed!"
           echo ""
-          echo " Coverage Summary (Real Data):"
+          echo " Coverage Summary:"
           echo "  • Statements: ${STATEMENTS}%"
           echo "  • Branches: ${BRANCHES}%"
           echo "  • Functions: ${FUNCTIONS}%"
@@ -159,7 +159,7 @@ jobs:
           FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
           LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
           
-          echo "REAL Coverage Results:"
+          echo " Coverage Results:"
           echo "  • Statements: ${STATEMENTS}%"
           echo "  • Branches: ${BRANCHES}%"
           echo "  • Functions: ${FUNCTIONS}%"
@@ -202,9 +202,8 @@ jobs:
       - name: CI Summary
         if: always()
         run: |
-          echo "## CI Pipeline Summary - REAL DATA"
+          echo "## CI Pipeline Summary"
           
-          # Extrair número REAL de testes e métricas
           TOTAL_TEST_FILES=$(find . -name "*.test.*" -type f | wc -l)
           
           if [ -f "coverage/coverage-summary.json" ]; then
@@ -214,9 +213,9 @@ jobs:
             FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json 2>/dev/null || echo "N/A")
             
-            echo "### REAL Test Results:"
+            echo "### Test Results:"
             echo "  • Test files encontrados: ${TOTAL_TEST_FILES}"
-            echo "  • Coverage REAL:"
+            echo "  • Coverage:"
             echo "    - Statements: ${STATEMENTS}%"
             echo "    - Branches: ${BRANCHES}%"
             echo "    - Functions: ${FUNCTIONS}%"
@@ -226,9 +225,9 @@ jobs:
           fi
           
           echo ""
-          echo "### REAL Steps Status:"
+          echo "###  Steps Status:"
           
-          # Verificar status REAL baseado no job
+          # Verificar status  baseado no job
           if [ "${{ job.status }}" = "success" ]; then
             echo "  PASS: ESLint Check"
             echo "  PASS: Build Check"
@@ -245,7 +244,7 @@ jobs:
             echo "### Push to ${{ github.ref_name }} detected"
           fi
           
-          # Status geral REAL
+          # Status geral 
           if [ "${{ job.status }}" = "success" ]; then
             echo ""
             echo "**ALL CHECKS PASSED!**"
