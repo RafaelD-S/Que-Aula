@@ -82,9 +82,9 @@ jobs:
           path: coverage/
           retention-days: 30
           
-      # Comment coverage on PR
+      # Comment coverage on PR (only for internal PRs)
       - name: Comment Coverage on PR
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
           # Extract coverage data
           STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
@@ -110,12 +110,37 @@ jobs:
           *Coverage thresholds: 75% for statements, branches, functions, and lines*
           EOF
           
-      - name: Post Coverage Comment
-        if: github.event_name == 'pull_request'
+      - name: Post Coverage Comment (Internal PRs only)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
           path: pr_comment.md
+          
+      # Log coverage info for external PRs (can't comment due to permissions)
+      - name: Log Coverage Info (External PRs)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          echo " COVERAGE REPORT (External PR - cannot post comment)"
+          echo "=============================================="
+          
+          # Extract coverage data
+          STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
+          LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          
+          echo " All tests passed!"
+          echo ""
+          echo " Coverage Summary (Real Data):"
+          echo "  • Statements: ${STATEMENTS}%"
+          echo "  • Branches: ${BRANCHES}%"
+          echo "  • Functions: ${FUNCTIONS}%"
+          echo "  • Lines: ${LINES}%"
+          echo ""
+          echo " Coverage report available in artifacts"
+          echo " Thresholds: 75% for statements, branches, functions, and lines"
+          echo "=============================================="
             
       # Verify coverage thresholds
       - name: Verify Coverage Thresholds
