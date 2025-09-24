@@ -1,5 +1,5 @@
-@use "../../style/variables" as var;
-@use "../../style/mixins.scss" as mixin;
+@use '../../style/variables' as var;
+@use '../../style/mixins.scss' as mixin;
 
 .form {
   text-align: center;
@@ -49,7 +49,7 @@
       color: rgb(136, 165, 185);
     }
 
-    &__container {
+    &__tag__container {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -72,7 +72,8 @@
       letter-spacing: 1px;
       font-weight: 400;
       cursor: pointer;
-      transition: background-color 0.1s ease, color 0.1s ease, font-weight 0.1s ease;
+      transition: background-color 0.1s ease, color 0.1s ease,
+        font-weight 0.1s ease;
 
       &--selected {
         color: var.$blue-darker;

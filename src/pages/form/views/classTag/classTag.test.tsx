@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { ClassTag } from './classTag';
-import { mockClassTagTitles } from '../../../test/mocks/classTag.mock';
+import { mockClassTagTitles } from '../../../../test/mocks/classTag.mock';
 
 describe('ClassTag Component', () => {
   describe('Rendering States', () => {
