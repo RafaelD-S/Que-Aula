@@ -137,5 +137,6 @@ export const getDefaultScheduleContextValue = () => ({
   currentWeekday: 1,
   setWeekday: vi.fn(),
   weekDays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+  allDays: [],
   setClasses: vi.fn()
 });
