@@ -208,7 +208,7 @@ export const setupFlowchartTestScenario = (scenario: string, mockUseFlowchart?: 
       );
       break;
       
-    case 'withRequirements':
+    case 'withRequirements': {
       const dataWithRequirements: IClassItem[][] = [
         [
           {
@@ -240,14 +240,16 @@ export const setupFlowchartTestScenario = (scenario: string, mockUseFlowchart?: 
         error: false
       });
       break;
+    }
       
-    case 'withRequiredFor':
+    case 'withRequiredFor': {
       mockUseFlowchart.mockReturnValue({
         flowchart: mockFlowchartDataWithRequiredFor,
         loading: false,
         error: false
       });
       break;
+    }
       
     default:
       mockUseFlowchart.mockReturnValue({
