@@ -4,7 +4,7 @@ import { ISectionArray } from "./dayClasses.interface";
 import { useAppContext } from "../../context/AppContext";
 
 const DayClasses = () => {
-  const { currentWeekday, storedClasses, weekDays, allDays } = useAppContext();
+  const { currentWeekday, storedClasses, allDays } = useAppContext();
   const [sections, setSections] = useState<ISectionArray[][]>([]);
 
   useEffect(() => {
