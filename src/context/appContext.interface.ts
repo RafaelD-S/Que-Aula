@@ -9,5 +9,6 @@ export interface IAppContextType {
   setWeekday: (num: number) => void;
   storedClasses: IClasses[];
   weekDays: string[];
+  allDays: string[];
   setClasses: (classes: IClasses[]) => void;
 }

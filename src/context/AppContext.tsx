@@ -14,6 +14,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const setClasses = (classes: IClasses[]) => setChangedClasses(classes);
 
   const weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
+  const allDays = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
 
   useEffect(() => {
     const storedClassesNew: IClassesData[] = JSON.parse(
@@ -37,7 +38,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider
-      value={{ currentWeekday, setWeekday, storedClasses, weekDays, setClasses }}
+      value={{ currentWeekday, setWeekday, storedClasses, weekDays, setClasses, allDays }}
     >
       {children}
     </AppContext.Provider>
