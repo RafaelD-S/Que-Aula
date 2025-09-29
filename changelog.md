@@ -2,9 +2,14 @@
 
 # Changelog
 
-### Versão atual: 2.6.0
+### Versão atual: 2.6.1
 
 </div>
+
+## 2.6.1 - 29/09/2025
+
+- Criação de Pipeline para rodar testes e coverage no projeto em todas as pull requests.
+- Correção de bug que não mostrava o dia da semana nos sábados e domingos.
 
 ## 2.6.0 - 26/08/2025
 
