@@ -10,6 +10,7 @@
 
 - Criação de Pipeline para rodar testes e coverage no projeto em todas as pull requests.
 - Correção de bug que não mostrava o dia da semana nos sábados e domingos.
+- Equalizar footer com o figma
 
 ## 2.6.0 - 26/08/2025
 
