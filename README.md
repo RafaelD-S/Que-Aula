@@ -21,6 +21,10 @@
     <a href="https://github.com/RafaelD-S/Que-Aula/blob/main/changelog.md">
       Changelog
     </a>
+    ·
+    <a href="https://github.com/johncobain/Que-Aula-Api">
+      API
+    </a>
   </div>
 </div>
 
