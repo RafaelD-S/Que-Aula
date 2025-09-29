@@ -35,6 +35,7 @@ const Footer = ({
         {feedbackMessage ? feedbackMessage + " " : ""}
         <a
           target="_blank"
+          title="feedback"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link"
         >
           Feedback
@@ -48,7 +49,12 @@ const Footer = ({
             <span>Made By</span>
           </>
         )}
-        <a href="https://github.com/RafaelD-S" target="blank_" className="footer__credits__link">
+        <a
+          href="https://github.com/RafaelD-S"
+          target="blank_"
+          title="github"
+          className="footer__credits__link"
+        >
           {hasCredits && <p>Rafael Dantas Silva</p>}
           <img src={Github} alt="gitbub icon" />
         </a>
