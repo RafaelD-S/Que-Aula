@@ -100,6 +100,7 @@ const Form = () => {
       })),
     }));
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setSelectedClasses(updatedSelecionados as any);
   }, [classesData, setHasSelected]);
 

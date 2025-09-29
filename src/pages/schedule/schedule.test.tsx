@@ -81,13 +81,14 @@ describe('Schedule', () => {
 
   describe('Empty State', () => {
     it('handles empty classes data', () => {
-      mockUseAppContext.mockReturnValue({
-        storedClasses: mockScheduleClassesEmpty,
-        currentWeekday: 1,
-        setWeekday: vi.fn(),
-        weekDays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-        setClasses: vi.fn()
-      });
+        mockUseAppContext.mockReturnValue({
+          storedClasses: mockScheduleClassesEmpty,
+          currentWeekday: 1,
+          setWeekday: vi.fn(),
+          weekDays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+          allDays: [],
+          setClasses: vi.fn()
+        });
 
       renderComponent();
 
@@ -180,6 +181,7 @@ describe('Schedule', () => {
         currentWeekday: 1,
         setWeekday: vi.fn(),
         weekDays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+        allDays: [],
         setClasses: vi.fn()
       });
       
@@ -199,6 +201,7 @@ describe('Schedule', () => {
         currentWeekday: 1,
         setWeekday: vi.fn(),
         weekDays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+        allDays: [],
         setClasses: vi.fn()
       });
 

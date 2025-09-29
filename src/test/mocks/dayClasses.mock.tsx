@@ -106,11 +106,13 @@ export const mockClassesExtended: IClasses[] = [
 export const createMockAppContext = (
   currentWeekday = 1,
   storedClasses = mockClassesWithData,
-  weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"]
+  weekDays = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"],
+  allDays = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]
 ) => ({
   currentWeekday,
   storedClasses,
   weekDays,
+  allDays,
   setWeekday: vi.fn(),
   setClasses: vi.fn()
 });
