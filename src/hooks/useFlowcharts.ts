@@ -1,31 +1,31 @@
 import { useState, useEffect } from "react";
-import { api } from "../services/api";
-import { IClassesData } from "../types/dataClasses.interface";
 import { IClassItem } from "../components/classItem/classItem.Interface";
 
-export const useClasses = () => {
-  const [classes, setClasses] = useState<IClassesData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const fetchClasses = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await api.getClasses();
-      setClasses(data);
-    } catch (err) {
-      console.error("Erro ao buscar disciplinas:", err);
-      setError("Erro ao carregar disciplinas");
-    } finally {
-      setLoading(false);
+const API_BASE_URL = "https://que-aula-api.vercel.app";
+
+async function apiRequest<T>(endpoint: string): Promise<T> {
+  try {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
 
-  useEffect(() => {
-    fetchClasses();
-  }, []);
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    throw error;
+  }
+}
 
-  return { classes, loading, error };
+export const api = {
+  getFlowchart: (): Promise<IClassItem[][]> => {
+    return apiRequest<IClassItem[][]>("/flowchart");
+  },
+
+  getFlowchartClass: (className: string): Promise<IClassItem> => {
+    return apiRequest<IClassItem>(`/flowchart/${className}`);
+  },
 };
 
 export const useFlowchart = () => {

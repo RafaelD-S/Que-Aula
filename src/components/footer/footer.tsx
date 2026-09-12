@@ -5,16 +5,19 @@ import { IFooter } from "./footer.interface";
 
 import Github from "../../assets/github.svg";
 import { classNames } from "../../utils/functions/classNames";
+import { useNavigate } from "react-router-dom";
 
 const Footer = ({
   calendarMessage = "Apagar calendário",
   feedbackMessage,
   hasCredits = true,
 }: IFooter) => {
+  const navigate = useNavigate();
+
   const eraseCalendar = () => {
     localStorage.removeItem("version");
-    localStorage.removeItem("chosenClasses");
-    location.reload();
+    localStorage.removeItem("SelectedClasses");
+    navigate("/form");
   };
 
   const creditClasses = classNames({

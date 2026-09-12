@@ -22,7 +22,7 @@
       Changelog
     </a>
     ·
-    <a href="https://github.com/johncobain/Que-Aula-Api">
+    <a href="https://github.com/RafaelD-S/Que-aula-API">
       API
     </a>
   </div>

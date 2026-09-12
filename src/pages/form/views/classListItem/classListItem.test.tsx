@@ -1,60 +1,41 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen } from "../../../../test/utils/renderWithProviders";
 import { ClassListItem } from "./classListItem";
 
-// Mock Checkbox component to isolate behavior
-vi.mock("../../../../components/checkbox/checkbox", () => ({
-  default: ({ selected, size }: { selected: boolean; size: string }) => (
-    <div data-testid="checkbox" data-selected={selected} data-size={size}></div>
-  ),
-}));
-
 describe("ClassListItem", () => {
-  const defaultProps = {
-    classCode: "MATH101",
-    teacher: "John Doe",
-    description: "Introduction to Algebra",
-    whichClass: "A1",
-    onClick: vi.fn(),
-  };
+  it("renders the current class information", () => {
+    render(
+      <ClassListItem classCode="MATH101" whichClass="A1" description="Introduction to Algebra" />,
+    );
 
-  it("renders all text content", () => {
-    render(<ClassListItem {...defaultProps} />);
-
-    expect(screen.getByText(/MATH101 - John Doe/i)).toBeInTheDocument();
+    expect(screen.getByTestId("class-list-item")).toBeInTheDocument();
+    expect(screen.getByText("MATH101")).toBeInTheDocument();
     expect(screen.getByText("A1")).toBeInTheDocument();
-    expect(screen.getByText(/Introduction to Algebra/i)).toBeInTheDocument();
+    expect(screen.getByText("Introduction to Algebra")).toBeInTheDocument();
+    expect(screen.getByTestId("checkbox")).toHaveClass("checkbox--large");
   });
 
-  it("applies correct base classes when not selected", () => {
-    render(<ClassListItem {...defaultProps} selected={false} />);
+  it("toggles selected classes and calls onClick with the event", () => {
+    const onClick = vi.fn();
+    render(<ClassListItem classCode="MATH101" onClick={onClick} />);
+    const item = screen.getByTestId("class-list-item");
 
-    const container = screen.getByText(/MATH101 - John Doe/i).closest("div");
-    const title = screen.getByText(/MATH101 - John Doe/i);
+    fireEvent.click(item);
+    expect(onClick).toHaveBeenCalledOnce();
+    expect(item).toHaveClass("form__classes__classListItem--selected");
+    expect(screen.getByTestId("checkbox")).toHaveAttribute("aria-pressed", "true");
 
-    expect(container?.className).toContain("form__classes__classListItem");
-    expect(container?.className).not.toContain("form__classes__classListItem--selected");
-    expect(title.className).toContain("form__classes__classListItem__title");
-    expect(title.className).not.toContain("form__classes__classListItem__title--selected");
+    fireEvent.click(item);
+    expect(onClick).toHaveBeenCalledTimes(2);
+    expect(item).not.toHaveClass("form__classes__classListItem--selected");
   });
 
-  it("applies selected classes when selected=true", () => {
-    render(<ClassListItem {...defaultProps} selected />);
+  it("honors the initially selected state and supports missing callbacks", () => {
+    render(<ClassListItem selected classCode="MATH101" />);
 
-    const container = document.querySelector(".form__classes__classListItem");
-    const title = screen.getByText(/MATH101 - John Doe/i);
-
-    expect(container?.className).toContain("form__classes__classListItem--selected");
-    expect(title.className).toContain("form__classes__classListItem__title--selected");
-  });
-
-  it("calls onClick when clicked", () => {
-    const handleClick = vi.fn();
-    render(<ClassListItem {...defaultProps} onClick={handleClick} />);
-
-    const container = screen.getByText(/MATH101 - John Doe/i).closest("div");
-    fireEvent.click(container!);
-
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(screen.getByTestId("class-list-item")).toHaveClass(
+      "form__classes__classListItem--selected",
+    );
+    expect(() => fireEvent.click(screen.getByTestId("class-list-item"))).not.toThrow();
   });
 });

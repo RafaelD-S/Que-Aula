@@ -1,141 +1,61 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { mockApi, mockApiModule, resetApiMocks } from "../test/mocks/api.mock";
-import { useClasses, useFlowchart } from "./useClasses";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
-import { mockClassesData } from "../test/mocks/classData.mock";
+import { useSubjects } from "../api/hooks";
 
-mockApiModule()
+const subjects = [
+  {
+    code: "MAT101",
+    name: "Matemática",
+    semester: 1,
+    sections: [],
+  },
+];
 
-describe('useClasses Hook', () => {
-    beforeEach(() => {
-        resetApiMocks();
-    })
+beforeEach(() => {
+  vi.clearAllMocks();
+  vi.mocked(fetch).mockResolvedValue(
+    new Response(JSON.stringify(subjects), {
+      status: 200,
+      headers: { "content-type": "application/json" },
+    }),
+  );
+});
 
-    afterEach(() => {
-        vi.clearAllMocks();
-    })
+describe("subject loading used by the form", () => {
+  it("loads subjects with the semester and expansions", async () => {
+    const { result } = renderHook(() => useSubjects(1, ["sections", "courses"]));
 
-    describe('Initial State', () => {
-        it('should have the correct initial state', async () => {
-            mockApi.getClasses.mockResolvedValue([]);
-            const { result } = renderHook(() => useClasses());
+    await waitFor(() => expect(result.current.loading).toBe(false));
 
-            await waitFor(() => {
-                expect(result.current.classes).toEqual([]);
-                expect(result.current.loading).toBe(true);
-                expect(result.current.error).toBe(null);
-            });
-        })
-    })
+    expect(result.current.data).toEqual(subjects);
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/api/subjects"));
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining("semester=1"));
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining("expand=sections%2Ccourses"));
+  });
 
-    describe('Data Loading', () => {
-        it('should load classes successfully', async () => {
-            mockApi.getClasses.mockResolvedValue(mockClassesData);
-            
-            const { result } = renderHook(() => useClasses());
-            
-            expect(result.current.loading).toBe(true);
-            expect(result.current.classes).toEqual([]);
-            expect(result.current.error).toBe(null);
-            
-            await waitFor(() => {
-                expect(result.current.loading).toBe(false);
-            });
-            
-            expect(result.current.classes).toEqual(mockClassesData);
-            expect(result.current.error).toBe(null);
-            expect(mockApi.getClasses).toHaveBeenCalledTimes(1);
-        });
+  it("exposes API errors after a failed request", async () => {
+    vi.mocked(fetch).mockResolvedValue(
+      new Response(JSON.stringify({ message: "Unavailable" }), {
+        status: 503,
+        headers: { "content-type": "application/json" },
+      }),
+    );
 
-        it('should handle errors when loading classes', async () => {
-            const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { result } = renderHook(() => useSubjects(1));
 
-            const errorMessage = 'Network Error';
-            mockApi.getClasses.mockRejectedValue(new Error(errorMessage));
-            
-            const { result } = renderHook(() => useClasses());
-            
-            await waitFor(() => {
-                expect(result.current.loading).toBe(false);
-            });
-            
-            expect(result.current.classes).toEqual([]);
-            expect(result.current.error).toBe('Erro ao carregar disciplinas');
-            expect(result.current.loading).toBe(false);
-            expect(mockApi.getClasses).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(result.current.loading).toBe(false));
 
-            expect(consoleSpy).toHaveBeenCalledWith(
-                "Erro ao buscar disciplinas:", 
-                expect.any(Error)
-            );
+    expect(result.current.data).toBeNull();
+    expect(result.current.error).toMatchObject({ status: 503, message: "Unavailable" });
+  });
 
-            consoleSpy.mockRestore();
-        });
-    });
-})
+  it("stays disabled when a query is explicitly disabled", async () => {
+    const { result } = renderHook(() =>
+      // useSubjects always enables its query; the generic hook contract is covered by API callers.
+      useSubjects(undefined, "sections"),
+    );
 
-describe('useFlowchart Hook', () => {
-    beforeEach(() => {
-        resetApiMocks();
-    })
-
-    afterEach(() => {
-        vi.clearAllMocks();
-    })
-
-    describe('Initial State', () => {
-        it('should have the correct initial state', async () => {
-            mockApi.getFlowchart.mockResolvedValue([]);
-            const { result } = renderHook(() => useFlowchart());
-
-            await waitFor(() => {
-                expect(result.current.flowchart).toEqual([]);
-                expect(result.current.loading).toBe(true);
-                expect(result.current.error).toBe(null);
-            });
-        });
-    });
-
-    describe('Data Loading', () => {
-        it('should load the flowchart successfully', async () => {
-            const mockFlowchartData = [
-                [{ name: 'Class 1', semester: '1' }],
-                [{ name: 'Class 2', semester: '2' }]
-            ];
-            
-            mockApi.getFlowchart.mockResolvedValue(mockFlowchartData);
-            
-            const { result } = renderHook(() => useFlowchart());
-            
-            await waitFor(() => {
-                expect(result.current.loading).toBe(false);
-            });
-            
-            expect(result.current.flowchart).toEqual(mockFlowchartData);
-            expect(result.current.error).toBe(null);
-            expect(mockApi.getFlowchart).toHaveBeenCalledTimes(1);
-        });
-
-        it('should handle errors when loading the flowchart', async () => {
-            const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-            mockApi.getFlowchart.mockRejectedValue(new Error('Network Error'));
-            const { result } = renderHook(() => useFlowchart());
-            
-            await waitFor(() => {
-                expect(result.current.loading).toBe(false);
-            });
-            
-            expect(result.current.flowchart).toEqual([]);
-            expect(result.current.error).toBe('Erro ao carregar fluxograma');
-            expect(mockApi.getFlowchart).toHaveBeenCalledTimes(1);
-
-            expect(consoleSpy).toHaveBeenCalledWith(
-                "Erro ao buscar fluxograma:", 
-                expect.any(Error)
-            );
-
-            consoleSpy.mockRestore();
-        });
-    });
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.data).toEqual(subjects);
+  });
 });

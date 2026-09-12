@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { setWeekday, weekDays } = useAppContext();
+  const { weekdays } = useAppContext();
   const [navSwitch, setNavSwitch] = useState(false);
 
   return (
     <header className="header">
       <section className="header__title" onClick={() => setNavSwitch(false)}>
-        <Link to="/" onClick={() => setWeekday(new Date().getDay())}>
+        <Link to="/">
           <h1>Que Aula?</h1>
         </Link>
         <Aside>
@@ -26,8 +26,7 @@ const Header = () => {
       </section>
       <DropDown
         setNavSwitch={setNavSwitch}
-        switchWeekday={setWeekday}
-        dropdownItems={weekDays}
+        dropdownItems={weekdays!.slice(1, -1)}
         navSwitch={navSwitch}
       />
     </header>

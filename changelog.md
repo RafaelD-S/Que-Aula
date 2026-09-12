@@ -2,9 +2,15 @@
 
 # Changelog
 
-### Versão atual: 2.7.0
+### Versão atual: 3.0.0
 
 </div>
+
+## 3.0.0 - 12/09/2026
+
+- Criação de nova estrutura de dados e API
+- Criação de um botão para atualizar o local de aulas específicas
+- Refatoração parcial do código
 
 ## 2.7.0 - 09/10/2025
 

@@ -1,124 +1,51 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent } from "../../test/utils/renderWithProviders";
+import { describe, expect, it, beforeEach } from "vitest";
+import { fireEvent, render, screen } from "../../test/utils/renderWithProviders";
 import Footer from "./footer";
 
-vi.mock("../warning/warning", () => ({
-  default: ({ children, message, buttonLabel, onClickButton }: any) => (
-    <div data-testid="warning-mock">
-      <span data-testid="warning-message">{message}</span>
-      <button data-testid="warning-button" onClick={onClickButton}>
-        {buttonLabel}
-      </button>
-      {children}
-    </div>
-  ),
-}));
-
-vi.mock("../../../package.json", () => ({
-  version: "2.4.0",
-}));
-
-const mockLocalStorage = {
-  removeItem: vi.fn(),
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  clear: vi.fn(),
-};
-
-const mockLocation = {
-  reload: vi.fn(),
-};
-
-Object.defineProperty(window, "localStorage", {
-  value: mockLocalStorage,
+beforeEach(() => {
+  localStorage.clear();
 });
 
-Object.defineProperty(window, "location", {
-  value: mockLocation,
-});
+describe("Footer", () => {
+  it("renders feedback, credits and the calendar action", () => {
+    render(<Footer feedbackMessage="Envie seu" />);
 
-describe("Footer Component", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+    expect(screen.getByText("Envie seu", { exact: false })).toBeInTheDocument();
+    expect(screen.getByText("Made By")).toBeInTheDocument();
+    expect(screen.getByText("Rafael Dantas Silva")).toBeInTheDocument();
+    expect(screen.getByText("Apagar calendário")).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
+  it("supports custom text and hiding credits", () => {
+    render(<Footer calendarMessage="Novo calendário" hasCredits={false} />);
+
+    expect(screen.getByText("Novo calendário")).toBeInTheDocument();
+    expect(screen.queryByText("Made By")).not.toBeInTheDocument();
+    expect(screen.queryByText("Rafael Dantas Silva")).not.toBeInTheDocument();
   });
 
-  describe("Rendering and Structure", () => {
-    it("should render footer with all components and proper structure", () => {
-      const customProps = {
-        calendarMessage: "Limpar Calendário",
-        feedbackMessage: "Ajude-nos:",
-        hasCredits: true,
-      };
+  it("opens the confirmation and erases the saved calendar", () => {
+    localStorage.setItem("version", "1");
+    localStorage.setItem("SelectedClasses", "[]");
+    render(<Footer />);
 
-      render(<Footer {...customProps} />);
+    fireEvent.click(screen.getByText("Apagar calendário"));
+    expect(
+      screen.getByText("Você tem certeza que quer apagar seu calendário?"),
+    ).toBeInTheDocument();
 
-      const footer = screen.getByRole("contentinfo");
-      expect(footer).toBeInTheDocument();
-      expect(footer).toHaveClass("footer");
-
-      expect(screen.getByTestId("warning-mock")).toBeInTheDocument();
-      expect(screen.getByTestId("warning-message")).toHaveTextContent(
-        "Você tem certeza que quer apagar seu calendário?"
-      );
-      expect(screen.getByTestId("warning-button")).toHaveTextContent("sim");
-      expect(screen.getByText(customProps.calendarMessage)).toHaveClass("footer__new-calendar");
-
-      const feedbackSection = screen.getByText(/Ajude-nos:/).closest(".footer__feedback");
-      expect(feedbackSection).toBeInTheDocument();
-      expect(screen.getByTitle("feedback")).toHaveAttribute(
-        "href",
-        "https://docs.google.com/forms/d/e/1FAIpQLSfkVjykgXE8E3kBQETSRzgBIYWiNX0wNW0aL5av3yZbJN6bEw/viewform?usp=sf_link"
-      );
-
-      const creditsSection = screen.getByText("2.4.0").closest(".footer__credits");
-      expect(creditsSection).toBeInTheDocument();
-      expect(screen.getByTitle("github")).toHaveAttribute("href", "https://github.com/RafaelD-S");
-    });
-
-    it("should handle props correctly and render conditionally", () => {
-      const { unmount: unmount1 } = render(<Footer hasCredits={false} />);
-      expect(screen.queryByText("- Made By Rafael Dantas Silva")).not.toBeInTheDocument();
-      expect(screen.getByText("2.4.0")).toBeInTheDocument();
-      unmount1();
-
-      const { unmount: unmount2 } = render(<Footer feedbackMessage="" />);
-      expect(screen.getByText("Feedback")).toBeInTheDocument();
-      unmount2();
-
-      render(<Footer calendarMessage="Resetar" feedbackMessage="Opinião:" hasCredits={true} />);
-      expect(screen.getByText("Resetar")).toBeInTheDocument();
-      expect(screen.getByText(/Opinião:/)).toBeInTheDocument();
-      expect(screen.getByText("Rafael Dantas Silva")).toBeInTheDocument();
-    });
+    fireEvent.click(screen.getByRole("button", { name: "sim" }));
+    expect(localStorage.getItem("version")).toBeNull();
+    expect(localStorage.getItem("SelectedClasses")).toBeNull();
   });
 
-  describe("Calendar Erase Functionality", () => {
-    it("should clear localStorage and reload page when erase button is clicked", () => {
-      render(<Footer />);
+  it("renders the external feedback link", () => {
+    render(<Footer />);
 
-      const eraseButton = screen.getByTestId("warning-button");
-      fireEvent.click(eraseButton);
-
-      expect(mockLocalStorage.removeItem).toHaveBeenCalledTimes(2);
-      expect(mockLocalStorage.removeItem).toHaveBeenCalledWith("version");
-      expect(mockLocalStorage.removeItem).toHaveBeenCalledWith("chosenClasses");
-      expect(mockLocation.reload).toHaveBeenCalledTimes(1);
-    });
-
-    it("should handle multiple erase clicks correctly", () => {
-      render(<Footer />);
-
-      const eraseButton = screen.getByTestId("warning-button");
-
-      fireEvent.click(eraseButton);
-      fireEvent.click(eraseButton);
-
-      expect(mockLocalStorage.removeItem).toHaveBeenCalledTimes(4);
-      expect(mockLocation.reload).toHaveBeenCalledTimes(2);
-    });
+    expect(screen.getByRole("link", { name: "Feedback" })).toHaveAttribute("target", "_blank");
+    expect(screen.getByRole("link", { name: "Feedback" })).toHaveAttribute(
+      "href",
+      expect.stringContaining("docs.google.com"),
+    );
   });
 });

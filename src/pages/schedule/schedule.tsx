@@ -4,11 +4,10 @@ import { useState, useRef } from "react";
 import Warning from "../../components/warning/warning";
 import html2canvas from "html2canvas";
 import { Calendar } from "../../components/calendar/calendar";
-import { useAppContext } from "../../context/AppContext";
 
 const Schedule = () => {
   const calendarRef = useRef(null);
-  const { storedClasses } = useAppContext();
+  const selectedClasses = JSON.parse(localStorage.getItem("SelectedClasses") || "");
 
   const [warning, setWarning] = useState(false);
 
@@ -22,11 +21,11 @@ const Schedule = () => {
       backgroundColor: backgroundColor,
       useCORS: true,
       scale: 4,
-      windowWidth: 420,
+      windowWidth: 640,
     }).then((canvas) => {
       const padding = 20;
       const bottomPadding = 10;
-      const textHeight = 96;
+      const textHeight = 164;
 
       const newCanvas = document.createElement("canvas");
       const ctx = newCanvas.getContext("2d");
@@ -48,7 +47,7 @@ const Schedule = () => {
       ctx.fillStyle = imgBackgroundColor;
       ctx.fillRect(0, padding, newCanvas.width, textHeight);
 
-      ctx.font = "700 64px Montserrat, Arial, Helvetica, sans-serif";
+      ctx.font = "700 96px Montserrat, Arial, Helvetica, sans-serif";
       ctx.fillStyle = "#c6f3f5";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -80,7 +79,7 @@ const Schedule = () => {
       </div>
       <h2 className="schedule__title">Todas as Aulas</h2>
 
-      <Calendar ref={calendarRef} classes={storedClasses} />
+      <Calendar ref={calendarRef} classes={selectedClasses} secondaryInfo="classroom" />
 
       <Warning
         message="Seu download foi iniciado. Aguarde."

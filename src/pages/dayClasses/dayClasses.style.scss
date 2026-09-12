@@ -78,23 +78,45 @@
     &-item {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
 
       &-title {
         color: var.$blue-light-gray;
+        display: flex;
+        gap: 5px;
         font-weight: 700;
         letter-spacing: 0.5px;
         font-size: 1.15em;
       }
+
       &-classroom {
         font-weight: 500;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         color: var.$blue-gray;
+
+        &__reload {
+          padding: 4px;
+          display: flex;
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+
+          &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+          }
+        }
       }
+
       &-description {
         color: var.$blue-weak-emphasis;
         letter-spacing: 0.5px;
         font-weight: 400;
       }
+
       &-class {
         color: var.$green;
       }

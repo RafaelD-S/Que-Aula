@@ -2,7 +2,7 @@ import "./flowchart.style.scss";
 import ClassItem from "../../components/classItem/classItem";
 import { IClassItem } from "../../components/classItem/classItem.Interface";
 import { useCallback, useEffect, useState } from "react";
-import { useFlowchart } from "../../hooks/useClasses";
+import { useFlowchart } from "../../hooks/useFlowcharts";
 import Warning from "../../components/warning/warning";
 import { useNavigate } from "react-router-dom";
 import ProgressTracker from "../../components/progressTracker/progressTracker";
@@ -85,7 +85,7 @@ const Flowchart = () => {
             allClases.forEach((allClass) => {
               if (clazz === allClass.name && allClass.semester) {
                 const tagetIndex = classData[allClass.semester].findIndex(
-                  (findItem) => findItem.name === allClass.name
+                  (findItem) => findItem.name === allClass.name,
                 );
 
                 if (e.semester === allClass.semester - 1) {
@@ -141,7 +141,7 @@ const Flowchart = () => {
             state,
             semester,
           };
-        })
+        }),
       );
 
       const storedData = localStorage.getItem("classData");
@@ -155,7 +155,7 @@ const Flowchart = () => {
                 return { ...item, state: savedItem.state };
               }
               return item;
-            })
+            }),
           );
           setClassData(mergedData);
         } catch (error) {
