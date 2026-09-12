@@ -1,22 +1,11 @@
-import { IClassesData } from "../../types/dataClasses.interface";
+import { CourseResponse } from "../../api";
+import { IClassesDataTag } from "../../pages/form/views/classesContainer/classesContainer.interface";
 
 export interface ICalendar {
-  classes: IClasses[];
+  classes: IClassesDataTag[];
   secondaryInfo?: "classroom" | "description" | "teacher";
 }
 
-export interface IClasses {
-  day?: string;
-  classes: IClassesData["classes"];
-}
-
-export interface IClassInfo {
-  classDescription?: string;
-  className?: string;
-  classroom: string;
-  greve?: boolean;
-  period: string[];
-  selected?: boolean;
-  teacher?: string;
-  weekDay?: string;
+export interface CalendarCourseResponse extends CourseResponse {
+  description?: string;
 }

@@ -1,140 +1,68 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "../../test/utils/renderWithProviders";
+import { describe, expect, it } from "vitest";
+import { render, screen, waitFor } from "../../test/utils/renderWithProviders";
 import { Calendar } from "./calendar";
-import { 
-  mockCalendarProps,
-  mockCalendarPropsWithTeacher,
-  mockCalendarPropsWithDescription,
-  mockCalendarPropsWithWeekend,
-  mockCalendarPropsWithConflicts,
-  mockCalendarPropsWithExtended,
-  mockEmptyCalendarProps,
-  mockMultipleConflicts,
-  mockGreveProps,
-  mockUnsortedProps,
-  mockEmptyProps,
-  mockWithMissingInfo
-} from "../../test/mocks/calendar.mock";
+import type { IClassesDataTag } from "../../pages/form/views/classesContainer/classesContainer.interface";
 
-describe("Calendar Component", () => {
-  describe("Rendering", () => {
-    it("should render calendar with basic structure and time periods", () => {
-      const { container } = render(<Calendar {...mockCalendarProps} />);
-      
-      const calendar = container.querySelector(".calendar");
-      expect(calendar).toHaveClass("calendar");
-      
-      const calendarContainer = container.querySelector(".calendar__container");
-      expect(calendarContainer).toHaveClass("calendar__container");
-      
-      const periodContainer = container.querySelector(".calendar__period");
-      expect(periodContainer).toHaveClass("calendar__period");
-      
-      expect(screen.getByText("17h")).toBeInTheDocument();
-      expect(screen.getAllByText("17h50").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("18h40").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("19h30").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("20h20").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("21h10").length).toBeGreaterThan(0);
-      expect(screen.getByText("22h")).toBeInTheDocument();
-      
-      expect(screen.getAllByText("Matemática Básica").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("Programação I").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("Lab 01").length).toBeGreaterThan(0);
-      expect(screen.getAllByText("Lab 02").length).toBeGreaterThan(0);
-      
-      const periodDays = container.querySelectorAll(".calendar__period__day");
-      expect(periodDays.length).toBeGreaterThan(0);
-      
-      const classInfo = container.querySelectorAll(".calendar__class__info");
-      expect(classInfo.length).toBeGreaterThan(0);
-      
-      const classItems = container.querySelectorAll(".calendar__class__info-item");
-      expect(classItems.length).toBeGreaterThan(0);
-    });
+const course = (overrides: Partial<IClassesDataTag["courses"][number]> = {}) => ({
+  idCourse: 1,
+  sectionCode: "A1",
+  subjectCode: "MAT101",
+  teacher: "Prof. Ana",
+  classroom: "Sala 1",
+  weekday: 1,
+  periodStart: 0,
+  periodEnd: 0,
+  ...overrides,
+});
 
-    it("should handle different display modes and edge cases", () => {
-      render(<Calendar {...mockCalendarPropsWithTeacher} />);
-      expect(screen.getAllByText("Prof. João Silva").length).toBeGreaterThan(0);
-      
-      render(<Calendar {...mockCalendarPropsWithDescription} />);
-      expect(screen.getAllByText(/Aula de/).length).toBeGreaterThan(0);
-      
-      render(<Calendar {...mockEmptyCalendarProps} />);
-      expect(screen.getAllByText("Vazio").length).toBeGreaterThan(0);
-      
-      const { container: emptyContainer } = render(<Calendar {...mockEmptyProps} />);
-      expect(screen.getAllByText("17h").length).toBeGreaterThan(0);
-      const dayClasses = emptyContainer.querySelectorAll(".calendar__class");
-      expect(dayClasses.length).toBe(0);
-      
-      render(<Calendar {...mockWithMissingInfo} />);
-      expect(screen.getByText("-----")).toBeInTheDocument();
-    });
+const classData = (courses = [course()]): IClassesDataTag => ({
+  code: "A1",
+  isStrike: false,
+  subjectCode: "MAT101",
+  description: "Matemática",
+  courses,
+});
+
+describe("Calendar", () => {
+  it("renders weekday columns and empty periods", () => {
+    render(<Calendar classes={[]} />);
+
+    expect(screen.getByText("Seg")).toBeInTheDocument();
+    expect(screen.getByText("Sex")).toBeInTheDocument();
+    expect(screen.queryByText("Dom")).not.toBeInTheDocument();
+    expect(screen.getAllByText("Vazio")).toHaveLength(30);
   });
 
-  describe("Special Features", () => {
-    it("should handle weekend filtering, conflicts, and special states", () => {
-      render(<Calendar {...mockCalendarPropsWithWeekend} />);
-      expect(screen.queryByText("Sábado")).not.toBeInTheDocument();
-      expect(screen.queryByText("Domingo")).not.toBeInTheDocument();
-      expect(screen.getByText("Segunda")).toBeInTheDocument();
-      
-      const { container: conflictContainer } = render(<Calendar {...mockCalendarPropsWithConflicts} />);
-      const classItems = screen.getAllByText(/Matemática|Química/);
-      expect(classItems.length).toBeGreaterThan(1);
-      const fullItems = conflictContainer.querySelectorAll(".calendar__class__info-item--full");
-      expect(fullItems.length).toBeGreaterThan(0);
-      
-      render(<Calendar {...mockMultipleConflicts} />);
-      expect(screen.getAllByText("... mais 1").length).toBeGreaterThan(0);
-      
-      render(<Calendar {...mockCalendarPropsWithExtended} />);
-      const extendedClass = screen.getAllByText("Banco de Dados");
-      expect(extendedClass.length).toBeGreaterThan(1);
-      
-      render(<Calendar {...mockUnsortedProps} />);
-      const timeElements = screen.getAllByText(/^\d{2}h/);
-      expect(timeElements.length).toBeGreaterThan(0);
-      expect(screen.getByText("História")).toBeInTheDocument();
-      expect(screen.getByText("Matemática")).toBeInTheDocument();
-      expect(screen.getByText("Física")).toBeInTheDocument();
-    });
+  it("renders a course and the selected secondary information", async () => {
+    render(<Calendar classes={[classData()]} secondaryInfo="teacher" />);
 
-    it("should handle strike (greve) display and CSS classes", () => {
-      const { container } = render(<Calendar {...mockGreveProps} />);
-      
-      const greveElements = screen.getAllByText("GREVE");
-      expect(greveElements.length).toBeGreaterThan(0);
-      
-      const greveCSS = container.querySelectorAll(".calendar__class__info-item--greve");
-      expect(greveCSS.length).toBeGreaterThan(0);
-    });
+    await waitFor(() => expect(screen.getByText("MAT101")).toBeInTheDocument());
+    expect(screen.getByText("Prof. Ana")).toBeInTheDocument();
   });
 
-  describe("CSS Classes and Structure", () => {
-    it("should apply day-specific and state-specific CSS classes", () => {
-      const { container } = render(<Calendar {...mockCalendarProps} />);
-      
-      const segundaClass = container.querySelector(".calendar__class--Segunda");
-      expect(segundaClass).toBeInTheDocument();
-      
-      const tercaClass = container.querySelector(".calendar__class--Terça");
-      expect(tercaClass).toBeInTheDocument();
-      
-      const emptyItems = container.querySelectorAll(".calendar__class__info-item--empty");
-      expect(emptyItems.length).toBeGreaterThan(0);
-    });
+  it("shows conflicting courses and the number of additional courses", async () => {
+    const courses = [
+      course({ idCourse: 1, subjectCode: "MAT101" }),
+      course({ idCourse: 2, subjectCode: "PHY101" }),
+      course({ idCourse: 3, subjectCode: "CHEM101" }),
+    ];
+    render(<Calendar classes={[classData(courses)]} />);
+
+    await waitFor(() => expect(screen.getByText("...mais 1")).toBeInTheDocument());
+    expect(screen.getByText("MAT101")).toBeInTheDocument();
+    expect(screen.getByText("PHY101")).toBeInTheDocument();
   });
 
-  describe("Integration", () => {
-    it("should forward ref correctly", () => {
-      const ref = { current: null as HTMLDivElement | null };
-      
-      render(<Calendar {...mockCalendarProps} ref={ref} />);
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-      expect(ref.current).toHaveClass("calendar");
-    });
+  it("forwards its ref to the root element", () => {
+    const ref = { current: null } as React.RefObject<HTMLDivElement>;
+    render(<Calendar ref={ref} classes={[]} />);
+
+    expect(ref.current).toHaveClass("calendar");
+  });
+
+  it("ignores weekend courses", async () => {
+    render(<Calendar classes={[classData([course({ weekday: 6 })])]} />);
+
+    await waitFor(() => expect(screen.getAllByText("Vazio")).toHaveLength(30));
   });
 });

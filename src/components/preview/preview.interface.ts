@@ -1,8 +1,8 @@
-import { IClasses } from "../calendar/calendar.interface";
+import { IClassesDataTag } from "../../pages/form/views/classesContainer/classesContainer.interface";
 
 export interface IPreview {
   isOpen?: boolean;
-  classesData: IClasses[];
+  classesData: IClassesDataTag[];
   onOverlayClick?: () => void;
   onButtonClick?: () => void;
 }

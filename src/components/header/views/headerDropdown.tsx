@@ -3,7 +3,12 @@ import ArrowDown from "../../../assets/arrow-down.svg";
 import "./headerDropdown.style.scss";
 import { Link } from "react-router-dom";
 
-const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDropdown) => {
+const DropDown = ({
+  setNavSwitch,
+  switchWeekday = () => {},
+  dropdownItems,
+  navSwitch,
+}: IDropdown) => {
   const navButtonClass = navSwitch ? "headerDropdown__button--focus" : "";
   const navButtonClassIcon = navSwitch ? "headerDropdown__button__icon--focus" : "";
 
@@ -20,7 +25,12 @@ const DropDown = ({ setNavSwitch, switchWeekday, dropdownItems, navSwitch }: IDr
 
       {navSwitch &&
         dropdownItems.map((item, index) => (
-          <Link to="/" key={++index} className={`headerDropdown__link`}>
+          <Link
+            to={`/day/${item}`}
+            key={++index}
+            className={`headerDropdown__link`}
+            state={{ fromNavigation: true }}
+          >
             <div onClick={() => switchWeekday(index)} className="headerDropdown-item">
               <h3 className="headerDropdown-item__text">{item}</h3>
             </div>

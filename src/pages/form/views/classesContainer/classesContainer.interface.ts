@@ -1,9 +1,15 @@
-import { IClassesData, IClassesDataEach } from "../../../../types/dataClasses.interface";
+import { SectionFull, SubjectResponse } from "../../../../api";
 
 export interface IClassesContainer {
-  classesData: IClassesData[];
-  onClickTag: (item: IClassesData, specificItem?: IClassesDataEach) => void;
   title: string;
-  semestre: number;
+  classesData?: SubjectResponse[];
+  semestre?: number;
+  loading?: boolean;
   detailed?: boolean;
+  onClickTag?: (item: IClassesDataTag) => void;
+}
+
+export interface IClassesDataTag extends SectionFull {
+  selected?: boolean;
+  description?: string;
 }

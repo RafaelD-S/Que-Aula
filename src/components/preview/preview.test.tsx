@@ -1,166 +1,53 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import { Preview } from './preview';
-import { mockPreviewClassesData } from '../../test/mocks/preview.mock';
+import { describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen } from "../../test/utils/renderWithProviders";
+import { Preview } from "./preview";
+import type { IClassesDataTag } from "../../pages/form/views/classesContainer/classesContainer.interface";
 
-describe('Preview Component', () => {
-  describe('Rendering States', () => {
-    it('should not render when isOpen is false', () => {
-      const { container } = render(
-        <Preview
-          isOpen={false}
-          classesData={mockPreviewClassesData}
-        />
-      );
+vi.mock("../calendar/calendar", () => ({
+  Calendar: ({ classes, secondaryInfo }: { classes: IClassesDataTag[]; secondaryInfo: string }) => (
+    <div data-testid="calendar" data-count={classes.length} data-secondary-info={secondaryInfo} />
+  ),
+}));
 
-      expect(container.firstChild).toBeNull();
-    });
+const classes: IClassesDataTag[] = [
+  { code: "A1", isStrike: false, subjectCode: "MAT101", description: "Matemática", courses: [] },
+];
 
-    it('should not render when isOpen is not provided (defaults to false)', () => {
-      const { container } = render(
-        <Preview classesData={mockPreviewClassesData} />
-      );
+describe("Preview", () => {
+  it("does not render while closed", () => {
+    render(<Preview classesData={classes} />);
 
-      expect(container.firstChild).toBeNull();
-    });
-
-    it('should render when isOpen is true', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-        />
-      );
-
-      expect(screen.getByText('Preview das Aulas')).toBeInTheDocument();
-      expect(screen.getByText('Voltar')).toBeInTheDocument();
-    });
+    expect(screen.queryByText("Preview das Aulas")).not.toBeInTheDocument();
   });
 
-  describe('Content Display', () => {
-    it('should display the correct title', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-        />
-      );
+  it("renders the calendar and calls the close callbacks", () => {
+    const onButtonClick = vi.fn();
+    const onOverlayClick = vi.fn();
+    render(
+      <Preview
+        isOpen
+        classesData={classes}
+        onButtonClick={onButtonClick}
+        onOverlayClick={onOverlayClick}
+      />,
+    );
 
-      const title = screen.getByText('Preview das Aulas');
-      expect(title).toBeInTheDocument();
-      expect(title).toHaveClass('preview__title');
-    });
+    expect(screen.getByText("Preview das Aulas")).toBeInTheDocument();
+    expect(screen.getByTestId("calendar")).toHaveAttribute("data-count", "1");
+    expect(screen.getByTestId("calendar")).toHaveAttribute("data-secondary-info", "description");
 
-    it('should render Calendar component with passed data', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-        />
-      );
+    fireEvent.click(screen.getByRole("button", { name: /Voltar/i }));
+    expect(onButtonClick).toHaveBeenCalledOnce();
 
-      expect(screen.getByText('Segunda')).toBeInTheDocument();
-      expect(screen.getByText('Terça')).toBeInTheDocument();
-    });
-
-    it('should render return button with correct elements', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-        />
-      );
-
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('preview__button');
-      
-      const buttonText = screen.getByText('Voltar');
-      expect(buttonText).toHaveClass('preview__button__text');
-      
-      const buttonImage = screen.getByRole('img');
-      expect(buttonImage).toBeInTheDocument();
-    });
+    fireEvent.click(
+      screen.getByText("Preview das Aulas").parentElement!.parentElement!.parentElement!,
+    );
+    expect(onOverlayClick).toHaveBeenCalledOnce();
   });
 
-  describe('User Interactions', () => {
-    it('should call onButtonClick when return button is clicked', () => {
-      const mockOnButtonClick = vi.fn();
-      
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-          onButtonClick={mockOnButtonClick}
-        />
-      );
+  it("uses no-op callbacks when they are omitted", () => {
+    render(<Preview isOpen classesData={[]} />);
 
-      const button = screen.getByRole('button');
-      fireEvent.click(button);
-
-      expect(mockOnButtonClick).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call onOverlayClick when modal overlay is clicked', () => {
-      const mockOnOverlayClick = vi.fn();
-      
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-          onOverlayClick={mockOnOverlayClick}
-        />
-      );
-
-      const modal = screen.getByText('Preview das Aulas').closest('.modal');
-      if (modal) {
-        fireEvent.click(modal);
-        expect(mockOnOverlayClick).toHaveBeenCalledTimes(1);
-      }
-    });
-
-    it('should use default empty functions when callbacks are not provided', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-        />
-      );
-
-      const button = screen.getByRole('button');
-      
-      expect(() => fireEvent.click(button)).not.toThrow();
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle empty classesData array', () => {
-      render(
-        <Preview
-          isOpen={true}
-          classesData={[]}
-        />
-      );
-
-      expect(screen.getByText('Preview das Aulas')).toBeInTheDocument();
-      expect(screen.getByText('Voltar')).toBeInTheDocument();
-    });
-
-    it('should render properly with all props provided', () => {
-      const mockOnOverlayClick = vi.fn();
-      const mockOnButtonClick = vi.fn();
-
-      render(
-        <Preview
-          isOpen={true}
-          classesData={mockPreviewClassesData}
-          onOverlayClick={mockOnOverlayClick}
-          onButtonClick={mockOnButtonClick}
-        />
-      );
-
-      expect(screen.getByText('Preview das Aulas')).toBeInTheDocument();
-      expect(screen.getByText('Voltar')).toBeInTheDocument();
-      expect(screen.getByText('Segunda')).toBeInTheDocument();
-    });
+    expect(() => fireEvent.click(screen.getByRole("button", { name: /Voltar/i }))).not.toThrow();
   });
 });

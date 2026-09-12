@@ -1,133 +1,104 @@
-import { forwardRef } from "react";
-import { ICalendar, IClassInfo } from "./calendar.interface";
+import { forwardRef, Fragment, useEffect, useState } from "react";
+import { CalendarCourseResponse, ICalendar } from "./calendar.interface";
 
 import "./calendar.style.scss";
+import { useAppContext } from "../../context/AppContext";
+import { CourseResponse } from "../../api";
+import { getPeriodString } from "../../utils/functions/getPeriodString";
 
 export const Calendar = forwardRef<HTMLDivElement, ICalendar>(
-  ({ classes, secondaryInfo = "classroom" }, ref) => {
-    const checkDate = (dia: string) => dia !== "Domingo" && dia !== "Sábado";
+  ({ classes, secondaryInfo = "description" }, ref) => {
+    const { weekdays } = useAppContext();
+    const [grid, setGrid] = useState<CalendarCourseResponse[][][]>(
+      Array.from({ length: 7 }, () => Array.from({ length: 6 }, () => [])),
+    );
 
-    const handleSecondaryInfo = (info: IClassInfo) => {
-      switch (secondaryInfo) {
-        case "classroom":
-          return info.classroom;
-        case "description":
-          return info.classDescription;
-        case "teacher":
-          return info.teacher;
-      }
-    };
-
-    const sortByPeriod = (dayClasses: IClassInfo[]) => {
-      return dayClasses.sort(
-        (class1, class2) => Number(class1.period[0]) - Number(class2.period[0])
+    useEffect(() => {
+      const nextGrid: CourseResponse[][][] = Array.from({ length: 7 }, () =>
+        Array.from({ length: 6 }, () => []),
       );
-    };
 
-    const organizeClass = (classes: IClassInfo[]) => {
-      const organizedSchedule: IClassInfo[][] = Array(6)
-        .fill(null)
-        .map(() => []);
+      const classesMap = classes.flatMap((item) => {
+        return item.courses.map((course) => {
+          return { ...course, description: item.description };
+        });
+      });
 
-      classes.forEach((IClassInfo) => {
-        const startPeriod = +IClassInfo.period[0];
-        const endPeriod = +IClassInfo.period[IClassInfo.period.length - 1];
-
-        for (let i = startPeriod; i <= endPeriod; i++) {
-          organizedSchedule[i].push(IClassInfo);
+      classesMap.forEach((classItem) => {
+        const { weekday, periodStart, periodEnd } = classItem;
+        if (weekday < 0 || weekday >= nextGrid.length) return;
+        for (let period = periodStart; period <= periodEnd; period += 1) {
+          nextGrid[weekday]?.[period]?.push(classItem);
         }
       });
 
-      return organizedSchedule;
-    };
-
-    const definePeriod = (num: number) => {
-      switch (num) {
-        case 0:
-          return "17h";
-        case 1:
-          return "17h50";
-        case 2:
-          return "18h40";
-        case 3:
-          return "19h30";
-        case 4:
-          return "20h20";
-        case 5:
-          return "21h10";
-        case 6:
-          return "22h";
-      }
-    };
+      setGrid(nextGrid);
+    }, [classes]);
 
     return (
       <div ref={ref} className="calendar">
-        <div className="calendar__container">
+        <div className="calendar__body">
           <div className="calendar__period">
+            <div className="calendar__period__item calendar__period__item--empty" />
             {Array.from({ length: 6 }, (_, i) => (
-              <div key={i}>
-                <h3 className="calendar__period__day">{definePeriod(i)}</h3>
-                <h3 className="calendar__period__day">{definePeriod(i + 1)}</h3>
+              <div key={i} className="calendar__period__item">
+                <h3>{getPeriodString(i)}</h3>
+                <h3>{getPeriodString(i + 1)}</h3>
               </div>
             ))}
           </div>
+          <div className="calendar__grid">
+            {grid.map((day, dayIndex) => {
+              if (dayIndex === 0 || dayIndex === 6) return null;
 
-          {classes
-            .filter((dayItem) => checkDate(dayItem.day!))
-            .map((dayItem, id) => (
-              <div key={id} className={`calendar__class calendar__class--${dayItem.day}`}>
-                <div className="calendar__class__day">
-                  <h3 className="calendar__class__day-title">{dayItem.day}</h3>
-                </div>
+              return (
+                <div key={dayIndex} className="calendar__grid__column">
+                  <h3 className="calendar__grid__column__weekday">
+                    {weekdays![dayIndex].slice(0, 3)}
+                  </h3>
+                  {day.map((period, periodIndex) => (
+                    <Fragment key={periodIndex}>
+                      {period.length === 1 && (
+                        <div key={periodIndex} className="calendar__grid__column__class">
+                          <h4 className="calendar__grid__column__class__text">
+                            {period[0].subjectCode}
+                          </h4>
 
-                {sortByPeriod(dayItem.classes) &&
-                  organizeClass(dayItem.classes).map((IClassInfo, index) => (
-                    <div key={index} className="calendar__class__info">
-                      {IClassInfo.length === 0 && (
-                        <div key={index} className="calendar__class__info-item">
-                          <h3 className="calendar__class__info-item--empty">Vazio</h3>
+                          <p className="calendar__grid__column__class__description">
+                            {period[0][secondaryInfo]}
+                          </p>
                         </div>
                       )}
 
-                      {IClassInfo.length === 1 &&
-                        IClassInfo.map((info, subIndex) => (
-                          <div
-                            key={subIndex}
-                            className={`calendar__class__info-item calendar__class__info-item${
-                              info.greve ? "--greve" : ""
-                            }`}
-                          >
-                            <h3 className="calendar__class__info-item-title">{info.className}</h3>
-                            <h5 className="calendar__class__info-item-description">
-                              {info.greve ? "GREVE" : handleSecondaryInfo(info) || "-----"}
-                            </h5>
-                          </div>
-                        ))}
+                      {period.length > 1 && (
+                        <div className="calendar__grid__column__class calendar__grid__column__class--error">
+                          {period.slice(0, 2).map((item, i) => (
+                            <h4 className="calendar__grid__column__class__text--error" key={i}>
+                              {item.subjectCode}
+                            </h4>
+                          ))}
 
-                      {IClassInfo.length >= 2 && (
-                        <div
-                          key={index}
-                          className={`calendar__class__info-item calendar__class__info-item--full`}
-                        >
-                          <h3 className={`calendar__class__info-item-title`}>
-                            {IClassInfo[0].className}
-                          </h3>
-                          <h3 className={`calendar__class__info-item-title`}>
-                            {IClassInfo[1].className}
-                          </h3>
-                          {IClassInfo.length > 2 && (
-                            <h5 className={`calendar__class__info-item-description`}>
-                              {`... mais ${IClassInfo.length - 2}`}
-                            </h5>
+                          {period.length > 2 && (
+                            <p className="calendar__grid__column__class__description--error">
+                              ...mais {period.length - 2}
+                            </p>
                           )}
                         </div>
                       )}
-                    </div>
+
+                      {period.length <= 0 && (
+                        <div className="calendar__grid__column__class calendar__grid__column__class--empty">
+                          <p>Vazio</p>
+                        </div>
+                      )}
+                    </Fragment>
                   ))}
-              </div>
-            ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
-  }
+  },
 );
