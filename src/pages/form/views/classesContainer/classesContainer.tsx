@@ -11,7 +11,7 @@ import Warning from "../../../../components/warning/warning";
 
 export const ClassesContainer = ({ title, semestre, onClickTag = () => {} }: IClassesContainer) => {
   const { data, loading, error } = useSubjects(semestre, ["sections", "courses"]);
-  const subjectData = data as SubjectFull[];
+  const subjectData = Array.isArray(data) ? (data as SubjectFull[]) : [];
   const [classData, setClassData] = useState<IClassesDataTag[]>([]);
 
   const [isDetailed, setIsDetailed] = useState(false);
