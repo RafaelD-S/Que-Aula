@@ -262,7 +262,7 @@ const DayClasses = () => {
                         {!hasMoreSections(course) && (
                           <span className="dayClasses__info-item-class">{course.sectionCode}</span>
                         )}
-                        <span>- {course.teacher}</span>
+                        <span> - {course.teacher}</span>
                       </h4>
                       <h4 className="dayClasses__info-item-classroom">
                         <span

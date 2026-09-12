@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Footer = ({
   calendarMessage = "Apagar calendário",
   feedbackMessage,
+  hasEraseCalendar = true,
   hasCredits = true,
 }: IFooter) => {
   const navigate = useNavigate();
@@ -27,13 +28,15 @@ const Footer = ({
 
   return (
     <footer className="footer">
-      <Warning
-        message="Você tem certeza que quer apagar seu calendário?"
-        buttonLabel="sim"
-        onClickButton={eraseCalendar}
-      >
-        <a className="footer__new-calendar">{calendarMessage}</a>
-      </Warning>
+      {hasEraseCalendar && (
+        <Warning
+          message="Você tem certeza que quer apagar seu calendário?"
+          buttonLabel="sim"
+          onClickButton={eraseCalendar}
+        >
+          <a className="footer__new-calendar">{calendarMessage}</a>
+        </Warning>
+      )}
       <div className="footer__feedback">
         {feedbackMessage ? feedbackMessage + " " : ""}
         <a

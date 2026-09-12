@@ -21,7 +21,7 @@ const Schedule = () => {
       backgroundColor: backgroundColor,
       useCORS: true,
       scale: 4,
-      windowWidth: 640,
+      windowWidth: 670,
     }).then((canvas) => {
       const padding = 20;
       const bottomPadding = 10;

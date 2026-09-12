@@ -6,6 +6,7 @@ import { IClassesDataTag } from "./views/classesContainer/classesContainer.inter
 import { classNames } from "../../utils/functions/classNames";
 import { Preview } from "../../components/preview/preview";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/footer";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const Form = () => {
               })}
             </div>
           </div>
+          <Footer hasEraseCalendar={false} />
 
           <div className={submitClassNames}>
             <button

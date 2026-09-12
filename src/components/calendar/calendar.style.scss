@@ -5,11 +5,15 @@
   margin: auto;
   overflow: auto;
   display: flex;
+  overflow: auto;
+  width: 100%;
   max-width: 720px;
   padding: 12px;
   text-align: center;
+  justify-content: center;
 
   &__body {
+    width: 100%;
     display: flex;
     gap: 12px;
   }
@@ -40,13 +44,12 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 110px);
     width: 100%;
     gap: 8px;
 
     &__column {
       display: grid;
-      min-width: 90px;
       grid-template-rows: 24px repeat(6, 1fr);
 
       &__weekday {
