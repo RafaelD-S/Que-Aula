@@ -41,7 +41,7 @@ const Form = () => {
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const selectedSections = selectedClasses.map(({ selected, ...item }) => item);
+    const selectedSections = selectedClasses.map(({ ...item }) => item);
 
     localStorage.setItem("SelectedClasses", JSON.stringify(selectedSections));
     navigate("/");
