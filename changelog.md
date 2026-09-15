@@ -2,9 +2,13 @@
 
 # Changelog
 
-### Versão atual: 3.0.0
+### Versão atual: 3.0.1
 
 </div>
+
+## 3.0.1 - 15/09/2026
+
+- Correção de bug na seleção do formulário
 
 ## 3.0.0 - 12/09/2026
 
