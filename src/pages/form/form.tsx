@@ -29,11 +29,17 @@ const Form = () => {
 
   const handleSelectCourse = (item: IClassesDataTag) => {
     setSelectedClasses((prev) => {
+      const alreadySelected = prev.some(
+        (selectedItem) =>
+          selectedItem.code === item.code && selectedItem.subjectCode === item.subjectCode,
+      );
       const filtered = prev.filter(
         (selectedItem) =>
           selectedItem.code !== item.code || selectedItem.subjectCode !== item.subjectCode,
       );
-      return filtered.length === prev.length ? [...filtered, item] : filtered;
+      const isSelected = !alreadySelected;
+
+      return isSelected ? [...filtered, { ...item, selected: true }] : filtered;
     });
   };
 

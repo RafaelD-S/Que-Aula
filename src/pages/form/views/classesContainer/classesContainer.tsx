@@ -25,6 +25,19 @@ export const ClassesContainer = ({ title, semestre, onClickTag = () => {} }: ICl
     setIsDetailed((prev) => !prev);
   };
 
+  const handleClassClick = (item: IClassesDataTag) => {
+    const selected = !item.selected;
+
+    setClassData((prev) =>
+      prev.map((classItem) =>
+        classItem.code === item.code && classItem.subjectCode === item.subjectCode
+          ? { ...classItem, selected }
+          : classItem,
+      ),
+    );
+    onClickTag({ ...item, selected });
+  };
+
   useEffect(() => {
     if (loading) return;
 
@@ -72,9 +85,10 @@ export const ClassesContainer = ({ title, semestre, onClickTag = () => {} }: ICl
                 <ClassListItem
                   key={i}
                   description={item.subjectCode}
+                  selected={item.selected}
                   whichClass={isMultiClass ? item.code : undefined}
                   classCode={subject?.name}
-                  onClick={() => onClickTag(item)}
+                  onClick={() => handleClassClick(item)}
                 />
               );
             return (
@@ -83,7 +97,7 @@ export const ClassesContainer = ({ title, semestre, onClickTag = () => {} }: ICl
                 selected={item.selected}
                 title={item.subjectCode}
                 whichClass={isMultiClass ? item.code : undefined}
-                onClick={() => onClickTag(item)}
+                onClick={() => handleClassClick(item)}
               />
             );
           })}
