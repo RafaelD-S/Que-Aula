@@ -7,6 +7,7 @@ const selectedItem: IClassesDataTag = {
   code: "A1",
   isStrike: false,
   subjectCode: "MAT101",
+  selected: true,
   description: "Matemática",
   courses: [],
 };

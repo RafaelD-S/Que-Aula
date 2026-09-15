@@ -29,11 +29,15 @@ const Form = () => {
 
   const handleSelectCourse = (item: IClassesDataTag) => {
     setSelectedClasses((prev) => {
+      const alreadySelected = prev.some(
+        (selectedItem) =>
+          selectedItem.code === item.code && selectedItem.subjectCode === item.subjectCode,
+      );
       const filtered = prev.filter(
         (selectedItem) =>
           selectedItem.code !== item.code || selectedItem.subjectCode !== item.subjectCode,
       );
-      const isSelected = item.selected ?? filtered.length === prev.length;
+      const isSelected = !alreadySelected;
 
       return isSelected ? [...filtered, { ...item, selected: true }] : filtered;
     });
@@ -41,7 +45,7 @@ const Form = () => {
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const selectedSections = selectedClasses.map(({ ...item }) => item);
+    const selectedSections = selectedClasses.map((item) => item);
 
     localStorage.setItem("SelectedClasses", JSON.stringify(selectedSections));
     navigate("/");
