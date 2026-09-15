@@ -33,13 +33,15 @@ const Form = () => {
         (selectedItem) =>
           selectedItem.code !== item.code || selectedItem.subjectCode !== item.subjectCode,
       );
-      return filtered.length === prev.length ? [...filtered, item] : filtered;
+      const isSelected = item.selected ?? filtered.length === prev.length;
+
+      return isSelected ? [...filtered, { ...item, selected: true }] : filtered;
     });
   };
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const selectedSections = selectedClasses.map((item) => item);
+    const selectedSections = selectedClasses.map(({ selected, ...item }) => item);
 
     localStorage.setItem("SelectedClasses", JSON.stringify(selectedSections));
     navigate("/");
