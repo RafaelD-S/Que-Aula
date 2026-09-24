@@ -261,7 +261,7 @@ const DayClasses = () => {
                         className={`dayClasses__info-item-title ${reloadingCourseId === course.idCourse ? "shimmer" : ""}`}
                       >
                         <span>{course.subjectCode}</span>
-                        {!hasMoreSections(course) && (
+                        {!hasMoreSections(course) && reloadingCourseId !== course.idCourse && (
                           <span className="dayClasses__info-item-class">{course.sectionCode}</span>
                         )}
                         <span> - {course.teacher}</span>
