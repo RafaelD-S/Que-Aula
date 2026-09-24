@@ -190,11 +190,11 @@ const DayClasses = () => {
     setReloadingCourseId(course.idCourse);
 
     try {
-      const teste = await getCourseById(course.idCourse);
+      const courseGet = await getCourseById(course.idCourse);
 
       const newClasses: IClassesDataTag[] = selectedClasses.map((classItem) => {
         const newCourses = classItem.courses.map((courseItem) => {
-          if (courseItem.idCourse === teste.idCourse) return teste;
+          if (courseItem.idCourse === courseGet.idCourse) return courseGet;
           return courseItem;
         });
 
@@ -257,7 +257,9 @@ const DayClasses = () => {
                       key={`${course.idCourse}-${course.classroom}-${course.teacher}`}
                       className="dayClasses__info-item"
                     >
-                      <h4 className="dayClasses__info-item-title">
+                      <h4
+                        className={`dayClasses__info-item-title ${reloadingCourseId === course.idCourse ? "shimmer" : ""}`}
+                      >
                         <span>{course.subjectCode}</span>
                         {!hasMoreSections(course) && (
                           <span className="dayClasses__info-item-class">{course.sectionCode}</span>
@@ -278,7 +280,11 @@ const DayClasses = () => {
                           <img src={Reload} />
                         </button>
                       </h4>
-                      <h5 className="dayClasses__info-item-description">{course.description}</h5>
+                      <h5
+                        className={`dayClasses__info-item-description ${reloadingCourseId === course.idCourse ? "shimmer" : ""}`}
+                      >
+                        {course.description}
+                      </h5>
                     </div>
                   ))
                 ) : (
