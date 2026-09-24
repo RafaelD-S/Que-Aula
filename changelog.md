@@ -6,6 +6,10 @@
 
 </div>
 
+## 3.0.2 - 23/09/2026
+
+- Melhoria para shimmer afetar todos itens das aulas diárias.
+
 ## 3.0.1 - 15/09/2026
 
 - Correção de bug na seleção do formulário
